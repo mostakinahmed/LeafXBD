@@ -1,6 +1,6 @@
 const BannerSection = () => {
   return (
-    <div className="max-w-[1400px] mx-auto mt-25 px-4 py-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="max-w-[1400px] mx-auto mt-[85px] px-4 py-6 grid grid-cols-1 md:grid-cols-3 gap-6">
       {/* Main Banner */}
       <div className="md:col-span-2">
         <img

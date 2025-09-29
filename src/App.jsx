@@ -5,6 +5,7 @@ import CatMenu from "./components/Home/CatMenu.jsx";
 import { Route, Routes } from "react-router-dom";
 import AllProduct from "./pages/AllProduct.jsx";
 import Footer from "./components/Footer.jsx";
+import ProductDetails from "./components/ProductDetails.jsx";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product/:cat" element={<AllProduct />} />
+        <Route path="/product/:cat/:id" element={<ProductDetails />} />
       </Routes>
 
       <Footer />
