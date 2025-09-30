@@ -7,7 +7,7 @@ const NavbarTop = () => {
   const toggle = () => {
     console.log("click", values);
     setValue(!values);
-  }; 
+  };
 
   return (
     <div className="bg-[#0B1E2D] text-white py-2 shadow-md sticky top-0 z-50">
@@ -42,15 +42,22 @@ const NavbarTop = () => {
       </div>
 
       <div className="bg-[#0B1E2D] w-full h-10 md:hidden flex items-center">
-        <div className="text-xl font-semibold ml-4 text-white">
-          <h1> Tech Verge</h1>
+        <div className="text-xl font-semibold text-white">
+          <Link to="/" className="font-bold text-3xl text-white">
+            <img
+              className="w-[120px] h-[40px]"
+              src="public/logo.png"
+              alt="img"
+            />
+          </Link>
         </div>
+
         <div className="ml-auto mr-4" id="icon">
           <i className="ri-menu-3-line" onClick={toggle}></i>
         </div>
       </div>
 
-      {values &&(
+      {values && (
         <div className="md:hidden">
           <nav className="ml-5">
             <h2 className="hover:bg-[#334652]">Home</h2>
