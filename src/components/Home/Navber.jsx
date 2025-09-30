@@ -1,18 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "remixicon/fonts/remixicon.css";
 
 const NavbarTop = () => {
-  return (
-    <div className="bg-[#0B1E2D] text-white py-3 shadow-md sticky top-0 z-50">
-      <div className="max-w-[1400px] mx-auto flex items-center justify-between px-4">
-        <Link to="/" className="font-bold text-3xl text-white">
-          Tech Verge
-        </Link>
-        {/* <div className="flex items-center space-x-2">
-          <img src="/logo.png" alt="Star Tech Logo" className="h-8" />
-        </div> */}
+  const [values, setValue] = useState(false);
+  const toggle = () => {
+    console.log("click", values);
+    setValue(!values);
+  }; 
 
-        {/* Search */}
+  return (
+    <div className="bg-[#0B1E2D] text-white py-2 shadow-md sticky top-0 z-50">
+      <div className="max-w-[1400px] mx-auto items-center justify-between px-4 hidden md:flex">
+        <div>
+          <Link to="/" className="font-bold text-3xl text-white">
+            <img
+              className="w-[140px] h-[50px]"
+              src="public/logo.png"
+              alt="img"
+            />
+          </Link>
+        </div>
+
         <div className="w-1/2">
           <input
             type="text"
@@ -31,6 +40,26 @@ const NavbarTop = () => {
           </button>
         </div>
       </div>
+
+      <div className="bg-[#0B1E2D] w-full h-10 md:hidden flex items-center">
+        <div className="text-xl font-semibold ml-4 text-white">
+          <h1> Tech Verge</h1>
+        </div>
+        <div className="ml-auto mr-4" id="icon">
+          <i className="ri-menu-3-line" onClick={toggle}></i>
+        </div>
+      </div>
+
+      {values &&(
+        <div className="md:hidden">
+          <nav className="ml-5">
+            <h2 className="hover:bg-[#334652]">Home</h2>
+            <h2 className="hover:bg-[#334652]">About</h2>
+            <h2 className="hover:bg-[#334652]">services</h2>
+            <h2 className="hover:bg-[#334652]">account</h2>
+          </nav>
+        </div>
+      )}
     </div>
   );
 };
