@@ -9,7 +9,7 @@ const LeftSide = () => {
 
   return (
     <div>
-      <div className="mr-4 ml-4">
+      <div className="">
         <button
           className="w-full mt-7 lg:hidden bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded "
           onClick={toog}

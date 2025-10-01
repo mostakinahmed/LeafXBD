@@ -1,4 +1,10 @@
+import React, { useContext } from "react";
+import HeroAds from "./HeroAds.jsx";
+import { DataContext, UserContext } from "../Context Api/UserContext";
+
 const BannerSection = () => {
+
+   const { categoryData, productData } = useContext(DataContext);
   return (
     <div className="max-w-[1400px] mx-auto  mt-[80px] lg:mt-[95px] px-4 py-6 grid grid-cols-1 md:grid-cols-3 gap-6">
       {/* Main Banner */}
@@ -13,22 +19,8 @@ const BannerSection = () => {
       {/* Right Sideboxes */}
       <div className="space-y-4">
         {/* Compare Box */}
-        <div className="bg-yellow-100 p-4 rounded shadow">
-          <h3 className="font-semibold text-gray-800 mb-2">Compare Products</h3>
-          <input
-            type="text"
-            placeholder="Search and Select Product"
-            className="w-full mb-2 px-3 py-2 border rounded"
-          />
-          <input
-            type="text"
-            placeholder="Search and Select Product"
-            className="w-full mb-3 px-3 py-2 border rounded"
-          />
-          <button className="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700">
-            View Comparison
-          </button>
-        </div>
+     
+        <HeroAds products={productData}/>
 
         {/* Career Banner */}
         <img

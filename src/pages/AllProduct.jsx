@@ -6,7 +6,7 @@ const AllProduct = () => {
   return (
     <>
       <div className="max-w-[1400px] mt-[55px] mx-auto py-6 min-h-screen">
-        <div className="flex flex-col lg:pt-10  lg:flex-row gap-3">
+        <div className="flex flex-col mx-4 lg:pt-10  lg:flex-row gap-3">
           
           {/* Left: Filter Sidebar */}
           <LeftSide />
