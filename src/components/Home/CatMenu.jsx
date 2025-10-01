@@ -12,7 +12,7 @@ const CategoryMenu = () => {
           {categoryData.map((cat, index) => (
             <Link
               key={index}
-              to={`/product/${cat.catName}`}
+              to={`/product/${cat.catID}`}
               className="hover:text-indigo-600 text-black font-semibold whitespace-nowrap"
             >
               {cat.catName}
