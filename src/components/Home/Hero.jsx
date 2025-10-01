@@ -39,7 +39,7 @@ const BannerSection = () => {
       </div>
 
       {/* Info Cards Section */}
-      <div className="col-span-1 md:col-span-3 mt-4 flex flex-col md:flex-row gap-4 justify-between text-gray-700">
+      <div className="col-span-1 md:col-span-3  flex flex-col md:flex-row gap-4 justify-between text-gray-700">
         {/* Card 1 */}
         <div className="flex-1 bg-white px-6 py-4 rounded-md shadow-sm hover:shadow-md transition text-center">
           <h4 className="text-[20px] font-semibold text-indigo-600">
