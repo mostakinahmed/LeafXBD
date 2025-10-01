@@ -4,7 +4,7 @@ import ProductCard from "./ProductCard";
 import { DataContext } from "./Context Api/UserContext";
 
 export const FeatureProduct = () => {
-  const { useData, productData, apiData } = useContext(DataContext);
+  const { categoryData, productData } = useContext(DataContext);
 
   return (
     <div>
@@ -12,8 +12,7 @@ export const FeatureProduct = () => {
 
       {/* <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4"></div> */}
 
-     
-       <ProductCard data={apiData} />
+      <ProductCard data={productData} />
     </div>
   );
 };

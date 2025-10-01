@@ -3,23 +3,22 @@ import ProductCard from "../ProductCard";
 import { useParams } from "react-router-dom";
 import { DataContext, UserContext } from "../Context Api/UserContext";
 
-
 const RightSide = () => {
-  const { useData, productData, apiData } = useContext(DataContext);
+  const { categoryData, productData } = useContext(DataContext);
   const { cat } = useParams();
-  console.log(apiData);
+
 
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     // Filter products based on the category
     if (cat) {
-      const filtered = apiData.filter((product) => product.cat === cat);
+      const filtered = productData.filter((product) => product.cat === cat);
       setFilteredProducts(filtered);
     } else {
-      setFilteredProducts(apiData); // If no category, show all products
+      setFilteredProducts(productData); // If no category, show all products
     }
-  }, [cat, apiData]);
+  }, [cat, productData]);
 
   return (
     <section className="w-full lg:w-3/4">
@@ -33,9 +32,7 @@ const RightSide = () => {
           No products found in this category.
         </p>
       ) : (
-       
-          <ProductCard data={filteredProducts} />
-       
+        <ProductCard data={filteredProducts} />
       )}
     </section>
   );
