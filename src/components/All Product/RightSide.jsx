@@ -3,8 +3,48 @@ import ProductCard from "../ProductCard";
 import { useParams } from "react-router-dom";
 import { DataContext } from "../Context Api/UserContext";
 
-
-
+// const productData = [
+//   {
+//     id: 1,
+//     cat: "laptop",
+//     name: "John Doe",
+//     email: "johndoe@example.com",
+//     age: 29,
+//     isActive: true,
+//   },
+//   {
+//     id: 2,
+//     cat: "laptop",
+//     name: "Jane Smith",
+//     email: "janesmith@example.com",
+//     age: 34,
+//     isActive: false,
+//   },
+//   {
+//     id: 3,
+//     cat: "laptop",
+//     name: "Sam Green",
+//     email: "samgreen@example.com",
+//     age: 23,
+//     isActive: true,
+//   },
+//   {
+//     id: 4,
+//     cat: "power",
+//     name: "Emily White",
+//     email: "emilywhite@example.com",
+//     age: 41,
+//     isActive: false,
+//   },
+//   {
+//     id: 5,
+//     cat: "desktop",
+//     name: "Michael Brown",
+//     email: "michaelbrown@example.com",
+//     age: 30,
+//     isActive: true,
+//   },
+// ];
 
 const RightSide = () => {
   const { useData, productData } = useContext(DataContext);
