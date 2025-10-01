@@ -1,8 +1,6 @@
 import React from "react";
 
 export const FeatureText = ({ data }) => {
-  console.log(data);
-
   return (
     <div className="text-center my-10">
       <h2 className="text-3xl sm:text-4xl font-bold text-gray-800">

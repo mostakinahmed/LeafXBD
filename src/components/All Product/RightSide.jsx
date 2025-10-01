@@ -1,51 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProductCard from "../ProductCard";
 import { useParams } from "react-router-dom";
+import { DataContext } from "../Context Api/UserContext";
 
-const data = [
-  {
-    id: 1,
-    cat: "laptop",
-    name: "John Doe",
-    email: "johndoe@example.com",
-    age: 29,
-    isActive: true,
-  },
-  {
-    id: 2,
-    cat: "laptop",
-    name: "Jane Smith",
-    email: "janesmith@example.com",
-    age: 34,
-    isActive: false,
-  },
-  {
-    id: 3,
-    cat: "laptop",
-    name: "Sam Green",
-    email: "samgreen@example.com",
-    age: 23,
-    isActive: true,
-  },
-  {
-    id: 4,
-    cat: "power",
-    name: "Emily White",
-    email: "emilywhite@example.com",
-    age: 41,
-    isActive: false,
-  },
-  {
-    id: 5,
-    cat: "desktop",
-    name: "Michael Brown",
-    email: "michaelbrown@example.com",
-    age: 30,
-    isActive: true,
-  },
-];
+
+
 
 const RightSide = () => {
+  const { useData, productData } = useContext(DataContext);
   const { cat } = useParams();
 
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -53,12 +15,12 @@ const RightSide = () => {
   useEffect(() => {
     // Filter products based on the category
     if (cat) {
-      const filtered = data.filter((product) => product.cat === cat);
+      const filtered = productData.filter((product) => product.cat === cat);
       setFilteredProducts(filtered);
     } else {
-      setFilteredProducts(data); // If no category, show all products
+      setFilteredProducts(productData); // If no category, show all products
     }
-  }, [cat, data]);
+  }, [cat, productData]);
 
   return (
     <section className="w-full lg:w-3/4">
