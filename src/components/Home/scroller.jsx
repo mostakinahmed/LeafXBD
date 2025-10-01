@@ -18,23 +18,22 @@ const AutoScrollingText = () => {
       {/* Inject the animation CSS directly */}
       <style>{marqueeStyle}</style>
 
-      <div className="max-w-[1370px] mx-auto  shadow-sm flex items-center justify-between overflow-hidden bg-white py-2">
+      <div className="max-w-[1370px] mx-auto overflow-hidden bg-gradient-to-r from-blue-100 via-blue-200 to-blue-100 py-2 px-4 shadow-sm rounded-md border border-blue-200 backdrop-blur-sm bg-opacity-80">
+
         <div
-          className="inline-block whitespace-nowrap text-red-700 font-medium text-md animate-scroll"
+          className="flex items-center animate-marquee whitespace-nowrap text-red-600 font-semibold text-sm sm:text-base tracking-wide"
           style={{
-            animation: "scroll-left 25s linear infinite",
-            display: "inline-block",
-            whiteSpace: "nowrap",
+            animation: "marquee 25s linear infinite",
           }}
         >
-          <span className="mx-4">🔥 Big Sale Today</span>
-          <span className="mx-4">🚚 Free Shipping</span>
-          <span className="mx-4">🆕 New Arrivals</span>
-          <span className="mx-4">🎁 Grab Yours Now!</span>
-          <span className="mx-4">🔥 Big Sale Today</span>
-          <span className="mx-4">🚚 Free Shipping</span>
-          <span className="mx-4">🆕 New Arrivals</span>
-          <span className="mx-4">🎁 Grab Yours Now!</span>
+          <span className="mx-6">Big Sale Today</span>
+          <span className="mx-6">Free Shipping</span>
+          <span className="mx-6">New Arrivals</span>
+          <span className="mx-6">Grab Yours Now!</span>
+          <span className="mx-6">Big Sale Today</span>
+          <span className="mx-6">Free Shipping</span>
+          <span className="mx-6">New Arrivals</span>
+          <span className="mx-6">Grab Yours Now!</span>
         </div>
       </div>
     </>

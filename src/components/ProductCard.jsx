@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 export const ProductCard = ({ data }) => {
   return (
     <>
-      <div className="max-w-[1400px] mx-auto px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-4">
+      <div className="max-w-[1400px] mx-auto px-4 pb-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 xl:grid-cols-8 gap-4 lg:gap-3">
         {data.map((product) => (
-          <div className="bg-white rounded-xl w-[170px] lg:w-[220px] shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <div className="bg-white rounded-xl w-[165px] lg:w-[160px] lg:h-[300px] shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <img
-              className="w-[185px] sm:[190px] sm:p-7 pt-2 h-[170px] object-cover"
+              className="w-[185px] lg:[190px] lg:p-3 pt-2 h-[170px] object-cover"
               src={product.images}
               alt="Samsung A56"
             />
@@ -17,7 +17,7 @@ export const ProductCard = ({ data }) => {
                 Samsung A56
               </h2>
               <p className="text-gray-500 text-xs mb-2 line-clamp-2">
-                Dimensions: 162.2 x 77.5 x 
+                Dimensions: 162.2 x 77.5
               </p>
               <div className="flex items-center justify-between text-sm mb-2">
                 <span className="text-indigo-600 font-bold">$540</span>

@@ -5,8 +5,8 @@ import RightSide from "../components/All Product/RightSide";
 const AllProduct = () => {
   return (
     <>
-      <div className="max-w-[1370px] mt-[55px] mx-auto px-4 py-6 min-h-screen">
-        <div className="flex flex-col md:pt-10  lg:flex-row gap-3">
+      <div className="max-w-[1370px] mt-[55px] mx-auto py-6 min-h-screen">
+        <div className="flex flex-col lg:pt-10  lg:flex-row gap-3">
           
           {/* Left: Filter Sidebar */}
           <LeftSide />

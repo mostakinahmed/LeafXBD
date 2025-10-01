@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -8,9 +9,11 @@ const Footer = () => {
           <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8">
             {/* Responsive Grid: 1 column on mobile, 2 on md, 4 on lg */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {/* Company Info */}
               <div>
-                <h3 className="text-white text-2xl font-bold mb-4">ShopEase</h3>
+                <Link to={"/"}>
+                  <img className="h-14 w-30" src="/logo.png" alt="" />
+                </Link>
+
                 <p className="text-gray-400 mb-4">
                   Your one-stop shop for all your tech needs. Quality products,
                   great prices.
@@ -81,18 +84,18 @@ const Footer = () => {
                   Subscribe to our Newsletter
                 </h4>
                 {/* Responsive form: vertical on mobile, horizontal on sm+ */}
-                <form className="flex flex-col sm:flex-row gap-2">
+                <form className="flex flex-col gap-2">
                   <input
                     type="email"
                     placeholder="Enter your email"
                     className="px-3 py-2 rounded border-2 bg-amber-50 text-gray-900 flex-grow"
                   />
-                  {/* <button
+                  <button
                     type="submit"
                     className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded"
                   >
                     Subscribe
-                  </button> */}
+                  </button>
                 </form>
 
                 {/* Social Icons */}

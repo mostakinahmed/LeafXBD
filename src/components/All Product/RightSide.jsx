@@ -23,7 +23,7 @@ const RightSide = () => {
 
   return (
     <section className="w-full lg:w-3/4">
-      <h2 className="text-lg bg-white  pl-3 rounded-sm shadow-sm font-semibold mb-4">
+      <h2 className="text-lg bg-white text-center p-1 mr-4 ml-4 pl-1 rounded-sm shadow-sm font-semibold mb-4">
         {cat}
       </h2>
 
