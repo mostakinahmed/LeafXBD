@@ -1,7 +1,11 @@
-import React, { createContext } from "react";
+// context/UserContext.js
+import axios from "axios";
+import React, { createContext, useEffect, useState } from "react";
 
+// ✅ Create context
 export const DataContext = createContext();
 
+// ✅ Static data
 const productData = [
   {
     id: 1,
@@ -46,25 +50,39 @@ const productData = [
 ];
 
 const userData = [
-  {
-    id: 55,
-    name: "iphone 15",
-    Brand: "Apple",
-    country: "USA",
-  },
+  { id: 55, name: "iphone 15", Brand: "Apple", country: "USA" },
 ];
 
-const UserContext = ({ children }) => {
-  const data = {
+// ✅ Context provider component
+export const UserContext = ({ children }) => {
+  const [apiData, setApiData] = useState([]);
+
+  // ✅ Fetch data from API
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://fabribuzz.onrender.com/api/product"
+        );
+        setApiData(response.data);
+      } catch (err) {
+        console.error("API fetch error:", err);
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const contextValue = {
     userData,
     productData,
+    apiData,
+ 
   };
 
   return (
-    <div>
-      <DataContext.Provider value={data}>{children}</DataContext.Provider>
-    </div>
+    <DataContext.Provider value={contextValue}>{children}</DataContext.Provider>
   );
 };
-
-export default UserContext;

@@ -11,8 +11,6 @@ import { DataContext } from "./components/Context Api/UserContext.jsx";
 function App() {
   const { userData, productData } = useContext(DataContext);
 
-
-
   return (
     <>
       <div className="fixed top-0 w-full z-50">
