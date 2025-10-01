@@ -17,8 +17,6 @@ const CategoryMenu = () => {
     "Software",
     "Server & Storage",
     "Accessories",
-    "Gadget",
-    "Gaming",
   ];
 
   return (
