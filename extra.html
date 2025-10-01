@@ -1,0 +1,36 @@
+ <div class="max-w-[1380px] bg-green-500 border-2 flex rounded-xl p-5 shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+        {data.map((product) => (
+          <div className="p-5 border-4">
+            {/* <Link to={`/product/${product.cat}/${product.id}`}>
+            <img src={product.images} alt="img" />
+            <h3 className="text-sm font-medium">{product.name}</h3>
+            <p className="text-gray-500 text-sm">৳ {product.email}</p>
+          </Link> */}
+            <Link to={`/product/${product.cat}/${product.id}`}>
+              <img
+                class="w-full h-56 object-cover"
+                src="https://via.placeholder.com/400x300?text=Samsung+A56"
+                alt="Samsung A56"
+              />
+              <div class="p-4">
+                <h2 class="text-xl font-semibold text-gray-800 mb-1">
+                  Samsung A56
+                </h2>
+                <p class="text-gray-500 text-sm mb-3">
+                  Dimensions: 162.2 x 77.5 x 7.4 mm | Weight: 198g | Build:
+                  Glass front …
+                </p>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-lg font-bold text-indigo-600">$540</span>
+                  <span class="text-sm text-green-600 font-medium">
+                    In Stock: 10
+                  </span>
+                </div>
+                <button class="mt-2 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300">
+                  Add to Cart
+                </button>
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div> 

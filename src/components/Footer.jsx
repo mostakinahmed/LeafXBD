@@ -87,12 +87,12 @@ const Footer = () => {
                     placeholder="Enter your email"
                     className="px-3 py-2 rounded border-2 bg-amber-50 text-gray-900 flex-grow"
                   />
-                  <button
+                  {/* <button
                     type="submit"
                     className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded"
                   >
                     Subscribe
-                  </button>
+                  </button> */}
                 </form>
 
                 {/* Social Icons */}
