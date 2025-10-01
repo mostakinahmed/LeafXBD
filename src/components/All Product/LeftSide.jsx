@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { HeaderNav } from "./HeaderNav";
+
 
 const LeftSide = () => {
   const [value, setValue] = useState(false);
@@ -18,10 +18,10 @@ const LeftSide = () => {
           Filters
         </button>
       </div>
-      <HeaderNav />
+     
 
       {value && (
-        <aside className="w-full lg:w-64 lg:grid p-4 bg-white rounded shadow space-y-6">
+        <aside className="w-full lg:w-64 lg:grid p-4 mt-3  bg-white rounded shadow space-y-6">
           {/* Category Filter */}
           <div>
             <h3 className="text-lg font-semibold mb-3">Category</h3>
