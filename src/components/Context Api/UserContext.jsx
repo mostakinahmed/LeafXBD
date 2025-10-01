@@ -79,7 +79,6 @@ export const UserContext = ({ children }) => {
     userData,
     productData,
     apiData,
- 
   };
 
   return (
