@@ -14,11 +14,7 @@ const NavbarTop = () => {
       <div className="max-w-[1400px] mx-auto items-center justify-between px-4 hidden md:flex">
         <div>
           <Link to="/" className="font-bold text-3xl text-white">
-            <img
-              className="w-[140px] h-[50px]"
-              src="public/logo.png"
-              alt="img"
-            />
+            <img className="w-[140px] h-[50px]" src="/logo.png" alt="img" />
           </Link>
         </div>
 
@@ -44,11 +40,7 @@ const NavbarTop = () => {
       <div className="bg-[#0B1E2D] w-full h-10 md:hidden flex items-center">
         <div className="text-xl font-semibold text-white">
           <Link to="/" className="font-bold text-3xl text-white">
-            <img
-              className="w-[120px] h-[40px]"
-              src="public/logo.png"
-              alt="img"
-            />
+            <img className="w-[120px] h-[40px]" src="/logo.png" alt="img" />
           </Link>
         </div>
 
