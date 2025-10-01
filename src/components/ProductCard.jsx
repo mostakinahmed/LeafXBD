@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-///product/:cat/:id
 export const ProductCard = ({ data }) => {
   return (
     <>
