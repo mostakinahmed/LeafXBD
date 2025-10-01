@@ -6,7 +6,7 @@ const BannerSection = () => {
         <img
           src="https://www.startech.com.bd/image/cache/catalog/home/banner/2025/eid_ul_adha_notice/washin-machine-982x500.webp"
           alt="Main Banner"
-          className="w-full h-full object-cover rounded"
+          className="w-full h-full rounded"
         />
       </div>
 

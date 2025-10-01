@@ -44,7 +44,7 @@ const NavbarTop = () => {
           </Link>
         </div>
 
-        <div className="ml-auto mr-4" id="icon">
+        <div className="ml-auto mr-4 text-2xl" id="icon">
           <i className="ri-menu-3-line" onClick={toggle}></i>
         </div>
       </div>
