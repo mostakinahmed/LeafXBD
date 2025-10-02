@@ -47,6 +47,13 @@ const NavbarTop = () => {
             <img className="w-[120px] h-[40px]" src="/logo.png" alt="img" />
           </Link>
         </div>
+        <Link to="/offer">
+          <div
+            className="text-md cursor-pointer ml-32 font-semibold px-2 rounded-md border-2 border-red-600 text-white shadow-md animate-pulse hover:bg-red-600 hover:animate-none hover:brightness-110 transition"
+          >
+            Offers
+          </div>
+        </Link>
 
         <div className="ml-auto mr-4 text-2xl" id="icon">
           <i className="ri-menu-3-line" onClick={toggle}></i>
@@ -58,7 +65,7 @@ const NavbarTop = () => {
           <nav className="ml-5">
             <h2 className="hover:bg-[#334652]">Home</h2>
             <h2 className="hover:bg-[#334652]">About</h2>
-            <h2 className="hover:bg-[#334652]">services</h2>
+
             <h2 className="hover:bg-[#334652]">account</h2>
           </nav>
         </div>
