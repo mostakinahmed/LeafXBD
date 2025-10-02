@@ -76,7 +76,7 @@ export function Offer({ offers }) {
   const items = (offers && offers.length ? offers : fallbackOffers).slice(0, 5);
 
   return (
-    <section className="max-w-[1400px] mt-5 lg:mt-7 mx-auto px-4 py-8">
+    <section className="max-w-[1400px] mt-6 lg:mt-8 mx-auto px-4 py-8">
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-2xl font-extrabold">Special Offers</h3>
         <p className="text-sm text-slate-500">Selected deals just for you</p>

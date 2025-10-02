@@ -5,7 +5,7 @@ import CatMenu from "./components/Home/CatMenu.jsx";
 import { Route, Routes } from "react-router-dom";
 import AllProduct from "./pages/AllProduct.jsx";
 import Footer from "./components/Footer.jsx";
-import ProductDetails from "./components/ProductDetails.jsx";
+import ProductDetails from "./components//Product Details/ProductDetails.jsx";
 import { Offer } from "./pages/Offer.jsx";
 
 function App() {
