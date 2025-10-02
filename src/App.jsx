@@ -6,11 +6,9 @@ import { Route, Routes } from "react-router-dom";
 import AllProduct from "./pages/AllProduct.jsx";
 import Footer from "./components/Footer.jsx";
 import ProductDetails from "./components/ProductDetails.jsx";
-import { DataContext } from "./components/Context Api/UserContext.jsx";
+import { Offer } from "./pages/Offer.jsx";
 
 function App() {
-  const { userData, productData } = useContext(DataContext);
-
   return (
     <>
       <div className="fixed top-0 w-full z-50">
@@ -21,6 +19,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/product/:cat" element={<AllProduct />} />
         <Route path="/product/:cat/:id" element={<ProductDetails />} />
+        <Route path="/offer" element={<Offer />} />
       </Routes>
 
       <Footer />

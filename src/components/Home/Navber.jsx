@@ -28,7 +28,11 @@ const NavbarTop = () => {
 
         {/* Icons */}
         <div className="flex items-center space-x-6">
-          <div className="text-sm cursor-pointer"> Offers</div>
+          <Link to="/offer">
+            <div className="text-md cursor-pointer font-semibold px-3 py-1 rounded-md border-2 border-red-600 text-white shadow-md animate-pulse hover:bg-red-600 hover:animate-none hover:brightness-110 transition">
+              Offers
+            </div>
+          </Link>
           <div className="text-sm cursor-pointer">⚡ Happy Hour</div>
           <div className="text-sm cursor-pointer"> Account</div>
           <button className="bg-blue-600 hover:bg-blue-700 px-4 py-1 rounded text-sm font-medium">

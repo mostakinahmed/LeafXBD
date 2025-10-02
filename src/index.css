@@ -5,6 +5,7 @@
 }
 
 body {
+  font-family:sans-serif;
    background-color: #f0f4f8;
   margin: var(--root-margin);
   padding: var(--root-padding);

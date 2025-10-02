@@ -27,9 +27,9 @@ const LeftSide = () => {
               <li>
                 <label className="inline-flex items-center cursor-pointer">
                   <input type="checkbox" className="form-checkbox" />
-                  <span className="ml-2">Laptops</span>
+                  <span className="ml-2">Laptop</span>
                 </label>
-                0
+                
               </li>
               <li>
                 <label className="inline-flex items-center cursor-pointer">
@@ -103,9 +103,9 @@ const LeftSide = () => {
             <li>
               <label className="inline-flex items-center cursor-pointer">
                 <input type="checkbox" className="form-checkbox" />
-                <span className="ml-2">Laptops</span>
+                <span className="ml-2">Laptop</span>
               </label>
-              0
+            
             </li>
             <li>
               <label className="inline-flex items-center cursor-pointer">
