@@ -49,7 +49,7 @@ const NavbarTop = () => {
         </div>
         <Link to="/offer">
           <div
-            className="text-md cursor-pointer ml-32 font-semibold px-2 rounded-md border-2 border-red-600 text-white shadow-md animate-pulse hover:bg-red-600 hover:animate-none hover:brightness-110 transition"
+            className="text-md cursor-pointer ml-34 font-semibold px-2 rounded-md border-2 border-red-600 text-white shadow-md animate-pulse hover:bg-red-600 hover:animate-none hover:brightness-110 transition"
           >
             Offers
           </div>
