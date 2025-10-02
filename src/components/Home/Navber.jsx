@@ -29,7 +29,7 @@ const NavbarTop = () => {
         {/* Icons */}
         <div className="flex items-center space-x-6">
           <Link to="/offer">
-            <div className="text-md cursor-pointer font-semibold px-3 py-1 rounded-md border-2 border-red-600 text-white shadow-md animate-pulse hover:bg-red-600 hover:animate-none hover:brightness-110 transition">
+            <div className="text-md cursor-pointer font-semibold px-3 rounded-md border-3 border-red-600 text-white shadow-md animate-pulse hover:bg-red-600 hover:animate-none hover:brightness-110 transition">
               Offers
             </div>
           </Link>
