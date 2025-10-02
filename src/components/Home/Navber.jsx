@@ -18,7 +18,7 @@ const NavbarTop = () => {
           </Link>
         </div>
 
-        <div className="w-1/2">
+        <div className="w-1/3">
           <input
             type="text"
             placeholder="Search"
