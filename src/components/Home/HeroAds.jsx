@@ -28,7 +28,7 @@ const HeroProductAds = ({ products }) => {
             to={`/product/${product.category}/${product.pID}`}
             className="w-full max-w-md"
           >
-            <div className="bg-white rounded-lg flex flex-row shadow-l px-2">
+            <div className="bg-white rounded-lg flex flex-row mt-0 shadow-l px-2">
               <img
                 src={product.images || "https://via.placeholder.com/300"}
                 alt={product.title}
