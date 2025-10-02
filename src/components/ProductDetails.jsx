@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
+import { DataContext } from "./Context Api/UserContext";
 
-const productData = [
+const productData2 = [
   {
     id: 1,
     name: "Super Laptop 2024",
@@ -26,32 +27,35 @@ const productData = [
 ];
 
 const ProductDetail = () => {
-  //   const { id } = useParams();
-  const id = 2;
-  const product = productData.find((item) => item.id === parseInt(id));
+  const { categoryData, productData } = useContext(DataContext);
+
+  const { id } = useParams();
+  console.log(id);
+
+  const product = productData.find((item) => item.pID === id);
 
   if (!product) {
     return <div>Product not found</div>;
   }
 
   return (
-    <section className="max-w-[1370px] mt-[85px] p-3 mx-auto  min-h-screen">
-      <div className="flex flex-col md:flex-row mt-10 justify-between gap-8">
+    <section className="max-w-[1400px] mt-[3rem] lg:mt-[4rem] p-3 px-5 mx-auto  min-h-screen">
+      <div className="flex flex-col md:flex-row mt-10 justify-between gap-4">
         {/* Left side: Product Image */}
-        <div className="flex-1">
+        <div className="flex-1 w-full  bg-white h-full lg:h-[400px] lg:w-[800px] ">
           <img
-            src={product.image}
+            src={product.images}
             alt={product.name}
-            className="w-full h-full object-cover rounded-lg shadow-lg"
+            className=" w-full h-full object-contain rounded-lg shadow-lg"
           />
         </div>
 
         {/* Right side: Product Details */}
-        <div className="flex-1">
+        <div className="flex-1  bg-white shadow-md px-4 pb-5 pt-1 rounded-md ">
           <h1 className="text-3xl font-bold text-gray-800 mb-4">
             {product.name}
           </h1>
-          <p className="text-xl text-gray-500 mb-6">Category: {product.cat}</p>
+          <p className="text-xl text-gray-500 mb-6">Category: {product.category}</p>
           <p className="text-2xl font-semibold text-gray-800 mb-6">
             ৳ {product.price}
           </p>
@@ -62,13 +66,13 @@ const ProductDetail = () => {
           <h3 className="text-lg font-semibold text-gray-800 mb-3">
             Specifications:
           </h3>
-          <ul className="list-disc pl-6 text-gray-700 mb-6">
+          {/* <ul className="list-disc pl-6 text-gray-700 mb-6">
             {product.specs.map((spec, index) => (
               <li key={index} className="text-sm">
                 {spec}
               </li>
             ))}
-          </ul>
+          </ul> */}
 
           {/* Action Buttons */}
           <div className="flex gap-4">
