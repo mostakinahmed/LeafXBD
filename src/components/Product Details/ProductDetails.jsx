@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { DataContext } from "../Context Api/UserContext";
 import Specification from "../Product Details/Specification.jsx";
+import { RelatedProduct } from "./RelatedProduct.jsx";
 
 const productData2 = [
   {
@@ -31,8 +32,6 @@ const ProductDetail = () => {
   const { categoryData, productData } = useContext(DataContext);
 
   const { id } = useParams();
-  console.log(id);
-
   const product = productData.find((item) => item.pID === id);
 
   if (!product) {
@@ -99,18 +98,7 @@ const ProductDetail = () => {
           </div>
 
           {/* Related Product */}
-          <div className="w-auto lg:w-[400px] lg:bg-white shadow-lg rounded-lg lg:flex mt-4 lg:mt-0">
-            <div className="w-full">
-              <h1 className=" p-3 shadow-sm text-2xl font-semibold text-blue-600 text-center">
-                Related Product
-              </h1>
-
-              <div className="w-auto] h-[160px] m-2 bg-amber-400"></div>
-              <div className="w-auto] h-[160px] m-2 bg-amber-400"></div>
-              <div className="w-auto] h-[160px] m-2 bg-amber-400"></div>
-              <div className="w-auto] h-[160px] m-2 bg-amber-400"></div>
-            </div>
-          </div>
+          <RelatedProduct />
         </section>
       </div>
     </>

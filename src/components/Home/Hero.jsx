@@ -3,14 +3,13 @@ import HeroAds from "./HeroAds.jsx";
 import { DataContext, UserContext } from "../Context Api/UserContext";
 
 const BannerSection = () => {
-
-   const { categoryData, productData } = useContext(DataContext);
+  const { categoryData, productData } = useContext(DataContext);
   return (
     <div className="max-w-[1400px] mx-auto  mt-[80px] lg:mt-[95px] px-4 py-6 grid grid-cols-1 md:grid-cols-3 gap-4">
       {/* Main Banner */}
       <div className="md:col-span-2">
         <img
-          src="https://www.startech.com.bd/image/cache/catalog/home/banner/2025/eid_ul_adha_notice/washin-machine-982x500.webp"
+          src="https://www.startech.com.bd/image/cache/catalog/home/banner/2025/starlink-in-store-activation-offer-web-banner-982x500.webp"
           alt="Main Banner"
           className="w-full h-full rounded"
         />
@@ -19,8 +18,8 @@ const BannerSection = () => {
       {/* Right Sideboxes */}
       <div className="space-y-4">
         {/* Compare Box */}
-     
-        <HeroAds products={productData}/>
+
+        <HeroAds products={productData} />
 
         {/* Career Banner */}
         <img
