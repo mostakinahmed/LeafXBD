@@ -33,6 +33,8 @@ const NavbarTop = () => {
               Offers
             </div>
           </Link>
+       
+
           <div className="text-sm cursor-pointer">⚡ Happy Hour</div>
           <div className="text-sm cursor-pointer"> Account</div>
           <button className="bg-blue-600 hover:bg-blue-700 px-4 py-1 rounded text-sm font-medium">
@@ -48,9 +50,7 @@ const NavbarTop = () => {
           </Link>
         </div>
         <Link to="/offer">
-          <div
-            className="text-md cursor-pointer ml-34 font-semibold px-2 rounded-md border-2 border-red-600 text-white shadow-md animate-pulse hover:bg-red-600 hover:animate-none hover:brightness-110 transition"
-          >
+          <div className="text-md cursor-pointer ml-34 font-semibold px-2 rounded-md border-2 border-red-600 text-white shadow-md animate-pulse hover:bg-red-600 hover:animate-none hover:brightness-110 transition">
             Offers
           </div>
         </Link>
