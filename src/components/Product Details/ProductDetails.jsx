@@ -12,6 +12,9 @@ const ProductDetail = () => {
   //find specific product
   const product = productData.find((item) => item.pID === id);
 
+  //find current pro cat
+  const CurrCat = categoryData.find((item) => item.catID === cat);
+
   //find all same cat product for related product
   const allProductsInCategory = productData
     .filter((item) => item.category === cat && item.pID !== id)
@@ -37,37 +40,58 @@ const ProductDetail = () => {
             </div>
 
             {/* Right side: Product Details */}
-            <div className="flex-1  bg-white shadow-md px-4 pb-5 pt-1 rounded-md ">
-              <h1 className="text-3xl font-bold text-gray-800 mb-4">
+            <div className="flex-1 bg-white lg:h-[400px] lg:w-[800px] shadow-md px-4 pb-5 pt-2 rounded-md">
+              <h1 className="text-3xl font-bold text-gray-800 mb-2">
                 {product.name}
               </h1>
-              <p className="text-xl text-gray-500 mb-6">
-                Category: {product.category}
+
+              <p className="text-xl text-gray-500 mb-1">
+                Type: {CurrCat.catName}
               </p>
+              <p className="text-xl text-gray-500 mb-35">SKU: {product.pID}</p>
+
+              {/* ✅ Availability Status */}
+              <p className="text-xl mb-1">
+                Availability:{" "}
+                {product.stock > 0 ? (
+                  <span className="text-green-600 font-semibold">In Stock</span>
+                ) : (
+                  <span className="text-red-600 font-semibold">
+                    Out of Stock
+                  </span>
+                )}
+              </p>
+
               <p className="text-2xl font-semibold text-gray-800 mb-6">
-                ৳ {product.price}
+                TK: {product.price}.00
               </p>
 
               {/* Product Description */}
               <p className="text-gray-700 mb-6">{product.description}</p>
 
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">
-                Specifications:
-              </h3>
-              {/* <ul className="list-disc pl-6 text-gray-700 mb-6">
-            {product.specs.map((spec, index) => (
-              <li key={index} className="text-sm">
-                {spec}
-              </li>
-            ))}
-          </ul> */}
-
               {/* Action Buttons */}
               <div className="flex gap-4">
-                <button className="w-full md:w-auto bg-blue-600 text-white py-2 px-6 rounded-lg shadow hover:bg-blue-700 focus:outline-none">
+                <button
+                  disabled={product.stock <= 0}
+                  className={`w-full md:w-auto py-2 px-6 rounded-lg shadow focus:outline-none transition 
+        ${
+          product.stock > 0
+            ? "bg-blue-600 text-white hover:bg-blue-700"
+            : "bg-gray-400 text-gray-200 cursor-not-allowed"
+        }`}
+                >
                   Add to Cart
                 </button>
-                <button className="w-full md:w-auto bg-green-600 text-white py-2 px-6 rounded-lg shadow hover:bg-green-700 focus:outline-none">
+
+                <button
+                  disabled={product.stock <= 0}
+                  className={`w-full md:w-auto py-2 px-6 rounded-lg shadow focus:outline-none transition 
+        ${
+          product.stock > 0
+            ? "bg-green-600 text-white hover:bg-green-700"
+            : "bg-gray-400 text-gray-200 cursor-not-allowed"
+        }`}
+                >
                   Buy Now
                 </button>
               </div>
@@ -87,9 +111,8 @@ const ProductDetail = () => {
 
         {/* description */}
         <section className="max-w-[1400px] mt-2 lg:mt-2 p-3 px-5 mx-auto">
-          <Description data={product}/>
+          <Description data={product} />
         </section>
-
       </div>
     </>
   );
