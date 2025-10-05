@@ -45,8 +45,6 @@ import React from "react";
 
 export default function ProductSpecTable({data}) {
   const productSpecs = data.specifications;
-  console.log(productSpecs);
-
   
   return (
     <div className=" p-4  bg-white rounded-lg shadow-md">
