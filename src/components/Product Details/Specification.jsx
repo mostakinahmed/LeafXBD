@@ -1,49 +1,53 @@
 import React from "react";
 
-const productSpecs = {
-  Hardware: [
-    { key: "RAM", value: "16GB" },
-    { key: "Storage", value: "512GB SSD" },
-  ],
-  CPU: [
-    { key: "Model", value: "Intel i7-12700H" },
-    { key: "Cores", value: "8 cores" },
-  ],
-  Network: [
-    { key: "Wi-Fi", value: "802.11ax" },
-    { key: "Ethernet", value: "Gigabit" },
-  ],
-  GPU: [
-    { key: "Model", value: "NVIDIA RTX 3070" },
-    { key: "VRAM", value: "8GB" },
-  ],
-  Display: [
-    { key: "Size", value: "15.6 inch" },
-    { key: "Resolution", value: "1920x1080" },
-  ],
-  Battery: [
-    { key: "Capacity", value: "6000 mAh" },
-    { key: "Type", value: "Li-ion" },
-  ],
-  Software: [
-    { key: "OS", value: "Windows 11 Pro" },
-    { key: "Pre-installed", value: "Microsoft Office" },
-  ],
-  Ports: [
-    { key: "USB-C", value: "2 Ports" },
-    { key: "HDMI", value: "1 Port" },
-  ],
-  Audio: [
-    { key: "Speakers", value: "Stereo" },
-    { key: "Mic", value: "Built-in" },
-  ],
-  Dimensions: [
-    { key: "Weight", value: "1.8kg" },
-    { key: "Size", value: "35x24x2cm" },
-  ],
-};
+// const productSpecs = {
+//   Hardware: [
+//     { key: "RAM", value: "16GB" },
+//     { key: "Storage", value: "512GB SSD" },
+//   ],
+//   CPU: [
+//     { key: "Model", value: "Intel i7-12700H" },
+//     { key: "Cores", value: "8 cores" },
+//   ],
+//   Network: [
+//     { key: "Wi-Fi", value: "802.11ax" },
+//     { key: "Ethernet", value: "Gigabit" },
+//   ],
+//   GPU: [
+//     { key: "Model", value: "NVIDIA RTX 3070" },
+//     { key: "VRAM", value: "8GB" },
+//   ],
+//   Display: [
+//     { key: "Size", value: "15.6 inch" },
+//     { key: "Resolution", value: "1920x1080" },
+//   ],
+//   Battery: [
+//     { key: "Capacity", value: "6000 mAh" },
+//     { key: "Type", value: "Li-ion" },
+//   ],
+//   Software: [
+//     { key: "OS", value: "Windows 11 Pro" },
+//     { key: "Pre-installed", value: "Microsoft Office" },
+//   ],
+//   Ports: [
+//     { key: "USB-C", value: "2 Ports" },
+//     { key: "HDMI", value: "1 Port" },
+//   ],
+//   Audio: [
+//     { key: "Speakers", value: "Stereo" },
+//     { key: "Mic", value: "Built-in" },
+//   ],
+//   Dimensions: [
+//     { key: "Weight", value: "1.8kg" },
+//     { key: "Size", value: "35x24x2cm" },
+//   ],
+// };
 
-export default function ProductSpecTable() {
+export default function ProductSpecTable({data}) {
+  const productSpecs = data.specifications;
+  console.log(productSpecs);
+
+  
   return (
     <div className=" p-4  bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-4">Product Specifications</h2>

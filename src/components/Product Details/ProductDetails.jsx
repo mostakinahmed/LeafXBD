@@ -32,8 +32,11 @@ const ProductDetail = () => {
   const { categoryData, productData } = useContext(DataContext);
 
   const { id } = useParams();
-  const product = productData.find((item) => item.pID === id);
 
+  const product = productData.find((item) => item.pID === id);
+  //const specs = product.specifications;
+
+  
   if (!product) {
     return <div>Product not found</div>;
   }
@@ -94,7 +97,7 @@ const ProductDetail = () => {
         <section className="max-w-full lg:max-w-[1400px] mx-auto px-5 flex flex-col lg:flex-row lg:gap-4">
           {/* main Specification */}
           <div className="lg:w-full xl:w-full">
-            <Specification />
+            <Specification  data={product}/>
           </div>
 
           {/* Related Product */}
