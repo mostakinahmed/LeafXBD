@@ -4,39 +4,18 @@ import { DataContext } from "../Context Api/UserContext";
 import Specification from "../Product Details/Specification.jsx";
 import { RelatedProduct } from "./RelatedProduct.jsx";
 
-const productData2 = [
-  {
-    id: 1,
-    name: "Super Laptop 2024",
-    cat: "laptop",
-    price: 99999,
-    description:
-      "A high-performance laptop for professionals and gamers with state-of-the-art hardware.",
-    specs: ["16GB RAM", "Intel i9 Processor", "1TB SSD", "NVIDIA RTX 3080 GPU"],
-    image: "https://via.placeholder.com/600x400?text=Super+Laptop+2024",
-  },
-  {
-    id: 2,
-    name: 'UltraMonitor 24"',
-    cat: "monitor",
-    price: 35000,
-    description:
-      "24-inch 4K UltraHD monitor with HDR10 support and high refresh rate for ultimate gaming.",
-    specs: ["4K UltraHD", "HDR10 support", "144Hz refresh rate"],
-    image: "https://cdn.mos.cms.futurecdn.net/xLRc37Zm4xKwEDqJHS5fhE.jpg",
-  },
-  // Add more products as needed
-];
-
 const ProductDetail = () => {
   const { categoryData, productData } = useContext(DataContext);
+  const { cat, id } = useParams();
 
-  const { id } = useParams();
-
+  //find specific product
   const product = productData.find((item) => item.pID === id);
-  //const specs = product.specifications;
 
-  
+  //find all same cat product for related product
+  const allProductsInCategory = productData
+    .filter((item) => item.category === cat && item.pID !== id)
+    .slice(0, 6); // take maximum 5 products
+
   if (!product) {
     return <div>Product not found</div>;
   }
@@ -97,11 +76,11 @@ const ProductDetail = () => {
         <section className="max-w-full lg:max-w-[1400px] mx-auto px-5 flex flex-col lg:flex-row lg:gap-4">
           {/* main Specification */}
           <div className="lg:w-full xl:w-full">
-            <Specification  data={product}/>
+            <Specification data={product} />
           </div>
 
           {/* Related Product */}
-          <RelatedProduct />
+          <RelatedProduct data={allProductsInCategory} />
         </section>
       </div>
     </>

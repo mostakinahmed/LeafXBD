@@ -14,7 +14,6 @@ const RightSide = () => {
   useEffect(() => {
     if (cat) {
       const result = categoryData.find((item) => item.catID === cat);
-      console.log(result);
 
       if (result && result.catName) {
         setCatName(result.catName);
