@@ -1,49 +1,53 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-//import ProductCard from "./ProductCard"; // or adapt your card component
+import { motion } from "framer-motion";
+import AdsButton from "./AdsButton";
 
 const HeroProductAds = ({ products }) => {
   const [index, setIndex] = useState(0);
-
   const adProducts = products.slice(0, 5); // pick top 5 products
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % adProducts.length);
-    }, 2000);
-
-    return () => clearInterval(interval); // Cleanup
+    }, 2500);
+    return () => clearInterval(interval);
   }, [adProducts.length]);
 
   return (
-    <div className="w-full h-[220px] shadow-sm bg-white flex items-center justify-center relative rounded-md overflow-hidden">
+    <div className="relative w-full h-[220px] shadow-sm bg-white flex items-center justify-center rounded-md overflow-hidden">
       {adProducts.map((product, i) => (
         <div
           key={product.pID}
-          className={`absolute transition-all duration-700 ease-in-out w-full h-full flex items-center ${
-            i === index ? "opacity-100" : "opacity-0"
+          className={`absolute w-full h-full flex items-center justify-center transition-opacity duration-700 ease-in-out ${
+            i === index
+              ? "opacity-100 z-10"
+              : "opacity-0 z-0 pointer-events-none"
           }`}
         >
           <Link
             to={`/product/${product.category}/${product.pID}`}
-            className="w-full max-w-md"
+            className="flex items-center bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-500 w-[90%] sm:w-[400px]"
           >
-            <div className="bg-white rounded-lg flex flex-row mt-0 shadow-l px-2">
-              <img
-                src={product.images || "https://via.placeholder.com/300"}
-                alt={product.title}
-                className="h-50 w-40 mr-3 object-contain mb-4 pt-6 transition-all duration-500 hover:scale-105"
-              />
-              <div className="relative w-50 ml-auto bg-white border-1 border-red-600 rounded-lg mx-1 mt-2 mb-2 shadow-lg">
-                <h2 className="text-md font-bold mt-5 ml-2">{product.name}</h2>
-                <p className="text-primary font-semibold ml-2">
+            <img
+              src={product.images}
+              alt={product.name}
+              className="h-44 w-40 object-contain p-4 transition-transform duration-500 hover:scale-105"
+            />
+
+            <div className="flex flex-col justify-between flex-1 p-3">
+              <div>
+                <h2 className="text-lg font-bold text-gray-800">
+                  {product.name}
+                </h2>
+                <p className="text-red-600 font-semibold text-lg">
                   TK. {product.price}
                 </p>
-
-                <button className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-red-600 text-white px-4 py-2 rounded-md font-bold text-sm uppercase animate-pulse hover:scale-105 hover:bg-red-700 transition-all duration-300 shadow-lg">
-                  Limited Time Offer
-                </button>
               </div>
+              <button className="mt-2 bg-green-600 text-white px-3 py-2 rounded-md font-semibold text-sm uppercase hover:scale-105 hover:bg-green-700 shadow-md">
+                Buy Now
+              </button>
+              <AdsButton />
             </div>
           </Link>
         </div>
