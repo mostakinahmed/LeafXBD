@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { DataContext } from "../Context Api/UserContext";
 import Specification from "../Product Details/Specification.jsx";
 import { RelatedProduct } from "./RelatedProduct.jsx";
+import { Description } from "./Description.jsx";
 
 const ProductDetail = () => {
   const { categoryData, productData } = useContext(DataContext);
@@ -23,10 +24,11 @@ const ProductDetail = () => {
   return (
     <>
       <div className="min-h-screen pb-5">
+        {/* Top section for general view */}
         <section className="max-w-[1400px] mt-[3rem] lg:mt-[4rem] p-3 px-5 mx-auto">
           <div className="flex flex-col md:flex-row mt-10 justify-between gap-4">
             {/* Left side: Product Image */}
-            <div className="flex-1 w-full  bg-white h-full lg:h-[400px] lg:w-[800px] ">
+            <div className="flex-1 w-full rounded-md bg-white h-full lg:h-[400px] lg:w-[800px] ">
               <img
                 src={product.images}
                 alt={product.name}
@@ -82,6 +84,12 @@ const ProductDetail = () => {
           {/* Related Product */}
           <RelatedProduct data={allProductsInCategory} />
         </section>
+
+        {/* description */}
+        <section className="max-w-[1400px] mt-2 lg:mt-2 p-3 px-5 mx-auto">
+          <Description data={product}/>
+        </section>
+
       </div>
     </>
   );
