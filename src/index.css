@@ -19,3 +19,14 @@ body {
     transform: translateX(-100%);
   }
 }
+
+.shadow-top {
+box-shadow: 0 -2px 4px -1px rgba(0, 0, 0, 0.15);
+
+
+}
+.shadow-sides {
+  box-shadow: 
+    2px 0 4px -1px rgba(0, 0, 0, 0.15),   /* Right shadow */
+   -2px 0 4px -1px rgba(0, 0, 0, 0.15);   /* Left shadow */
+}
