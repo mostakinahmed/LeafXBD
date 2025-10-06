@@ -66,8 +66,7 @@ const ProductDetail = () => {
                 TK: {product.price}.00
               </p>
 
-              {/* Product Description */}
-              <p className="text-gray-700 mb-6">{product.description}</p>
+             
 
               {/* Action Buttons */}
               <div className="flex gap-4">
