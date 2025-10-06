@@ -16,8 +16,8 @@ export const UserContext = ({ children }) => {
     const fetchData = async () => {
       try {
         const [productRes, categoryRes] = await Promise.all([
-          axios.get("https://leapx-backend.vercel.app/api/product"),
-          axios.get("https://leapx-backend.vercel.app/api/category"),
+          axios.get("https://fabribuzz.onrender.com/api/product"),
+          axios.get("https://fabribuzz.onrender.com/api/category"),
         ]);
 
         setProductData(productRes.data);
