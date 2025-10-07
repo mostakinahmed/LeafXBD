@@ -7,6 +7,7 @@ import AllProduct from "./pages/AllProduct.jsx";
 import ProductDetails from "./components/Product Details/ProductDetails.jsx";
 import { Offer } from "./pages/Offer.jsx";
 import Footer from "./components/Footer.jsx";
+import { BuyNow } from "./pages/BuyNow.jsx";
 
 function App() {
   const location = useLocation();
@@ -28,6 +29,7 @@ function App() {
         <Route path="/product/:cat" element={<AllProduct />} />
         <Route path="/product/:cat/:id" element={<ProductDetails />} />
         <Route path="/offer" element={<Offer />} />
+        <Route path="/product/:cat/:id/buynow" element={<BuyNow />} />
       </Routes>
 
       <Footer />

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { DataContext } from "../Context Api/UserContext";
 import Specification from "../Product Details/Specification.jsx";
 import { RelatedProduct } from "./RelatedProduct.jsx";
@@ -66,8 +66,6 @@ const ProductDetail = () => {
                 TK: {product.price}.00
               </p>
 
-             
-
               {/* Action Buttons */}
               <div className="flex gap-4">
                 <button
@@ -82,17 +80,19 @@ const ProductDetail = () => {
                   Add to Cart
                 </button>
 
-                <button
-                  disabled={product.stock <= 0}
-                  className={`w-full md:w-auto py-2 px-6 rounded-lg shadow focus:outline-none transition 
+                <Link to={`/product/${product.category}/${product.pID}/buynow`}>
+                  <button
+                    disabled={product.stock <= 0}
+                    className={`w-full md:w-auto py-2 px-6 rounded-lg shadow focus:outline-none transition 
         ${
           product.stock > 0
             ? "bg-green-600 text-white hover:bg-green-700"
             : "bg-gray-400 text-gray-200 cursor-not-allowed"
         }`}
-                >
-                  Buy Now
-                </button>
+                  >
+                    Buy Now
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

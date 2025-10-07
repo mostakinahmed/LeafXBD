@@ -9,7 +9,6 @@ export const RelatedProduct = ({ data }) => {
           Related Product
         </h1>
         {data.map((element) => {
-    
           // Flatten all specification arrays into a single array
           const flatSpecs = Object.values(element.specifications).flat();
 
@@ -52,11 +51,13 @@ export const RelatedProduct = ({ data }) => {
                 </div>
 
                 {/* Bottom section: Buy Now button */}
-                <button className="w-full bg-green-600 text-white py-1 text-sm hover:bg-green-700 transition-colors">
-                  Buy Now
-                </button>
+
+                <Link to={`/product/${element.category}/${element.pID}/buynow`}>
+                  <button className="w-full bg-green-600 text-white py-1 text-sm hover:bg-green-700 transition-colors">
+                    Buy Now
+                  </button>
+                </Link>
               </div>
-              
             </Link>
           );
         })}

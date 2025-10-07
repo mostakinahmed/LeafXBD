@@ -1,8 +1,7 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 
 export const ProductCard = ({ data }) => {
-  
   return (
     <>
       <div className="bg-white rounded-xl w-[165px] lg:w-[160px] lg:h-[300px] shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
@@ -22,9 +21,11 @@ export const ProductCard = ({ data }) => {
             <span className="text-indigo-600 font-bold">${data.price}</span>
             <span className="text-green-600">Stock: {data.stock}</span>
           </div>
-          <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-sm py-1.5 rounded-md transition duration-300">
-            Buy Now
-          </button>
+          <Link to={`/product/${data.category}/${data.pID}/buynow`}>
+            <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-sm py-1.5 rounded-md transition duration-300">
+              Buy Now
+            </button>
+          </Link>
         </div>
       </div>
     </>
