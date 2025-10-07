@@ -33,9 +33,50 @@ const NavbarTop = () => {
               Offers
             </div>
           </Link>
-       
 
           <div className="text-sm cursor-pointer">⚡ Happy Hour</div>
+
+          {/* Cart section */}
+          <div class="relative text-gray-700">
+            <Link to={`/checkout/cart`}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9h14l-2-9M5 21h14"
+                />
+              </svg>
+            </Link>
+
+            <span class="absolute -top-4 bg-blue-600 -right-3 text-white text-md font-bold px-1 py-0.2 rounded-full">
+              4
+            </span>
+          </div>
+          {/* <!-- Wishlist / Heart Icon --> */}
+          <a href="#" class="text-gray-700  relative">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21l-7.682-7.682a4.5 4.5 0 010-6.364z"
+              />
+            </svg>
+          </a>
+
           <div className="text-sm cursor-pointer"> Account</div>
           <button className="bg-blue-600 hover:bg-blue-700 px-4 py-1 rounded text-sm font-medium">
             Wish List
