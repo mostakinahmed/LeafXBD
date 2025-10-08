@@ -12,7 +12,7 @@ const CategoryMenu = () => {
             <Link
               key={index}
               to={`/product/${cat.catID}`}
-              className="relative group text-gray-700 hover:text-blue-600 font-semibold lg:text-[16px] whitespace-nowrap pr-3"
+              className="relative group text-gray-700 hover:text-blue-600 font-semibold lg:text-[15px] whitespace-nowrap pr-3"
             >
               {cat.catName}
               {/* Hover underline */}

@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "remixicon/fonts/remixicon.css";
+import { CartContext } from "../Context Api/CartContext";
 
 const NavbarTop = () => {
+  //latest cart value from context
+  const { cart } = useContext(CartContext);
+
   const [values, setValue] = useState(false);
   const toggle = () => {
     console.log("click", values);
@@ -37,11 +41,11 @@ const NavbarTop = () => {
           <div className="text-sm cursor-pointer">⚡ Happy Hour</div>
 
           {/* Cart section */}
-          <div class="relative text-gray-700">
+          <div className="relative text-gray-700">
             <Link to={`/checkout/cart`}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -55,15 +59,15 @@ const NavbarTop = () => {
               </svg>
             </Link>
 
-            <span class="absolute -top-4 bg-blue-600 -right-3 text-white text-md font-bold px-1 py-0.2 rounded-full">
-              4
+            <span className="absolute -top-4 bg-blue-600 -right-3 text-white text-md font-bold px-1 py-0.2 rounded-full">
+              {cart.length}
             </span>
           </div>
           {/* <!-- Wishlist / Heart Icon --> */}
-          <a href="#" class="text-gray-700  relative">
+          <a href="#" className="text-gray-700  relative">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
+              className="h-6 w-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -90,8 +94,32 @@ const NavbarTop = () => {
             <img className="w-[120px] h-[40px]" src="/logo.png" alt="img" />
           </Link>
         </div>
+        {/* cart */}
+        <div className="relative text-gray-700 px-3 ml-20">
+          <Link to={`/checkout/cart`}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9h14l-2-9M5 21h14"
+              />
+            </svg>
+          </Link>
+
+          <span className="absolute -top-3 bg-blue-600 -right-1 text-white text-xs font-bold px-1 py-0.2 rounded-full">
+            4
+          </span>
+        </div>
+
         <Link to="/offer">
-          <div className="text-md cursor-pointer ml-34 font-semibold px-2 rounded-md border-2 border-red-600 text-white shadow-md animate-pulse hover:bg-red-600 hover:animate-none hover:brightness-110 transition">
+          <div className="text-md cursor-pointer  font-semibold mx-4 px-2 rounded-md border-2 border-red-600 text-white shadow-md animate-pulse hover:bg-red-600 hover:animate-none hover:brightness-110 transition">
             Offers
           </div>
         </Link>

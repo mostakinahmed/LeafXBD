@@ -9,6 +9,7 @@ import { Offer } from "./pages/Offer.jsx";
 import Footer from "./components/Footer.jsx";
 import { BuyNow } from "./pages/BuyNow.jsx";
 import { Cart } from "./pages/Cart.jsx";
+import { CartProvider } from "./components/Context Api/CartContext.jsx";
 
 function App() {
   const location = useLocation();
@@ -19,7 +20,7 @@ function App() {
   }, [location.pathname]);
 
   return (
-    <>
+    <CartProvider>
       <div className="fixed top-0 w-full z-50">
         <Navber />
         <CatMenu />
@@ -35,7 +36,7 @@ function App() {
       </Routes>
 
       <Footer />
-    </>
+    </CartProvider>
   );
 }
 

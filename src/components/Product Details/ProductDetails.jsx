@@ -4,8 +4,12 @@ import { DataContext } from "../Context Api/UserContext";
 import Specification from "../Product Details/Specification.jsx";
 import { RelatedProduct } from "./RelatedProduct.jsx";
 import { Description } from "./Description.jsx";
+import { CartContext } from "../Context Api/CartContext.jsx";
 
 const ProductDetail = () => {
+  //for cart value change. call func
+  const { addToCart } = useContext(CartContext);
+
   const { categoryData, productData } = useContext(DataContext);
   const { cat, id } = useParams();
 
@@ -23,6 +27,8 @@ const ProductDetail = () => {
   if (!product) {
     return <div>Product not found</div>;
   }
+
+ 
 
   return (
     <>
@@ -69,6 +75,7 @@ const ProductDetail = () => {
               {/* Action Buttons */}
               <div className="flex gap-4">
                 <button
+                  onClick={() => addToCart(product.pID, product.name)}
                   disabled={product.stock <= 0}
                   className={`w-full md:w-auto py-2 px-6 rounded-lg shadow focus:outline-none transition 
         ${

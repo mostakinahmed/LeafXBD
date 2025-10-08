@@ -2,7 +2,7 @@ import React from "react";
 
 export const Cart = () => {
   return (
-    <div class="max-w-[1400px] mt-[100px] pt-5 mx-auto min-h-screen px-4">
+    <div class="max-w-[1400px] lg:mt-[100px] mt-[85px] pt-5 mx-auto min-h-screen px-4">
       <div class="w-full rounded-md  shadow-lg bg-white p-5">
         <h1 class="text-2xl font-bold mb-6">Shopping Cart</h1>
 
@@ -34,7 +34,7 @@ export const Cart = () => {
               <tr>
                 <td class="px-4 py-3">
                   <img
-                    src="https://via.placeholder.com/80"
+                    src="https://www.mobiledokan.com/media/tecno-spark-40-pro-bamboo-green-official-color-image.webp"
                     alt="Product"
                     class="w-20 h-20 object-cover rounded-lg"
                   />
@@ -66,7 +66,7 @@ export const Cart = () => {
               <tr>
                 <td class="px-4 py-3">
                   <img
-                    src="https://via.placeholder.com/80"
+                    src="https://adminapi.applegadgetsbd.com/storage/media/large/ZTE-nubia-Neo-5G-Black-7212.jpg"
                     alt="Product"
                     class="w-20 h-20 object-cover rounded-lg"
                   />
