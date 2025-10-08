@@ -4,12 +4,14 @@ import { Link } from "react-router-dom";
 export const ProductCard = ({ data }) => {
   return (
     <>
-      <div className="bg-white rounded-xl w-[165px] lg:w-[160px] lg:h-[300px] shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-        <img
-          className="w-[185px] lg:[190px] lg:p-3 pt-2 h-[170px] object-cover"
-          src={data.images}
-          alt="Samsung A56"
-        />
+      <div className="bg-white rounded-md w-[165px] lg:w-[160px] lg:h-[290px] shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105">
+        <div className="overflow-hidden">
+          <img
+            className="w-full h-[170px] object-cover transform transition-transform duration-500 hover:scale-110"
+            src={data.images}
+            alt={data.name}
+          />
+        </div>
         <div className="p-3">
           <h2 className="text-sm font-semibold text-gray-800 mb-1 line-clamp-2 truncate">
             {data.name}
@@ -17,16 +19,17 @@ export const ProductCard = ({ data }) => {
           <p className="text-gray-500 text-xs mb-2 line-clamp-2">
             Dimensions: 162.2 x 77.5
           </p>
-          <div className="flex items-center justify-between text-sm mb-2">
+          <div className="flex items-center justify-between text-sm">
             <span className="text-indigo-600 font-bold">${data.price}</span>
             <span className="text-green-600">Stock: {data.stock}</span>
           </div>
-          <Link to={`/product/${data.category}/${data.pID}/buynow`}>
-            <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-sm py-1.5 rounded-md transition duration-300">
-              Buy Now
+         
+        </div>
+         <Link to={`/product/${data.category}/${data.pID}/buynow`}>
+            <button className="w-full bg-indigo-600 hover:bg-indigo-800 text-white text-sm py-1 transition duration-300">
+              Add to cart
             </button>
           </Link>
-        </div>
       </div>
     </>
   );

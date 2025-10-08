@@ -26,7 +26,7 @@ const NavbarTop = () => {
           <input
             type="text"
             placeholder="Search"
-            className="w-full bg-white px-4 py-1 rounded-md border-2 border-amber-50 text-black focus:outline-none"
+            className="w-full bg-white px-4 py-1 rounded-xs border-2 border-amber-50 text-black focus:outline-none"
           />
         </div>
 
@@ -58,10 +58,11 @@ const NavbarTop = () => {
                 />
               </svg>
             </Link>
-
-            <span className="absolute -top-4 bg-blue-600 -right-3 text-white text-md font-bold px-1 py-0.2 rounded-full">
-              {cart.length}
-            </span>
+            {cart.length > 0 && (
+              <span className="absolute -top-4 bg-blue-600 -right-3 text-white text-md font-bold px-1 py-0.2 rounded-full">
+                {cart.length}
+              </span>
+            )}
           </div>
           {/* <!-- Wishlist / Heart Icon --> */}
           <a href="#" className="text-gray-700  relative">
@@ -130,12 +131,26 @@ const NavbarTop = () => {
       </div>
 
       {values && (
-        <div className="md:hidden">
-          <nav className="ml-5">
-            <h2 className="hover:bg-[#334652]">Home</h2>
-            <h2 className="hover:bg-[#334652]">About</h2>
-
-            <h2 className="hover:bg-[#334652]">account</h2>
+        <div className="md:hidden bg-[#0B1E2D] shadow-lg rounded-b-lg mt-1">
+          <nav className="flex flex-col divide-y divide-gray-700">
+            <Link
+              to="/"
+              className="flex items-center px-5 py-4 text-white text-lg font-medium hover:bg-[#1A2B3B] transition duration-300 rounded-md"
+            >
+              <i className="ri-home-5-line mr-3 text-xl"></i> Home
+            </Link>
+            <Link
+              to="/about"
+              className="flex items-center px-5 py-4 text-white text-lg font-medium hover:bg-[#1A2B3B] transition duration-300 rounded-md"
+            >
+              <i className="ri-information-line mr-3 text-xl"></i> About
+            </Link>
+            <Link
+              to="/account"
+              className="flex items-center px-5 py-4 text-white text-lg font-medium hover:bg-[#1A2B3B] transition duration-300 rounded-md"
+            >
+              <i className="ri-user-line mr-3 text-xl"></i> Account
+            </Link>
           </nav>
         </div>
       )}
