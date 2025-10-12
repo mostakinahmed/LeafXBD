@@ -15,7 +15,7 @@ const HeroProductAds = ({ products }) => {
   }, [adProducts.length]);
 
   return (
-    <div className="relative w-full h-[220px] shadow-sm bg-white flex items-center justify-center rounded-md overflow-hidden">
+    <div className="relative w-full h-[160px] lg:h-[180px] xl:h-[200px] shadow-sm bg-white flex items-center justify-center rounded-md overflow-hidden">
       {adProducts.map((product, i) => (
         <div
           key={product.pID}
@@ -27,7 +27,7 @@ const HeroProductAds = ({ products }) => {
         >
           <Link
             to={`/product/${product.category}/${product.pID}`}
-            className="flex items-center bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-500 w-[90%] sm:w-[400px]"
+            className="flex items-center bg-white rounded-lg overflow-hidden hover:shadow-lg transition-all duration-500 w-[330px] lg:w-[430px]"
           >
             <img
               src={product.images}
@@ -35,19 +35,23 @@ const HeroProductAds = ({ products }) => {
               className="h-44 w-40 object-contain p-4 transition-transform duration-500 hover:scale-105"
             />
 
-            <div className="flex flex-col justify-between flex-1 p-3">
+            {/* ------------for small / large------------------- */}
+            <div className="flex flex-col justify-between flex-1 pt-3 pb-3">
               <div>
-                <h2 className="text-lg font-bold text-gray-800">
+                <h2 className="xl:text-lg lg:text-md font-bold text-black">
                   {product.name}
                 </h2>
                 <p className="text-red-600 font-semibold text-lg">
                   TK. {product.price}
                 </p>
               </div>
-              <button className="mt-2 bg-green-600 text-white px-3 py-2 rounded-md font-semibold text-sm uppercase hover:scale-105 hover:bg-green-700 shadow-md">
-                Buy Now
-              </button>
-              <AdsButton />
+
+              <div className="w-full lg:mt-5">
+                <button className="mt-2 w-full lg:w-[9rem] xl:w-full bg-green-600 text-white px-3  py-2 rounded-md font-semibold text-sm uppercase hover:scale-105 hover:bg-green-700 shadow-md">
+                  Buy Now
+                </button>
+                <AdsButton />
+              </div>
             </div>
           </Link>
         </div>

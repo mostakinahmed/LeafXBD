@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { div } from "framer-motion/client";
 import { useEffect, useState } from "react";
 
 const messages = [
@@ -19,19 +20,21 @@ export default function AdsButton() {
   }, []);
 
   return (
-    <motion.button
-      whileHover={{ scale: 1.05 }}
-      className="mt-2 bg-red-600 text-white px-4 py-2 rounded-md font-semibold text-md uppercase shadow-md hover:bg-red-700 transition-all duration-300 truncate"
-    >
-      <motion.span
-        key={index}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.5 }}
+    <div className="mt-2 text-center bg-red-600 lg:w-[9rem] xl:w-full  text-white px-3  py-2 rounded-md font-semibold text-sm uppercase hover:scale-105 hover:bg-green-700 shadow-md truncate">
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        className="  font-semibold text-md uppercase transition-all duration-300 text-center"
       >
-        {messages[index]}
-      </motion.span>
-    </motion.button>
+        <motion.span
+          key={index}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.5 }}
+        >
+          {messages[index]}
+        </motion.span>
+      </motion.button>
+    </div>
   );
 }
