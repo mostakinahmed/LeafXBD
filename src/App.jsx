@@ -10,6 +10,7 @@ import Footer from "./components/Footer.jsx";
 import { BuyNow } from "./pages/BuyNow.jsx";
 import { Cart } from "./pages/Cart.jsx";
 import { CartProvider } from "./components/Context Api/CartContext.jsx";
+import ProfileHome from "./pages/ProfileHome.jsx";
 
 function App() {
   const location = useLocation();
@@ -33,6 +34,7 @@ function App() {
         <Route path="/offer" element={<Offer />} />
         <Route path="/product/:cat/:id/buynow" element={<BuyNow />} />
         <Route path="/checkout/cart" element={<Cart />} />
+        <Route path="/profile/:card" element={<ProfileHome />} />
       </Routes>
 
       <Footer />

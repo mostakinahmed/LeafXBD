@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "remixicon/fonts/remixicon.css";
 import { CartContext } from "../Context Api/CartContext";
+import ProfileMenu from "../ProfileNavberIcon";
 
 const NavbarTop = () => {
   //latest cart value from context
@@ -82,17 +83,18 @@ const NavbarTop = () => {
             </svg>
           </a>
 
-          <div className="text-sm cursor-pointer"> Account</div>
-          <button className="bg-blue-600 hover:bg-blue-700 px-4 py-1 rounded text-sm font-medium">
+          {/* <div className="text-sm cursor-pointer"> Account</div> */}
+          {/* <button className="bg-blue-600 hover:bg-blue-700 px-4 py-1 rounded text-sm font-medium">
             Wish List
-          </button>
+          </button> */}
+          <ProfileMenu />
         </div>
       </div>
 
       <div className="bg-[#0B1E2D] w-full h-10 md:hidden flex items-center">
-        <div className="text-xl font-semibold text-white">
+        <div className="ml-1">
           <Link to="/" className="font-bold text-3xl text-white">
-            <img className="w-[120px] h-[40px]" src="/logo.png" alt="img" />
+            <img className="w-[120px] h-[30px]" src="/logo.png" alt="img" />
           </Link>
         </div>
         {/* cart */}
@@ -124,6 +126,10 @@ const NavbarTop = () => {
             Offers
           </div>
         </Link>
+
+        <div className="mr-3">
+          <ProfileMenu />
+        </div>
 
         <div className="ml-auto mr-4 text-2xl" id="icon">
           <i className="ri-menu-3-line" onClick={toggle}></i>
