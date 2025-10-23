@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const ProductCard = ({ data }) => {
   return (
     <>
-      <div className="bg-white rounded-md w-[165px] lg:w-[160px] lg:h-[290px] shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105">
+      <div className="bg-white rounded w-[165px] lg:w-[160px] lg:h-[290px] shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105">
         <div className="overflow-hidden">
           <img
             className="w-full h-[170px] object-cover transform transition-transform duration-500 hover:scale-110"
@@ -23,13 +23,12 @@ export const ProductCard = ({ data }) => {
             <span className="text-indigo-600 font-bold">${data.price}</span>
             <span className="text-green-600">Stock: {data.stock}</span>
           </div>
-         
         </div>
-         <Link to={`/product/${data.category}/${data.pID}/buynow`}>
-            <button className="w-full bg-indigo-600 hover:bg-indigo-800 text-white text-sm py-1 transition duration-300">
-              Add to cart
-            </button>
-          </Link>
+        <Link to={`/product/${data.category}/${data.pID}/buynow`}>
+          <button className="w-full bg-indigo-600 hover:bg-indigo-800 text-white text-sm py-1 transition duration-300">
+            Add to cart
+          </button>
+        </Link>
       </div>
     </>
   );

@@ -19,7 +19,7 @@ const NavbarTop = () => {
       <div className="max-w-[1400px] mx-auto items-center justify-between px-4 hidden md:flex">
         <div>
           <Link to="/" className="font-bold text-3xl text-white">
-            <img className="w-[140px] h-[50px]" src="/logo.png" alt="img" />
+            <img className="w-[120px] h-[45px]" src="/logo full.png" alt="img" />
           </Link>
         </div>
 

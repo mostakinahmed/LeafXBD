@@ -28,8 +28,6 @@ const ProductDetail = () => {
     return <div>Product not found</div>;
   }
 
- 
-
   return (
     <>
       <div className="min-h-screen pb-5">

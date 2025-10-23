@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div>
                 <Link to={"/"}>
-                  <img className="h-14 w-30" src="/logo.png" alt="" />
+                  <img className="h-14 w-30" src="/logo full.png" alt="" />
                 </Link>
 
                 <p className="text-gray-400 mb-4">
@@ -19,7 +19,7 @@ const Footer = () => {
                   great prices.
                 </p>
                 <p className="text-gray-500 text-sm">
-                  &copy; {new Date().getFullYear()} ShopEase. All rights
+                  &copy; {new Date().getFullYear()} Victus Byte. All rights
                   reserved.
                 </p>
               </div>
