@@ -2,7 +2,7 @@ import React from "react";
 import HeroSection from "../components/Home/Hero.jsx";
 import AutoScrollingText from "../components/Home/scroller.jsx";
 import FeaturedCategory from "../components/FeatureCategory.jsx";
-import { FeatureProduct } from "../components/ FeatureProduct.jsx";
+import { FeatureProduct } from "../components/FeatureProduct.jsx";
 import { SlidingTicker } from "../components/Sliding.jsx";
 
 export const Home = () => {
