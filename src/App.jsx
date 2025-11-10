@@ -11,6 +11,7 @@ import { BuyNow } from "./pages/BuyNow.jsx";
 import { Cart } from "./pages/Cart.jsx";
 import { CartProvider } from "./components/Context Api/CartContext.jsx";
 import ProfileHome from "./pages/ProfileHome.jsx";
+import TempHome from "./pages/TempHome.jsx";
 
 function App() {
   const location = useLocation();
@@ -20,15 +21,25 @@ function App() {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
+  const isTempHome = location.pathname === "/";
+
   return (
     <CartProvider>
-      <div className="fixed top-0 w-full z-50">
+      {/* Show Navber + CatMenu except on TempHome */}
+      {!isTempHome && (
+        <div className="fixed top-0 w-full z-50">
+          <Navber />
+          <CatMenu />
+        </div>
+      )}
+      {/* <div className="fixed top-0 w-full z-50">
         <Navber />
         <CatMenu />
-      </div>
+      </div> */}
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<TempHome />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/product/:cat" element={<AllProduct />} />
         <Route path="/product/:cat/:id" element={<ProductDetails />} />
         <Route path="/offer" element={<Offer />} />
@@ -37,7 +48,7 @@ function App() {
         <Route path="/profile/:card" element={<ProfileHome />} />
       </Routes>
 
-      <Footer />
+      {!isTempHome && <Footer />}
     </CartProvider>
   );
 }
