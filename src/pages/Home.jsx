@@ -5,6 +5,7 @@ import FeaturedCategory from "../components/FeatureCategory.jsx";
 import { FeatureProduct } from "../components/FeatureProduct.jsx";
 import { SlidingTicker } from "../components/Sliding.jsx";
 import HorizontalAds from "../components/Home/HorizontalAds.jsx";
+import FlashSale from "../components/Home/FlashSale.jsx";
 
 export const Home = () => {
   return (
@@ -12,6 +13,7 @@ export const Home = () => {
       <HeroSection />
       <AutoScrollingText />
       <FeaturedCategory />
+      <FlashSale />
       <FeatureProduct />
       <HorizontalAds />
       {/* <SlidingTicker
