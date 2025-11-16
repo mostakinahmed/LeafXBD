@@ -6,6 +6,7 @@ import { FeatureProduct } from "../components/FeatureProduct.jsx";
 import { SlidingTicker } from "../components/Sliding.jsx";
 import HorizontalAds from "../components/Home/HorizontalAds.jsx";
 import FlashSale from "../components/Home/FlashSale.jsx";
+import AllProduct from "../components/Home/AllProduct.jsx";
 
 export const Home = () => {
   return (
@@ -16,6 +17,7 @@ export const Home = () => {
       <FlashSale />
       <FeatureProduct />
       <HorizontalAds />
+      <AllProduct />
       {/* <SlidingTicker
         items={[
           "Samsung Galaxy A56",

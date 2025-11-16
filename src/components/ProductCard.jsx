@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 export const ProductCard = ({ data }) => {
   return (
     <>
-      <div className="bg-white rounded w-[165px] lg:w-[160px] lg:h-[290px] shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105">
+      <div className="bg-white rounded shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105">
         <div className="overflow-hidden">
           <img
-            className="w-full h-[170px] object-cover transform transition-transform duration-500 hover:scale-110"
+            className="w-full h-[170px] object-contain transform transition-transform duration-500 hover:scale-110"
             src={data.images}
             alt={data.name}
           />
@@ -25,7 +25,7 @@ export const ProductCard = ({ data }) => {
           </div>
         </div>
         <Link to={`/product/${data.category}/${data.pID}/buynow`}>
-          <button className="w-full bg-indigo-600 hover:bg-indigo-800 text-white text-sm py-1 transition duration-300">
+          <button className="w-full bg-[#fe741d] hover:bg-indigo-800 text-white text-sm py-2 transition duration-300">
             Add to cart
           </button>
         </Link>

@@ -8,7 +8,7 @@ export default function HorizontalAds() {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
-    }, 3000); // 2 sec slide
+    }, 2000); // 2 sec slide
 
     return () => clearInterval(timer);
   }, []);

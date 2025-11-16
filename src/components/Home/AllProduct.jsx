@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import { FeatureText } from "./Home/FeatureText";
-import ProductCard from "./ProductCard";
-import { DataContext } from "./Context Api/UserContext";
+import { FeatureText } from "../Home/FeatureText";
+import ProductCard from "../ProductCard";
+import { DataContext } from "../Context Api/UserContext";
 import { Link } from "react-router-dom";
 
-export const FeatureProduct = () => {
+export default function AllProduct() {
   const { productData } = useContext(DataContext);
 
   const [visibleProducts, setVisibleProducts] = useState([]);
@@ -35,9 +35,9 @@ export const FeatureProduct = () => {
 
   return (
     <div>
-      <FeatureText data="Featured Product" />
+      <FeatureText data="All Product" />
 
-      <div className="max-w-[1400px] mx-auto px-4 pb-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 xl:grid-cols-6 gap-4">
+      <div className="max-w-[1400px] mx-auto px-4 pb-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
         {visibleProducts.map((product) => (
           <Link
             key={product.pID}
@@ -49,4 +49,4 @@ export const FeatureProduct = () => {
       </div>
     </div>
   );
-};
+}

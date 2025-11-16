@@ -86,7 +86,7 @@ const gradients = [
 
 const CategoryCardsSlider = () => {
   return (
-    <div className="max-w-[1370px] mx-auto px-4 mb-7 overflow-hidden relative">
+    <div className="max-w-[1370px] mx-auto px-4 mb-7 overflow-hidden rounded-md relative">
       <div className="flex animate-slide gap-4 w-max">
         {/* Duplicate categories for smooth infinite sliding */}
         {[...categories, ...categories].map((cat, index) => (
