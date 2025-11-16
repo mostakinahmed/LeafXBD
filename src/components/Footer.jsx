@@ -4,83 +4,91 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <>
-      <div>
-        <footer className="bg-gray-900 text-gray-300 py-10">
+      <div className="border-t-2 text-gray-300">
+        <footer className="bg-white text-gray-300 py-10">
           <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8">
             {/* Responsive Grid: 1 column on mobile, 2 on md, 4 on lg */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div>
-                <Link to={"/"}>
-                  <img className="h-14 w-30" src="/logo full.png" alt="" />
+            <div className="flex justify-between gap-8 flex-col md:flex-row">
+              <div className="">
+                <Link to={"/home"}>
+                  <img
+                    className="h-14 w-30 mb-7"
+                    src="/logo full final.png"
+                    alt=""
+                  />
                 </Link>
 
-                <p className="text-gray-400 mb-4">
-                  Your one-stop shop for all your tech needs. Quality products,
-                  great prices.
+                <p className="text-gray-800 ">
+                  Your one-stop shop for all your tech needs.<br/>Quality products,
+                  great prices. 
                 </p>
-                <p className="text-gray-500 text-sm">
+                <p className="text-gray-800 text-sm mt-3">
                   &copy; {new Date().getFullYear()} Victus Byte. All rights
                   reserved.
                 </p>
               </div>
 
-              {/* Quick Links */}
-              <div>
-                <h4 className="text-white font-semibold mb-4">Quick Links</h4>
-                <ul className="space-y-2">
-                  <li>
-                    <a href="#" className="hover:text-indigo-500">
-                      Shop
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="hover:text-indigo-500">
-                      About Us
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="hover:text-indigo-500">
-                      Contact
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="hover:text-indigo-500">
-                      FAQ
-                    </a>
-                  </li>
-                </ul>
-              </div>
+              <div className="flex justify-between md:gap-48">
+                {/* Quick Links */}
+                <div className="text-gray-800">
+                  <h4 className="text-gray-800 font-semibold mb-4">
+                    Quick Links
+                  </h4>
+                  <ul className="space-y-2">
+                    <li>
+                      <a href="#" className="hover:text-indigo-500">
+                        Shop
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" className="hover:text-indigo-500">
+                        About Us
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" className="hover:text-indigo-500">
+                        Contact
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" className="hover:text-indigo-500">
+                        FAQ
+                      </a>
+                    </li>
+                  </ul>
+                </div>
 
-              {/* Customer Support */}
-              <div>
-                <h4 className="text-white font-semibold mb-4">Support</h4>
-                <ul className="space-y-2">
-                  <li>
-                    <a href="#" className="hover:text-indigo-500">
-                      Shipping
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="hover:text-indigo-500">
-                      Returns
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="hover:text-indigo-500">
-                      Order Status
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="hover:text-indigo-500">
-                      Payment Options
-                    </a>
-                  </li>
-                </ul>
+                {/* Customer Support */}
+                <div className="text-gray-800">
+                  <h4 className="text-gray-800 font-semibold mb-4">Support</h4>
+                  <ul className="space-y-2">
+                    <li>
+                      <a href="#" className="hover:text-indigo-500">
+                        Shipping
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" className="hover:text-indigo-500">
+                        Returns
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" className="hover:text-indigo-500">
+                        Order Status
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" className="hover:text-indigo-500">
+                        Payment Options
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </div>
 
               {/* Newsletter */}
-              <div>
-                <h4 className="text-white font-semibold mb-4">
+              <div className="text-gray-800">
+                <h4 className=" font-semibold mb-4">
                   Subscribe to our Newsletter
                 </h4>
                 {/* Responsive form: vertical on mobile, horizontal on sm+ */}
@@ -88,7 +96,7 @@ const Footer = () => {
                   <input
                     type="email"
                     placeholder="Enter your email"
-                    className="px-3 py-2 rounded border-2 bg-amber-50 text-gray-900 flex-grow"
+                    className="px-3 py-2 rounded border-2 bg-gray-100 text-gray-900 flex-grow"
                   />
                   <button
                     type="submit"
@@ -101,9 +109,10 @@ const Footer = () => {
                 {/* Social Icons */}
                 <div className="flex space-x-4 mt-6">
                   <a
-                    href="#"
+                    href="https://www.facebook.com/victusbyte"
                     aria-label="Facebook"
                     className="hover:text-indigo-500"
+                    target="_blank"
                   >
                     <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
                       <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 5 3.657 9.128 8.438 9.876v-6.987H7.898v-2.89h2.54V9.845c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.466h-1.26c-1.243 0-1.63.772-1.63 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 17 22 12z" />

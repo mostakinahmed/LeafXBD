@@ -32,19 +32,19 @@ const ProductDetail = () => {
     <>
       <div className="min-h-screen pb-5">
         {/* Top section for general view */}
-        <section className="max-w-[1400px] mt-[3rem] lg:mt-[4rem] p-3 px-5 mx-auto">
-          <div className="flex flex-col md:flex-row mt-10 justify-between gap-4">
+        <section className="max-w-[1400px] mt-[43px] lg:mt-[50px] p-3 md:px-5 px-2 mx-auto">
+          <div className="flex flex-col md:flex-row mt-10 justify-between gap-3">
             {/* Left side: Product Image */}
             <div className="flex-1 w-full rounded-md bg-white h-full lg:h-[400px] lg:w-[800px] ">
               <img
                 src={product.images}
                 alt={product.name}
-                className=" w-full h-full object-contain rounded-lg shadow-lg"
+                className=" w-full h-full object-contain rounded-lg shadow"
               />
             </div>
 
             {/* Right side: Product Details */}
-            <div className="flex-1 bg-white lg:h-[400px] lg:w-[800px] shadow-md px-4 pb-5 pt-2 rounded-md">
+            <div className="flex-1 bg-white lg:h-[400px] lg:w-[800px] shadow px-4 pb-5 pt-2 rounded-md">
               <h1 className="text-3xl font-bold text-gray-800 mb-2">
                 {product.name}
               </h1>
@@ -75,7 +75,7 @@ const ProductDetail = () => {
                 <button
                   onClick={() => addToCart(product.pID, product.name)}
                   disabled={product.stock <= 0}
-                  className={`w-full md:w-auto py-2 px-6 rounded-lg shadow focus:outline-none transition 
+                  className={`w-full md:w-auto py-2 px-6 rounded-md shadow focus:outline-none transition 
         ${
           product.stock > 0
             ? "bg-blue-600 text-white hover:bg-blue-700"
@@ -88,7 +88,7 @@ const ProductDetail = () => {
                 <Link to={`/product/${product.category}/${product.pID}/buynow`}>
                   <button
                     disabled={product.stock <= 0}
-                    className={`w-full md:w-auto py-2 px-6 rounded-lg shadow focus:outline-none transition 
+                    className={`w-full md:w-auto py-2 px-6 rounded-md shadow focus:outline-none transition 
         ${
           product.stock > 0
             ? "bg-green-600 text-white hover:bg-green-700"
@@ -103,7 +103,7 @@ const ProductDetail = () => {
           </div>
         </section>
 
-        <section className="max-w-full lg:max-w-[1400px] mx-auto px-5 flex flex-col lg:flex-row lg:gap-4">
+        <section className="max-w-full lg:max-w-[1400px] mx-auto md:px-5 px-2 flex flex-col lg:flex-row lg:gap-3">
           {/* main Specification */}
           <div className="lg:w-full xl:w-full">
             <Specification data={product} />
@@ -114,7 +114,7 @@ const ProductDetail = () => {
         </section>
 
         {/* description */}
-        <section className="max-w-[1400px] mt-2 lg:mt-2 p-3 px-5 mx-auto">
+        <section className="max-w-[1400px] p-3 md:px-5 px-2 mx-auto">
           <Description data={product} />
         </section>
       </div>

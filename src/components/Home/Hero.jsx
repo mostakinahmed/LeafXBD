@@ -21,18 +21,18 @@ const BannerSection = () => {
   }, []);
 
   return (
-    <div className="max-w-[1400px] mx-auto  mt-[80px] lg:mt-[95px] px-4 pt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="max-w-[1400px] mx-auto  mt-[70px] lg:mt-[80px] px-2 lg:px-4 pt-6 grid grid-cols-1 md:grid-cols-3 gap-3">
       {/* Main Banner */}
       <div className="md:col-span-2">
         <img
           src={images[index]}
           alt="Banner"
-          className="w-full lg:h-[468px] h-[180px] rounded transition-all duration-500"
+          className="w-full  md:h-[310px] lg:h-[375px] xl:h-[468px] h-[210px] rounded transition-all duration-500"
         />
       </div>
 
       {/* Right Sideboxes */}
-      <div className="space-y-4">
+      <div className="space-y-3">
         {/* Compare Box */}
 
         <HeroAds products={productData} />
@@ -46,11 +46,11 @@ const BannerSection = () => {
       </div>
 
       {/* Info Cards Section */}
-      <div className="col-span-1 md:col-span-3  flex flex-col md:flex-row gap-4 justify-between text-gray-700">
+      <div className="col-span-1 md:col-span-3  flex flex-col md:flex-row gap-3 justify-between text-gray-700">
         {/* Card 1 */}
         <div className="flex-1 bg-white px-6 py-4 rounded-md shadow-sm hover:shadow-md transition text-center">
           <h4 className="text-[20px] font-semibold text-indigo-600">
-            1M+ Sold
+            1K+ Sold
           </h4>
           <p className="text-md text-gray-500 mt-1">
             Trusted by customers nationwide

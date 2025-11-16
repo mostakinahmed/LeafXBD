@@ -47,7 +47,7 @@ export default function ProductSpecTable({data}) {
   const productSpecs = data.specifications;
   
   return (
-    <div className=" p-4  bg-white rounded-lg shadow-md">
+    <div className=" p-4  bg-white rounded-lg shadow">
       <h2 className="text-2xl font-bold text-blue-600 mb-4">Product Specifications</h2>
       <table className="w-full border border-gray-200 divide-y divide-gray-200">
         <tbody>

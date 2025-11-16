@@ -12,7 +12,7 @@ export default function FlashSale() {
   }));
 
   return (
-    <section className=" max-w-[1370px] bg-red-300 pb-3 mx-4 lg:mx-auto rounded">
+    <section className=" max-w-[1370px] bg-red-300 pb-3 lg:mx-auto mx-2 rounded">
       <div className="w-full flex items-center justify-between rounded-t bg-red-500 text-white px-4 py-3 shadow-md animate-bounce ">
         <div className="">
           <h3 className="lg:flex hidden text-lg font-semibold items-center gap-2">
@@ -31,7 +31,7 @@ export default function FlashSale() {
         </div>
       </div>
 
-      <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 mx-3 gap-3">
+      <div className="mt-2 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 mx-3 gap-3">
         {products.map((p) => (
           <div
             key={p.id}

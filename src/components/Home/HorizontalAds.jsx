@@ -14,11 +14,11 @@ export default function HorizontalAds() {
   }, []);
 
   return (
-    <div className="max-w-[1400px] lg:h-[150px] mx-auto px-4 mb-4 mt-2">
+    <div className="max-w-[1400px] h-full lg:h-[150px]  mx-auto px-4 md:mb-4 md:mt-2">
       <img
         src={images[index]}
         alt="Banner Ads"
-        className="w-full object-contain rounded transition-all duration-500"
+        className="w-full h-full object-contain  transition-all duration-500"
       />
     </div>
   );

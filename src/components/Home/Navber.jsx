@@ -15,13 +15,13 @@ const NavbarTop = () => {
   };
 
   return (
-    <div className="bg-[#0B1E2D] text-white py-2 shadow-md sticky top-0 z-50">
+    <div className="bg-white text-black py-1 shadow-md sticky top-0 z-50">
       <div className="max-w-[1400px] mx-auto items-center justify-between px-4 hidden md:flex">
         <div>
           <Link to="/home" className="font-bold text-3xl text-white">
             <img
-              className="w-[120px] h-[45px]"
-              src="/logo full.png"
+              className="w-[100px] h-[45px]"
+              src="/logo full final.png"
               alt="img"
             />
           </Link>
@@ -31,14 +31,14 @@ const NavbarTop = () => {
           <input
             type="text"
             placeholder="Search"
-            className="w-full bg-white px-4 py-1 rounded-xs border-2 border-amber-50 text-black focus:outline-none"
+            className="w-full bg-white px-4 py-1 rounded-xs border-2 border-[#f4813a] text-black focus:outline-none"
           />
         </div>
 
         {/* Icons */}
         <div className="flex items-center space-x-6">
           <Link to="/offer">
-            <div className="text-md cursor-pointer font-semibold px-3 rounded-md border-3 border-red-600 text-white shadow-md animate-pulse hover:bg-red-600 hover:animate-none hover:brightness-110 transition">
+            <div className="text-md cursor-pointer font-semibold px-3 rounded-md border-2 border-red-600 text-black shadow-md animate-pulse hover:bg-red-600 hover:animate-none hover:brightness-110 transition">
               Offers
             </div>
           </Link>
@@ -95,10 +95,10 @@ const NavbarTop = () => {
         </div>
       </div>
 
-      <div className="bg-[#0B1E2D] w-full h-10 md:hidden flex items-center">
+      <div className="bg-white w-full h-10 md:hidden flex items-center">
         <div className="ml-1">
-          <Link to="/" className="font-bold text-3xl text-white">
-            <img className="w-[120px] h-[30px]" src="/logo.png" alt="img" />
+          <Link to="/home" className="font-bold text-3xl text-white">
+            <img className="w-[100px] h-[30px]" src="/logo full final.png" alt="img" />
           </Link>
         </div>
         {/* cart */}
@@ -144,7 +144,7 @@ const NavbarTop = () => {
         <div className="md:hidden bg-[#0B1E2D] shadow-lg rounded-b-lg mt-1">
           <nav className="flex flex-col divide-y divide-gray-700">
             <Link
-              to="/"
+              to="/home"
               className="flex items-center px-5 py-4 text-white text-lg font-medium hover:bg-[#1A2B3B] transition duration-300 rounded-md"
             >
               <i className="ri-home-5-line mr-3 text-xl"></i> Home
