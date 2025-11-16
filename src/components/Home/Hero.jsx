@@ -1,17 +1,33 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import HeroAds from "./HeroAds.jsx";
 import { DataContext, UserContext } from "../Context Api/UserContext";
 
 const BannerSection = () => {
   const { categoryData, productData } = useContext(DataContext);
+  const images = [
+    "ads banner 2.png",
+    "https://i.ibb.co.com/MDT9fKxy/2.png",
+    "https://www.startech.com.bd/image/cache/catalog/home/banner/2025/starlink-in-store-activation-offer-web-banner-982x500.webp",
+  ];
+
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 2000); // 2 seconds
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="max-w-[1400px] mx-auto  mt-[80px] lg:mt-[95px] px-4 py-6 grid grid-cols-1 md:grid-cols-3 gap-4">
       {/* Main Banner */}
       <div className="md:col-span-2">
         <img
-          src="https://www.startech.com.bd/image/cache/catalog/home/banner/2025/starlink-in-store-activation-offer-web-banner-982x500.webp"
-          alt="Main Banner"
-          className="w-full h-full rounded"
+          src={images[index]}
+          alt="Banner"
+          className="w-full lg:h-[468px] h-[180px] rounded transition-all duration-500"
         />
       </div>
 
@@ -23,7 +39,7 @@ const BannerSection = () => {
 
         {/* Career Banner */}
         <img
-          src="https://www.startech.com.bd/image/catalog/home/job-career-2024.webp"
+          src="https://i.ibb.co.com/mCwgXfJc/4.png"
           alt="Career Banner"
           className="w-full h-auto rounded"
         />

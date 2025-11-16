@@ -4,6 +4,7 @@ import AutoScrollingText from "../components/Home/scroller.jsx";
 import FeaturedCategory from "../components/FeatureCategory.jsx";
 import { FeatureProduct } from "../components/FeatureProduct.jsx";
 import { SlidingTicker } from "../components/Sliding.jsx";
+import HorizontalAds from "../components/Home/HorizontalAds.jsx";
 
 export const Home = () => {
   return (
@@ -12,6 +13,7 @@ export const Home = () => {
       <AutoScrollingText />
       <FeaturedCategory />
       <FeatureProduct />
+      <HorizontalAds />
       {/* <SlidingTicker
         items={[
           "Samsung Galaxy A56",
