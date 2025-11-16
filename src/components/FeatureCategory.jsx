@@ -5,7 +5,7 @@ import { FeatureText } from "./Home/FeatureText";
 const FeaturedCategory = () => {
   return (
     <>
-      <FeatureText data="Category" />
+      <FeatureText data="Shop by Category" />
       <FeatureCatCard />
     </>
   );

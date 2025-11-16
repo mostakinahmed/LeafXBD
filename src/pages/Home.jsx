@@ -11,7 +11,7 @@ export const Home = () => {
   return (
     <div>
       <HeroSection />
-      <AutoScrollingText />
+      {/* <AutoScrollingText /> */}
       <FeaturedCategory />
       <FlashSale />
       <FeatureProduct />

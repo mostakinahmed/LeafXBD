@@ -2,14 +2,9 @@ import React from "react";
 
 export const FeatureText = ({ data }) => {
   return (
-    <div className="text-center my-10">
-      <h2 className="text-3xl sm:text-4xl font-bold text-gray-800">
-        Featured {data}
-      </h2>
-      <div className="mt-2 w-24 h-1 mx-auto bg-indigo-600 rounded-full"></div>
-      <p className="mt-2 text-sm text-gray-500">
-        Get Your Desired Product from Featured {data}!
-      </p>
+    <div className="max-w-[1400px] mx-auto px-4 mt-6 mb-2">
+      <h2 className="text-3xl sm:text-2xl font-bold text-gray-800">{data}</h2>
+      {/* <div className="mt-1 w-full h-1  bg-[#ff751f] rounded-full"></div> */}
     </div>
   );
 };
