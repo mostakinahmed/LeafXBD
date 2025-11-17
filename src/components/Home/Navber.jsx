@@ -88,7 +88,7 @@ const NavbarTop = () => {
         </div>
 
         <Link to="/home" className="w-[110px] mb-1">
-          <img className="h-[42px]" src="/logo full final.png" alt="Logo" />
+          <img className="h-[40px]" src="/logo full final.png" alt="Logo" />
         </Link>
 
         <div className="relative text-gray-700 px-3">
