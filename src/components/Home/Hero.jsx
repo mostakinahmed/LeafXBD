@@ -70,7 +70,7 @@ const BannerSection = () => {
         />
       </div>
       {/* Info Cards Section */}
-      <div className="col-span-1 md:col-span-3  flex flex-col md:flex-row gap-3 justify-between text-gray-700">
+      <div className="hidden md:flex col-span-1 md:col-span-3 flex-col md:flex-row gap-3 justify-between text-gray-700">
         {/* Card 1 */}
         <div className="flex-1 bg-white px-6 py-4 rounded-md shadow-sm hover:shadow-md transition text-center">
           <h4 className="text-[20px] font-semibold text-indigo-600">
@@ -95,6 +95,32 @@ const BannerSection = () => {
             24/7 Support
           </h4>
           <p className="text-md text-gray-500 mt-1">Live chat & hotline</p>
+        </div>
+      </div>
+      {/* Info Cards Section (Headings Only) */}
+      <div className="flex flex-col gap-3 text-gray-700 md:hidden">
+        {/* Row 1: Card 1 & Card 2 */}
+        <div className="flex flex-row md:flex-row gap-3">
+          <div className="flex-1 bg-white px-6 py-4 rounded-md shadow-sm hover:shadow-md transition text-center">
+            <h4 className="text-[20px] font-semibold text-indigo-600">
+              1K+ Sold
+            </h4>
+          </div>
+
+          <div className="flex-1 bg-white px-6 py-4 rounded-md shadow-sm hover:shadow-md transition text-center">
+            <h4 className="text-[20px] font-semibold text-indigo-600">
+              Fast Delivery
+            </h4>
+          </div>
+        </div>
+
+        {/* Row 2: Card 3 */}
+        <div className="flex justify-center">
+          <div className="bg-white px-6 py-4 rounded-md shadow-sm hover:shadow-md transition text-center w-full md:w-1/2">
+            <h4 className="text-[20px] font-semibold text-indigo-600">
+              24/7 Support
+            </h4>
+          </div>
         </div>
       </div>
     </div>

@@ -37,7 +37,7 @@ export const FeatureProduct = () => {
     <div>
       <FeatureText data="Featured Product" />
 
-      <div className="max-w-[1400px] mx-auto px-4 pb-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 xl:grid-cols-6 gap-4">
+      <div className="max-w-[1400px] mx-auto lg:px-4 px-2 pb-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 xl:grid-cols-6 gap-4">
         {visibleProducts.map((product) => (
           <Link
             key={product.pID}

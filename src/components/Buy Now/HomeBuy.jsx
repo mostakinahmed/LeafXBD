@@ -31,7 +31,7 @@ export function HomeBuy({ data }) {
 
   return (
     <div className="min-h-screen w-full bg-gray-100 items-center justify-center mx-2 lg:mr-4">
-      <div className="bg-white rounded shadow-lg overflow-hidden">
+      <div className="bg-white rounded shadow overflow-hidden">
         {/* Product Section */}
         <div className="bg-gray-50 p-6 flex flex-col items-center justify-center">
           <img

@@ -14,7 +14,7 @@ export default function HorizontalAds() {
   }, []);
 
   return (
-    <div className="max-w-[1400px] h-full lg:h-[150px]  mx-auto px-4 md:mb-4 md:mt-2">
+    <div className="max-w-[1400px] h-full lg:h-[150px]  mx-auto lg:px-4 px-2 md:mb-4 md:mt-2">
       <img
         src={images[index]}
         alt="Banner Ads"

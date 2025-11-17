@@ -20,7 +20,7 @@ export const BuyNow = () => {
     .slice(0, 6); // take maximum 5 products
 
   return (
-    <div className="max-w-[1400px] mx-auto flex mt-[120px] px-2 mb-4">
+    <div className="max-w-[1400px] mx-auto flex  mt-[60px] md:mt-[105px]  mb-4">
       <HomeBuy data={product} />
       <div className=" hidden lg:flex">
         <RelatedProduct data={allProductsInCategory} />

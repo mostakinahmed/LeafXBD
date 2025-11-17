@@ -25,7 +25,7 @@ export const Cart = () => {
   );
 
   return (
-    <div className="max-w-[1400px] lg:mt-[100px] mt-[85px] pt-5 mx-auto min-h-screen px-4">
+    <div className="max-w-[1400px] lg:mt-[86px] mt-[40px] pt-5 mx-auto min-h-screen md:px-4 px-2">
       <div className="w-full rounded-md shadow-lg bg-white p-5">
         <h1 className="text-2xl font-bold mb-6">Shopping Cart</h1>
 

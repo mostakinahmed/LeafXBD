@@ -32,14 +32,14 @@ const ProductDetail = () => {
     <>
       <div className="min-h-screen pb-5">
         {/* Top section for general view */}
-        <section className="max-w-[1400px] mt-[43px] lg:mt-[50px] p-3 md:px-5 px-2 mx-auto">
+        <section className="max-w-[1400px] mt-[9px] lg:mt-[50px] p-3 md:px-5 px-2 mx-auto">
           <div className="flex flex-col md:flex-row mt-10 justify-between gap-3">
             {/* Left side: Product Image */}
             <div className="flex-1 w-full rounded-md bg-white h-full lg:h-[400px] lg:w-[800px] ">
               <img
                 src={product.images}
                 alt={product.name}
-                className=" w-full h-full object-contain rounded-lg shadow"
+                className=" w-full h-full object-contain p-3 rounded-lg shadow"
               />
             </div>
 

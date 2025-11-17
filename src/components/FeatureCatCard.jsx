@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { FiBox } from "react-icons/fi"; // Default icon
+import { DataContext } from "./Context Api/UserContext";
 
 const categories = [
   {
@@ -85,21 +87,23 @@ const gradients = [
 ];
 
 const CategoryCardsSlider = () => {
+  const { categoryData } = useContext(DataContext);
+
   return (
-    <div className="max-w-[1370px] mx-auto px-4 mb-7 overflow-hidden rounded-md relative">
+    <div className="max-w-[1370px] mx-auto px-4 mb-7 overflow-hidden rounded relative">
       <div className="flex animate-slide gap-4 w-max">
         {/* Duplicate categories for smooth infinite sliding */}
         {[...categories, ...categories].map((cat, index) => (
           <div
             key={index}
-            className={`rounded-xl cursor-pointer text-white font-semibold 
+            className={`rounded  h-20 cursor-pointer text-white font-semibold 
               flex flex-col items-center justify-center text-center 
               transition-all duration-300 ease-in-out transform hover:scale-[1.05] shadow-md hover:shadow-xl
               ${gradients[index % gradients.length]}
             `}
             style={{ flex: "0 0 165px", aspectRatio: "1 / 1" }}
           >
-            <img src={cat.icon} alt={cat.name} className="w-12 h-12 mb-1" />
+            <img src={cat.icon} alt={cat.name} className="w-12 h-12 mb-1 p-1" />
             <div className="text-sm sm:text-base px-2">{cat.name}</div>
           </div>
         ))}
@@ -118,6 +122,7 @@ const CategoryCardsSlider = () => {
 
         `}
       </style>
+
     </div>
   );
 };

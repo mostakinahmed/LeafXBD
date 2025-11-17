@@ -47,7 +47,7 @@ const NavbarTop = () => {
 
         <div className="flex items-center space-x-6">
           <Link to="/offer">
-            <div className="px-3 py-1 border-2 border-red-600 rounded-md font-semibold shadow-md text-black animate-pulse hover:bg-red-600 hover:text-white hover:animate-none transition">
+            <div className="px-3 py-1 rounded  font-semibold shadow-md text-white animate-pulse bg-red-600 hover:text-black hover:animate-none transition">
               Offers
             </div>
           </Link>
@@ -132,13 +132,13 @@ const NavbarTop = () => {
               values ? "translate-x-0" : "-translate-x-full"
             }`}
           >
-            <nav className="flex flex-col divide-y divide-gray-700 mt-1">
+            <nav className="flex flex-col mt-1">
               {categoryData &&
                 Array.isArray(categoryData) &&
                 categoryData.map((cat, index) => (
                   <Link
                     to="/home"
-                    className="flex items-center px-5 py-2  text-lg font-medium hover:bg-[#1A2B3B] transition duration-300"
+                    className="flex items-center px-5 py-2 text-gray-800 border-b border-gray-400 text-lg font-medium hover:bg-[#1A2B3B] transition duration-300"
                     onClick={() => setValue(false)}
                   >
                     {cat.catName}
