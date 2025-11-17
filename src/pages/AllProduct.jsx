@@ -1,13 +1,17 @@
 import React from "react";
 import LeftSide from "../components/All Product/LeftSide";
 import RightSide from "../components/All Product/RightSide";
+import { SearchBar } from "../components/SearchBar";
 
 const AllProduct = () => {
   return (
     <>
       <div className="max-w-[1400px] md:mt-[55px] mt-[47px] mx-auto md:py-6 py-3 min-h-screen">
+        {/* <div className="mx-2 mb-2">
+          <SearchBar />
+        </div> */}
+
         <div className="flex flex-col md:mx-4 mx-2 lg:pt-6 lg:flex-row gap-3">
-          
           {/* Left: Filter Sidebar */}
           <LeftSide />
 

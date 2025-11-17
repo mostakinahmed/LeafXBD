@@ -10,7 +10,9 @@ import { SearchBar } from "../SearchBar";
 const NavbarTop = () => {
   const { cart } = useContext(CartContext);
   const [values, setValue] = useState(false);
+  const [sBar, setSbar] = useState(false);
   const toggle = () => setValue(!values);
+  const [searchIcon, setSearchIcon] = useState(true);
 
   const { categoryData } = useContext(DataContext);
 
@@ -23,6 +25,17 @@ const NavbarTop = () => {
     }
     return () => (document.body.style.overflow = "auto");
   }, [values]);
+
+  //for home sBox control
+  const location = useLocation();
+  useEffect(() => {
+    setSbar(false);
+    if (location.pathname === "/home") {
+      setSearchIcon(false);
+    } else {
+      setSearchIcon(true);
+    }
+  }, [location]);
 
   return (
     <div className="bg-white text-black py-1 shadow-md sticky top-0 z-50">
@@ -86,7 +99,7 @@ const NavbarTop = () => {
 
       {/* ======= MOBILE NAV ======= */}
       <div className="bg-white w-full h-10 md:hidden flex items-center justify-between px-3">
-        <div className="text-3xl cursor-pointer mr-10" onClick={toggle}>
+        <div className="text-3xl cursor-pointer mr-16" onClick={toggle}>
           <i
             className={
               values
@@ -100,32 +113,62 @@ const NavbarTop = () => {
           <img className="h-[40px]" src="/logo full final.png" alt="Logo" />
         </Link>
 
-        {/* Cart */}
-        <div className="relative text-gray-800 px-3">
-          <Link to="/checkout/cart">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9h14l-2-9M5 21h14"
-              />
-            </svg>
-          </Link>
+        <div className="flex w-[60px] items-center space-x-5">
+          {/* Search Icon */}
+          <div className="">
+            {searchIcon && (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={3}
+                stroke="currentColor"
+                onClick={() => setSbar((prev) => !prev)} // call search function
+                className="w-6 -mr-5 h-6 text-gray-700 cursor-pointer hover:text-black transition"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m21 21-4.35-4.35m0 0A7.5 7.5 0 1 0 5.64 5.64a7.5 7.5 0 0 0 10.61 10.61Z"
+                />
+              </svg>
+            )}
+          </div>
 
-          {cart.length > 0 && (
-            <span className="absolute -top-3 -right-1 bg-blue-600 text-white text-xs font-bold px-1 py-0.2 rounded-full">
-              {cart.length}
-            </span>
-          )}
+          {/* Cart Icon */}
+          <div className="relative ml-3">
+            <Link to="/checkout/cart">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-gray-700 hover:text-black transition"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9h14l-2-9M5 21h14"
+                />
+              </svg>
+            </Link>
+
+            {cart.length > 0 && (
+              <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs font-bold px-1 py-0.5 rounded-full">
+                {cart.length}
+              </span>
+            )}
+          </div>
         </div>
+
+        {/* Search Icon Right */}
       </div>
+      {sBar && (
+        <div className="mx-2 mt-3">
+          <SearchBar />
+        </div>
+      )}
 
       {/* ======= SIDEBAR + OVERLAY ======= */}
       {values && (
