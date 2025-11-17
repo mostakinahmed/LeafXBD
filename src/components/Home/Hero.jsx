@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import HeroAds from "./HeroAds.jsx";
 import { DataContext, UserContext } from "../Context Api/UserContext";
 
 const BannerSection = () => {
@@ -49,22 +48,27 @@ const BannerSection = () => {
           </svg>
         </div>
       </div>
-      <div className="md:col-span-2">
+      <div className="md:col-span-2 ">
         <img
           src={images[index]}
           alt="Banner"
-          className="w-full  md:h-[310px] lg:h-[375px] xl:h-[468px] h-[210px] rounded transition-all duration-500"
+          className="w-full  md:h-[263px] lg:h-[350px] xl:h-[475px] h-[210px] rounded transition-all duration-500"
         />
       </div>
       {/* Right Sideboxes */}
-      <div className="space-y-3">
+      <div className="space-y-3 lg:space-y-3 xl:space-y-2">
         {/* Compare Box */}
 
-        <HeroAds products={productData} />
+        {/* <HeroAds products={productData} /> */}
 
-        {/* Career Banner */}
         <img
-          src="https://i.ibb.co.com/mCwgXfJc/4.png"
+          src="right side.png"
+          alt="Career Banner"
+          className="w-full h-auto rounded"
+        />
+
+        <img
+          src="right side 2.png"
           alt="Career Banner"
           className="w-full h-auto rounded"
         />
