@@ -13,7 +13,7 @@ const TopCategoryCards = () => {
           categoryData.map((cat, index) => (
             <div
               key={index}
-              className="bg-white shadow-md rounded-lg flex flex-col items-center justify-center h-22 w-22   lg:w-29 lg:h-28 text-center hover:scale-105 hover:text-[#fe741d] transform transition duration-300 cursor-pointer"
+              className="bg-white shadow-md rounded-lg flex flex-col items-center justify-center h-22 w-23   lg:w-29 lg:h-28 text-center hover:scale-105 hover:text-[#fe741d] transform transition duration-300 cursor-pointer"
             >
               {/* Icon: use cat.icon if available, otherwise default */}
               {cat.icon ? (
