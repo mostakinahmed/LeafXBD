@@ -5,7 +5,7 @@ import { DataContext } from "../Context Api/UserContext";
 const CategoryMenu = () => {
   const { categoryData } = useContext(DataContext);
   return (
-    <div className="bg-white shadow w-full">
+    <div className="bg-white shadow w-full hidden md:flex">
       <div className="max-w-[1400px] pl-2 mx-auto py-2">
         <div className="flex flex-nowrap lg:flex-nowrap lg:overflow-x-auto overflow-x-auto sm:flex-wrap sm:overflow-visible lg:gap-5 lg:ml-2 xl:ml-3 text-sm font-medium text-gray-700">
           {categoryData.map((cat, index) => (

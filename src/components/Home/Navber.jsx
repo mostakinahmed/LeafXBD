@@ -3,26 +3,36 @@ import { Link } from "react-router-dom";
 import "remixicon/fonts/remixicon.css";
 import { CartContext } from "../Context Api/CartContext";
 import ProfileMenu from "../ProfileNavberIcon";
+import { DataContext } from "../Context Api/UserContext";
 
 const NavbarTop = () => {
-  //latest cart value from context
   const { cart } = useContext(CartContext);
+  const { categoryData } = useContext(DataContext);
 
   const [values, setValue] = useState(false);
-  const toggle = () => {
-    console.log("click", values);
-    setValue(!values);
-  };
+  const toggle = () => setValue(!values);
+
+  // Disable background scroll when sidebar is open
+  useEffect(() => {
+    if (values) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => (document.body.style.overflow = "auto");
+  }, [values]);
+
 
   return (
     <div className="bg-white text-black py-1 shadow-md sticky top-0 z-50">
+      {/* Desktop Navbar */}
       <div className="max-w-[1400px] mx-auto items-center justify-between px-4 hidden md:flex">
         <div>
-          <Link to="/home" className="font-bold text-3xl text-white">
+          <Link to="/home">
             <img
               className="w-[100px] h-[45px]"
               src="/logo full final.png"
-              alt="img"
+              alt="Logo"
             />
           </Link>
         </div>
@@ -35,19 +45,16 @@ const NavbarTop = () => {
           />
         </div>
 
-        {/* Icons */}
         <div className="flex items-center space-x-6">
           <Link to="/offer">
-            <div className="text-md cursor-pointer font-semibold px-3 rounded-md border-2 border-red-600 text-black shadow-md animate-pulse hover:bg-red-600 hover:animate-none hover:brightness-110 transition">
+            <div className="px-3 py-1 border-2 border-red-600 rounded-md font-semibold shadow-md text-black animate-pulse hover:bg-red-600 hover:text-white hover:animate-none transition">
               Offers
             </div>
           </Link>
-
           <div className="text-sm cursor-pointer">⚡ Happy Hour</div>
 
-          {/* Cart section */}
           <div className="relative text-gray-700">
-            <Link to={`/checkout/cart`}>
+            <Link to="/checkout/cart">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -56,54 +63,36 @@ const NavbarTop = () => {
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9h14l-2-9M5 21h14"
                 />
               </svg>
             </Link>
             {cart.length > 0 && (
-              <span className="absolute -top-4 bg-blue-600 -right-3 text-white text-md font-bold px-1 py-0.2 rounded-full">
+              <span className="absolute -top-4 -right-3 bg-blue-600 text-white text-md font-bold px-1 py-0.2 rounded-full">
                 {cart.length}
               </span>
             )}
           </div>
-          {/* <!-- Wishlist / Heart Icon --> */}
-          <a href="#" className="text-gray-700  relative">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21l-7.682-7.682a4.5 4.5 0 010-6.364z"
-              />
-            </svg>
-          </a>
 
-          {/* <div className="text-sm cursor-pointer"> Account</div> */}
-          {/* <button className="bg-blue-600 hover:bg-blue-700 px-4 py-1 rounded text-sm font-medium">
-            Wish List
-          </button> */}
           <ProfileMenu />
         </div>
       </div>
 
-      <div className="bg-white w-full h-10 md:hidden flex items-center">
-        <div className="ml-1">
-          <Link to="/home" className="font-bold text-3xl text-white">
-            <img className="w-[100px] h-[30px]" src="/logo full final.png" alt="img" />
-          </Link>
+      {/* Mobile Navbar */}
+      <div className="bg-white w-full h-10 md:hidden flex items-center justify-between px-3">
+        <div className="text-3xl cursor-pointer mr-10" onClick={toggle}>
+          <i className={values ? "ri-close-line rounded-3xl bg-gray-200 text-3xl" : "ri-menu-3-line"}></i>
         </div>
-        {/* cart */}
-        <div className="relative text-gray-700 px-3 ml-20">
-          <Link to={`/checkout/cart`}>
+
+        <Link to="/home" className="w-[110px] mb-1">
+          <img className="h-[42px]" src="/logo full final.png" alt="Logo" />
+        </Link>
+
+        <div className="relative text-gray-700 px-3">
+          <Link to="/checkout/cart">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -112,57 +101,52 @@ const NavbarTop = () => {
               stroke="currentColor"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9h14l-2-9M5 21h14"
               />
             </svg>
           </Link>
 
-          <span className="absolute -top-3 bg-blue-600 -right-1 text-white text-xs font-bold px-1 py-0.2 rounded-full">
-            4
-          </span>
-        </div>
-
-        <Link to="/offer">
-          <div className="text-md cursor-pointer  font-semibold mx-4 px-2 rounded-md border-2 border-red-600 text-white shadow-md animate-pulse hover:bg-red-600 hover:animate-none hover:brightness-110 transition">
-            Offers
-          </div>
-        </Link>
-
-        <div className="mr-3">
-          <ProfileMenu />
-        </div>
-
-        <div className="ml-auto mr-4 text-2xl" id="icon">
-          <i className="ri-menu-3-line" onClick={toggle}></i>
+          {cart.length > 0 && (
+            <span className="absolute -top-3 -right-1 bg-blue-600 text-white text-xs font-bold px-1 py-0.2 rounded-full">
+              {cart.length}
+            </span>
+          )}
         </div>
       </div>
 
+      {/* Sidebar & Overlay */}
       {values && (
-        <div className="md:hidden bg-[#0B1E2D] shadow-lg rounded-b-lg mt-1">
-          <nav className="flex flex-col divide-y divide-gray-700">
-            <Link
-              to="/home"
-              className="flex items-center px-5 py-4 text-white text-lg font-medium hover:bg-[#1A2B3B] transition duration-300 rounded-md"
-            >
-              <i className="ri-home-5-line mr-3 text-xl"></i> Home
-            </Link>
-            <Link
-              to="/about"
-              className="flex items-center px-5 py-4 text-white text-lg font-medium hover:bg-[#1A2B3B] transition duration-300 rounded-md"
-            >
-              <i className="ri-information-line mr-3 text-xl"></i> About
-            </Link>
-            <Link
-              to="/account"
-              className="flex items-center px-5 py-4 text-white text-lg font-medium hover:bg-[#1A2B3B] transition duration-300 rounded-md"
-            >
-              <i className="ri-user-line mr-3 text-xl"></i> Account
-            </Link>
-          </nav>
-        </div>
+        <>
+          {/* Overlay */}
+          <div
+            className="fixed w-full h-full inset-12 bg-gray-50/10 backdrop-blur-xs z-40 transition-opacity duration-300"
+            onClick={() => setValue(false)}
+          ></div>
+
+          {/* Sidebar */}
+          <div
+            className={`fixed top-12 w-1/2 left-0 h-full bg-white shadow-2xl z-50 transform transition-transform duration-300 overflow-y-auto ${
+              values ? "translate-x-0" : "-translate-x-full"
+            }`}
+          >
+            <nav className="flex flex-col divide-y divide-gray-700 mt-1">
+              {categoryData &&
+                Array.isArray(categoryData) &&
+                categoryData.map((cat, index) => (
+                  <Link
+                    to="/home"
+                    className="flex items-center px-5 py-2  text-lg font-medium hover:bg-[#1A2B3B] transition duration-300"
+                    onClick={() => setValue(false)}
+                  >
+                    {cat.catName}
+                  </Link>
+                ))}
+            </nav>
+          </div>
+        </>
       )}
     </div>
   );

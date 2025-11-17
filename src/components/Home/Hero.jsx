@@ -21,8 +21,34 @@ const BannerSection = () => {
   }, []);
 
   return (
-    <div className="max-w-[1400px] mx-auto  mt-[70px] lg:mt-[80px] px-2 lg:px-4 pt-6 grid grid-cols-1 md:grid-cols-3 gap-3">
+    <div className="max-w-[1400px] mx-auto mt-[35px]  md:mt-[70px] lg:mt-[80px] px-2 lg:px-4 pt-6 grid grid-cols-1 md:grid-cols-3 gap-3">
       {/* Main Banner */}
+      {/* //search box */}
+      <div className="w-full max-w-md md:hidden ">
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Search"
+            className="w-full pr-12 pl-4 py-2 rounded border border-gray-300 bg-white text-black placeholder-gray-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+          />
+
+          {/* Search Icon Right */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={3}
+            stroke="currentColor"
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-700 cursor-pointer hover:text-black transition"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m21 21-4.35-4.35m0 0A7.5 7.5 0 1 0 5.64 5.64a7.5 7.5 0 0 0 10.61 10.61Z"
+            />
+          </svg>
+        </div>
+      </div>
       <div className="md:col-span-2">
         <img
           src={images[index]}
@@ -30,7 +56,6 @@ const BannerSection = () => {
           className="w-full  md:h-[310px] lg:h-[375px] xl:h-[468px] h-[210px] rounded transition-all duration-500"
         />
       </div>
-
       {/* Right Sideboxes */}
       <div className="space-y-3">
         {/* Compare Box */}
@@ -44,7 +69,6 @@ const BannerSection = () => {
           className="w-full h-auto rounded"
         />
       </div>
-
       {/* Info Cards Section */}
       <div className="col-span-1 md:col-span-3  flex flex-col md:flex-row gap-3 justify-between text-gray-700">
         {/* Card 1 */}
