@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { DataContext, UserContext } from "../Context Api/UserContext";
 
 const BannerSection = () => {
-  const { categoryData, productData } = useContext(DataContext);
+  // const { categoryData, productData } = useContext(DataContext);
   const images = [
     "ads banner 2.png",
     "https://i.ibb.co.com/MDT9fKxy/2.png",

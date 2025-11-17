@@ -48,7 +48,7 @@ const RightSide = () => {
           No products found in this category.
         </p>
       ) : (
-        <div className="grid gap-3 lg:grid-cols-4 xl:grid-cols-6 grid-cols-2 lg:gap-3">
+        <div className="grid gap-3 lg:grid-cols-4 xl:grid-cols-5 grid-cols-2 lg:gap-3">
           {filteredProducts.map((product) => (
             <Link to={`/product/${product.category}/${product.pID}`}>
               <ProductCard data={product} />
