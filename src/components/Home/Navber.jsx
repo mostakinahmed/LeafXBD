@@ -87,7 +87,7 @@ const NavbarTop = () => {
           <i className={values ? "ri-close-line rounded-3xl bg-gray-200 text-3xl" : "ri-menu-3-line"}></i>
         </div>
 
-        <Link to="/home" className="w-[110px] mb-1">
+        <Link to="/home" className="w-[110px] mb-">
           <img className="h-[40px]" src="/logo full final.png" alt="Logo" />
         </Link>
 
