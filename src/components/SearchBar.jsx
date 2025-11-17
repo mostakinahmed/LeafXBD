@@ -27,7 +27,7 @@ export const SearchBar = () => {
   return (
     <div>
       {/* SEARCH WRAPPER (Centered Dropdown) */}
-      <div className="md:w-1/3 relative">
+      <div className="relative">
         <input
           type="text"
           placeholder="Search"
@@ -39,7 +39,7 @@ export const SearchBar = () => {
               searchPage();
             }
           }}
-          className="w-full bg-white px-4 py-1.5 rounded-xs border-2 border-[#f4813a] text-black focus:outline-none"
+          className="w-full bg-white px-4 py-1.5 md:py-1 rounded-xs border-2 border-[#f4813a] text-black focus:outline-none"
         />
 
         {/* Search Icon Right */}
