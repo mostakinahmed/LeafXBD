@@ -13,6 +13,7 @@ import { CartProvider } from "./components/Context Api/CartContext.jsx";
 import ProfileHome from "./pages/ProfileHome.jsx";
 import TempHome from "./pages/TempHome.jsx";
 import TechGadgetHome from "./pages/TechGadgetHome.jsx";
+import SearchResult from "./pages/SearchResult";
 
 function App() {
   const location = useLocation();
@@ -48,6 +49,7 @@ function App() {
         <Route path="/checkout/cart" element={<Cart />} />
         <Route path="/profile/:card" element={<ProfileHome />} />
         <Route path="/home-new" element={<TechGadgetHome />} />
+        <Route path="/search-result/:keyword" element={<SearchResult />} />
       </Routes>
 
       {!isTempHome && <Footer />}

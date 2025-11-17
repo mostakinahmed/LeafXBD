@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { DataContext } from "./Context Api/UserContext";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const SearchBar = () => {
   const { productData } = useContext(DataContext);
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   //for instant show
   const filtered = search
@@ -16,7 +18,7 @@ export const SearchBar = () => {
 
   //for submit and new page
   function searchPage() {
-    console.log("submit: ", search);
+    navigate(`/search-result/${search}`);
   }
   // clear searech when route ch
   const location = useLocation();
@@ -36,7 +38,7 @@ export const SearchBar = () => {
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               e.preventDefault();
-              searchPage();
+              searchPage(search);
             }
           }}
           className="w-full bg-white px-4 py-1.5 md:py-1 rounded-xs border-2 border-[#f4813a] text-black focus:outline-none"

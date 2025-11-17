@@ -189,7 +189,7 @@ const NavbarTop = () => {
               {categoryData?.map((cat, index) => (
                 <Link
                   key={index}
-                  to="/home"
+                  to={`/product/${cat.catID}`}
                   className="flex items-center px-5 py-3 text-gray-800 border-b border-gray-300 text-lg font-medium hover:bg-gray-200"
                   onClick={() => setValue(false)}
                 >
@@ -203,5 +203,4 @@ const NavbarTop = () => {
     </div>
   );
 };
-
 export default NavbarTop;
