@@ -11,7 +11,7 @@ const LeftSide = () => {
     <div>
       <div className="">
         <button
-          className="w-full mt-7 lg:hidden bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded "
+          className="w-full lg:hidden bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded "
           onClick={toog}
         >
           Filters
