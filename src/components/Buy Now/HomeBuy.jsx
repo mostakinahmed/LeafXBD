@@ -37,7 +37,7 @@ export function HomeBuy({ data }) {
           <img
             src={data.images}
             alt={data.name}
-            className="rounded w-64 h-48 object-cover shadow-md mb-4"
+            className="rounded w-64 h-48 object-contain shadow-md mb-4"
           />
           <h2 className="text-2xl font-semibold">{data.name}</h2>
           <p className="text-gray-600 text-center mt-2 mb-4">

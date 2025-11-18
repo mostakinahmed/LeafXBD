@@ -18,6 +18,7 @@ export const SearchBar = () => {
 
   //for submit and new page
   function searchPage() {
+    setSearch("");
     navigate(`/search-result/${search}`);
   }
   // clear searech when route ch
@@ -63,9 +64,12 @@ export const SearchBar = () => {
 
         {/* SEARCH DROPDOWN */}
         {search && (
-          <div className="absolute left-1/2 -translate-x-1/2 mt-1 w-full bg-white border shadow-md rounded-md max-h-90 overflow-y-auto z-50">
+          <div className="absolute left-1/2 -translate-x-1/2 mt-1 w-full  bg-white border-2 border-[#f4813a] shadow-lg rounded overflow-y-auto z-50">
+            <div className="flex items-center gap-8 text-white bg-[#f4813a] px-3 py-1.5 border-b border-gray-300">
+              Product List:
+            </div>
             {filtered.length > 0 ? (
-              filtered.map((p) => (
+              filtered.slice(0, 5).map((p) => (
                 <Link
                   key={p.pID}
                   to={`/product/${p.category}/${p.pID}`}
@@ -82,6 +86,16 @@ export const SearchBar = () => {
               ))
             ) : (
               <p className="px-3 py-2 text-gray-500">No results found</p>
+            )}{" "}
+            {filtered.length > 5 && (
+              <div className="flex items-center justify-center gap-8 px-3 py-1.5 bg-[#f4813a] hover:bg-[#f56911] text-white hover:text-black">
+                <button
+                  onClick={searchPage}
+                  className="w-full text-lg font-bold"
+                >
+                  See more...
+                </button>
+              </div>
             )}
           </div>
         )}
