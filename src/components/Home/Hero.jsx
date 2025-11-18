@@ -6,7 +6,7 @@ const BannerSection = () => {
   // const { categoryData, productData } = useContext(DataContext);
   const images = [
     "ads banner 2.png",
-    "https://i.ibb.co.com/MDT9fKxy/2.png",
+    "main banner 2.png",
     "https://www.startech.com.bd/image/cache/catalog/home/banner/2025/starlink-in-store-activation-offer-web-banner-982x500.webp",
   ];
 
