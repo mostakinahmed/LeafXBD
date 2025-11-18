@@ -11,9 +11,14 @@ export default function SearchResult() {
 
   console.log(keyword);
 
-  const filtered = productData.filter((p) =>
-    p.name.toLowerCase().includes(keyword.toLowerCase())
-  );
+  //searching
+  const filtered = productData.filter((item) => {
+    const name = item.name?.toLowerCase() || "";
+    const desc = item.description?.toLowerCase() || "";
+
+    const words = keyword.toLowerCase().trim().split(" ");
+    return words.every((word) => name.includes(word) || desc.includes(word));
+  });
 
   // inside component
   useEffect(() => {
