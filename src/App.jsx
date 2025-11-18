@@ -14,6 +14,8 @@ import ProfileHome from "./pages/ProfileHome.jsx";
 import TempHome from "./pages/TempHome.jsx";
 import TechGadgetHome from "./pages/TechGadgetHome.jsx";
 import SearchResult from "./pages/SearchResult";
+import SignUp from "./components/Authentication/SignUp";
+import SignIn from "./components/Authentication/SignIn";
 
 function App() {
   const location = useLocation();
@@ -50,6 +52,8 @@ function App() {
         <Route path="/profile/:card" element={<ProfileHome />} />
         <Route path="/home-new" element={<TechGadgetHome />} />
         <Route path="/search-result/:keyword" element={<SearchResult />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
 
       {!isTempHome && <Footer />}

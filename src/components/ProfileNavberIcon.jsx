@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
@@ -6,6 +6,22 @@ const ProfileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const navigate = useNavigate();
+
+  const wrapperRef = useRef(null); // ref for click outside
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        setIsOpen(false); // closes dropdown
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [wrapperRef]);
 
   // Detect screen size
   useEffect(() => {
@@ -19,6 +35,12 @@ const ProfileMenu = () => {
   const goToProfile = () => {
     setIsOpen(false);
     navigate("/profile/home");
+  };
+
+  // Authentication navigation
+  const goToAuthenticate = () => {
+    setIsOpen(false);
+    navigate("/signin");
   };
 
   const goToSettings = () => {
@@ -53,11 +75,21 @@ const ProfileMenu = () => {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute right-0 mt-1 w-52 bg-white shadow-lg rounded-md border border-gray-100 pt-2 z-50">
+        <div
+          ref={wrapperRef}
+          className="absolute right-0 mt-1 md:mt-0 w-52 bg-white shadow-lg rounded-md border border-gray-100 pt-2 z-50"
+        >
           <div className="px-4 py-2 text-sm text-gray-500 border-b">
             Signed in as <br />
-            <span className="font-semibold text-gray-800">John Doe</span>
+            <span className="font-semibold text-gray-800">Mostakin Ahmed</span>
           </div>
+
+          <button
+            onClick={goToAuthenticate}
+            className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200"
+          >
+            Sign in
+          </button>
 
           <button
             onClick={goToProfile}

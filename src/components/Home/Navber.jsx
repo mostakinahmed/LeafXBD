@@ -113,7 +113,7 @@ const NavbarTop = () => {
           <img className="h-[40px]" src="/logo full final.png" alt="Logo" />
         </Link>
 
-        <div className="flex w-[60px] items-center space-x-5">
+        <div className="flex w-[60px] items-center space-x-8 mr-3">
           {/* Search Icon */}
           <div className="">
             {searchIcon && (
@@ -135,8 +135,10 @@ const NavbarTop = () => {
             )}
           </div>
 
+          {/* /profile show */}
+          <ProfileMenu />
           {/* Cart Icon */}
-          <div className="relative ml-3">
+          {/* <div className=" relative ml-3">
             <Link to="/checkout/cart">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -159,7 +161,7 @@ const NavbarTop = () => {
                 {cart.length}
               </span>
             )}
-          </div>
+          </div> */}
         </div>
 
         {/* Search Icon Right */}
