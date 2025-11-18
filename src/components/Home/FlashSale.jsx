@@ -32,7 +32,7 @@ export default function FlashSale() {
       </div>
 
       <div className="mt-2 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 mx-3 gap-3">
-        {products.map((p) => (
+        {products.slice(0,6).map((p) => (
           <div
             key={p.id}
             className="bg-white rounded shadow pt-2 text-center hover:shadow-lg transition hover:scale-104"

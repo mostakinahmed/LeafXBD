@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { FeatureText } from "./Home/FeatureText";
-import ProductCard from "./ProductCard";
-import { DataContext } from "./Context Api/UserContext";
+import { FeatureText } from "./FeatureText";
+import ProductCard from "../ProductCard";
+import { DataContext } from "../Context Api/UserContext";
 import { Link } from "react-router-dom";
 
 export const FeatureProduct = () => {
@@ -38,7 +38,7 @@ export const FeatureProduct = () => {
       <FeatureText data="Featured Product" />
 
       <div className="max-w-[1400px] mx-auto lg:px-4 px-2 pb-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 xl:grid-cols-6 md:gap-4 gap-3">
-        {visibleProducts.map((product) => (
+        {visibleProducts.slice(0,12).reverse().map((product) => (
           <Link
             key={product.pID}
             to={`/product/${product.category}/${product.pID}`}

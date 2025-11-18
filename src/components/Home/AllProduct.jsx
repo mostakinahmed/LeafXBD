@@ -38,7 +38,7 @@ export default function AllProduct() {
       <FeatureText data="All Product" />
 
       <div className="max-w-[1400px] mx-auto lg:px-4 px-2 pb-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 md:gap-4 gap-3">
-        {visibleProducts.map((product) => (
+        {visibleProducts.slice(0,18).map((product) => (
           <Link
             key={product.pID}
             to={`/product/${product.category}/${product.pID}`}
