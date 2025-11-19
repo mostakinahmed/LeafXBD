@@ -9,8 +9,6 @@ export default function SearchResult() {
   const { productData } = useContext(DataContext);
   const { keyword } = useParams();
 
-  console.log(keyword);
-
   //searching
   const filtered = productData.filter((item) => {
     const name = item.name?.toLowerCase() || "";
