@@ -7,6 +7,7 @@ const LeftSide = ({ onFilter }) => {
   const { categoryData, productData } = useContext(DataContext);
   const { cat } = useParams();
 
+  const [catData, setCatData] = useState([]);
   const [value, setValue] = useState(false);
   const [selectedRange, setSelectedRange] = useState({ min: "", max: "" });
   const [selectedIds, setSelectedIds] = useState([]);
@@ -19,8 +20,23 @@ const LeftSide = ({ onFilter }) => {
     setValue(window.innerWidth > 450);
   }, []);
 
+//for cat show
   useEffect(() => {
-    // Update unique brands whenever category or product data changes
+    const catChanged = () => {
+      if (!categoryData || !productData) return;
+   
+      const productCategories = productData.map((p) => p.category);
+
+      const data = categoryData.filter((cat) =>
+        productCategories.includes(cat.catID)
+      );
+
+      setCatData(data);
+    };
+
+    catChanged();
+  }, [categoryData, productData]);
+  useEffect(() => {
     if (!productData) return;
 
     let brands;
@@ -182,7 +198,7 @@ const LeftSide = ({ onFilter }) => {
             <div className="w-1/2">
               <h3 className="text-lg font-semibold mb-3">Category</h3>
               <ul className="space-y-2 text-gray-700 text-sm flex flex-col">
-                {categoryData.map((cat) => (
+                {catData.map((cat) => (
                   <label
                     key={cat.catID}
                     className="inline-flex items-center cursor-pointer mr-6 whitespace-nowrap"

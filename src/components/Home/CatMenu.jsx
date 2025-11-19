@@ -1,14 +1,32 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { DataContext } from "../Context Api/UserContext";
 
 const CategoryMenu = () => {
-  const { categoryData } = useContext(DataContext);
+  const { categoryData, productData } = useContext(DataContext);
+  const [catData, setCatData] = useState([]);
+
+  useEffect(() => {
+    const catChanged = () => {
+      if (!categoryData || !productData) return;
+
+      const productCategories = productData.map((p) => p.category);
+
+      const data = categoryData.filter((cat) =>
+        productCategories.includes(cat.catID)
+      );
+
+      setCatData(data);
+    };
+
+    catChanged();
+  }, [categoryData, productData]);
+
   return (
     <div className="bg-white shadow  w-full hidden md:flex">
       <div className=" xl:max-w-[1370px] w-full mx-auto lg:pl-3 xl:pl-0 py-2">
         <div className="flex flex-nowrap lg:flex-nowrap lg:overflow-x-auto overflow-x-auto sm:flex-wrap sm:overflow-visible lg:gap-5 lg:ml-2 xl:ml-3 text-sm font-medium text-gray-700">
-          {categoryData.map((cat, index) => (
+          {catData.map((cat, index) => (
             <Link
               key={index}
               to={`/product/${cat.catID}`}
