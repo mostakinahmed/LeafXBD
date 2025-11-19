@@ -151,7 +151,7 @@ const LeftSide = ({ onFilter }) => {
       </div>
 
       {value && (
-        <aside className="w-full lg:w-64 p-4 mt-3 space-y-4">
+        <aside className="w-full lg:w-64 lg:flex-col p-4 mt-3 md:mt-0 md:space-y-6 space-y-3">
           {/* PRICE FILTER */}
           <div>
             <h3 className="text-lg font-semibold mb-2">Price Range</h3>
@@ -177,22 +177,27 @@ const LeftSide = ({ onFilter }) => {
             </div>
           </div>
 
-          <div className="flex gap-6 w-full">
+          <div className="flex flex-row gap-7 md:gap-0 w-full">
             {/* CATEGORY */}
             <div className="w-1/2">
               <h3 className="text-lg font-semibold mb-3">Category</h3>
-              <ul className="space-y-2 text-sm">
-                {categoryData.map((c) => (
-                  <label key={c.catID} className="inline-flex items-center">
+              <ul className="space-y-2 text-gray-700 text-sm flex flex-col">
+                {categoryData.map((cat) => (
+                  <label
+                    key={cat.catID}
+                    className="inline-flex items-center cursor-pointer mr-6 whitespace-nowrap"
+                  >
                     <input
                       type="checkbox"
-                      className="form-checkbox h-4 w-4"
-                      checked={selectedIds.includes(c.catID)}
+                      className="form-checkbox h-4 w-4 text-blue-600"
+                      checked={selectedIds.includes(cat.catID)}
                       onChange={(e) =>
-                        handleCheckboxChange(c.catID, e.target.checked)
+                        handleCheckboxChange(cat.catID, e.target.checked)
                       }
                     />
-                    <span className="ml-2">{c.catName}</span>
+                    <span className="ml-2 whitespace-nowrap">
+                      {cat.catName}
+                    </span>
                   </label>
                 ))}
               </ul>
@@ -201,18 +206,21 @@ const LeftSide = ({ onFilter }) => {
             {/* BRAND */}
             <div className="w-1/2">
               <h3 className="text-lg font-semibold mb-3">Brand</h3>
-              <ul className="space-y-2 text-sm">
+              <ul className="space-y-2 text-gray-700 text-sm flex flex-col">
                 {uniqueBrands.map((name) => (
-                  <label key={name} className="inline-flex items-center">
+                  <label
+                    key={name}
+                    className="inline-flex items-center cursor-pointer mr-6 whitespace-nowrap"
+                  >
                     <input
                       type="checkbox"
-                      className="form-checkbox h-4 w-4"
+                      className="form-checkbox h-4 w-4 text-blue-600"
                       checked={selectedBrand.includes(name)}
                       onChange={(e) =>
                         handleBrandChange(name, e.target.checked)
                       }
                     />
-                    <span className="ml-2">{name}</span>
+                    <span className="ml-2 whitespace-nowrap">{name}</span>
                   </label>
                 ))}
               </ul>

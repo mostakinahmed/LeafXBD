@@ -21,8 +21,6 @@ const RightSide = ({ filterData }) => {
         setCatName("Unknown Category"); // optional fallback
       }
     }
-
-   
   }, [cat, categoryData]);
 
   useEffect(() => {
@@ -38,6 +36,9 @@ const RightSide = ({ filterData }) => {
     }
   }, [cat, productData]);
 
+  console.log(filteredProducts);
+  console.log(filterData);
+
   return (
     <section className="w-full ">
       <h2 className="text-lg bg-white text-center p-1 pl-1 rounded-sm shadow-sm font-semibold mb-4">
@@ -45,10 +46,7 @@ const RightSide = ({ filterData }) => {
       </h2>
 
       {/* Check if there are filtered products */}
-      {filterData === null ? (
-        // <p className="text-center mt-30 text-xl text-gray-500">
-        //   No products found in this category.
-        // </p>
+      {filterData === null || filterData.length === 0 ? (
         <div className="grid gap-3 lg:grid-cols-4 xl:grid-cols-5 grid-cols-2 lg:gap-3">
           {filteredProducts.map((product) => (
             <Link to={`/product/${product.category}/${product.pID}`}>
