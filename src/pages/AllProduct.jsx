@@ -3,21 +3,22 @@ import LeftSide from "../components/All Product/LeftSide";
 import RightSide from "../components/All Product/RightSide";
 
 const AllProduct = () => {
-  const [message, setMessage] = useState("");
-  const handleMessage = (msg) => {
-    setMessage(msg);
+  const [newData, setNewData] = useState(null);
+
+  const onFilterData = (data) => {
+    setNewData(data);
   };
- // console.log(message);
+  console.log(newData);
 
   return (
     <>
       <div className="max-w-[1400px] md:mt-[55px] mt-[47px] mx-auto md:py-6 py-3 min-h-screen">
         <div className="flex flex-col md:mx-4 mx-2 lg:pt-6 lg:flex-row gap-3">
           {/* Left: Filter Sidebar */}
-          <LeftSide data={message} />
+          <LeftSide onFilter={onFilterData} />
 
           {/* Right: Product Section */}
-          <RightSide onSendMessage={handleMessage} />
+          <RightSide filterData={newData} />
         </div>
       </div>
       ;

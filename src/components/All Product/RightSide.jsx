@@ -3,7 +3,7 @@ import ProductCard from "../ProductCard";
 import { Link, useParams } from "react-router-dom";
 import { DataContext, UserContext } from "../Context Api/UserContext";
 
-const RightSide = () => {
+const RightSide = ({ filterData }) => {
   const { categoryData, productData } = useContext(DataContext);
   const { cat } = useParams();
 
@@ -21,6 +21,8 @@ const RightSide = () => {
         setCatName("Unknown Category"); // optional fallback
       }
     }
+
+   
   }, [cat, categoryData]);
 
   useEffect(() => {
@@ -43,13 +45,20 @@ const RightSide = () => {
       </h2>
 
       {/* Check if there are filtered products */}
-      {filteredProducts.length === 0 ? (
-        <p className="text-center mt-30 text-xl text-gray-500">
-          No products found in this category.
-        </p>
-      ) : (
+      {filterData === null ? (
+        // <p className="text-center mt-30 text-xl text-gray-500">
+        //   No products found in this category.
+        // </p>
         <div className="grid gap-3 lg:grid-cols-4 xl:grid-cols-5 grid-cols-2 lg:gap-3">
           {filteredProducts.map((product) => (
+            <Link to={`/product/${product.category}/${product.pID}`}>
+              <ProductCard data={product} />
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <div className="grid gap-3 lg:grid-cols-4 xl:grid-cols-5 grid-cols-2 lg:gap-3">
+          {filterData.map((product) => (
             <Link to={`/product/${product.category}/${product.pID}`}>
               <ProductCard data={product} />
             </Link>

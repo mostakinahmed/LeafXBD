@@ -3,63 +3,51 @@ import { DataContext } from "../Context Api/UserContext";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const LeftSide = () => {
+const LeftSide = ({ onFilter }) => {
   const { categoryData, productData } = useContext(DataContext);
   const { cat } = useParams();
 
   const [value, setValue] = useState(false);
-  function toog() {
-    setValue(!value);
-  }
+  const [selectedRange, setSelectedRange] = useState({ min: "", max: "" });
+  const [selectedIds, setSelectedIds] = useState([]);
+  const [uniqueBrands, setUniqueBrands] = useState([]);
+  const [selectedBrand, setSelectedBrand] = useState([]);
+
+  const toog = () => setValue(!value);
 
   useEffect(() => {
-    const updateSize = () => {
-      if (window.innerWidth > 450) {
-        setValue(true);
-      } else {
-        setValue(false);
-      }
-    };
-    updateSize();
+    setValue(window.innerWidth > 450);
   }, []);
 
-  // ---------------- Range ----------------
-  const [selectedRange, setSelectedRange] = useState({
-    min: "",
-    max: "",
-  });
+  useEffect(() => {
+    // Update unique brands whenever category or product data changes
+    if (!productData) return;
+
+    let brands;
+    if (selectedIds.length === 0) {
+      brands = productData
+        .filter((p) => p.category === cat)
+        .map((p) => p.brandName);
+    } else {
+      brands = productData
+        .filter((p) => selectedIds.includes(p.category))
+        .map((p) => p.brandName);
+    }
+
+    setUniqueBrands([...new Set(brands)]);
+  }, [cat, selectedIds, productData]);
 
   const handleRangeChange = (min, max) => {
-    if (min || max) {
-      setSelectedRange({ min: min, max: max });
-    } else {
-      setSelectedRange({ min: "", max: "" });
-    }
+    setSelectedRange({ min, max });
   };
 
-  // ---------------- CATEGORY ----------------
-  const [selectedIds, setSelectedIds] = useState([]);
-  const handleCheckboxChange = (id, isChecked) => {
-    if (isChecked) {
+  const handleCheckboxChange = (id, checked) => {
+    if (checked) {
       setSelectedIds((prev) => [...prev, id]);
     } else {
       setSelectedIds((prev) => prev.filter((i) => i !== id));
     }
   };
-  // ---------------- BRAND UNIQUE FETCH ----------------
-  const [uniqueBrands, setUniqueBrands] = useState([]);
-  const [selectedBrand, setSelectedBrand] = useState([]);
-
-  useEffect(() => {
-    if (!productData) return;
-
-    const brands = productData
-      .filter((pro) => pro.brandName)
-      .map((pro) => pro.brandName);
-
-    const unique = [...new Set(brands)];
-    setUniqueBrands(unique);
-  }, [productData]);
 
   const handleBrandChange = (brand, checked) => {
     if (checked) {
@@ -69,65 +57,93 @@ const LeftSide = () => {
     }
   };
 
-  // ---------------- APPLY BUTTON ----------------
-  const applyBtn = () => {
-    if (
-      selectedBrand.length === 0 &&
-      selectedIds.length === 0 &&
-      selectedRange.min === "" &&
-      selectedRange.max === ""
-    ) {
-      Swal.fire({
-        icon: "warning",
-        title: "Please select filter!",
-        backdrop: `rgba(0,0,0,0.3)`,
-        timer: 1000,
-      });
-      return;
-    } else {
-      // console.log({
-      //   selectedCategories: selectedIds,
-      //   selectedBrand: selectedBrand,
-      //   selectedRange: selectedRange,
-      // });
-      filter();
-      reset();
-    }
+  const reset = () => {
+    Swal.fire({
+      icon: "warning",
+      title: "Reset All Filters!",
+      html: "<p class='text-gray-700'>All your filter selections have been cleared.</p>",
+      backdrop: `rgba(0,0,0,0.5)`,
+      timer: 1000,
+      showConfirmButton: false,
+      scrollbarPadding: false,
+      timerProgressBar: true,
+      customClass: {
+        popup: "rounded-xl p-6 bg-white shadow-lg",
+        title: "text-xl font-bold text-indigo-600",
+        htmlContainer: "text-center text-gray-700",
+        icon: "text-yellow-500",
+      },
+    });
+    setSelectedRange({ min: "", max: "" });
+    setSelectedIds([]);
+    setSelectedBrand([]);
   };
 
-  const [data, setData] = useState(null);
-  let filterData;
-  //check category
   const filter = () => {
+    if (!productData) return;
+
+    let filterData = productData;
+
+    // CATEGORY FILTER
     if (selectedIds.length > 0) {
-      filterData = productData.filter((p) => selectedIds.includes(p.category));
-    } else {
-      filterData = productData.filter((p) => cat.includes(p.category));
+      filterData = filterData.filter((p) => selectedIds.includes(p.category));
+    } else if (cat) {
+      filterData = filterData.filter((p) => p.category === cat);
     }
 
-    //check brand
+    // BRAND FILTER
     if (selectedBrand.length > 0) {
       filterData = filterData.filter((p) =>
         selectedBrand.includes(p.brandName)
       );
     }
-    console.log(filterData);
+
+    // PRICE FILTER
+    if (selectedRange.min !== "" || selectedRange.max !== "") {
+      filterData = filterData.filter((p) => {
+        const price = Number(p.price);
+        const minCheck =
+          selectedRange.min === "" || price >= Number(selectedRange.min);
+        const maxCheck =
+          selectedRange.max === "" || price <= Number(selectedRange.max);
+        return minCheck && maxCheck;
+      });
+    }
+
+    // Pass filtered data to parent callback
+    onFilter?.(filterData);
   };
-  //reset filter
-  function reset() {
-    setSelectedRange({
-      min: "",
-      max: "",
-    });
-    setSelectedIds([]);
-    setSelectedBrand([]);
-  }
+
+  // const applyBtn = () => {
+  //   if (
+  //     selectedBrand.length === 0 &&
+  //     selectedIds.length === 0 &&
+  //     selectedRange.min === "" &&
+  //     selectedRange.max === ""
+  //   ) {
+  //     Swal.fire({
+  //       icon: "warning",
+  //       title: "Please select filter!",
+  //       backdrop: `rgba(0,0,0,0.3)`,
+  //       timer: 1000,
+  //     });
+  //     return;
+  //   }
+
+  //   filter();
+  //   reset();
+  // };
+
+  // Auto filter whenever selection changes
+  useEffect(() => {
+    filter();
+  }, [selectedBrand, selectedIds, selectedRange, cat]);
 
   return (
-    <div className=" bg-white rounded-md shadow">
+    <div className="bg-white rounded-md shadow">
       <div>
         <button
-          className="w-full lg:hidden bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 "
+          className="w-full lg:hidden bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2"
           onClick={toog}
         >
           Filters
@@ -135,10 +151,10 @@ const LeftSide = () => {
       </div>
 
       {value && (
-        <aside className="w-full lg:w-64 lg:flex-col p-4 mt-3 md:mt-0 md:space-y-6 space-y-3 ">
-          {/* Price Filter */}
+        <aside className="w-full lg:w-64 p-4 mt-3 space-y-4">
+          {/* PRICE FILTER */}
           <div>
-            <h3 className="text-lg font-semibold md:mb-3 mb-2">Price Range</h3>
+            <h3 className="text-lg font-semibold mb-2">Price Range</h3>
             <div className="flex space-x-2 items-center">
               <input
                 type="number"
@@ -161,62 +177,54 @@ const LeftSide = () => {
             </div>
           </div>
 
-          <div className="flex flex-row gap-7 md:gap-0 w-full ">
-            {/* Category Filter */}
+          <div className="flex gap-6 w-full">
+            {/* CATEGORY */}
             <div className="w-1/2">
               <h3 className="text-lg font-semibold mb-3">Category</h3>
-              <ul className="space-y-2 text-gray-700 text-sm flex flex-col">
-                {categoryData.map((cat) => (
-                  <label
-                    key={cat.catID}
-                    className="inline-flex items-center cursor-pointer mr-6 whitespace-nowrap"
-                  >
+              <ul className="space-y-2 text-sm">
+                {categoryData.map((c) => (
+                  <label key={c.catID} className="inline-flex items-center">
                     <input
                       type="checkbox"
-                      className="form-checkbox h-4 w-4 text-blue-600"
-                      checked={selectedIds.includes(cat.catID)}
+                      className="form-checkbox h-4 w-4"
+                      checked={selectedIds.includes(c.catID)}
                       onChange={(e) =>
-                        handleCheckboxChange(cat.catID, e.target.checked)
+                        handleCheckboxChange(c.catID, e.target.checked)
                       }
                     />
-                    <span className="ml-2 whitespace-nowrap">
-                      {cat.catName}
-                    </span>
+                    <span className="ml-2">{c.catName}</span>
                   </label>
                 ))}
               </ul>
             </div>
 
-            {/* Brand Filter */}
+            {/* BRAND */}
             <div className="w-1/2">
               <h3 className="text-lg font-semibold mb-3">Brand</h3>
-              <ul className="space-y-2 text-gray-700 text-sm flex flex-col">
+              <ul className="space-y-2 text-sm">
                 {uniqueBrands.map((name) => (
-                  <label
-                    key={name}
-                    className="inline-flex items-center cursor-pointer mr-6 whitespace-nowrap"
-                  >
+                  <label key={name} className="inline-flex items-center">
                     <input
                       type="checkbox"
-                      className="form-checkbox h-4 w-4 text-blue-600"
+                      className="form-checkbox h-4 w-4"
                       checked={selectedBrand.includes(name)}
                       onChange={(e) =>
                         handleBrandChange(name, e.target.checked)
                       }
                     />
-                    <span className="ml-2 whitespace-nowrap">{name}</span>
+                    <span className="ml-2">{name}</span>
                   </label>
                 ))}
               </ul>
             </div>
           </div>
 
-          {/* Apply Filters Button */}
+          {/* RESET BTN */}
           <button
-            onClick={applyBtn}
+            onClick={reset}
             className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded"
           >
-            Apply Filters
+            Reset
           </button>
         </aside>
       )}
