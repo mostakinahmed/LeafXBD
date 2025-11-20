@@ -2,6 +2,10 @@ import React, { useState, useRef, useEffect } from "react";
 import { User, LogOut, ShoppingBag, UserCog } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { FaGem } from "react-icons/fa";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 export const Profile = () => {
   const navigate = useNavigate();
@@ -92,7 +96,47 @@ export const Profile = () => {
               <span>Profile</span>
             </li>
 
-            <li className="px-3 md:py-2 py-1 rounded hover:bg-gray-100 flex items-center gap-2 cursor-pointer">
+            {/* <li className="px-3 md:py-2 py-1 rounded hover:bg-gray-100 flex items-center gap-2 cursor-pointer">
+              <UserCog className="w-4 h-4" />
+              <span>Track Order</span>
+            </li> */}
+            <li
+              onClick={async () => {
+                setOpen(false); // close dropdown
+                const { value: orderId } = await MySwal.fire({
+                  title: "Track your order",
+                  input: "text",
+                  inputLabel: "Enter your Order ID",
+                  inputPlaceholder: "OID12345",
+                  showCancelButton: true,
+                  confirmButtonText: "Track",
+                  cancelButtonText: "Cancel",
+                  inputValidator: (value) => {
+                    if (!value) return "You need to enter your Order ID!";
+                  },
+                });
+
+                if (orderId) {
+                  // Replace this with your actual API call to get status
+                  const statusList = [
+                    "Processing",
+                    "Shipped",
+                    "Delivered",
+                    "Cancelled",
+                  ];
+                  const randomStatus =
+                    statusList[Math.floor(Math.random() * statusList.length)];
+
+                  MySwal.fire({
+                    title: `Order ID: ${orderId}`,
+                    text: `Status: ${randomStatus}`,
+                    icon: "info",
+                    confirmButtonText: "OK",
+                  });
+                }
+              }}
+              className="px-3 md:py-2 py-1 rounded hover:bg-gray-100 flex items-center gap-2 cursor-pointer"
+            >
               <UserCog className="w-4 h-4" />
               <span>Track Order</span>
             </li>

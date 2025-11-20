@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "remixicon/fonts/remixicon.css";
 import { CartContext } from "../Context Api/CartContext";
 import ProfileMenu from "../ProfileNavberIcon";
@@ -7,8 +7,10 @@ import { DataContext } from "../Context Api/UserContext";
 import { useLocation } from "react-router-dom";
 import { SearchBar } from "../SearchBar";
 import { Profile } from "../ProfileNav";
+import { FiTruck } from "react-icons/fi"; // Track icon
 
 const NavbarTop = () => {
+  const navigate = useNavigate();
   const { cart } = useContext(CartContext);
   const [values, setValue] = useState(false);
   const [sBar, setSbar] = useState(false);
@@ -77,21 +79,34 @@ const NavbarTop = () => {
         </div>
 
         {/* RIGHT ICONS */}
-        <div className="flex items-center space-x-6">
+        <div className="flex items-center gap-4">
+          {/* Offers Button */}
           <Link to="/offer">
+            {" "}
             <div className="px-3 py-1 rounded font-semibold shadow-md text-white animate-pulse bg-red-600 hover:text-black hover:animate-none transition">
-              Offers
-            </div>
+              {" "}
+              Offers{" "}
+            </div>{" "}
           </Link>
 
-          {/* <div className="text-sm cursor-pointer">⚡ Happy Hour</div> */}
+          {/* Track Order Icon */}
+          <div
+            onClick={() => navigate("/track-order")}
+            className="mt-1 cursor-pointer border border-transparent hover:border-gray-300 hover:bg-gray-50 px-2 py-1 rounded transition-colors duration-300 flex items-center justify-center"
+            title="Track Order"
+          >
+            <FiTruck
+              size={25}
+              className="text-gray-800 hover:text-orange-500 transition-colors duration-300"
+            />
+          </div>
 
-          {/* Cart */}
-          <div className="relative text-gray-800 hover:border px-2 py-1 hover:bg-gray-50 rounded">
+          {/* Cart Icon */}
+          <div className="relative border border-transparent hover:border-gray-300 hover:bg-gray-50 px-2 py-1 rounded transition-colors duration-300 flex items-center justify-center">
             <Link to="/checkout/cart">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
+                className="h-6 w-6 text-gray-800 hover:text-orange-500 transition-colors duration-300"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -104,15 +119,14 @@ const NavbarTop = () => {
                 />
               </svg>
             </Link>
-
             {cart.length > 0 && (
-              <span className="absolute -top-4 -right-3 bg-blue-600 text-white text-md font-bold px-1 py-0.2 rounded-full">
+              <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
                 {cart.length}
               </span>
             )}
           </div>
 
-          {/* <ProfileMenu /> */}
+          {/* Profile Menu */}
           <Profile />
         </div>
       </div>
@@ -129,11 +143,15 @@ const NavbarTop = () => {
           ></i>
         </div>
 
-        <Link to="/home" className="w-[110px]">
-          <img className="h-[40px]" src="/logo full final.png" alt="Logo" />
+        <Link to="/home" className="w-1/3">
+          <img
+            className="h-[40px] ml-10"
+            src="/logo full final.png"
+            alt="Logo"
+          />
         </Link>
 
-        <div className="flex w-[60px] items-center space-x-8 mr-3">
+        <div className="flex w-1/3 items-center space-x-2  justify-end">
           {/* Search Icon */}
           <div className="">
             {searchIcon && (
@@ -144,7 +162,7 @@ const NavbarTop = () => {
                 strokeWidth={3}
                 stroke="currentColor"
                 onClick={() => setSbar((prev) => !prev)} // call search function
-                className="w-6 -mr-5 h-6 text-gray-700 cursor-pointer hover:text-black transition"
+                className="w-6 h-6 text-gray-700 cursor-pointer hover:text-black transition"
               >
                 <path
                   strokeLinecap="round"
@@ -154,9 +172,19 @@ const NavbarTop = () => {
               </svg>
             )}
           </div>
-
+          <div
+            onClick={() => navigate("/track-order")}
+            className="mt-1 cursor-pointer border border-transparent hover:border-gray-300 hover:bg-gray-50 px-2 py-1 rounded transition-colors duration-300 flex items-center justify-center"
+            title="Track Order"
+          >
+            <FiTruck
+              size={25}
+              className="text-gray-800 hover:text-orange-500 transition-colors duration-300"
+            />
+          </div>
           {/* /profile show */}
           <Profile />
+
           {/* Cart Icon */}
           {/* <div className=" relative ml-3">
             <Link to="/checkout/cart">

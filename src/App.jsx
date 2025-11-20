@@ -17,6 +17,7 @@ import SearchResult from "./pages/SearchResult";
 import SignUp from "./components/Authentication/SignUp";
 import SignIn from "./components/Authentication/SignIn";
 import Profile from "./components/Profile/Profile";
+import TrackOrder from "./components/TrackOrder";
 
 function App() {
   const location = useLocation();
@@ -56,6 +57,7 @@ function App() {
         <Route path="/search-result/:keyword" element={<SearchResult />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/track-order" element={<TrackOrder />} />
       </Routes>
 
       {!isTempHome && <Footer />}
