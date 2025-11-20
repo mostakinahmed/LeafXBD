@@ -18,7 +18,7 @@ const Profile = () => {
   return (
     <div className="max-w-[1400px] lg:mt-[80px] mt-[47px] px-2 lg:px-4 mx-auto md:py-6 py-3">
       <div className="bg-white shadow p-6 rounded min-h-[calc(100vh-5rem)]">
-        <div className="lg:max-w-lg max-w-md mx-auto">
+        <div className="lg:max-w-md max-w-md mx-auto">
           {/* Profile Photo */}
           <div className="flex items-center justify-center mb-5">
             <img
@@ -35,7 +35,7 @@ const Profile = () => {
             name="fullName"
             value={formData.fullName}
             onChange={handleChange}
-            className="w-full p-2 border rounded-lg mb-4 focus:outline-none focus:border-blue-500"
+            className="w-full p-2 border rounded mb-4 focus:outline-none focus:border-blue-500"
             placeholder="Mostakin Ahmed"
           />
 
@@ -48,7 +48,7 @@ const Profile = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full p-2 border rounded-lg mb-4 focus:outline-none focus:border-blue-500"
+            className="w-full p-2 border rounded mb-4 focus:outline-none focus:border-blue-500"
             placeholder="mostakin4556@gmail.com"
           />
 
@@ -61,7 +61,7 @@ const Profile = () => {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full p-2 border rounded-lg mb-4 focus:outline-none focus:border-blue-500"
+            className="w-full p-2 border rounded mb-4 focus:outline-none focus:border-blue-500"
             placeholder="+8801773820336"
           />
 

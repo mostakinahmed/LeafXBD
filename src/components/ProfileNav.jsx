@@ -26,7 +26,7 @@ export const Profile = () => {
     navigate("/profile");
   };
   return (
-    <div className="relative" ref={menuRef}>
+    <div className="relative " ref={menuRef}>
       {/* If user is logged in */}
       {login ? (
         <div

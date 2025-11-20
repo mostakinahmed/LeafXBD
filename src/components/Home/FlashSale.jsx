@@ -1,8 +1,13 @@
 import { img } from "framer-motion/client";
-import React from "react";
+import React, { useContext, useState } from "react";
 import { FiZap } from "react-icons/fi"; // Feather icon
+import { DataContext } from "../Context Api/UserContext";
+import { Link } from "react-router-dom";
+import ProductCard from "../ProductCard";
 
 export default function FlashSale() {
+  const { productData } = useContext(DataContext);
+
   const products = new Array(6).fill(0).map((_, i) => ({
     id: i + 1,
     title: `Product ${i + 1}`,
@@ -12,8 +17,8 @@ export default function FlashSale() {
   }));
 
   return (
-    <section className=" max-w-[1370px] bg-red-300 pb-3 xl:mx-auto mx-2 lg:mx-4 rounded">
-      <div className="w-full flex items-center justify-between rounded-t bg-red-500 text-white px-4 py-3 shadow-md animate-bounce ">
+    <section className=" max-w-[1370px] bg-gray-800 pb-3 xl:mx-auto mx-2 lg:mx-4 rounded">
+      <div className="w-full flex items-center justify-between rounded-t bg-gray-800 text-white px-4 py-3 shadow-md animate-bounce ">
         <div className="">
           <h3 className="lg:flex hidden text-lg font-semibold items-center gap-2">
             <FiZap className="text-xl" />
@@ -31,24 +36,18 @@ export default function FlashSale() {
         </div>
       </div>
 
-      <div className="mt-2 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 mx-3 gap-3">
-        {products.slice(0,6).map((p) => (
-          <div
-            key={p.id}
-            className="bg-white rounded shadow pt-2 text-center hover:shadow-lg transition hover:scale-104"
-          >
-            <img
-              src={p.img}
-              alt={p.title}
-              className="h-36 w-full object-contain rounded"
-            />
-            <div className="mt-2 text-sm font-medium">{p.title}</div>
-            <div className="mt-1 text-indigo-600 font-semibold">${p.price}</div>
-            <button className="mt-2 w-full text-sm py-2 bg-gray-800 text-white transition">
-              Add to Cart
-            </button>
-          </div>
-        ))}
+      <div className="max-w-[1400px] mx-auto lg:px-4 px-2 pb-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 md:gap-4 gap-3">
+        {productData
+          .reverse()
+          .slice(0, 6)
+          .map((product) => (
+            <Link
+              key={product.pID}
+              to={`/product/${product.category}/${product.pID}`}
+            >
+              <ProductCard data={product} />
+            </Link>
+          ))}
       </div>
     </section>
   );

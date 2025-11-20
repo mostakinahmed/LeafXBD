@@ -26,7 +26,7 @@ export const ProductCard = ({ data }) => {
         </div>
         <Link to={`/product/${data.category}/${data.pID}/buynow`}>
           <button className="w-full bg-[#fe741d] hover:bg-indigo-800 text-white text-sm py-2 transition duration-300">
-            Add to cart
+            Buy Now
           </button>
         </Link>
       </div>
