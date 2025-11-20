@@ -10,7 +10,10 @@ const SignIn = () => {
         <div className=" lg:mt-[20px] rounded w-md p-6 sm:p-10">
           {/* Header */}
           <h1 className="text-center text-xl mb-15">
-            Login to <span className="text-[#fe741d] text-2xl font-bold">Victus  <span className="text-black">Byte</span></span>
+            Login to{" "}
+            <span className="text-[#fe741d] text-2xl font-bold">
+              Victus <span className="text-black">Byte</span>
+            </span>
           </h1>
 
           {/* Form */}
@@ -90,10 +93,6 @@ const SignIn = () => {
                 src: "https://ucarecdn.com/82d7ca0a-c380-44c4-ba24-658723e2ab07/",
                 alt: "Twitter",
                 darkInvert: true,
-              },
-              {
-                src: "https://ucarecdn.com/3277d952-8e21-4aad-a2b7-d484dad531fb/",
-                alt: "Apple",
               },
             ].map((icon, index) => (
               <button

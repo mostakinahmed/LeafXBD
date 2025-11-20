@@ -17,7 +17,7 @@ const SignIn = () => {
           </h1>
 
           {/* Form */}
-          <form className="space-y-5">
+          <form className="space-y-4">
             <div>
               <label
                 htmlFor="email"
@@ -124,10 +124,6 @@ const SignIn = () => {
                 src: "https://ucarecdn.com/82d7ca0a-c380-44c4-ba24-658723e2ab07/",
                 alt: "Twitter",
                 darkInvert: true,
-              },
-              {
-                src: "https://ucarecdn.com/3277d952-8e21-4aad-a2b7-d484dad531fb/",
-                alt: "Apple",
               },
             ].map((icon, index) => (
               <button
