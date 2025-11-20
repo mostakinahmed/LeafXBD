@@ -13,8 +13,9 @@ const NavbarTop = () => {
   const [sBar, setSbar] = useState(false);
   const toggle = () => setValue(!values);
   const [searchIcon, setSearchIcon] = useState(true);
+  const [catData, setCatData] = useState([]);
 
-  const { categoryData } = useContext(DataContext);
+  const { categoryData, productData } = useContext(DataContext);
 
   // Disable body scroll when sidebar is open
   useEffect(() => {
@@ -25,6 +26,23 @@ const NavbarTop = () => {
     }
     return () => (document.body.style.overflow = "auto");
   }, [values]);
+
+  //filter cat lis
+  useEffect(() => {
+    const catChanged = () => {
+      if (!categoryData || !productData) return;
+
+      const productCategories = productData.map((p) => p.category);
+
+      const data = categoryData.filter((cat) =>
+        productCategories.includes(cat.catID)
+      );
+
+      setCatData(data);
+    };
+
+    catChanged();
+  }, [categoryData, productData]);
 
   //for home sBox control
   const location = useLocation();
@@ -187,12 +205,15 @@ const NavbarTop = () => {
               values ? "translate-x-0" : "-translate-x-full"
             }`}
           >
-            <nav className="flex flex-col mt-5">
-              {categoryData?.map((cat, index) => (
+            <div className=" bg-gray-200 p-1 text-gray-800 font-semibold px-4">
+              Category List:
+            </div>
+            <nav className="flex flex-col">
+              {catData?.map((cat, index) => (
                 <Link
                   key={index}
                   to={`/product/${cat.catID}`}
-                  className="flex items-center px-5 py-3 text-gray-800 border-b border-gray-300 text-lg font-medium hover:bg-gray-200"
+                  className="flex items-center px-5 py-2 text-gray-800 border-b border-gray-300 text-md font-medium hover:bg-gray-200"
                   onClick={() => setValue(false)}
                 >
                   {cat.catName}

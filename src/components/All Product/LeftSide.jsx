@@ -20,11 +20,11 @@ const LeftSide = ({ onFilter }) => {
     setValue(window.innerWidth > 450);
   }, []);
 
-//for cat show
+  //for cat show
   useEffect(() => {
     const catChanged = () => {
       if (!categoryData || !productData) return;
-   
+
       const productCategories = productData.map((p) => p.category);
 
       const data = categoryData.filter((cat) =>
@@ -93,6 +93,7 @@ const LeftSide = ({ onFilter }) => {
     setSelectedRange({ min: "", max: "" });
     setSelectedIds([]);
     setSelectedBrand([]);
+    setValue(false);
   };
 
   const filter = () => {
