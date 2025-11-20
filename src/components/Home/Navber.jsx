@@ -151,7 +151,7 @@ const NavbarTop = () => {
           />
         </Link>
 
-        <div className="flex w-1/3 items-center space-x-2  justify-end">
+        <div className="flex w-1/3 items-center lg:space-x-2   justify-end">
           {/* Search Icon */}
           <div className="">
             {searchIcon && (
