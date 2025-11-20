@@ -156,7 +156,7 @@ const NavbarTop = () => {
           </div>
 
           {/* /profile show */}
-          <ProfileMenu />
+          <Profile />
           {/* Cart Icon */}
           {/* <div className=" relative ml-3">
             <Link to="/checkout/cart">
