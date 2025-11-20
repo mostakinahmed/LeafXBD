@@ -26,7 +26,7 @@ export const Profile = () => {
       {login ? (
         <div
           onClick={() => setOpen(!open)}
-          className="cursor-pointer hover:border-1 py-[6px] px-2 rounded-3xl bg-[#f58138]"
+          className="cursor-pointer hover:border-1 py-[7px] px-2 rounded-3xl bg-[#f58138]"
         >
           <button className="flex gap-2 justify-center items-center">
             <User className="w-6 h-6 hover:text-white text-gray-900" />
@@ -47,37 +47,44 @@ export const Profile = () => {
 
       {/* Dropdown when logged in */}
       {login && open && (
-        <div className="absolute md:top-11 top-10.5 md:right-0 -right-1 w-max md:min-w-70 min-w-1/2 bg-white shadow-xl rounded border z-50 p-3">
+        <div className="absolute md:top-11 top-10.5 md:right-0 -right-1 w-max md:min-w-70 min-w-1/2 bg-white shadow-xl rounded border-1 z-50 md:p-3 p-2">
           <div className="flex w-full h-12 gap-3">
             <div className="bg-gray-100 w-14 h-11 flex justify-center items-center mt-1.5 rounded-4xl">
               {" "}
               <User className="w-6 h-6 hover:text-white text-gray-800" />
             </div>
             <div className="w-full flex flex-col">
-              <div className="border-b text-lg font-bold text-gray-800">
-                Mostakin Ahmed
+              <div className="border-b ">
+                <span className="md:text-xl text-md font-bold text-gray-800">
+                  {" "}
+                  Mostakin Ahmed
+                </span>
               </div>
-              <div className="text-md text-gray-500">+8801773-820336</div>
+              <div className="">
+                <span className="lg:text-[1rem] text-sm text-gray-500">
+                  +8801773-820336
+                </span>
+              </div>
             </div>
           </div>
           {/* point */}
-          <div className="flex border-2 border-[#fe741d] bg-[#fff3eb] w-full h-10 gap-2 mt-5">
+          <div className="flex border-2 border-[#fe741d] bg-[#fff3eb] w-full lg:h-10 h-9 gap-2 lg:mt-5 mt-3">
             <div className=" flex justify-center items-center gap-3 text-[#fe741d]">
               <FaGem className="ml-3" size={23} color="" />
               <span className="font-bold text-lg">10 Points</span>
             </div>
           </div>
           <ul className="flex flex-col gap-1 mt-2">
-            <li className="px-3 py-2 rounded hover:bg-gray-100 flex items-center gap-2 cursor-pointer">
+            <li className="px-3 md:py-2 py-1 rounded hover:bg-gray-100 flex items-center gap-2 cursor-pointer">
               <ShoppingBag className="w-4 h-4" />
               <span>My Orders</span>
             </li>
-            <li className="px-3 py-2 rounded hover:bg-gray-100 flex items-center gap-2 cursor-pointer">
+            <li className="px-3 md:py-2 py-1 rounded hover:bg-gray-100 flex items-center gap-2 cursor-pointer">
               <User className="w-4 h-4" />
               <span>Profile</span>
             </li>
 
-            <li className="px-3 py-2 rounded hover:bg-gray-100 flex items-center gap-2 cursor-pointer">
+            <li className="px-3 md:py-2 py-1 rounded hover:bg-gray-100 flex items-center gap-2 cursor-pointer">
               <UserCog className="w-4 h-4" />
               <span>Track Order</span>
             </li>
@@ -87,7 +94,7 @@ export const Profile = () => {
                 setLogin(false);
                 setOpen(false);
               }}
-              className="px-3 py-2 rounded hover:bg-gray-100 flex items-center gap-2 cursor-pointer text-red-600"
+              className="px-3 md:py-2 py-1 rounded hover:bg-gray-100 flex items-center gap-2 cursor-pointer text-red-600"
             >
               <LogOut className="w-4 h-4" />
               <span>Logout</span>
