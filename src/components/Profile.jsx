@@ -49,7 +49,7 @@ export const Profile = () => {
       {login && open && (
         <div className="absolute md:top-11 top-10.5 md:right-0 -right-1 w-max md:min-w-70 min-w-1/2 bg-white shadow-xl rounded border-1 z-50 md:p-3 p-2">
           <div className="flex w-full h-12 gap-3">
-            <div className="bg-gray-100 w-14 h-11 flex justify-center items-center mt-1.5 rounded-4xl">
+            <div className="bg-gray-100 w-14 h-10 flex justify-center items-center mt-1.5 rounded-4xl">
               {" "}
               <User className="w-6 h-6 hover:text-white text-gray-800" />
             </div>
@@ -61,7 +61,7 @@ export const Profile = () => {
                 </span>
               </div>
               <div className="">
-                <span className="lg:text-[1rem] text-sm text-gray-500">
+                <span className="lg:text-[1rem] text-xs text-gray-500 underline-none">
                   +8801773-820336
                 </span>
               </div>
