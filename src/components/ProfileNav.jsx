@@ -69,7 +69,7 @@ export const Profile = () => {
                   Mostakin Ahmed
                 </span>
               </div>
-              <div className="-mt-1">
+              <div className="lg:-mt-[2px] -mt-1">
                 <span className="lg:text-[1rem] no-underline text-decoration:none text-xs text-gray-500">
                   +8801773-820336
                 </span>
