@@ -61,7 +61,7 @@ export const Profile = () => {
                 </span>
               </div>
               <div className="-mt-1">
-                <span className="lg:text-[1rem] no-underline text-xs text-gray-500">
+                <span className="lg:text-[1rem] no-underline text-decoration:none text-xs text-gray-500">
                   +8801773-820336
                 </span>
               </div>
