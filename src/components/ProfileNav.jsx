@@ -20,6 +20,11 @@ export const Profile = () => {
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
+  //all func
+  const goProfile = () => {
+    setOpen(false);
+    navigate("/profile");
+  };
   return (
     <div className="relative" ref={menuRef}>
       {/* If user is logged in */}
@@ -79,7 +84,10 @@ export const Profile = () => {
               <ShoppingBag className="w-4 h-4" />
               <span>My Orders</span>
             </li>
-            <li className="px-3 md:py-2 py-1 rounded hover:bg-gray-100 flex items-center gap-2 cursor-pointer">
+            <li
+              onClick={goProfile}
+              className="px-3 md:py-2 py-1 rounded hover:bg-gray-100 flex items-center gap-2 cursor-pointer"
+            >
               <User className="w-4 h-4" />
               <span>Profile</span>
             </li>

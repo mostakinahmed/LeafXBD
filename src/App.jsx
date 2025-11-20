@@ -16,6 +16,7 @@ import TechGadgetHome from "./pages/TechGadgetHome.jsx";
 import SearchResult from "./pages/SearchResult";
 import SignUp from "./components/Authentication/SignUp";
 import SignIn from "./components/Authentication/SignIn";
+import Profile from "./components/Profile/Profile";
 
 function App() {
   const location = useLocation();
@@ -50,6 +51,7 @@ function App() {
         <Route path="/product/:cat/:id/buynow" element={<BuyNow />} />
         <Route path="/checkout/cart" element={<Cart />} />
         <Route path="/profile/:card" element={<ProfileHome />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/home-new" element={<TechGadgetHome />} />
         <Route path="/search-result/:keyword" element={<SearchResult />} />
         <Route path="/signin" element={<SignIn />} />

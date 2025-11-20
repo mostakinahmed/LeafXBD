@@ -6,7 +6,7 @@ import ProfileMenu from "../ProfileNavberIcon";
 import { DataContext } from "../Context Api/UserContext";
 import { useLocation } from "react-router-dom";
 import { SearchBar } from "../SearchBar";
-import { Profile } from "../Profile";
+import { Profile } from "../ProfileNav";
 
 const NavbarTop = () => {
   const { cart } = useContext(CartContext);

@@ -8,7 +8,6 @@ const AllProduct = () => {
   const onFilterData = (data) => {
     setNewData(data);
   };
-  console.log(newData);
 
   return (
     <>

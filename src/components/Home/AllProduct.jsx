@@ -31,7 +31,7 @@ export default function AllProduct() {
     // listen for resize
     window.addEventListener("resize", updateVisibleProducts);
     return () => window.removeEventListener("resize", updateVisibleProducts);
-  }, [productData]); // run again if productData changes
+  }, [productData]); 
 
   return (
     <div>
