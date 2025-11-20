@@ -93,7 +93,7 @@ const LeftSide = ({ onFilter }) => {
     setSelectedRange({ min: "", max: "" });
     setSelectedIds([]);
     setSelectedBrand([]);
-    setValue(false);
+    // setValue(false);
   };
 
   const filter = () => {
@@ -130,26 +130,6 @@ const LeftSide = ({ onFilter }) => {
     // Pass filtered data to parent callback
     onFilter?.(filterData);
   };
-
-  // const applyBtn = () => {
-  //   if (
-  //     selectedBrand.length === 0 &&
-  //     selectedIds.length === 0 &&
-  //     selectedRange.min === "" &&
-  //     selectedRange.max === ""
-  //   ) {
-  //     Swal.fire({
-  //       icon: "warning",
-  //       title: "Please select filter!",
-  //       backdrop: `rgba(0,0,0,0.3)`,
-  //       timer: 1000,
-  //     });
-  //     return;
-  //   }
-
-  //   filter();
-  //   reset();
-  // };
 
   // Auto filter whenever selection changes
   useEffect(() => {

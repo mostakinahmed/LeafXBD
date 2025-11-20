@@ -36,9 +36,6 @@ const RightSide = ({ filterData }) => {
     }
   }, [cat, productData]);
 
-  console.log(filteredProducts);
-  console.log(filterData);
-
   return (
     <section className="w-full ">
       <h2 className="text-lg bg-white text-center p-1 pl-1 rounded-sm shadow-sm font-semibold mb-4">

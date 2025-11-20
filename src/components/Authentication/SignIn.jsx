@@ -5,15 +5,15 @@ const SignUp = () => {
   const navigate = useNavigate();
   return (
     <div className="flex font-poppins items-center justify-center dark:bg-gray-900 min-w-screen min-h-screen">
-      <div className="grid gap-8 md:items-center">
-        <div
-          id="back-div"
-          className="rounded-[26px] m-4"
-          style={{ background: "linear-gradient(to right, #fe741d, #fe741d)" }}
-        >
-          <div className="border-[20px] border-transparent rounded-md dark:bg-gray-900 bg-white shadow-md xl:p-10 2xl:p-10 lg:p-10 md:p-10 sm:p-2">
-            <h1 className="pt-8 pb-6 font-bold text-5xl dark:text-gray-400 text-center cursor-default">
-              Sign In
+      <div className="grid md:items-center">
+        <div>
+          <div className="dark:bg-gray-900 xl:p-10 2xl:p-10 lg:p-10 md:p-10 sm:p-2 -mt-10 md:mt-0">
+            <h1 className="pb-10 md:pb-10 text-xl dark:text-gray-400 text-center cursor-default">
+              Login to{"  "}
+              <span className="font-bold text-2xl">
+                {" "}
+                <span className="text-[#fe741d]">Victus</span> Byte
+              </span>
             </h1>
             <form action="#" method="post" className="space-y-4">
               <div>
@@ -25,9 +25,9 @@ const SignUp = () => {
                 </label>
                 <input
                   id="email"
-                  className="border dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 p-3 shadow-md placeholder:text-base border-gray-300 rounded-lg w-full focus:scale-105 ease-in-out duration-300"
+                  className="border dark:bg-indigo-700 bg-white dark:text-gray-300 dark:border-gray-700 p-2 placeholder:text-base border-gray-300 rounded w-full focus:scale-105 ease-in-out duration-300"
                   type="email"
-                  placeholder="Email"
+                  placeholder="Enter Email"
                   required
                 />
               </div>
@@ -40,17 +40,15 @@ const SignUp = () => {
                 </label>
                 <input
                   id="password"
-                  className="border dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 p-3 mb-2 shadow-md placeholder:text-base border-gray-300 rounded-lg w-full focus:scale-105 ease-in-out duration-300"
+                  className="border dark:bg-indigo-700 dark:text-gray-300 bg-white dark:border-gray-700 p-2 mb-2 placeholder:text-base border-gray-300 rounded w-full focus:scale-105 ease-in-out duration-300"
                   type="password"
-                  placeholder="Password"
+                  placeholder="Enter Password"
                   required
                 />
               </div>
               <button
-                className="shadow-lg mt-6 p-2 text-white rounded-lg w-full hover:scale-105 transition duration-300 ease-in-out"
-                style={{
-                  background: "linear-gradient(to right, #fe741d, #fe741d)",
-                }}
+                className="shadow-lg mt-6 p-2 text-white  bg-[#fe741d] rounded w-full hover:scale-105 transition duration-300 ease-in-out"
+               
                 type="submit"
               >
                 SIGN IN

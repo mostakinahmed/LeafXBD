@@ -6,6 +6,7 @@ import ProfileMenu from "../ProfileNavberIcon";
 import { DataContext } from "../Context Api/UserContext";
 import { useLocation } from "react-router-dom";
 import { SearchBar } from "../SearchBar";
+import { Profile } from "../Profile";
 
 const NavbarTop = () => {
   const { cart } = useContext(CartContext);
@@ -56,7 +57,7 @@ const NavbarTop = () => {
   }, [location]);
 
   return (
-    <div className="bg-white text-black py-1 shadow-md sticky top-0 z-50">
+    <div className="bg-white text-black py-1 border-b sticky top-0 z-50">
       {/* ======= DESKTOP NAV ======= */}
       <div className="max-w-[1400px] mx-auto items-center justify-between px-4 hidden md:flex">
         {/* Logo */}
@@ -71,7 +72,7 @@ const NavbarTop = () => {
         </div>
 
         {/* SEARCH WRAPPER (Centered Dropdown) */}
-        <div className=" w-1/3 bg-green-600 ">
+        <div className=" w-1/2 bg-green-600 ">
           <SearchBar />
         </div>
 
@@ -83,10 +84,10 @@ const NavbarTop = () => {
             </div>
           </Link>
 
-          <div className="text-sm cursor-pointer">⚡ Happy Hour</div>
+          {/* <div className="text-sm cursor-pointer">⚡ Happy Hour</div> */}
 
           {/* Cart */}
-          <div className="relative text-gray-700">
+          <div className="relative text-gray-800 hover:border px-2 py-1 hover:bg-gray-50 rounded">
             <Link to="/checkout/cart">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -111,12 +112,13 @@ const NavbarTop = () => {
             )}
           </div>
 
-          <ProfileMenu />
+          {/* <ProfileMenu /> */}
+          <Profile />
         </div>
       </div>
 
       {/* ======= MOBILE NAV ======= */}
-      <div className="bg-white w-full h-10 md:hidden flex items-center justify-between px-3">
+      <div className="bg-white  w-full h-10 md:hidden flex items-center justify-between px-3">
         <div className="text-3xl cursor-pointer mr-16" onClick={toggle}>
           <i
             className={
