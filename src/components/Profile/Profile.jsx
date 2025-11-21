@@ -114,7 +114,7 @@ const Profile = () => {
           </div>
 
           {/* Update Button */}
-          <button className="w-full bg-blue-600 text-white py-2 rounded-lg mt-2 hover:bg-blue-700 transition">
+          <button className="w-full cursor-pointer bg-blue-600 text-white py-2 rounded mt-2 hover:bg-blue-700 transition">
             Update Profile
           </button>
         </div>
