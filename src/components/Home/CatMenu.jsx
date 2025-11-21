@@ -23,7 +23,7 @@ const CategoryMenu = () => {
   }, [categoryData, productData]);
 
   return (
-    <div className="bg-white shadow  w-full hidden md:flex">
+    <div className="bg-white shadow-md  w-full hidden md:flex">
       <div className=" xl:max-w-[1370px] w-full mx-auto lg:pl-3 xl:pl-0 py-2">
         <div className="flex flex-nowrap lg:flex-nowrap lg:overflow-x-auto overflow-x-auto sm:flex-wrap sm:overflow-visible lg:gap-5 lg:ml-2 xl:ml-3 text-sm font-medium text-gray-700">
           {catData.map((cat, index) => (

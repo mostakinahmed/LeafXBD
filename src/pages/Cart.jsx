@@ -25,8 +25,8 @@ export const Cart = () => {
   );
 
   return (
-    <div className="max-w-[1400px] lg:mt-[86px] mt-[40px] pt-5 mx-auto min-h-screen md:px-4 px-2">
-      <div className="w-full rounded-md shadow-md bg-white p-5">
+    <div className="max-w-[1400px] lg:mt-[86px] mt-[40px] pt-5 mx-auto md:px-4 px-2">
+      <div className="w-full rounded-md min-h-screen  shadow-md bg-white p-5">
         <h1 className="text-2xl font-bold mb-6">Shopping Cart</h1>
 
         <div className="overflow-x-auto">
