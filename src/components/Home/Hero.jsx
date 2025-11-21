@@ -21,7 +21,7 @@ const BannerSection = () => {
   }, []);
 
   return (
-    <div className="max-w-[1400px] mx-auto mt-[35px]  md:mt-[70px] lg:mt-[80px] px-2 lg:px-4 pt-6 grid grid-cols-1 md:grid-cols-3 gap-3">
+    <div className="max-w-[1400px] mx-auto mt-[35px] md:mt-[70px] lg:mt-[80px] px-2 lg:px-4 pt-6 grid grid-cols-1 md:grid-cols-3 gap-2">
       {/* Main Banner */}
       {/* //search box */}
       <div className="md:hidden">
@@ -32,27 +32,32 @@ const BannerSection = () => {
         <img
           src={images[index]}
           alt="Banner"
-          className="w-full  md:h-[263px] lg:h-[350px] xl:h-[475px] h-[210px] rounded transition-all duration-500"
+          className="w-full  md:h-[263px] lg:h-[349px] xl:h-[480px] h-[210px] rounded transition-all duration-500"
         />
       </div>
+
       {/* Right Sideboxes */}
-      <div className="space-y-3 lg:space-y-3 xl:space-y-2">
-        {/* Compare Box */}
-
-        {/* <HeroAds products={productData} /> */}
-
-        <img
-          src="right side.png"
-          alt="Career Banner"
-          className="w-full h-auto rounded"
-        />
-
-        <img
-          src="right side 2.png"
-          alt="Career Banner"
-          className="w-full h-auto rounded"
-        />
+      <div className="flex flex-col lg:flex-col gap-3  rounded">
+        <div className="flex w-full gap-2 lg:block ">
+          {" "}
+          {/* ← add gap-2 here */}
+          <div className="w-1/2 lg:w-full">
+            <img
+              src="right side.png"
+              alt="Career Banner"
+              className=" lg:w-full h-auto rounded"
+            />
+          </div>
+          <div className="w-1/2 lg:w-full">
+            <img
+              src="right side 2.png"
+              alt="Career Banner"
+              className=" lg:w-full h-auto rounded lg:mt-2"
+            />
+          </div>
+        </div>
       </div>
+
       {/* Info Cards Section */}
       <div className="hidden md:flex col-span-1 md:col-span-3 flex-col md:flex-row gap-3 justify-between text-gray-700">
         {/* Card 1 */}
@@ -81,6 +86,7 @@ const BannerSection = () => {
           <p className="text-md text-gray-500 mt-1">Live chat & hotline</p>
         </div>
       </div>
+
       {/* Info Cards Section (Headings Only) */}
       <div className="flex flex-col gap-2 text-gray-700 md:hidden">
         {/* Row 1: Card 1 & Card 2 */}

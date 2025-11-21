@@ -59,7 +59,7 @@ const NavbarTop = () => {
   }, [location]);
 
   return (
-    <div className="bg-white text-black py-1 border-b sticky top-0 z-50">
+    <div className="bg-white shadow-sm text-black py-1 border-b sticky top-0 z-50">
       {/* ======= DESKTOP NAV ======= */}
       <div className="max-w-[1400px] mx-auto items-center justify-between px-4 hidden md:flex">
         {/* Logo */}

@@ -9,7 +9,7 @@ const TopCategoryCards = () => {
   return (
     <div className="max-w-[1400px] mx-auto mb-7">
       <FeatureText data="Top Categories" />
-      <div className="grid grid-cols-4 md:grid-cols-7 lg:grid-cols-8 xl:grid-cols-10 gap-3 xl:gap-7 mx-2 lg:mx-4 xl:mr-5">
+      <div className="flex flex-wrap justify-center gap-4 xl:gap-6 lg:gap-3">
         {categoryData && categoryData.length > 0 ? (
           categoryData.slice(0,10).map((cat, index) => (
             <Link to={`/product/${cat.catID}`}>
