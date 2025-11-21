@@ -1,102 +1,126 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  FiTruck,
+  FiShoppingBag,
+  FiInfo,
+  FiPhoneCall,
+  FiHelpCircle,
+  FiSend,
+  FiRotateCcw,
+  FiCreditCard,
+  FiList,
+} from "react-icons/fi";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
   return (
     <>
-      <div className="border-t-2 text-gray-300">
-        <footer className="bg-white text-gray-300 py-10">
-          <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Responsive Grid: 1 column on mobile, 2 on md, 4 on lg */}
+      <div className="border-t-2 text-white">
+        <footer className="bg-gray-900 text-white py-10">
+          <div className="max-w-[1400px] mx-auto px-2 sm:px-6 lg:px-4">
             <div className="flex justify-between gap-8 flex-col md:flex-row">
-              <div className="">
+              {/* LEFT SECTION */}
+              <div className="flex flex-row gap-4">
                 <Link to={"/home"}>
                   <img
-                    className="h-14 w-30 mb-7"
+                    className="h-16 w-32 mb-7 bg-gray-800 p-1 rounded"
                     src="/logo full final.png"
                     alt=""
                   />
                 </Link>
 
-                <p className="text-gray-800 ">
-                  Your one-stop shop for all your tech needs.<br/>Quality products,
-                  great prices. 
-                </p>
-                <p className="text-gray-800 text-sm mt-3">
-                  &copy; {new Date().getFullYear()} Victus Byte. All rights
-                  reserved.
-                </p>
+                <div>
+                  <p className="text-gray-200">
+                    Your one-stop shop for all your tech needs.
+                    <br />
+                    Quality products, great prices.
+                  </p>
+
+                  <p className="text-gray-200 text-sm mt-3">
+                    &copy; {new Date().getFullYear()} Victus Byte. All rights
+                    reserved.
+                  </p>
+                </div>
               </div>
 
+              {/* QUICK LINKS & SUPPORT */}
               <div className="flex justify-between md:gap-48">
                 {/* Quick Links */}
-                <div className="text-gray-800">
-                  <h4 className="text-gray-800 font-semibold mb-4">
-                    Quick Links
-                  </h4>
+                <div className="text-gray-200">
+                  <h4 className="text-white font-semibold mb-4">Quick Links</h4>
+
                   <ul className="space-y-2">
-                    <li>
-                      <a href="#" className="hover:text-indigo-500">
-                        Shop
-                      </a>
+                    <li className="flex items-center gap-2 cursor-pointer hover:text-indigo-500">
+                      <FiShoppingBag size={20} />
+                      <span>Shop</span>
                     </li>
-                    <li>
-                      <a href="#" className="hover:text-indigo-500">
-                        About Us
-                      </a>
+
+                    <li
+                      onClick={() => navigate("/track-order")}
+                      className="flex items-center gap-2 cursor-pointer hover:text-indigo-500"
+                    >
+                      <FiTruck size={22} />
+                      <span>Track Order</span>
                     </li>
-                    <li>
-                      <a href="#" className="hover:text-indigo-500">
-                        Contact
-                      </a>
+
+                    <li className="flex items-center gap-2 cursor-pointer hover:text-indigo-500">
+                      <FiInfo size={20} />
+                      <span>About Us</span>
                     </li>
-                    <li>
-                      <a href="#" className="hover:text-indigo-500">
-                        FAQ
-                      </a>
+
+                    <li className="flex items-center gap-2 cursor-pointer hover:text-indigo-500">
+                      <FiPhoneCall size={20} />
+                      <span>Contact</span>
+                    </li>
+
+                    <li className="flex items-center gap-2 cursor-pointer hover:text-indigo-500">
+                      <FiHelpCircle size={20} />
+                      <span>FAQ</span>
                     </li>
                   </ul>
                 </div>
 
-                {/* Customer Support */}
-                <div className="text-gray-800">
-                  <h4 className="text-gray-800 font-semibold mb-4">Support</h4>
+                {/* Support */}
+                <div className="text-gray-200">
+                  <h4 className="text-white font-semibold mb-4">Support</h4>
+
                   <ul className="space-y-2">
-                    <li>
-                      <a href="#" className="hover:text-indigo-500">
-                        Shipping
-                      </a>
+                    <li className="flex items-center gap-2 cursor-pointer hover:text-indigo-500">
+                      <FiSend size={20} />
+                      <span>Shipping</span>
                     </li>
-                    <li>
-                      <a href="#" className="hover:text-indigo-500">
-                        Returns
-                      </a>
+
+                    <li className="flex items-center gap-2 cursor-pointer hover:text-indigo-500">
+                      <FiRotateCcw size={20} />
+                      <span>Returns</span>
                     </li>
-                    <li>
-                      <a href="#" className="hover:text-indigo-500">
-                        Order Status
-                      </a>
+
+                    <li className="flex items-center gap-2 cursor-pointer hover:text-indigo-500">
+                      <FiList size={20} />
+                      <span>Order Status</span>
                     </li>
-                    <li>
-                      <a href="#" className="hover:text-indigo-500">
-                        Payment Options
-                      </a>
+
+                    <li className="flex items-center gap-2 cursor-pointer hover:text-indigo-500">
+                      <FiCreditCard size={20} />
+                      <span>Payment Options</span>
                     </li>
                   </ul>
                 </div>
               </div>
 
-              {/* Newsletter */}
-              <div className="text-gray-800">
-                <h4 className=" font-semibold mb-4">
+              {/* NEWSLETTER + SOCIAL + PAYMENT METHODS */}
+              <div className="text-white">
+                <h4 className="font-semibold mb-4">
                   Subscribe to our Newsletter
                 </h4>
-                {/* Responsive form: vertical on mobile, horizontal on sm+ */}
+
                 <form className="flex flex-col gap-2">
                   <input
                     type="email"
                     placeholder="Enter your email"
-                    className="px-3 py-2 rounded border-2 bg-gray-100 text-gray-900 flex-grow"
+                    className="px-3 py-2 rounded border-2 bg-gray-100 text-gray-900"
                   />
                   <button
                     type="submit"
@@ -118,6 +142,7 @@ const Footer = () => {
                       <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 5 3.657 9.128 8.438 9.876v-6.987H7.898v-2.89h2.54V9.845c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.466h-1.26c-1.243 0-1.63.772-1.63 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 17 22 12z" />
                     </svg>
                   </a>
+
                   <a
                     href="#"
                     aria-label="Twitter"
@@ -127,6 +152,7 @@ const Footer = () => {
                       <path d="M22.46 6c-.77.35-1.6.59-2.46.7a4.298 4.298 0 001.88-2.37 8.57 8.57 0 01-2.72 1.04 4.29 4.29 0 00-7.3 3.91A12.18 12.18 0 013 5.16a4.28 4.28 0 001.33 5.72 4.25 4.25 0 01-1.94-.53v.05a4.29 4.29 0 003.44 4.2 4.3 4.3 0 01-1.93.07 4.29 4.29 0 004 2.98A8.6 8.6 0 012 19.54 12.14 12.14 0 008.29 21c7.54 0 11.67-6.25 11.67-11.67 0-.18 0-.35-.01-.53A8.32 8.32 0 0022.46 6z" />
                     </svg>
                   </a>
+
                   <a
                     href="#"
                     aria-label="Instagram"
@@ -137,6 +163,62 @@ const Footer = () => {
                     </svg>
                   </a>
                 </div>
+              </div>
+            </div>
+
+            {/* PAYMENT METHODS */}
+            <div className="mt-1">
+              <h4 className="text-white font-semibold mb-3">Payment Methods</h4>
+
+              {/* Mobile Banking */}
+              <div className="flex flex-wrap items-center gap-4 mt-3">
+                <img
+                  src="https://freelogopng.com/images/all_img/1656227518bkash-logo-png.png"
+                  alt="bKash"
+                  className="h-10 bg-white object-contain p-1"
+                />
+                <img
+                  src="https://download.logo.wine/logo/Nagad/Nagad-Logo.wine.png"
+                  alt="Nagad"
+                  className="h-10 bg-white object-contain p-"
+                />
+                <img
+                  src="https://sajidshop.com/public/frontend/images/payment_method/rocket.png"
+                  alt="Rocket"
+                  className="h-10 bg-white object-contain p-1"
+                />
+
+                <img
+                  src="https://play-lh.googleusercontent.com/ihEz3fNdT5fFzUr0ThhdT_6b5MPPTImKwoUDAujHrn37KDEDAqq-xGnxwFIGI9cbvOE"
+                  alt="SureCash"
+                  className="h-10 bg-white"
+                />
+                <img
+                  src="https://play-lh.googleusercontent.com/oh-03_05Int0h23OdtIUpbQzu8GEiy-5IalmH-3k97nilPMw8aKT1hSCn_AczeliHXc7lXaiECns0BOPMgPp9w"
+                  alt="mCash"
+                  className="h-10 bg-white "
+                />
+
+                <img
+                  src="https://logowik.com/content/uploads/images/visa-payment-card1873.jpg"
+                  alt="Visa"
+                  className="h-10 bg-white object-contain"
+                />
+                <img
+                  src="https://p1.hiclipart.com/preview/110/429/95/visa-mastercard-logo-credit-card-payment-card-number-atm-card-automated-teller-machine-mousepad-computer-accessory-circle-png-clipart.jpg"
+                  alt="Mastercard"
+                  className="h-10"
+                />
+                <img
+                  src="https://img.icons8.com/color/1200/amex.jpg"
+                  alt="American Express"
+                  className="h-10"
+                />
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/825/825484.png"
+                  alt="UnionPay"
+                  className="h-10"
+                />
               </div>
             </div>
           </div>

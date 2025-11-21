@@ -35,7 +35,7 @@ export const Profile = () => {
       {login ? (
         <div
           onClick={() => setOpen(!open)}
-          className="cursor-pointer hover:border-1 lg:py-[7px] lg:px-2 py-[4px] px-1 rounded-3xl bg-[#f58138]"
+          className="cursor-pointer border border-transparent hover:border-gray-300 lg:py-[7px] lg:px-2 py-[4px] px-1 rounded-3xl bg-[#f58138]"
         >
           <button className="flex gap-2 justify-center items-center">
             <User className="w-6 h-6 hover:text-white text-gray-900" />
@@ -43,7 +43,7 @@ export const Profile = () => {
         </div>
       ) : (
         // If user is NOT logged in
-        <div className="hover:border-1 py-[6px] px-3 rounded bg-white hover:bg-gray-50 -ml-1 lg:-ml-0">
+        <div className="border border-transparent hover:border-gray-300 py-[6px] px-3 rounded bg-white hover:bg-gray-50 -ml-1 lg:-ml-0">
           <button
             onClick={() => navigate("/signin")}
             className="flex gap-2 justify-center items-center"

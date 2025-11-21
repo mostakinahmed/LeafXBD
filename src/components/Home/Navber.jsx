@@ -102,7 +102,10 @@ const NavbarTop = () => {
           </div>
 
           {/* Cart Icon */}
-          <div className="relative border border-transparent hover:border-gray-300 hover:bg-gray-50 px-2 py-1 rounded transition-colors duration-300 flex items-center justify-center">
+          <div
+            className="relative border border-transparent hover:border-gray-300 hover:bg-gray-50 px-2 py-1 rounded transition-colors duration-300 flex items-center justify-center"
+            title="Cart"
+          >
             <Link to="/checkout/cart">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -153,7 +156,7 @@ const NavbarTop = () => {
 
         <div className="flex w-1/3 items-center lg:space-x-2   justify-end">
           {/* Search Icon */}
-          <div className="">
+          <div className="mr-4">
             {searchIcon && (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -162,7 +165,7 @@ const NavbarTop = () => {
                 strokeWidth={3}
                 stroke="currentColor"
                 onClick={() => setSbar((prev) => !prev)} // call search function
-                className="w-6 h-6 text-gray-700 cursor-pointer hover:text-black transition"
+                className="w-6 h-6  text-gray-700 cursor-pointer hover:text-black transition"
               >
                 <path
                   strokeLinecap="round"
@@ -172,7 +175,7 @@ const NavbarTop = () => {
               </svg>
             )}
           </div>
-          <div
+          {/* <div
             onClick={() => navigate("/track-order")}
             className="mt-1 cursor-pointer border border-transparent hover:border-gray-300 hover:bg-gray-50 px-2 py-1 rounded transition-colors duration-300 flex items-center justify-center"
             title="Track Order"
@@ -181,7 +184,7 @@ const NavbarTop = () => {
               size={25}
               className="text-gray-800 hover:text-orange-500 transition-colors duration-300"
             />
-          </div>
+          </div> */}
           {/* /profile show */}
           <Profile />
 
