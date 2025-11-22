@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { DataContext } from "../Context Api/UserContext";
 import Specification from "../Product Details/Specification.jsx";
 import { RelatedProduct } from "./RelatedProduct.jsx";
 import { Description } from "./Description.jsx";
 import { CartContext } from "../Context Api/CartContext.jsx";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const ProductDetail = () => {
   //for cart value change. call func
@@ -28,19 +29,84 @@ const ProductDetail = () => {
     return <div>Product not found</div>;
   }
 
+  //for imge gallery
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const prevImage = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? product.images.length - 1 : prev - 1
+    );
+  };
+
+  const nextImage = () => {
+    setCurrentIndex((prev) =>
+      prev === product.images.length - 1 ? 0 : prev + 1
+    );
+  };
+
   return (
     <>
       <div className="min-h-screen pb-5">
         {/* Top section for general view */}
         <section className="max-w-[1400px] mt-[9px] lg:mt-[50px] p-3 md:px-5 px-2 mx-auto">
-          <div className="flex flex-col md:flex-row mt-10 justify-between gap-3">
+          <div className="flex  flex-col md:flex-row mt-10 justify-between gap-3">
             {/* Left side: Product Image */}
-            <div className="flex-1 w-full rounded-md bg-white h-full lg:h-[400px] lg:w-[800px] ">
-              <img
-                src={product.images}
-                alt={product.name}
-                className=" w-full h-full object-contain p-3 rounded-lg shadow"
-              />
+            <div className="flex-1 bg-white flex  rounded-md shadow">
+              {/* Vertical Thumbnails */}
+              <div className="flex flex-col gap-2 border-r px-3 py-1 justify-center overflow-y-auto max-h-[400px]">
+                {product.images.map((img, idx) => (
+                  <img
+                    key={idx}
+                    src={img}
+                    alt={`${product.name} ${idx + 1}`}
+                    onClick={() => setCurrentIndex(idx)}
+                    className={`w-20 h-20 p-1 object-contain rounded-md cursor-pointer border-2 ${
+                      idx === currentIndex
+                        ? "border-blue-500"
+                        : "border-gray-200"
+                    }`}
+                  />
+                ))}
+              </div>
+
+              {/* Main Image */}
+              <div className="flex-1 relative bg-white rounded-md  h-[400px] flex items-center justify-center">
+                <img
+                  src={product.images[currentIndex]}
+                  alt={product.name}
+                  className="w-full h-full object-contain p-3 rounded-md"
+                />
+
+                {/* Optional arrows for main image */}
+                {product.images.length > 1 && (
+                  <>
+                    <button
+                      onClick={() =>
+                        setCurrentIndex(
+                          currentIndex === 0
+                            ? product.images.length - 1
+                            : currentIndex - 1
+                        )
+                      }
+                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white/90"
+                    >
+                      <FiChevronLeft size={24} />
+                    </button>
+                    <button
+                      onClick={() =>
+                        setCurrentIndex(
+                          currentIndex === product.images.length - 1
+                            ? 0
+                            : currentIndex + 1
+                        )
+                      }
+                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white/90"
+                    >
+                      <FiChevronRight size={24} />
+                    </button>
+                  </>
+                )}
+              </div>
             </div>
 
             {/* Right side: Product Details */}
@@ -67,7 +133,7 @@ const ProductDetail = () => {
               </p>
 
               <p className="text-2xl font-semibold text-gray-800 mb-6">
-                TK: {product.price}.00
+                TK: {product?.price?.selling ?? "0"}.00
               </p>
 
               {/* Action Buttons */}

@@ -26,7 +26,7 @@ export const RelatedProduct = ({ data }) => {
                   <div className="w-[6rem] flex items-center justify-center">
                     <img
                       className="object-contain h-16 w-16"
-                      src={element.images}
+                      src={element.images[0]}
                       alt={element.name}
                     />
                   </div>
@@ -45,7 +45,7 @@ export const RelatedProduct = ({ data }) => {
                     </div>
 
                     <h2 className="text-lg font-semibold">
-                      TK. {element.price}
+                      TK. {element?.price?.selling ?? "0.00"}
                     </h2>
                   </div>
                 </div>
