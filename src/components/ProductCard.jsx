@@ -8,7 +8,7 @@ export const ProductCard = ({ data }) => {
         <div className="overflow-hidden">
           <img
             className="w-full h-[170px] object-contain transform transition-transform duration-500 hover:scale-110"
-            src={data.images}
+            src={data.images[0]}
             alt={data.name}
           />
         </div>
@@ -20,7 +20,9 @@ export const ProductCard = ({ data }) => {
             Dimensions: 162.2 x 77.5
           </p>
           <div className="flex items-center justify-between text-sm">
-            <span className="text-indigo-600 font-bold">${data.price}</span>
+            <span className="text-indigo-600 font-bold">
+              ${data?.price?.selling ?? "0.00"}
+            </span>
             <span className="text-green-600">Stock: {data.stock}</span>
           </div>
         </div>
