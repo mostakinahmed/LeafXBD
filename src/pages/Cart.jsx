@@ -66,7 +66,7 @@ export const Cart = () => {
                     <img
                       src={item.images || "https://via.placeholder.com/80"}
                       alt={item.name}
-                      className="w-20 h-20 object-cover rounded-lg"
+                      className="w-22 h-22 object-contain rounded"
                     />
                   </td>
                   <td className="px-4 py-3">
