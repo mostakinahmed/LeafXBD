@@ -41,21 +41,6 @@ export const FeatureProduct = () => {
     <div>
       {/* Section Title */}
       <FeatureText data="Featured Product" />
-
-      {/* Product Grid */}
-      <div className="max-w-[1400px] mx-auto lg:px-4 px-2 pb-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 md:gap-4 gap-3">
-        {visibleProducts
-          .slice() // shallow copy for safe reverse
-          .reverse()
-          .map((product) => (
-            <Link
-              key={product.pID}
-              to={`/product/${product.category}/${product.pID}`}
-            >
-              <ProductCard data={product} />
-            </Link>
-          ))}
-      </div>
     </div>
   );
 };
