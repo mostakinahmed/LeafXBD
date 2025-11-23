@@ -32,7 +32,7 @@ export const ProductCard = ({ data }) => {
 
           <div className="flex items-center justify-between text-sm">
             <span className="text-red-600  font-bold text-xl">
-              ${data.price.selling - data.price.discount ?? "0.00"}
+              ${data.price.selling - (data.price.discount || 0) || 0}
             </span>
             {data.price.discount > 0 && (
               <span className="text-gray-600 font-semibold line-through">

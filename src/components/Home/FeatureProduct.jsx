@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useMemo } from "react";
 import { FeatureText } from "./FeatureText";
 import ProductCard from "../ProductCard";
 import { DataContext } from "../Context Api/UserContext";
@@ -8,44 +8,44 @@ export const FeatureProduct = () => {
   const { productData } = useContext(DataContext);
   const [visibleProducts, setVisibleProducts] = useState([]);
 
-  const [featuredData, setFeaturedData] = useState([]);
+  // Memoize featured products to avoid recalculation on every render
+  const featuredData = useMemo(
+    () => productData.filter((item) => item.status.isFeatured),
+    [productData]
+  );
 
-  useEffect(() => {
-    const data = productData.filter((item) => item.status.isFeatured);
-    setFeaturedData(data);
-  }, [productData]);
-
+  // Update visible products based on screen width
   useEffect(() => {
     const updateVisibleProducts = () => {
-      const width = window.innerWidth; // get current width dynamically
+      const width = window.innerWidth;
 
       if (width >= 1280) {
-        // xl screens
         setVisibleProducts(featuredData.slice(0, 16));
       } else if (width >= 1024) {
-        // lg screens
         setVisibleProducts(featuredData.slice(0, 12));
       } else {
-        // md/sm/xs
         setVisibleProducts(featuredData.slice(0, 8));
       }
     };
 
-    // run on mount
+    // Initial run
     updateVisibleProducts();
 
-    // listen for resize
+    // Listen to window resize
     window.addEventListener("resize", updateVisibleProducts);
+
     return () => window.removeEventListener("resize", updateVisibleProducts);
-  }, [productData]); // run again if productData changes
+  }, [featuredData]);
 
   return (
     <div>
+      {/* Section Title */}
       <FeatureText data="Featured Product" />
 
-      <div className="max-w-[1400px] mx-auto lg:px-4 px-2 pb-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 xl:grid-cols-6 md:gap-4 gap-3">
+      {/* Product Grid */}
+      <div className="max-w-[1400px] mx-auto lg:px-4 px-2 pb-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 md:gap-4 gap-3">
         {visibleProducts
-          .slice(0, 12)
+          .slice() // shallow copy for safe reverse
           .reverse()
           .map((product) => (
             <Link
@@ -59,3 +59,5 @@ export const FeatureProduct = () => {
     </div>
   );
 };
+
+export default FeatureProduct;
