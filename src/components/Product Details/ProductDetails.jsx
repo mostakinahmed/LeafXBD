@@ -88,7 +88,7 @@ const ProductDetail = () => {
                             : currentIndex - 1
                         )
                       }
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white/90"
+                      className="absolute left-4 top-1/2 cursor-pointer transform -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white/90"
                     >
                       <FiChevronLeft size={24} />
                     </button>
@@ -100,7 +100,7 @@ const ProductDetail = () => {
                             : currentIndex + 1
                         )
                       }
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white/90"
+                      className="absolute right-4 top-1/2 cursor-pointer transform -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white/90"
                     >
                       <FiChevronRight size={24} />
                     </button>
