@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { DataContext } from "../Context Api/UserContext";
 import Specification from "../Product Details/Specification.jsx";
@@ -6,32 +6,58 @@ import { RelatedProduct } from "./RelatedProduct.jsx";
 import { Description } from "./Description.jsx";
 import { CartContext } from "../Context Api/CartContext.jsx";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { Minus, Plus } from "lucide-react";
 
 const ProductDetail = () => {
-  //for cart value change. call func
+  // Cart feature
   const { addToCart } = useContext(CartContext);
 
-  const { categoryData, productData } = useContext(DataContext);
+  // States
+  const [currentStock, setCurrentStock] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [quantity, setQuantity] = useState(1);
+  const [selectedColor, setSelectedColor] = useState("#F44336");
+
+  // Context data
+  const { categoryData, productData, stockData } = useContext(DataContext);
   const { cat, id } = useParams();
 
-  //find specific product
-  const product = productData.find((item) => item.pID === id);
+  // Find product
+  const product = productData?.find((item) => item.pID === id);
 
-  //find current pro cat
-  const CurrCat = categoryData.find((item) => item.catID === cat);
+  // Find category
+  const CurrCat = categoryData?.find((item) => item.catID === cat);
 
-  //find all same cat product for related product
-  const allProductsInCategory = productData
-    .filter((item) => item.category === cat && item.pID !== id)
-    .slice(0, 6); // take maximum 5 products
+  // Find related products
+  const allProductsInCategory =
+    productData
+      ?.filter((item) => item.category === cat && item.pID !== id)
+      .slice(0, 6) || [];
 
+  // Update stock
+  useEffect(() => {
+    if (!stockData || !product) return;
+
+    const stock = stockData.find((item) => item.pID === id);
+
+    if (stock && Array.isArray(stock.SKU)) {
+      const count = stock.SKU.filter((s) => s.status === true).length;
+      setCurrentStock(count);
+    } else {
+      setCurrentStock(0);
+    }
+  }, [product, id, stockData]);
+
+  // If product doesn't exist -> NOW it's safe to return
   if (!product) {
-    return <div>Product not found</div>;
+    return (
+      <div className="p-5 text-center text-xl font-semibold text-red-500">
+        Product not found
+      </div>
+    );
   }
 
-  //for imge gallery
-  const [currentIndex, setCurrentIndex] = useState(0);
-
+  // Image gallery handlers
   const prevImage = () => {
     setCurrentIndex((prev) =>
       prev === 0 ? product.images.length - 1 : prev - 1
@@ -47,14 +73,14 @@ const ProductDetail = () => {
   return (
     <>
       <div className="min-h-screen pb-5">
-        {/* Top section for general view */}
+        {/* Top section */}
         <section className="max-w-[1400px] mt-[9px] lg:mt-[50px] p-3 md:px-5 px-2 mx-auto">
-          <div className="flex  flex-col md:flex-row mt-10 justify-between gap-3">
-            {/* Left side: Product Image */}
-            <div className="flex-1 bg-white flex  rounded-md shadow">
-              {/* Vertical Thumbnails */}
+          <div className="flex flex-col md:flex-row mt-10 justify-between gap-3">
+            {/* Left: Image Gallery */}
+            <div className="flex-1 bg-white flex rounded-md shadow">
+              {/* Thumbnails */}
               <div className="flex flex-col gap-2 border-r px-3 py-1 justify-center overflow-y-auto max-h-[400px]">
-                {product.images.map((img, idx) => (
+                {product.images?.map((img, idx) => (
                   <img
                     key={idx}
                     src={img}
@@ -70,37 +96,26 @@ const ProductDetail = () => {
               </div>
 
               {/* Main Image */}
-              <div className="flex-1 relative bg-white rounded-md  h-[400px] flex items-center justify-center">
+              <div className="flex-1 relative bg-white rounded h-[400px] flex items-center justify-center">
                 <img
                   src={product.images[currentIndex]}
                   alt={product.name}
                   className="w-full h-full object-contain p-3 rounded-md"
                 />
 
-                {/* Optional arrows for main image */}
+                {/* Arrows */}
                 {product.images.length > 1 && (
                   <>
                     <button
-                      onClick={() =>
-                        setCurrentIndex(
-                          currentIndex === 0
-                            ? product.images.length - 1
-                            : currentIndex - 1
-                        )
-                      }
-                      className="absolute left-4 top-1/2 cursor-pointer transform -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white/90"
+                      onClick={prevImage}
+                      className="absolute left-4 top-1/2 cursor-pointer transform -translate-y-1/2 bg-black/10 p-2 rounded-full hover:bg-white/90"
                     >
                       <FiChevronLeft size={24} />
                     </button>
+
                     <button
-                      onClick={() =>
-                        setCurrentIndex(
-                          currentIndex === product.images.length - 1
-                            ? 0
-                            : currentIndex + 1
-                        )
-                      }
-                      className="absolute right-4 top-1/2 cursor-pointer transform -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white/90"
+                      onClick={nextImage}
+                      className="absolute right-4 top-1/2 cursor-pointer transform -translate-y-1/2 bg-black/10 p-2 rounded-full hover:bg-white/90"
                     >
                       <FiChevronRight size={24} />
                     </button>
@@ -109,21 +124,65 @@ const ProductDetail = () => {
               </div>
             </div>
 
-            {/* Right side: Product Details */}
-            <div className="flex-1 bg-white lg:h-[400px] lg:w-[800px] shadow px-4 pb-5 pt-2 rounded-md">
-              <h1 className="text-3xl font-bold text-gray-800 mb-2">
+            {/* Right: Product Details */}
+            <div className="flex-1 bg-white lg:h-[400px] shadow px-4 pb-5 pt-2 rounded">
+              <h1 className="text-2xl font-bold text-gray-800 mb-2">
                 {product.name}
               </h1>
 
-              <p className="text-xl text-gray-500 mb-1">
-                Type: {CurrCat.catName}
-              </p>
-              <p className="text-xl text-gray-500 mb-35">SKU: {product.pID}</p>
+              <div className="flex gap-4">
+                <p className="text-sm flex items-center text-gray-500 mb-1 bg-gray-200 px-2 rounded-2xl">
+                  Category:
+                  <span className="text-[#fe741d] ml-1 text-sm font-semibold  uppercase">
+                    {CurrCat?.catName}
+                  </span>
+                </p>
+                <h1 className="text-gray-500">|</h1>
+                <p className="text-sm flex items-center text-gray-500 mb-1 bg-gray-200 px-2 rounded-2xl">
+                  Brand:{" "}
+                  <span className="text-[#fe741d] text-sm ml-1 font-semibold uppercase">
+                    {product.brandName}
+                  </span>
+                </p>
+                <h1 className="text-gray-500">|</h1>
+                <p className="text-sm flex items-center text-gray-500 mb-1 bg-gray-200 px-2 rounded-2xl">
+                  Code:{" "}
+                  <span className="text-[#fe741d] ml-1 text-sm font-semibold  uppercase">
+                    {product.pID}
+                  </span>
+                </p>
+              </div>
 
-              {/* ✅ Availability Status */}
-              <p className="text-xl mb-1">
+              {/* color box */}
+              <div className="flex flex-col space-x-3 mt-19 mb-2">
+                <h1 className="text-gray-700 mb-1">
+                  Color: <span className="font-semibold">Black</span>
+                </h1>
+                <div className="flex gap-2">
+                  {["Red", "Blue", "Green", "Yellow", "Purple"].map(
+                    (name, idx) => (
+                      <div
+                        key={idx}
+                        onClick={() => setSelectedColor(name)}
+                        className={`w-14 h-8 flex items-center justify-center border border-[#fe741d] text-sm font-medium cursor-pointer transition-all
+        ${
+          selectedColor === name
+            ? "bg-[#fe741d] text-white scale-105"
+            : "bg-transparent text-gray-900"
+        }
+      `}
+                      >
+                        {name}
+                      </div>
+                    )
+                  )}
+                </div>
+              </div>
+
+              {/* Availability */}
+              <p className="text-lg text-gray-700 mb-1 ">
                 Availability:{" "}
-                {product.stock > 0 ? (
+                {currentStock > 0 ? (
                   <span className="text-green-600 font-semibold">In Stock</span>
                 ) : (
                   <span className="text-red-600 font-semibold">
@@ -132,54 +191,63 @@ const ProductDetail = () => {
                 )}
               </p>
 
-              <p className="text-2xl font-semibold text-gray-800 mb-6">
+              <p className="text-xl font-semibold text-gray-800">
                 TK: {product?.price?.selling ?? "0"}.00
               </p>
 
-              {/* Action Buttons */}
-              <div className="flex gap-4">
+              {/* quantity */}
+              <div className="flex items-center mt-3 mb-4">
+                {/* Minus Button */}
                 <button
-                  onClick={() => addToCart(product.pID, product.name)}
-                  disabled={product.stock <= 0}
-                  className={`w-full md:w-auto py-2 px-6 rounded-md shadow focus:outline-none transition 
-        ${
-          product.stock > 0
-            ? "bg-blue-600 text-white hover:bg-blue-700"
-            : "bg-gray-400 text-gray-200 cursor-not-allowed"
-        }`}
+                  onClick={() => quantity > 1 && setQuantity(quantity - 1)}
+                  className="w-10 h-10 border border-gray-300 flex items-center justify-center 
+               text-lg hover:bg-gray-100 active:bg-gray-200 select-none"
                 >
-                  Add to Cart
+                  -
                 </button>
 
-                <Link to={`/product/${product.category}/${product.pID}/buynow`}>
-                  <button
-                    disabled={product.stock <= 0}
-                    className={`w-full md:w-auto py-2 px-6 rounded-md shadow focus:outline-none transition 
-        ${
-          product.stock > 0
-            ? "bg-green-600 text-white hover:bg-green-700"
-            : "bg-gray-400 text-gray-200 cursor-not-allowed"
-        }`}
-                  >
-                    Buy Now
-                  </button>
-                </Link>
+                {/* Number Box */}
+                <input
+                  type="text"
+                  value={quantity}
+                  readOnly
+                  className="w-14 h-10 border-t border-b border-gray-300 text-center 
+               focus:outline-none text-lg"
+                />
+
+                {/* Plus Button */}
+                <button
+                  onClick={() => setQuantity(quantity + 1)}
+                  className="w-10 h-10 border border-gray-300 flex items-center justify-center 
+               text-lg hover:bg-gray-100 active:bg-gray-200 select-none"
+                >
+                  +
+                </button>
+              </div>
+
+              {/* Buttons */}
+              <div className="flex gap-4">
+                <button className="bg-[#2dc6f4] hover:bg-[#00b4ea] w-50 h-10 flex items-center justify-center text-white font-semibold">
+                  Buy Now
+                </button>
+
+                <button className="bg-[#fe741d] hover:bg-[#fb6405] w-50 h-10 flex items-center justify-center text-white font-semibold">
+                  Add to Cart
+                </button>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Specs and Related */}
         <section className="max-w-full lg:max-w-[1400px] mx-auto md:px-5 px-2 flex flex-col lg:flex-row lg:gap-3">
-          {/* main Specification */}
           <div className="lg:w-full xl:w-full">
             <Specification data={product} />
           </div>
-
-          {/* Related Product */}
           <RelatedProduct data={allProductsInCategory} />
         </section>
 
-        {/* description */}
+        {/* Description */}
         <section className="max-w-[1400px] p-3 md:px-5 px-2 mx-auto">
           <Description data={product} />
         </section>

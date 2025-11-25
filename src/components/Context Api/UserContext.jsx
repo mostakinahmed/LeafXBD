@@ -9,19 +9,22 @@ export const DataContext = createContext();
 export const UserContext = ({ children }) => {
   const [productData, setProductData] = useState([]);
   const [categoryData, setCategoryData] = useState([]);
+  const [stockData, setStockData] = useState([]);
   const [loading, setLoading] = useState(true); // 🔧 added
   const [error, setError] = useState(null);
   // ✅ Fetch data from API
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [productRes, categoryRes] = await Promise.all([
+        const [productRes, categoryRes, stockRes] = await Promise.all([
           axios.get("https://fabribuzz.onrender.com/api/product"),
           axios.get("https://fabribuzz.onrender.com/api/category"),
+          axios.get("https://fabribuzz.onrender.com/api/stock"),
         ]);
 
         setProductData(productRes.data);
         setCategoryData(categoryRes.data);
+        setStockData(stockRes.data);
       } catch (err) {
         console.error("API fetch error:", err);
         setError(err);
@@ -35,6 +38,7 @@ export const UserContext = ({ children }) => {
   const contextValue = {
     productData,
     categoryData,
+    stockData,
     loading,
     error,
   };
