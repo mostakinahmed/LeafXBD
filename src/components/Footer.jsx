@@ -218,7 +218,7 @@ const Footer = () => {
                 />
               </div>
             </div>
-            <p className="text-gray-200 text-sm mt-5 text-center">
+            <p className="text-gray-400 text-sm mt-5 text-center">
               &copy; {new Date().getFullYear()} Victus Byte. All rights
               reserved.
             </p>
