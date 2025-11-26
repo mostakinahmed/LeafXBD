@@ -19,7 +19,7 @@ const AlsoLike = () => {
   return (
     <div className="max-w-[1400px]  md:px-5 px-2 mx-auto">
       <div className="mt-5 overflow-hidden relative">
-        <h2 className="text-lg font-semibold mb-3">You May Also Like</h2>
+        <h2 className="lg:text-2xl text-xl text-gray-800 font-semibold mb-3">You May Also Like</h2>
 
         {/* Auto-scrolling row */}
         <div className="overflow-hidden">

@@ -127,7 +127,7 @@ const ProductDetail = () => {
 
             {/* Right: Product Details */}
             <div className="flex-1 bg-white lg:h-[400px] shadow px-4 pb-5 pt-2 rounded">
-              <h1 className="text-2xl font-bold text-gray-800 mb-2">
+              <h1 className="lg:text-2xl text-xl font-bold text-gray-800 mb-2">
                 {product.name}
               </h1>
 
@@ -182,7 +182,7 @@ const ProductDetail = () => {
               </div>
 
               {/* Availability */}
-              <p className="text-lg text-gray-700 mb-1 ">
+              <p className="text- text-gray-700 mb-1 ">
                 Availability:{" "}
                 {currentStock > 0 ? (
                   <span className="text-green-600 font-semibold">In Stock</span>

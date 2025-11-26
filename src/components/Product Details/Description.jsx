@@ -3,7 +3,7 @@ import React from "react";
 export const Description = ({ data }) => {
   return (
     <div className="bg-white shadow-md px-6 pt-5 pb-5 rounded-md">
-      <h1 className="text-2xl sm:text-2xl font-bold text-gray-800 mb-3">
+      <h1 className="lg:text-2xl text-xl sm:text-2xl font-bold text-gray-800 mb-3">
         Product Description
       </h1>
 
