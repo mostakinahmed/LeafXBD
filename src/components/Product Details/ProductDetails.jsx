@@ -156,11 +156,11 @@ const ProductDetail = () => {
               </div>
 
               {/* color box */}
-              <div className="flex flex-col space-x-3 mt-19 mb-2">
+              <div className="flex flex-col space-x-3  mt-19 mb-2">
                 <h1 className="text-gray-700 mb-1">
                   Color: <span className="font-semibold">{selectedColor}</span>
                 </h1>
-                <div className="flex gap-2">
+                <div className="flex gap-3">
                   {["Red", "Blue", "Green", "Yellow", "Purple"].map(
                     (name, idx) => (
                       <div
@@ -229,11 +229,11 @@ const ProductDetail = () => {
 
               {/* Buttons */}
               <div className="flex gap-4">
-                <button className="bg-[#2dc6f4] hover:bg-[#00b4ea] w-50 h-10 flex items-center justify-center text-white font-semibold">
+                <button className="bg-[#2dc6f4] hover:bg-[#00b4ea] w-50 h-10 flex items-center justify-center text-white ">
                   Buy Now
                 </button>
 
-                <button className="bg-[#fe741d] hover:bg-[#fb6405] w-50 h-10 flex items-center justify-center text-white font-semibold">
+                <button className="bg-[#fe741d] hover:bg-[#fb6405] w-50 h-10 flex items-center justify-center text-white ">
                   Add to Cart
                 </button>
               </div>
