@@ -8,7 +8,7 @@ export const RelatedProduct = ({ data }) => {
         <h1 className="p-3 shadow-sm text-2xl font-semibold text-gray-700 text-center">
           Related Product
         </h1>
-        {data.map((element) => {
+        {data.slice(0,5).map((element) => {
           // Flatten all specification arrays into a single array
           const flatSpecs = Object.values(element.specifications).flat();
 

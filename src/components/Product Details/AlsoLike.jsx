@@ -23,8 +23,8 @@ const AlsoLike = () => {
 
         {/* Auto-scrolling row */}
         <div className="overflow-hidden">
-          <div className="flex gap-4 animate-scroll">
-            {[...productData, ...productData].map((product) => (
+          <div className= "flex gap-4 animate-scroll">
+            {[...productData, ...productData].reverse().map((product) => (
               <Link
                 key={product.pID + Math.random()}
                 to={`/product/${product.category}/${product.pID}`}

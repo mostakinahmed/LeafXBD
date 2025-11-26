@@ -2,7 +2,7 @@ import React from "react";
 
 export const Description = ({ data }) => {
   return (
-    <div className="bg-white shadow-md px-6 pt-5 rounded-md">
+    <div className="bg-white shadow-md px-6 pt-5 pb-5 rounded-md">
       <h1 className="text-2xl sm:text-2xl font-bold text-gray-800 mb-3">
         Product Description
       </h1>
@@ -20,7 +20,7 @@ export const Description = ({ data }) => {
           <img
             src={data.images[0]}
             alt={data.name}
-            className="w-40 sm:w-52 md:w-60 h-auto object-contain rounded-md shadow-sm hover:scale-105 transition-transform duration-300"
+            className="w-40 sm:w-52 md:w-60 h-auto object-contain rounded-md  hover:scale-105 transition-transform duration-300"
           />
         </div>
       </div>
