@@ -131,27 +131,25 @@ const ProductDetail = () => {
                 {product.name}
               </h1>
 
-              <div className="flex lg:flex-row flex-col gap-4">
-                <div className="flex flex-row gap-4">
-                  <p className="text-sm flex items-center text-gray-500 mb-1 bg-gray-100 px-2 rounded-2xl">
-                    Category:
-                    <span className="text-[#fe741d] ml-1 text-sm font-semibold  uppercase">
-                      {CurrCat?.catName}
-                    </span>
-                  </p>
-                  <h1 className="text-gray-500 -mt-1">|</h1>
-                  <p className="text-sm flex items-center text-gray-500 mb-1 bg-gray-100 px-2 rounded-2xl">
-                    Brand:{" "}
-                    <span className="text-[#fe741d] text-sm ml-1 font-semibold uppercase">
-                      {product.brandName}
-                    </span>
-                  </p>
-                  <h1 className="text-gray-500 -mt-1">|</h1>
-                </div>
+              <div className="flex flex-row  lg:gap-4">
+                <p className="text-xs lg:text-sm flex items-center text-gray-500 mb-1 bg-gray-100 px-2 rounded-2xl">
+                  Category:
+                  <span className="text-[#fe741d] ml-1 lg:text-sm font-semibold  uppercase">
+                    {CurrCat?.catName}
+                  </span>
+                </p>
+                <h1 className="hidden lg:flex text-gray-500 -mt-1">|</h1>
+                <p className="text-xs lg:text-sm flex items-center text-gray-500 mb-1 bg-gray-100 px-2 rounded-2xl">
+                  Brand:{" "}
+                  <span className="text-[#fe741d] lg:text-sm ml-1 font-semibold uppercase">
+                    {product.brandName}
+                  </span>
+                </p>
+                <h1 className="hidden lg:flex text-gray-500 -mt-1">|</h1>
 
-                <p className="text-sm flex items-center w-[115px] text-gray-500 mb-1 bg-gray-100 px-2 rounded-2xl">
+                <p className="text-xs lg:text-sm flex items-center w-[115px] text-gray-500 mb-1 bg-gray-100 px-2 rounded-2xl">
                   Code:{" "}
-                  <span className="text-[#fe741d] ml-1 text-sm font-semibold  uppercase">
+                  <span className="text-[#fe741d] ml-1 lg:text-sm font-semibold  uppercase">
                     {product.pID}
                   </span>
                 </p>
