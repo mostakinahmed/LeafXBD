@@ -20,12 +20,12 @@ const Footer = () => {
       <div className="border-t-2 text-white">
         <footer className="bg-gray-900 text-white py-4">
           <div className="max-w-[1400px] mx-auto px-2 sm:px-6 lg:px-4">
-            <div className="flex justify-between gap-8 flex-col md:flex-row">
+            <div className="flex justify-between lg:gap-8 gap-4 flex-col md:flex-row">
               {/* LEFT SECTION */}
               <div className="flex flex-col">
                 <Link to={"/home"}>
                   <img
-                    className="h-16 w-32 lg:mb-4  bg-gray-800 p-1 rounded"
+                    className="lg:h-16 lg:w-32 h-14 w-30 lg:mb-4  bg-gray-800 p-1 rounded"
                     src="/logo full final.png"
                     alt=""
                   />
@@ -44,7 +44,9 @@ const Footer = () => {
               <div className="flex justify-between md:gap-48">
                 {/* Quick Links */}
                 <div className="text-gray-200">
-                  <h4 className="text-white font-semibold mb-4">Quick Links</h4>
+                  <h4 className="text-white font-semibold lg:mb-4 mb-2">
+                    Quick Links
+                  </h4>
 
                   <ul className="space-y-2">
                     <li className="flex items-center gap-2 cursor-pointer hover:text-indigo-500">
@@ -168,57 +170,57 @@ const Footer = () => {
               </h4>
 
               {/* Mobile Banking */}
-              <div className="flex flex-wrap items-center gap-4 mt-3">
+              <div className="flex flex-wrap items-center lg:gap-4 gap-3 lg:mt-3 mt-1.5">
                 <img
                   src="https://freelogopng.com/images/all_img/1656227518bkash-logo-png.png"
                   alt="bKash"
-                  className="h-10 bg-white object-contain p-1"
+                  className="lg:h-10 h-8 bg-white object-contain p-1"
                 />
                 <img
                   src="https://download.logo.wine/logo/Nagad/Nagad-Logo.wine.png"
                   alt="Nagad"
-                  className="h-10 bg-white object-contain p-"
+                  className="lg:h-10 h-8 bg-white object-contain p-"
                 />
                 <img
                   src="https://sajidshop.com/public/frontend/images/payment_method/rocket.png"
                   alt="Rocket"
-                  className="h-10 bg-white object-contain p-1"
+                  className="lg:h-10 h-8 bg-white object-contain p-1"
                 />
 
                 <img
                   src="https://play-lh.googleusercontent.com/ihEz3fNdT5fFzUr0ThhdT_6b5MPPTImKwoUDAujHrn37KDEDAqq-xGnxwFIGI9cbvOE"
                   alt="SureCash"
-                  className="h-10 bg-white"
+                  className="lg:h-10 h-8 bg-white"
                 />
                 <img
                   src="https://play-lh.googleusercontent.com/oh-03_05Int0h23OdtIUpbQzu8GEiy-5IalmH-3k97nilPMw8aKT1hSCn_AczeliHXc7lXaiECns0BOPMgPp9w"
                   alt="mCash"
-                  className="h-10 bg-white "
+                  className="lg:h-10 h-8 bg-white "
                 />
 
                 <img
                   src="https://logowik.com/content/uploads/images/visa-payment-card1873.jpg"
                   alt="Visa"
-                  className="h-10 bg-white object-contain"
+                  className="lg:h-10 h-8 bg-white object-contain"
                 />
                 <img
                   src="https://p1.hiclipart.com/preview/110/429/95/visa-mastercard-logo-credit-card-payment-card-number-atm-card-automated-teller-machine-mousepad-computer-accessory-circle-png-clipart.jpg"
                   alt="Mastercard"
-                  className="h-10"
+                  className="lg:h-10 h-8"
                 />
                 <img
                   src="https://img.icons8.com/color/1200/amex.jpg"
                   alt="American Express"
-                  className="h-10"
+                  className="lg:h-10 h-8 hidden md:block"
                 />
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/825/825484.png"
                   alt="UnionPay"
-                  className="h-10"
+                  className="lg:h-10 h-8 hidden md:block"
                 />
               </div>
             </div>
-            <p className="text-gray-400 text-sm mt-5 text-center">
+            <p className="text-gray-400 text-sm lg:mt-5 mt-4 -mb-3 lg:-mb-1 text-center">
               &copy; {new Date().getFullYear()} Victus Byte. All rights
               reserved.
             </p>

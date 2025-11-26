@@ -131,7 +131,7 @@ const ProductDetail = () => {
                 {product.name}
               </h1>
 
-              <div className="flex flex-row  lg:gap-4 gap-3 -ml-1">
+              <div className="flex flex-row  lg:gap-4 gap-2 -ml-1">
                 <p className="text-xs lg:text-sm flex items-center text-gray-500 mb-1 bg-gray-100 px-2 rounded-2xl">
                   Category:
                   <span className="text-[#fe741d] ml-1 lg:text-sm font-semibold  uppercase">
@@ -156,7 +156,7 @@ const ProductDetail = () => {
               </div>
 
               {/* color box */}
-              <div className="flex flex-col space-x-3  mt-19 mb-2">
+              <div className="flex flex-col space-x-3  mt-20 mb-2">
                 <h1 className="text-gray-700 mb-1">
                   Color: <span className="font-semibold">{selectedColor}</span>
                 </h1>
@@ -193,14 +193,17 @@ const ProductDetail = () => {
                 )}
               </p>
 
-              <p className="text-xl font-semibold text-gray-800">
-                TK: {product?.price?.selling - product.price.discount ?? "0"}.00
-              </p> 
-              {product.price.discount > 0 && (
-                <p className="text-sm text-gray-500 line-through">
-                  TK: {product?.price?.selling ?? "0"}.00
+              <div className="flex  gap-3 ">
+                <p className="text-xl font-semibold text-gray-800">
+                  TK: {product?.price?.selling - product.price.discount ?? "0"}
+                  .00
                 </p>
-              )}
+                {product.price.discount > 0 && (
+                  <p className="text-md text-gray-500 mt- line-through">
+                    TK: {product?.price?.selling ?? "0"}.00
+                  </p>
+                )}
+              </div>
 
               {/* quantity */}
               <div className="flex items-center mt-3 mb-4">
