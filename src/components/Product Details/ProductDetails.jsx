@@ -166,7 +166,7 @@ const ProductDetail = () => {
                       <div
                         key={idx}
                         onClick={() => setSelectedColor(name)}
-                        className={`w-14 h-8 flex items-center justify-center border border-[#fe741d] text-sm font-medium cursor-pointer transition-all
+                        className={`lg:w-14 lg:h-8 w-12 h-7 flex items-center justify-center border border-[#fe741d] lg:text-sm text-xs font-medium cursor-pointer transition-all
         ${
           selectedColor === name
             ? "bg-[#fe741d] text-white scale-105"
