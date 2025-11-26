@@ -194,8 +194,13 @@ const ProductDetail = () => {
               </p>
 
               <p className="text-xl font-semibold text-gray-800">
-                TK: {product?.price?.selling ?? "0"}.00
-              </p>
+                TK: {product?.price?.selling - product.price.discount ?? "0"}.00
+              </p> 
+              {product.price.discount > 0 && (
+                <p className="text-sm text-gray-500 line-through">
+                  TK: {product?.price?.selling ?? "0"}.00
+                </p>
+              )}
 
               {/* quantity */}
               <div className="flex items-center mt-3 mb-4">
