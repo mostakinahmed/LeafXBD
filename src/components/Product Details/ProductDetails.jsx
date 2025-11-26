@@ -131,7 +131,7 @@ const ProductDetail = () => {
                 {product.name}
               </h1>
 
-              <div className="flex flex-row  lg:gap-4">
+              <div className="flex flex-row  lg:gap-4 gap-3 -ml-1">
                 <p className="text-xs lg:text-sm flex items-center text-gray-500 mb-1 bg-gray-100 px-2 rounded-2xl">
                   Category:
                   <span className="text-[#fe741d] ml-1 lg:text-sm font-semibold  uppercase">
