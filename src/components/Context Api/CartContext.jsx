@@ -31,8 +31,20 @@ export function CartProvider({ children }) {
     });
   }
 
+  //for update value
+  const [cartItems, setCartItems] = useState([]);
+  useEffect(() => {
+    updateCart();
+  }, []);
+
+  const updateCart = () => {
+    const stored = JSON.parse(localStorage.getItem("cart")) || [];
+    setCartItems(stored);
+  };
+
+
   return (
-    <CartContext.Provider value={{ cart, addToCart }}>
+    <CartContext.Provider value={{ cart, addToCart, updateCart, cartItems }}>
       {children}
     </CartContext.Provider>
   );

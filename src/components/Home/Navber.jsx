@@ -11,12 +11,22 @@ import { FiTruck } from "react-icons/fi"; // Track icon
 
 const NavbarTop = () => {
   const navigate = useNavigate();
-  const { cart } = useContext(CartContext);
+  const { cart, updateCart, cartItems } = useContext(CartContext);
   const [values, setValue] = useState(false);
   const [sBar, setSbar] = useState(false);
   const toggle = () => setValue(!values);
   const [searchIcon, setSearchIcon] = useState(true);
   const [catData, setCatData] = useState([]);
+  const [cartValue, setCartValue] = useState(false);
+
+  //for cart item length
+  // const [cartItems, setCartItems] = useState([]);
+  // useEffect(() => {
+  //   const stored = JSON.parse(localStorage.getItem("cart")) || [];
+  //   setCartItems(stored);
+  // }, []);
+
+  // console.log(cartItems);
 
   const { categoryData, productData } = useContext(DataContext);
 
@@ -122,9 +132,12 @@ const NavbarTop = () => {
                 />
               </svg>
             </Link>
+            <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+              {cartItems.length}
+            </span>
             {cart.length > 0 && (
               <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
-                {cart.length}
+                {cart.length}6
               </span>
             )}
           </div>

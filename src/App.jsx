@@ -20,6 +20,7 @@ import Profile from "./components/Profile/Profile";
 import TrackOrder from "./components/TrackOrder";
 
 function App() {
+  
   const location = useLocation();
 
   // Scroll to top on route change
@@ -45,6 +46,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<TempHome />} />
+        
         <Route path="/home" element={<Home />} />
         <Route path="/product/:cat" element={<AllProduct />} />
         <Route path="/product/:cat/:id" element={<ProductDetails />} />
@@ -58,6 +60,7 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/track-order" element={<TrackOrder />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
 
       {!isTempHome && <Footer />}

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { DataContext } from "../Context Api/UserContext";
 import Specification from "../Product Details/Specification.jsx";
 import { RelatedProduct } from "./RelatedProduct.jsx";
@@ -8,11 +8,13 @@ import { CartContext } from "../Context Api/CartContext.jsx";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { Minus, Plus } from "lucide-react";
 import AlsoLike from "./AlsoLike";
+import ResponsiveToaster from "./ResponsiveToaster";
+import toast from "react-hot-toast";
 
 const ProductDetail = () => {
+  const navigate = useNavigate();
   // Cart feature
-  const { addToCart } = useContext(CartContext);
-
+  const { cart, addToCart, updateCart, cartItems } = useContext(CartContext);
   // States
   const [currentStock, setCurrentStock] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -71,9 +73,57 @@ const ProductDetail = () => {
     );
   };
 
+  const saveCart = (cart) => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
+  //Buy now handler
+  const buyNowBtn = (product) => {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const index = cart.findIndex((item) => item.pID === product.pID);
+    if (index !== -1) {
+      cart[index].qty += 1;
+    } else {
+      cart.push({
+        pID: product.pID,
+        name: product.name,
+        price: product.price.selling,
+        image: product.images[0],
+        qty: 1,
+      });
+    }
+
+    saveCart(cart);
+    updateCart();
+    navigate("/cart");
+  };
+
+  const addToCartBtn = (product) => {
+    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const found = existingCart.find((item) => item.pID === product.pID);
+
+    if (found) {
+      toast.success("Already Added!");
+    } else {
+      existingCart.push({
+        pID: product.pID,
+        name: product.name,
+        price: product.price.selling,
+        image: product.images[0],
+        qty: 1,
+      });
+      localStorage.setItem("cart", JSON.stringify(existingCart));
+      updateCart();
+       toast.success("Added to Cart!");
+    }
+  };
+
   return (
     <>
       <div className="min-h-screen pb-5">
+        <ResponsiveToaster />
         {/* Top section */}
         <section className="max-w-[1400px] mt-[9px] lg:mt-[50px] p-3 md:px-5 px-2 mx-auto">
           <div className="flex flex-col md:flex-row mt-10 justify-between gap-3">
@@ -237,11 +287,17 @@ const ProductDetail = () => {
 
               {/* Buttons */}
               <div className="flex gap-4">
-                <button className="bg-[#2dc6f4] hover:bg-[#00b4ea] w-50 h-10 flex items-center justify-center text-white ">
+                <button
+                  onClick={() => buyNowBtn(product)}
+                  className="bg-[#2dc6f4] hover:bg-[#00b4ea] w-50 h-10 flex items-center justify-center text-white "
+                >
                   Buy Now
                 </button>
 
-                <button className="bg-[#fe741d] hover:bg-[#fb6405] w-50 h-10 flex items-center justify-center text-white ">
+                <button
+                  onClick={() => addToCartBtn(product)}
+                  className="bg-[#fe741d] hover:bg-[#fb6405] w-50 h-10 flex items-center justify-center text-white "
+                >
                   Add to Cart
                 </button>
               </div>
