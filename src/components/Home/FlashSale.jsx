@@ -15,7 +15,7 @@ export default function FlashSale() {
   }, [productData]);
 
   return (
-    <section className=" max-w-[1370px] bg-gray-800 pb-3 xl:mx-auto mx-2 lg:mx-4 rounded">
+    <section className=" max-w-[1370px] bg-gray-800 xl:mx-auto mx-2 lg:mx-4 rounded">
       <div className="w-full flex items-center justify-between rounded-t bg-gray-800 text-white px-4 py-3 shadow-md animate-bounce ">
         <div className="">
           <h3 className="lg:flex hidden text-lg font-semibold items-center gap-2">
