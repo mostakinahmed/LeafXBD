@@ -103,7 +103,7 @@ const ProductDetail = () => {
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
 
     const found = existingCart.find((item) => item.pID === product.pID);
-
+//just toast compleated
     if (found) {
       toast.success("Already Added!");
     } else {
