@@ -103,20 +103,17 @@ const ProductDetail = () => {
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
 
     const found = existingCart.find((item) => item.pID === product.pID);
-//just toast compleated
+    //just toast compleated
     if (found) {
       toast.success("Already Added!");
     } else {
       existingCart.push({
         pID: product.pID,
-        name: product.name,
-        price: product.price.selling,
-        image: product.images[0],
-        qty: 1,
+        qty: quantity,
       });
       localStorage.setItem("cart", JSON.stringify(existingCart));
       updateCart();
-       toast.success("Added to Cart!");
+      toast.success("Added to Cart!");
     }
   };
 
