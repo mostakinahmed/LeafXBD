@@ -15,7 +15,7 @@ export default function AllProduct() {
 
       if (width >= 1280) {
         // xl screens
-        setVisibleProducts(productData.slice(0, 16));
+        setVisibleProducts(productData.slice(0, 18));
       } else if (width >= 1024) {
         // lg screens
         setVisibleProducts(productData.slice(0, 12));
