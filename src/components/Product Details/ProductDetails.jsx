@@ -134,7 +134,7 @@ const ProductDetail = () => {
                     src={img}
                     alt={`${product.name} ${idx + 1}`}
                     onClick={() => setCurrentIndex(idx)}
-                    className={`w-20 h-20 p-1 object-contain rounded-md cursor-pointer border-2 ${
+                    className={`w-17 h-17 p-1 object-contain rounded-md cursor-pointer border-2 ${
                       idx === currentIndex
                         ? "border-blue-500"
                         : "border-gray-200"
@@ -156,14 +156,14 @@ const ProductDetail = () => {
                   <>
                     <button
                       onClick={prevImage}
-                      className="absolute left-4 top-1/2 cursor-pointer transform -translate-y-1/2 bg-black/10 p-2 rounded-full hover:bg-white/90"
+                      className="absolute left-1 top-1/2 cursor-pointer transform -translate-y-1/2 bg-gray-100 p-2 rounded-full hover:bg-gray-200"
                     >
                       <FiChevronLeft size={24} />
                     </button>
 
                     <button
                       onClick={nextImage}
-                      className="absolute right-4 top-1/2 cursor-pointer transform -translate-y-1/2 bg-black/10 p-2 rounded-full hover:bg-white/90"
+                      className="absolute right-1 top-1/2 cursor-pointer transform -translate-y-1/2 bg-gray-100 p-2 rounded-full hover:bg-gray-200"
                     >
                       <FiChevronRight size={24} />
                     </button>
