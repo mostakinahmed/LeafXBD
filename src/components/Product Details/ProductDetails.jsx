@@ -148,7 +148,7 @@ const ProductDetail = () => {
                 <img
                   src={product.images[currentIndex]}
                   alt={product.name}
-                  className="w-full h-full object-contain p-3 rounded-md"
+                  className="w-full h-full object-contain p-6 lg:p-3 rounded-md"
                 />
 
                 {/* Arrows */}
@@ -178,7 +178,7 @@ const ProductDetail = () => {
                 {product.name}
               </h1>
 
-              <div className="flex flex-row  lg:gap-4 gap-2 -ml-1">
+              <div className="flex flex-row  lg:gap-4 gap-2 -ml-1 flex-row-wrap ">
                 <p className="text-xs lg:text-sm flex items-center text-gray-500 mb-1 bg-gray-100 px-2 rounded-2xl">
                   Category:
                   <span className="text-[#fe741d] ml-1 lg:text-sm font-semibold  uppercase">
@@ -257,8 +257,8 @@ const ProductDetail = () => {
                 {/* Minus Button */}
                 <button
                   onClick={() => quantity > 1 && setQuantity(quantity - 1)}
-                  className="w-10 h-10 border border-gray-300 flex items-center justify-center 
-               text-lg hover:bg-gray-100 active:bg-gray-200 select-none"
+                  className="w-10 h-10 border border-gray-300 bg-gray-100 flex items-center justify-center 
+               text-lg hover:bg-gray-200 active:bg-gray-200 select-none"
                 >
                   -
                 </button>
@@ -275,8 +275,8 @@ const ProductDetail = () => {
                 {/* Plus Button */}
                 <button
                   onClick={() => setQuantity(quantity + 1)}
-                  className="w-10 h-10 border border-gray-300 flex items-center justify-center 
-               text-lg hover:bg-gray-100 active:bg-gray-200 select-none"
+                  className="w-10 h-10 border border-gray-300 bg-gray-100 flex items-center justify-center 
+               text-lg hover:bg-gray-200 active:bg-gray-200 select-none"
                 >
                   +
                 </button>

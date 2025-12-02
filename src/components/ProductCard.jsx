@@ -23,20 +23,21 @@ export const ProductCard = ({ data }) => {
           />
         </div>
         <div className="px-3 pt-1">
-          <span className="text-green-600 text-xs font-semibold ">
-            stock in
+          <span className="text-white px-1 -ml-6 bg-green-500 rounded-2xl text-xs font-semibold ">
+            <span className="ml-5">stock in</span>
           </span>
           <h2 className="text-sm font-semibold text-gray-800 mb-1 line-clamp-2 truncate">
             {data.name}
           </h2>
 
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-red-600  font-bold text-xl">
-              ${data.price.selling - (data.price.discount || 0) || 0}
+          <div className="flex items-center justify-between -mt-2 lg:-mt-1">
+            <span className="text-red-600  font-bold lg:text- text-lg">
+              {data.price.selling - (data.price.discount || 0) || 0}{" "}
+              <span className="-ml-1">৳</span>
             </span>
             {data.price.discount > 0 && (
               <span className="text-gray-600 font-semibold line-through">
-                -${data.price.selling}
+                {data.price.selling} <span className="-ml-1">৳</span>
               </span>
             )}
           </div>
