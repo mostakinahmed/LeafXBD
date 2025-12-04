@@ -302,7 +302,7 @@ const ProductDetail = () => {
           </div>
         </section>
 
-        {/* Specs and Related */}
+        
 
         {/* Specs and Related */}
         {/* Specs and Related */}
