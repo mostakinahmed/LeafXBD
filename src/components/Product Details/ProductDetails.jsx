@@ -302,9 +302,7 @@ const ProductDetail = () => {
           </div>
         </section>
 
- 
-
-        {/* Specs and Related */}
+ }
         {/* Specs and Related */}
         <section className="max-w-full lg:max-w-[1400px] mx-auto md:px-5 px-2 flex flex-col lg:flex-row lg:gap-3">
           <div className="lg:w-full xl:w-full">
