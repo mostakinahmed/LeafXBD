@@ -8,7 +8,7 @@ const ResponsiveToaster = () => {
     const updateStyle = () => {
       if (window.innerWidth < 640) {
         setToastStyle({
-          marginTop: "50px",
+          marginTop: "40px",
           marginRight: "0px",
           padding: "10px 14px",
           borderRadius: "0.5rem",

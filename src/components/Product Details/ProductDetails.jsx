@@ -14,7 +14,7 @@ import toast from "react-hot-toast";
 const ProductDetail = () => {
   const navigate = useNavigate();
   // Cart feature
-  const { cart, addToCart, updateCart, cartItems } = useContext(CartContext);
+  const { updateCart } = useContext(CartContext);
   // States
   const [currentStock, setCurrentStock] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);

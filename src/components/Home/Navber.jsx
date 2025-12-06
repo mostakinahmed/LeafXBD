@@ -202,13 +202,13 @@ const NavbarTop = () => {
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={1.5}
+                  strokeWidth={2}
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9h14l-2-9M5 21h14"
                 />
               </svg>
             </Link>
             {cartItems.length > 0 && (
-              <span className="absolute -top-2 right-0.5 bg-blue-600 text-white text-xs font-bold px-1 rounded-full">
+              <span className="absolute -top-0.5 right-0.5 bg-blue-600 text-white text-[8px] font-bold px-1 rounded-full">
                 {cartItems.length}
               </span>
             )}

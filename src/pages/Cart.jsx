@@ -63,7 +63,9 @@ export const Cart = () => {
   return (
     <div className="max-w-[1400px] lg:mt-[86px] mt-[40px] pt-5 mx-auto md:px-4 px-2">
       <div className="w-full rounded min-h-screen shadow bg-white p-2 lg:p-3">
-        <h1 className="lg:text-lg font-bold text-black lg:mb-3 mb-2">Shopping Cart</h1>
+        <h1 className="lg:text-lg font-bold text-black lg:mb-3 mb-2">
+          Shopping Cart
+        </h1>
 
         <div className="overflow-x-auto">
           <table className="min-w-full text-left table-auto w-full whitespace-nowrap">
@@ -96,13 +98,6 @@ export const Cart = () => {
 
             <tbody className="divide-y">
               {/* Empty Cart Message */}
-              {items.length === 0 && (
-                <tr>
-                  <td colSpan="4" className="text-center py-5">
-                    Your cart is empty.
-                  </td>
-                </tr>
-              )}
 
               {/* Cart Items */}
               {items.map((item, index) => (
@@ -197,6 +192,10 @@ export const Cart = () => {
               </button>
             </div>
           </div>
+        )}
+
+        {items.length === 0 && (
+          <h1 className="text-center mt-5"> Your cart is empty.</h1>
         )}
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import { React, useContext, useEffect, useState } from "react";
 import { useLocation, Route, Routes } from "react-router-dom";
 import Navber from "./components/Home/Navber";
 import CatMenu from "./components/Home/CatMenu.jsx";
@@ -18,9 +18,33 @@ import SignUp from "./components/Authentication/SignUp";
 import SignIn from "./components/Authentication/SignIn";
 import Profile from "./components/Profile/Profile";
 import TrackOrder from "./components/TrackOrder";
+import { DataContext } from "./components/Context Api/UserContext";
+
+const Loader = () => (
+  <div
+    style={{
+      height: "100vh",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    }}
+  >
+    <div className="loader" />
+  </div>
+);
 
 function App() {
+  const { productData } = useContext(DataContext);
   const location = useLocation();
+
+  const [loading, setLoading] = useState(true);
+
+  // Stop loader as soon as productData is available
+  useEffect(() => {
+    if (productData && productData.length > 0) {
+      setLoading(false);
+    }
+  }, [productData]);
 
   // Scroll to top on route change
   useEffect(() => {
@@ -29,23 +53,20 @@ function App() {
 
   const isTempHome = location.pathname === "/";
 
+  // Show loader while backend/data is loading
+  if (loading) return <Loader />;
+
   return (
     <CartProvider>
-      {/* Show Navber + CatMenu except on TempHome */}
       {!isTempHome && (
         <div className="fixed top-0 w-full z-50">
           <Navber />
           <CatMenu />
         </div>
       )}
-      {/* <div className="fixed top-0 w-full z-50">
-        <Navber />
-        <CatMenu />
-      </div> */}
 
       <Routes>
         <Route path="/" element={<TempHome />} />
-
         <Route path="/home" element={<Home />} />
         <Route path="/product/:cat" element={<AllProduct />} />
         <Route path="/product/:cat/:id" element={<ProductDetails />} />
