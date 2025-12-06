@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const RelatedProduct = ({ data }) => {
   return (
-    <div className="w-auto lg:w-[400px] bg-white lg:bg-white shadow rounded-lg lg:flex mt-3 lg:mt-0 ">
+    <div className="w-auto lg:w-[400px] bg-white lg:bg-white shadow rounded lg:flex mt-3 lg:mt-0 ">
       <div className="w-full">
         <h1 className="p-3 shadow-sm lg:text-2xl text-xl font-semibold text-gray-700 text-center">
           Related Product

@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../components/Context Api/CartContext";
 import { DataContext } from "../components/Context Api/UserContext";
 import { IoClose } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 export const Cart = () => {
-  const { productData } = useContext(DataContext);
+  const navigate = useNavigate();
 
+  const { productData } = useContext(DataContext);
   const [items, setItems] = useState([]); // merged cart items
 
   // Load cart from localStorage and merge with productData
@@ -50,9 +52,13 @@ export const Cart = () => {
     );
   };
 
+  //proceed button handler
+  const ProceedBtn = () => {
+    navigate("/cart/purchase");
+  };
   return (
     <div className="max-w-[1400px] lg:mt-[86px] mt-[40px] pt-5 mx-auto md:px-4 px-2">
-      <div className="w-full rounded-md min-h-screen shadow-md bg-white p-5">
+      <div className="w-full rounded min-h-screen shadow bg-white p-5">
         <h1 className="text-2xl font-bold mb-6">Shopping Cart</h1>
 
         <div className="overflow-x-auto">
@@ -65,7 +71,7 @@ export const Cart = () => {
                 <th className="px-4 py-3 text-sm font-semibold text-gray-600">
                   Product Name
                 </th>
-                <th className="px-4 py-3 text-sm font-semibold text-gray-600">
+                <th className="px-4 py-3 text-sm font-semibold text-gray-600 ">
                   Action
                 </th>
                 <th className="px-4 py-3 text-sm font-semibold text-gray-600">
@@ -97,7 +103,7 @@ export const Cart = () => {
               {/* Cart Items */}
               {items.map((item, index) => (
                 <tr key={index}>
-                  <td className="px-4 py-3">
+                  <td className="px-4 py-1">
                     <img
                       src={item.images[0]}
                       alt={item.name}
@@ -106,20 +112,20 @@ export const Cart = () => {
                   </td>
 
                   <td className="px-4 py-3">
-                    <p className="font-semibold">{item.name}</p>
+                    <p className="font-">{item.name}</p>
                   </td>
 
                   <td>
                     <button
                       onClick={() => onRemove(item.pID)}
-                      className="text-red-600 text-2xl hover:bg-red-200 rounded"
+                      className="text-red-600 text-2xl ml-6 hover:bg-red-200 rounded"
                     >
                       <IoClose />
                     </button>
                   </td>
 
                   <td className="px-4 py-3">
-                    <p className="font-semibold">{item.qty}</p>
+                    <p className=" ml-5 font-semibold">{item.qty}</p>
                   </td>
 
                   {/* <td className="px-4 py-3">
@@ -196,7 +202,10 @@ export const Cart = () => {
                 <span>{totalPrice + 60}</span>
               </div>
 
-              <button className="w-full mt-5 py-2 bg-blue-600 text-white rounded-xs hover:bg-blue-800 transition font-semibold">
+              <button
+                onClick={() => ProceedBtn()}
+                className="w-full mt-5 mb-2 py-2 bg-blue-600 text-white rounded-xs hover:bg-blue-800 transition font-semibold"
+              >
                 Proceed to Checkout
               </button>
             </div>

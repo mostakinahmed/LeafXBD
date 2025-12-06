@@ -137,7 +137,7 @@ const LeftSide = ({ onFilter }) => {
   }, [selectedBrand, selectedIds, selectedRange, cat]);
 
   return (
-    <div className="bg-white rounded-md shadow">
+    <div className="bg-white rounded shadow">
       <div>
         <button
           className="w-full lg:hidden bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2"

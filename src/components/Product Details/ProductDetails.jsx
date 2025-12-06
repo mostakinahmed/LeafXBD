@@ -125,7 +125,7 @@ const ProductDetail = () => {
         <section className="max-w-[1400px] mt-[9px] lg:mt-[50px] p-3 md:px-5 px-2 mx-auto">
           <div className="flex flex-col md:flex-row mt-10 justify-between gap-3">
             {/* Left: Image Gallery */}
-            <div className="flex-1 bg-white flex rounded-md shadow">
+            <div className="flex-1 bg-white flex rounded shadow">
               {/* Thumbnails */}
               <div className="flex flex-col gap-2 border-r px-3 py-1 justify-center overflow-y-auto max-h-[400px]">
                 {product.images?.map((img, idx) => (
@@ -134,7 +134,7 @@ const ProductDetail = () => {
                     src={img}
                     alt={`${product.name} ${idx + 1}`}
                     onClick={() => setCurrentIndex(idx)}
-                    className={`w-17 h-17 p-1 object-contain rounded-md cursor-pointer border-2 ${
+                    className={`w-17 h-17 p-1 object-contain rounded cursor-pointer border-2 ${
                       idx === currentIndex
                         ? "border-blue-500"
                         : "border-gray-200"
@@ -148,7 +148,7 @@ const ProductDetail = () => {
                 <img
                   src={product.images[currentIndex]}
                   alt={product.name}
-                  className="w-full h-full object-contain p-6 lg:p-3 rounded-md"
+                  className="w-full h-full object-contain p-6 lg:p-3 rounded"
                 />
 
                 {/* Arrows */}
