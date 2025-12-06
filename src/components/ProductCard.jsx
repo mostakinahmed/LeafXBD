@@ -31,7 +31,7 @@ export const ProductCard = ({ data }) => {
           </h2>
 
           <div className="flex items-center justify-between -mt-2 lg:-mt-1">
-            <span className="text-red-600  font-bold lg:text- text-lg">
+            <span className="text-red-600  font-bold lg:text- text-">
               {data.price.selling - (data.price.discount || 0) || 0}{" "}
               <span className="-ml-1">৳</span>
             </span>
@@ -42,7 +42,7 @@ export const ProductCard = ({ data }) => {
             )}
           </div>
         </div>
-        <Link to={`/product/${data.category}/${data.pID}/buynow`}>
+        <Link to={`/checkout/cart`}>
           <button className="w-full  bg-[#fe741d] hover:bg-indigo-800 text-white text-sm py-2 transition duration-300">
             Buy Now
           </button>

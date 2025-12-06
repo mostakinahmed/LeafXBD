@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 export const Cart = () => {
   const navigate = useNavigate();
 
+  const { updateCart } = useContext(CartContext);
   const { productData } = useContext(DataContext);
   const [items, setItems] = useState([]); // merged cart items
 
@@ -50,16 +51,19 @@ export const Cart = () => {
         updatedItems.map((item) => ({ pID: item.pID, qty: item.qty }))
       )
     );
+
+    //update navber
+    updateCart();
   };
 
   //proceed button handler
   const ProceedBtn = () => {
-    navigate("/cart/purchase");
+    navigate("/checkout/purchase");
   };
   return (
     <div className="max-w-[1400px] lg:mt-[86px] mt-[40px] pt-5 mx-auto md:px-4 px-2">
-      <div className="w-full rounded min-h-screen shadow bg-white p-5">
-        <h1 className="text-2xl font-bold mb-6">Shopping Cart</h1>
+      <div className="w-full rounded min-h-screen shadow bg-white p-2 lg:p-3">
+        <h1 className="lg:text-lg font-bold text-black lg:mb-3 mb-2">Shopping Cart</h1>
 
         <div className="overflow-x-auto">
           <table className="min-w-full text-left table-auto w-full whitespace-nowrap">
@@ -94,7 +98,7 @@ export const Cart = () => {
               {/* Empty Cart Message */}
               {items.length === 0 && (
                 <tr>
-                  <td colSpan="5" className="text-center py-5">
+                  <td colSpan="4" className="text-center py-5">
                     Your cart is empty.
                   </td>
                 </tr>
@@ -103,47 +107,30 @@ export const Cart = () => {
               {/* Cart Items */}
               {items.map((item, index) => (
                 <tr key={index}>
-                  <td className="px-4 py-1">
+                  <td className="px-4">
                     <img
                       src={item.images[0]}
                       alt={item.name}
-                      className="w-22 h-22 object-contain rounded"
+                      className="lg:w-18 lg:h-18 py-1 lg:py-0 object-contain rounded"
                     />
                   </td>
 
                   <td className="px-4 py-3">
-                    <p className="font-">{item.name}</p>
+                    <p className="  ">{item.name}</p>
                   </td>
 
                   <td>
                     <button
                       onClick={() => onRemove(item.pID)}
-                      className="text-red-600 text-2xl ml-6 hover:bg-red-200 rounded"
+                      className="text-red-600 text-2xl ml-5 p-2 hover:bg-red-200 rounded"
                     >
                       <IoClose />
                     </button>
                   </td>
 
                   <td className="px-4 py-3">
-                    <p className=" ml-5 font-semibold">{item.qty}</p>
+                    <p className=" ml-5">{item.qty}</p>
                   </td>
-
-                  {/* <td className="px-4 py-3">
-                    <div className="flex items-center border rounded-md w-24">
-                      <button className="px-2 text-gray-600 hover:bg-gray-100">
-                        −
-                      </button>
-                      <input
-                        type="text"
-                        value={item.qty}
-                        readOnly
-                        className="w-10 text-center border-l border-r outline-none"
-                      />
-                      <button className="px-2 text-gray-600 hover:bg-gray-100">
-                        +
-                      </button>
-                    </div>
-                  </td> */}
 
                   <td className="px-4 py-3">{item.price.selling}</td>
 
@@ -173,8 +160,8 @@ export const Cart = () => {
         {/* Order Summary */}
         {items.length > 0 && (
           <div className="flex justify-end mt-6">
-            <div className="max-w-sm w-full px-3 pb-1 pt-2 bg-white shadow rounded-md border border-gray-200">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 border-b pb-2">
+            <div className="max-w-sm w-full px-3 pb-1 pt-2 bg-white shadow rounded border border-gray-200">
+              <h2 className="lg:text-lg  text-black font-bold mb-4 border-b pb-2">
                 Order Summary
               </h2>
 
@@ -197,9 +184,9 @@ export const Cart = () => {
                 <span className="font-semibold text-red-500">$60</span>
               </div>
 
-              <div className="flex justify-between pb-2 bg-gray-100 text-gray-900 font-bold text-lg border-t pt-3 mt-3">
-                <span>Total</span>
-                <span>{totalPrice + 60}</span>
+              <div className="flex justify-between lg:pb-2 pb-1 bg-gray-100 text-gray-900 font-bold text-lg border-t lg:pt-3 pt-1 mt-3">
+                <span className="ml-1">Total</span>
+                <span className="mr-1">{totalPrice + 60}</span>
               </div>
 
               <button

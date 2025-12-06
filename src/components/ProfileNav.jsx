@@ -35,10 +35,10 @@ export const Profile = () => {
       {login ? (
         <div
           onClick={() => setOpen(!open)}
-          className="cursor-pointer border border-transparent hover:border-gray-300 lg:py-[7px] lg:px-2 py-[4px] px-1 rounded-3xl bg-[#f58138]"
+          className="cursor-pointer border border-transparent hover:border-gray-500 lg:py-[7px] lg:px-2 py-[4px] px-1 rounded-3xl "
         >
-          <button className="flex gap-2 justify-center items-center">
-            <User className="w-6 h-6 hover:text-white text-gray-900" />
+          <button className="flex gap-2 cursor-pointer justify-center items-center">
+            <User className="w-6 h-6   text-gray-900" />
           </button>
         </div>
       ) : (

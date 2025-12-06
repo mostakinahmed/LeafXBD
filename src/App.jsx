@@ -59,8 +59,7 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/track-order" element={<TrackOrder />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/cart/purchase" element={<BuyNow />} />
+        <Route path="/checkout/purchase" element={<BuyNow />} />
       </Routes>
 
       {!isTempHome && <Footer />}
