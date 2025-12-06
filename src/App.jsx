@@ -19,6 +19,9 @@ import SignIn from "./components/Authentication/SignIn";
 import Profile from "./components/Profile/Profile";
 import TrackOrder from "./components/TrackOrder";
 import { DataContext } from "./components/Context Api/UserContext";
+import { MyOrders } from "./components/Profile/MyOrder";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { MdStorage } from "react-icons/md";
 
 const Loader = () => (
   <div
@@ -29,7 +32,21 @@ const Loader = () => (
       alignItems: "center",
     }}
   >
-    <div className="loader" />
+    <div className="flex flex-col gap-4 items-center justify-center min-h-screen">
+      {/* Spinning loader */}
+      <AiOutlineLoading3Quarters className="text-6xl text-blue-500 animate-spin" />
+
+      {/* Data icon */}
+      <MdStorage className="text-5xl text-gray-400" />
+
+      {/* Loading text */}
+      <div className="text-gray-700 text-lg font-medium">
+        Loading your data...
+      </div>
+      <div className="text-gray-500 text-sm">
+        Please wait a moment while we fetch your latest updates
+      </div>
+    </div>
   </div>
 );
 
@@ -75,6 +92,7 @@ function App() {
         <Route path="/checkout/cart" element={<Cart />} />
         <Route path="/profile/:card" element={<ProfileHome />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/my-order" element={<MyOrders />} />
         <Route path="/home-new" element={<TechGadgetHome />} />
         <Route path="/search-result/:keyword" element={<SearchResult />} />
         <Route path="/signin" element={<SignIn />} />

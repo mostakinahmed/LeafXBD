@@ -20,7 +20,6 @@ const AllProduct = () => {
           <RightSide filterData={newData} />
         </div>
       </div>
-      ;
     </>
   );
 };

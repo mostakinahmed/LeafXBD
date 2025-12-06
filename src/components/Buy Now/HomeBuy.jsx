@@ -1,15 +1,33 @@
 "use client";
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export function HomeBuy({ data }) {
-  // If no product data
-  if (!data || data.length === 0) {
-    return (
-      <div className="flex justify-center items-center min-h-[400px] w-full">
-        <p className="text-gray-500 text-lg">Loading products...</p>
-      </div>
-    );
-  }
+  const [divList, setDiv] = useState([]);
+  const [disList, setDis] = useState([]);
+  const [upazilaList, setUpazila] = useState([]);
+  const [finalDisList, setFinalDis] = useState([]);
+  const [finalUpaList, setFinalUpaList] = useState([]);
+  //api for division and district
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [divisionRes, districtRes, upazilaRes] = await Promise.all([
+          axios.get("https://bdapis.vercel.app/geo/v2.0/divisions"),
+          axios.get("https://bdapis.vercel.app/geo/v2.0/districts"),
+          axios.get("https://bdapis.vercel.app/geo/v2.0/upazilas"),
+        ]);
+
+        setDiv(divisionRes.data.data);
+        setDis(districtRes.data.data);
+        setUpazila(upazilaRes.data.data);
+      } catch (err) {
+        console.error("Failed to fetch data", err);
+      }
+    };
+
+    fetchData();
+  }, []); // run once on mount
 
   // Customer Form State
   const [form, setForm] = useState({
@@ -17,7 +35,9 @@ export function HomeBuy({ data }) {
     email: "",
     phone: "",
     address: "",
-    city: "",
+    division: "",
+    district: "",
+    upazila: "",
     postal: "",
   });
 
@@ -27,6 +47,18 @@ export function HomeBuy({ data }) {
     alert(
       `Order placed!\n\nCustomer: ${form.name}\nProducts: ${data.length} items`
     );
+  };
+
+  console.log(disList);
+  //handleDistrict
+  const handleDistrict = (divID) => {
+    const district = disList.filter((dis) => dis.division_id === divID);
+    setFinalDis(district);
+  };
+
+  const handleUpazila = (disID) => {
+    const upazila = upazilaList.filter((upa) => upa.district_id === disID);
+    setFinalUpaList(upazila);
   };
 
   return (
@@ -52,7 +84,9 @@ export function HomeBuy({ data }) {
               />
 
               <div className="flex-1">
-                <h3 className="text-sm font-semibold text-gray-800">{item.name}</h3>
+                <h3 className="text-sm font-semibold text-gray-800">
+                  {item.name}
+                </h3>
                 {/* <p className="text-gray-500 text-sm">{item.description}</p> */}
                 <p className="text-blue-600 text-sm font-bold mt-1">
                   ${item.price.selling}
@@ -108,23 +142,61 @@ export function HomeBuy({ data }) {
           onChange={(e) => setForm({ ...form, address: e.target.value })}
         />
 
-        <div className="grid grid-cols-2 gap-4">
-          <input
-            type="text"
-            placeholder="City"
-            className="border rounded p-2"
+        <div className="grid lg:grid-cols-3 grid-cols-1  gap-4">
+          {/* Division */}
+          <select
+            className="border rounded p-2 w-full"
             required
-            value={form.city}
-            onChange={(e) => setForm({ ...form, city: e.target.value })}
-          />
-          <input
-            type="text"
-            placeholder="Postal Code"
-            className="border rounded p-2"
+            value={form.division}
+            onChange={(e) => {
+              const divId = e.target.value;
+              handleDistrict(divId);
+              setForm({ ...form, division: divId, district: "", upazila: "" });
+            }}
+          >
+            <option value="">Select Division</option>
+            {divList.map((div) => (
+              <option key={div.id} value={div.id}>
+                {div.name}
+              </option>
+            ))}
+          </select>
+
+          {/* District */}
+          <select
+            className="border rounded p-2 w-full"
             required
-            value={form.postal}
-            onChange={(e) => setForm({ ...form, postal: e.target.value })}
-          />
+            value={form.district}
+            onChange={(e) => {
+              const disId = e.target.value;
+              handleUpazila(disId);
+              setForm({ ...form, district: disId, upazila: "" });
+            }}
+            disabled={!form.division}
+          >
+            <option value="">Select District</option>
+            {finalDisList.map((dis) => (
+              <option key={dis.id} value={dis.id}>
+                {dis.name}
+              </option>
+            ))}
+          </select>
+
+          {/* Upazila */}
+          <select
+            className="border rounded p-2 w-full"
+            required
+            value={form.upazila}
+            onChange={(e) => setForm({ ...form, upazila: e.target.value })}
+            disabled={!form.district}
+          >
+            <option value="">Select Upazila</option>
+            {finalUpaList.map((upa) => (
+              <option key={upa.id} value={upa.id}>
+                {upa.name}
+              </option>
+            ))}
+          </select>
         </div>
 
         <button

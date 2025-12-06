@@ -84,7 +84,13 @@ export const Profile = () => {
             </div>
           </div>
           <ul className="flex flex-col gap-1 mt-2">
-            <li className="px-3 md:py-2 py-1 rounded hover:bg-gray-100 flex items-center gap-2 cursor-pointer">
+            <li
+              onClick={() => {
+                setOpen(false);
+                navigate("/profile/my-order");
+              }}
+              className="px-3 md:py-2 py-1 rounded hover:bg-gray-100 flex items-center gap-2 cursor-pointer"
+            >
               <ShoppingBag className="w-4 h-4" />
               <span>My Orders</span>
             </li>

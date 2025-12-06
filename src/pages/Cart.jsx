@@ -155,7 +155,7 @@ export const Cart = () => {
         {/* Order Summary */}
         {items.length > 0 && (
           <div className="flex justify-end mt-6">
-            <div className="max-w-sm w-full px-3 pb-1 pt-2 bg-white shadow rounded border border-gray-200">
+            <div className="lg:max-w-sm w-full px-3 pb-1 pt-2 bg-white shadow rounded border border-gray-200">
               <h2 className="lg:text-lg  text-black font-bold mb-4 border-b pb-2">
                 Order Summary
               </h2>

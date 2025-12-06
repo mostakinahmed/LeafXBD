@@ -2,11 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "remixicon/fonts/remixicon.css";
 import { CartContext } from "../Context Api/CartContext";
-import ProfileMenu from "../ProfileNavberIcon";
+import ProfileMenu from "../Profile/ProfileNavberIcon";
 import { DataContext } from "../Context Api/UserContext";
 import { useLocation } from "react-router-dom";
 import { SearchBar } from "../SearchBar";
-import { Profile } from "../ProfileNav";
+import { Profile } from "../Profile/ProfileNav";
 import { FiTruck } from "react-icons/fi"; // Track icon
 
 const NavbarTop = () => {
