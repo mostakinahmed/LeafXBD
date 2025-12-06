@@ -30,7 +30,7 @@ const TrackOrderPage = () => {
         </h1>
 
         {/* Input Section */}
-        <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md mx-auto mb-10">
+        <div className="flex flex-col sm:flex-row gap-4 w-full max-w-2xl mx-auto mb-10">
           <input
             type="text"
             placeholder="Enter Order ID"
