@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../components/Context Api/CartContext";
 import { DataContext } from "../components/Context Api/UserContext";
+import { IoClose } from "react-icons/io5";
 
 export const Cart = () => {
   const { productData } = useContext(DataContext);
@@ -37,13 +38,25 @@ export const Cart = () => {
     0
   );
 
+  // Remove item from cart
+  const onRemove = (pID) => {
+    const updatedItems = items.filter((item) => item.pID !== pID);
+    setItems(updatedItems);
+    localStorage.setItem(
+      "cart",
+      JSON.stringify(
+        updatedItems.map((item) => ({ pID: item.pID, qty: item.qty }))
+      )
+    );
+  };
+
   return (
     <div className="max-w-[1400px] lg:mt-[86px] mt-[40px] pt-5 mx-auto md:px-4 px-2">
       <div className="w-full rounded-md min-h-screen shadow-md bg-white p-5">
         <h1 className="text-2xl font-bold mb-6">Shopping Cart</h1>
 
         <div className="overflow-x-auto">
-          <table className="min-w-full text-left table-auto w-full">
+          <table className="min-w-full text-left table-auto w-full whitespace-nowrap">
             <thead>
               <tr className="bg-gray-100">
                 <th className="px-4 py-3 text-sm font-semibold text-gray-600">
@@ -51,6 +64,9 @@ export const Cart = () => {
                 </th>
                 <th className="px-4 py-3 text-sm font-semibold text-gray-600">
                   Product Name
+                </th>
+                <th className="px-4 py-3 text-sm font-semibold text-gray-600">
+                  Action
                 </th>
                 <th className="px-4 py-3 text-sm font-semibold text-gray-600">
                   Quantity
@@ -91,6 +107,15 @@ export const Cart = () => {
 
                   <td className="px-4 py-3">
                     <p className="font-semibold">{item.name}</p>
+                  </td>
+
+                  <td>
+                    <button
+                      onClick={() => onRemove(item.pID)}
+                      className="text-red-600 text-2xl hover:bg-red-200 rounded"
+                    >
+                      <IoClose />
+                    </button>
                   </td>
 
                   <td className="px-4 py-3">

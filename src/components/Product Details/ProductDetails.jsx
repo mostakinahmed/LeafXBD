@@ -83,7 +83,7 @@ const ProductDetail = () => {
 
     const index = cart.findIndex((item) => item.pID === product.pID);
     if (index !== -1) {
-      cart[index].qty += 1;
+      // cart[index].qty += 1;
     } else {
       cart.push({
         pID: product.pID,
@@ -242,12 +242,12 @@ const ProductDetail = () => {
 
               <div className="flex  gap-3 ">
                 <p className="text-xl font-semibold text-gray-800">
-                  TK: {product?.price?.selling - product.price.discount ?? "0"}
+                  TK: {product.price.selling - product.price.discount}
                   .00
                 </p>
                 {product.price.discount > 0 && (
                   <p className="text-md text-gray-500 mt- line-through">
-                    TK: {product?.price?.selling ?? "0"}.00
+                    TK: {product.price.selling}.00
                   </p>
                 )}
               </div>
@@ -302,7 +302,6 @@ const ProductDetail = () => {
           </div>
         </section>
 
- 
         {/* Specs and Related */}
         <section className="max-w-full lg:max-w-[1400px] mx-auto md:px-5 px-2 flex flex-col lg:flex-row lg:gap-3">
           <div className="lg:w-full xl:w-full">
