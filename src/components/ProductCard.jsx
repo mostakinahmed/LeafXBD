@@ -7,8 +7,8 @@ export const ProductCard = ({ data }) => {
       <div className="bg-white rounded shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105">
         <div className="h-7 flex items-center">
           {data.price.discount > 0 && (
-            <div className="inline-block px-5 mt-4 -ml-3 bg-[#fe741d] rounded-xl">
-              <span className="text-white text-xs font-semibold">
+            <div className="inline-flex items-center -ml-3 mt-2 bg-[#fe741d] rounded-md px-4 h-fit leading-none">
+              <span className="text-white text-xs ml-2 py-0.5 font-semibold leading-none">
                 Save: {data.price.discount} Tk
               </span>
             </div>

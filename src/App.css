@@ -9,7 +9,7 @@
 }
 
 .animate-scroll {
-  animation: scroll 65s linear infinite;
+  animation: scroll 75s linear infinite;
   width: max-content;
 }
 
