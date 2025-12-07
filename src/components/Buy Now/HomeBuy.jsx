@@ -8,6 +8,20 @@ export function HomeBuy({ data }) {
   const [upazilaList, setUpazila] = useState([]);
   const [finalDisList, setFinalDis] = useState([]);
   const [finalUpaList, setFinalUpaList] = useState([]);
+  const [wardList, setWardList] = useState([]);
+
+  // Customer Form State
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    address: "",
+    division: "",
+    district: "",
+    upazila: "",
+    postal: "",
+  });
+
   //api for division and district
   useEffect(() => {
     const fetchData = async () => {
@@ -29,17 +43,21 @@ export function HomeBuy({ data }) {
     fetchData();
   }, []); // run once on mount
 
-  // Customer Form State
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-    division: "",
-    district: "",
-    upazila: "",
-    postal: "",
-  });
+  //ward list
+  useEffect(() => {
+    const fetchDataWard = async () => {
+      try {
+        const WardRes = await axios.get(
+          `https://bdapis.vercel.app/geo/v2.0/unions/${form.upazila}`
+        );
+        setWardList(WardRes.data.data);
+      } catch (err) {
+        console.error("Failed to fetch data", err);
+      }
+    };
+    fetchDataWard();
+  }, [form.upazila]);
+  console.log(form.upazila);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,7 +67,6 @@ export function HomeBuy({ data }) {
     );
   };
 
-  console.log(disList);
   //handleDistrict
   const handleDistrict = (divID) => {
     const district = disList.filter((dis) => dis.division_id === divID);
@@ -135,7 +152,7 @@ export function HomeBuy({ data }) {
         />
 
         <textarea
-          placeholder="Delivery Address"
+          placeholder="Full Delivery Address"
           className="border rounded p-2 w-full h-20"
           required
           value={form.address}
@@ -149,6 +166,7 @@ export function HomeBuy({ data }) {
             required
             value={form.division}
             onChange={(e) => {
+              setWardList([]);
               const divId = e.target.value;
               handleDistrict(divId);
               setForm({ ...form, division: divId, district: "", upazila: "" });
@@ -168,6 +186,7 @@ export function HomeBuy({ data }) {
             required
             value={form.district}
             onChange={(e) => {
+              setWardList([]);
               const disId = e.target.value;
               handleUpazila(disId);
               setForm({ ...form, district: disId, upazila: "" });
@@ -187,7 +206,10 @@ export function HomeBuy({ data }) {
             className="border rounded p-2 w-full"
             required
             value={form.upazila}
-            onChange={(e) => setForm({ ...form, upazila: e.target.value })}
+            onChange={(e) => {
+              setWardList([]);
+              setForm({ ...form, upazila: e.target.value });
+            }}
             disabled={!form.district}
           >
             <option value="">Select Upazila</option>
@@ -198,6 +220,18 @@ export function HomeBuy({ data }) {
             ))}
           </select>
         </div>
+        {wardList?.length > 0 && (
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
+            {wardList.map((item) => (
+              <div
+                key={item.id}
+                className="group bg-slate-100 border cursor-pointer border-slate-300 rounded-sm p-3 text-center transition-all hover:bg-slate-200 hover:border-slate-300"
+              >
+                <p className="lg:text-lg text-sm">{item.name}</p>
+              </div>
+            ))}
+          </div>
+        )}
 
         <button
           type="submit"

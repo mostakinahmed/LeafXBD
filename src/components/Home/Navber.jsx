@@ -133,7 +133,7 @@ const NavbarTop = () => {
               </svg>
             </Link>
             {cartItems.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs font-bold px-1 py-0.5 rounded-full">
+              <span className="absolute -top-2 -right-2 bg-[#fe741d] text-white text-sm font-bold px-1.5 py- rounded-full">
                 {cartItems.length}
               </span>
             )}
@@ -208,7 +208,7 @@ const NavbarTop = () => {
               </svg>
             </Link>
             {cartItems.length > 0 && (
-              <span className="absolute -top-0.5 right-0.5 bg-blue-600 text-white text-[8px] font-bold px-1 rounded-full">
+              <span className="absolute -top-0.5 right-0.5 bg-[#fe741d] text-white text-[8px] font-bold px-1 rounded-full">
                 {cartItems.length}
               </span>
             )}

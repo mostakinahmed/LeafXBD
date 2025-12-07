@@ -53,7 +53,7 @@ export const RelatedProduct = ({ data }) => {
                 {/* Bottom section: Buy Now button */}
 
                 <Link to={`/product/${element.category}/${element.pID}/buynow`}>
-                  <button className="w-full bg-green-600 text-white py-1 text-sm hover:bg-green-700 transition-colors">
+                  <button className="w-full bg-[#fe741d] text-white py-1 text-sm hover:bg-[#fb6405] transition-colors">
                     Buy Now
                   </button>
                 </Link>

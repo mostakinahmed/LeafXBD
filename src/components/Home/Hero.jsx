@@ -91,14 +91,14 @@ const BannerSection = () => {
       <div className="flex flex-col gap-2 text-gray-700 md:hidden">
         {/* Row 1: Card 1 & Card 2 */}
         <div className="flex flex-row md:flex-row gap-2">
-          <div className="flex-1 bg-white px-6 py-3 rounded shadow hover:shadow-md transition text-center">
-            <h4 className="text-[20px] font-semibold text-[#fe741d]">
+          <div className="flex-1 bg-white px-6 py-3 h-12 rounded shadow hover:shadow-md transition text-center">
+            <h4 className="text-[17px] font-semibold text-[#fe741d]">
               1K+ Sold
             </h4>
           </div>
 
-          <div className="flex-1 bg-white px-6 py-3 rounded shadow hover:shadow-md transition text-center">
-            <h4 className="text-[20px] font-semibold text-[#fe741d]">
+          <div className="flex-1 bg-white px-6 py-3 h-12 rounded shadow hover:shadow-md transition text-center">
+            <h4 className="text-[17px] font-semibold text-[#fe741d]">
               Fast Delivery
             </h4>
           </div>
@@ -106,8 +106,8 @@ const BannerSection = () => {
 
         {/* Row 2: Card 3 */}
         <div className="flex justify-center">
-          <div className="bg-white px-6 py-3 rounded shadow hover:shadow-md transition text-center w-full md:w-1/2">
-            <h4 className="text-[20px] font-semibold text-[#fe741d]">
+          <div className="bg-white px-6 py-3 h-12 rounded shadow hover:shadow-md transition text-center w-full md:w-1/2">
+            <h4 className="text-[17px] font-semibold text-[#fe741d]">
               24/7 Support
             </h4>
           </div>
