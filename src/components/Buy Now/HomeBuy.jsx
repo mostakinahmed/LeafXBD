@@ -230,7 +230,7 @@ export function HomeBuy({ data }) {
                 className="group bg-slate-100 border cursor-pointer border-slate-300 rounded-sm p-1 text-center transition-all hover:bg-slate-200 hover:border-slate-300"
               >
                 <p className="lg:text-lg text-sm">{item.name}</p>
-                <p className="lg:text-lg text-sm">{item.bn_name}</p>
+                <p className="lg:text-lg -mt-1.5 text-sm">{item.bn_name}</p>
               </div>
             ))}
           </div>
