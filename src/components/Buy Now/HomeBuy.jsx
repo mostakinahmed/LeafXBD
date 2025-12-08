@@ -27,9 +27,9 @@ export function HomeBuy({ data }) {
     const fetchData = async () => {
       try {
         const [divisionRes, districtRes, upazilaRes] = await Promise.all([
-          axios.get("https://bdapis.vercel.app/geo/v2.0/divisions"),
-          axios.get("https://bdapis.vercel.app/geo/v2.0/districts"),
-          axios.get("https://bdapis.vercel.app/geo/v2.0/upazilas"),
+          axios.get("https://bdopenapi.vercel.app/api/geo/divisions"),
+          axios.get("https://bdopenapi.vercel.app/api/geo/districts"),
+          axios.get("https://bdopenapi.vercel.app/api/geo/upazilas"),
         ]);
 
         setDiv(divisionRes.data.data);
@@ -45,19 +45,21 @@ export function HomeBuy({ data }) {
 
   //ward list
   useEffect(() => {
+    if (!form.upazila) return; // skip if empty
+
     const fetchDataWard = async () => {
       try {
         const WardRes = await axios.get(
-          `https://bdapis.vercel.app/geo/v2.0/unions/${form.upazila}`
+          `https://bdopenapi.vercel.app/api/geo/unions/${form.upazila}`
         );
         setWardList(WardRes.data.data);
       } catch (err) {
         console.error("Failed to fetch data", err);
       }
     };
+
     fetchDataWard();
   }, [form.upazila]);
-  console.log(form.upazila);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -175,7 +177,7 @@ export function HomeBuy({ data }) {
             <option value="">Select Division</option>
             {divList.map((div) => (
               <option key={div.id} value={div.id}>
-                {div.name}
+                {div.name} - {div.bn_name}
               </option>
             ))}
           </select>
@@ -196,7 +198,7 @@ export function HomeBuy({ data }) {
             <option value="">Select District</option>
             {finalDisList.map((dis) => (
               <option key={dis.id} value={dis.id}>
-                {dis.name}
+                {dis.name} - {dis.bn_name}
               </option>
             ))}
           </select>
@@ -215,7 +217,7 @@ export function HomeBuy({ data }) {
             <option value="">Select Upazila</option>
             {finalUpaList.map((upa) => (
               <option key={upa.id} value={upa.id}>
-                {upa.name}
+                {upa.name} - {upa.bn_name}
               </option>
             ))}
           </select>
@@ -225,9 +227,10 @@ export function HomeBuy({ data }) {
             {wardList.map((item) => (
               <div
                 key={item.id}
-                className="group bg-slate-100 border cursor-pointer border-slate-300 rounded-sm p-3 text-center transition-all hover:bg-slate-200 hover:border-slate-300"
+                className="group bg-slate-100 border cursor-pointer border-slate-300 rounded-sm p-1 text-center transition-all hover:bg-slate-200 hover:border-slate-300"
               >
                 <p className="lg:text-lg text-sm">{item.name}</p>
+                <p className="lg:text-lg text-sm">{item.bn_name}</p>
               </div>
             ))}
           </div>
