@@ -246,5 +246,5 @@ export function HomeBuy({ data }) {
     </div>
   );
 }
-//mostakin
+
 //mostakin
