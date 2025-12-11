@@ -247,4 +247,3 @@ export function HomeBuy({ data }) {
   );
 }
 
-//mostakin
