@@ -19,7 +19,7 @@ const Footer = () => {
     <>
       <div className="border-t-2 text-white">
         <footer className="bg-gray-900 text-white py-4">
-          <div className="max-w-[1400px] mx-auto px-2 sm:px-6 lg:px-4">
+          <div className="max-w-[1400px] mt-5 mx-auto px-2 sm:px-6 lg:px-4">
             <div className="flex justify-between lg:gap-8 gap-4 flex-col md:flex-row">
               {/* LEFT SECTION */}
               <div className="flex flex-col">
@@ -170,53 +170,53 @@ const Footer = () => {
               </h4>
 
               {/* Mobile Banking */}
-              <div className="flex flex-wrap items-center lg:gap-4 gap-3 lg:mt-3 mt-1.5">
+              <div className="flex flex-wrap  items-center lg:gap-4 gap-3 lg:mt-3 mt-1.5">
                 <img
                   src="https://freelogopng.com/images/all_img/1656227518bkash-logo-png.png"
                   alt="bKash"
-                  className="lg:h-10 h-8 bg-white object-contain p-1"
+                  className="lg:h-9 h-7 rounded bg-white object-contain p-1"
                 />
                 <img
                   src="https://download.logo.wine/logo/Nagad/Nagad-Logo.wine.png"
                   alt="Nagad"
-                  className="lg:h-10 h-8 bg-white object-contain p-"
+                  className="lg:h-9 h-7 rounded bg-white object-contain p-"
                 />
                 <img
                   src="https://sajidshop.com/public/frontend/images/payment_method/rocket.png"
                   alt="Rocket"
-                  className="lg:h-10 h-8 bg-white object-contain p-1"
+                  className="lg:h-9 h-7 rounded bg-white object-contain p-1"
                 />
 
                 <img
                   src="https://play-lh.googleusercontent.com/ihEz3fNdT5fFzUr0ThhdT_6b5MPPTImKwoUDAujHrn37KDEDAqq-xGnxwFIGI9cbvOE"
                   alt="SureCash"
-                  className="lg:h-10 h-8 bg-white"
+                  className="lg:h-9 h-7 rounded bg-white"
                 />
                 <img
                   src="https://play-lh.googleusercontent.com/oh-03_05Int0h23OdtIUpbQzu8GEiy-5IalmH-3k97nilPMw8aKT1hSCn_AczeliHXc7lXaiECns0BOPMgPp9w"
                   alt="mCash"
-                  className="lg:h-10 h-8 bg-white "
+                  className="lg:h-9 h-7 rounded bg-white "
                 />
 
                 <img
                   src="https://logowik.com/content/uploads/images/visa-payment-card1873.jpg"
                   alt="Visa"
-                  className="lg:h-10 h-8 bg-white object-contain"
+                  className="lg:h-9 h-7 rounded bg-white object-contain"
                 />
                 <img
                   src="https://p1.hiclipart.com/preview/110/429/95/visa-mastercard-logo-credit-card-payment-card-number-atm-card-automated-teller-machine-mousepad-computer-accessory-circle-png-clipart.jpg"
                   alt="Mastercard"
-                  className="lg:h-10 h-8"
+                  className="lg:h-9 h-7 rounded"
                 />
                 <img
                   src="https://img.icons8.com/color/1200/amex.jpg"
                   alt="American Express"
-                  className="lg:h-10 h-8 hidden md:block"
+                  className="lg:h-9 h-7 rounded hidden md:block"
                 />
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/825/825484.png"
                   alt="UnionPay"
-                  className="lg:h-10 h-8 hidden md:block"
+                  className="lg:h-9 h-7 rounded hidden md:block"
                 />
               </div>
             </div>

@@ -22,6 +22,7 @@ import { DataContext } from "./components/Context Api/UserContext";
 import { MyOrders } from "./components/Profile/MyOrder";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { MdStorage } from "react-icons/md";
+import CompanyPolicyCards from "./components/PolicyCard";
 
 const Loader = () => (
   <div
@@ -101,6 +102,7 @@ function App() {
         <Route path="/checkout/purchase" element={<BuyNow />} />
       </Routes>
 
+      <CompanyPolicyCards />
       {!isTempHome && <Footer />}
     </CartProvider>
   );
