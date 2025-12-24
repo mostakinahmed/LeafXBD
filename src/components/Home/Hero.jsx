@@ -5,8 +5,8 @@ import { SearchBar } from "../SearchBar";
 const BannerSection = () => {
   // const { categoryData, productData } = useContext(DataContext);
   const images = [
-    "ads banner 2.png",
-    "main banner 2.png",
+    "https://i.ibb.co.com/k2Jh26yY/ads-banner-2.png",
+    "https://i.ibb.co.com/WNthCVS1/main-banner-2.png",
     "https://www.startech.com.bd/image/cache/catalog/home/banner/2025/starlink-in-store-activation-offer-web-banner-982x500.webp",
   ];
 
@@ -43,14 +43,14 @@ const BannerSection = () => {
           {/* ← add gap-2 here */}
           <div className="w-1/2 lg:w-full">
             <img
-              src="right side.png"
+              src="https://i.ibb.co.com/7dngFcks/right-side.png"
               alt="Career Banner"
               className=" lg:w-full h-auto rounded"
             />
           </div>
           <div className="w-1/2 lg:w-full">
             <img
-              src="right side 2.png"
+              src="https://i.ibb.co.com/vbM8093/right-side-2.png"
               alt="Career Banner"
               className=" lg:w-full h-auto rounded lg:mt-2"
             />
@@ -62,9 +62,7 @@ const BannerSection = () => {
       <div className="hidden md:flex col-span-1 md:col-span-3 flex-col md:flex-row gap-3 justify-between text-gray-700">
         {/* Card 1 */}
         <div className="flex-1 bg-white px-6 py-4  shadow hover:shadow-md transition text-center">
-          <h4 className="text-[20px] font-semibold text-[#fe741d]">
-            1K+ Sold
-          </h4>
+          <h4 className="text-[20px] font-semibold text-[#fe741d]">1K+ Sold</h4>
           <p className="text-md text-gray-500 mt-1">
             Trusted by customers nationwide
           </p>
