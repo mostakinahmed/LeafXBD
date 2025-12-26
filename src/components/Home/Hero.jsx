@@ -59,6 +59,8 @@ const BannerSection = () => {
       </div>
 
       {/* Info Cards Section */}
+
+      {/* Info Cards Section */}
       <div className="hidden md:flex col-span-1 md:col-span-3 flex-col md:flex-row gap-3 justify-between text-gray-700">
         {/* Card 1 */}
         <div className="flex-1 bg-white px-6 py-4  shadow hover:shadow-md transition text-center">
