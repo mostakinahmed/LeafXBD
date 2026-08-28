@@ -505,7 +505,6 @@ const CategoryDropdown = () => {
 
                               rounded
 
-                              bg-slate-50
                               border
                               border-slate-200
 

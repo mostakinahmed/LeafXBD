@@ -1,26 +1,38 @@
-
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Navigation, Pagination, Autoplay, Scrollbar } from "swiper/modules";
+
 import {
   FiShoppingBag,
   FiBriefcase,
   FiCreditCard,
   FiCompass,
+  FiChevronLeft,
+  FiChevronRight,
 } from "react-icons/fi";
+
 import { Link } from "react-router-dom";
 
 import ProductCard from "../ProductCard";
 
-// Swiper styles
+// ============================================================
+// SWIPER STYLES
+// ============================================================
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+
+// ============================================================
+// DAILY ACCESSORIES PAGE
+// ============================================================
 
 const DailyAccessories = () => {
   // ============================================================
   // BAG & BACKPACKS
   // ============================================================
+
   const bagsBackpacks = [
     {
       _id: "bag1",
@@ -112,11 +124,42 @@ const DailyAccessories = () => {
         isNewArrival: true,
       },
     },
+    {
+      _id: "bag7",
+      name: "Modern Travel Backpack",
+      brandName: "Urban Style",
+      category: "DA001",
+      images: [
+        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1000",
+      ],
+      price: { selling: 2100, cost: 1600, discount: 10 },
+      status: {
+        isFeatured: true,
+        isFlashSale: false,
+        isNewArrival: true,
+      },
+    },
+    {
+      _id: "bag8",
+      name: "Everyday Tote Bag",
+      brandName: "DailyCarry",
+      category: "DA001",
+      images: [
+        "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1000",
+      ],
+      price: { selling: 1300, cost: 950, discount: 8 },
+      status: {
+        isFeatured: false,
+        isFlashSale: true,
+        isNewArrival: false,
+      },
+    },
   ];
 
   // ============================================================
   // LUGGAGE & TRAVEL
   // ============================================================
+
   const luggageTravel = [
     {
       _id: "lug1",
@@ -208,11 +251,27 @@ const DailyAccessories = () => {
         isNewArrival: false,
       },
     },
+    {
+      _id: "lug7",
+      name: "Premium Rolling Suitcase",
+      brandName: "Voyager",
+      category: "DA002",
+      images: [
+        "https://images.unsplash.com/photo-1553531889-56b6b33a32a0?q=80&w=1000",
+      ],
+      price: { selling: 6500, cost: 5400, discount: 12 },
+      status: {
+        isFeatured: true,
+        isFlashSale: false,
+        isNewArrival: true,
+      },
+    },
   ];
 
   // ============================================================
   // WALLETS & SMALL ACCESSORIES
   // ============================================================
+
   const walletsAccessories = [
     {
       _id: "acc1",
@@ -304,11 +363,27 @@ const DailyAccessories = () => {
         isNewArrival: true,
       },
     },
+    {
+      _id: "acc7",
+      name: "Compact Coin Wallet",
+      brandName: "Urban Leather",
+      category: "DA003",
+      images: [
+        "https://images.unsplash.com/photo-1600091166971-7f9faad6e1e0?q=80&w=1000",
+      ],
+      price: { selling: 400, cost: 280, discount: 5 },
+      status: {
+        isFeatured: false,
+        isFlashSale: true,
+        isNewArrival: false,
+      },
+    },
   ];
 
   // ============================================================
   // DAILY & TRAVEL ESSENTIALS
   // ============================================================
+
   const dailyEssentials = [
     {
       _id: "ess1",
@@ -400,24 +475,43 @@ const DailyAccessories = () => {
         isNewArrival: true,
       },
     },
+    {
+      _id: "ess7",
+      name: "Portable Everyday Bottle",
+      brandName: "DailyLife",
+      category: "DA004",
+      images: [
+        "https://images.unsplash.com/photo-1523362628745-0c100150b504?q=80&w=1000",
+      ],
+      price: { selling: 700, cost: 500, discount: 8 },
+      status: {
+        isFeatured: false,
+        isFlashSale: false,
+        isNewArrival: true,
+      },
+    },
   ];
 
   // ============================================================
-  // REUSABLE SECTION COMPONENT
+  // REUSABLE PRODUCT SLIDER SECTION
   // ============================================================
   const ProductSection = ({
     title,
     icon: Icon,
     products,
     iconClass = "text-blue-600",
+    sliderId,
   }) => (
-    <div className="mt-6">
+    <section className="mt-6">
+      {/* =========================================
+        SECTION HEADER
+    ========================================= */}
+
       <div className="flex items-center justify-between bg-white shadow-xs border border-gray-100 md:p-4 px-4 py-2 mb-3">
+        {/* TITLE */}
         <div className="flex items-center gap-3">
           <div className="p-2 -ml-4 md:ml-0">
-            <Icon
-              className={`text-2xl md:-ml-3 ${iconClass} animate-pulse`}
-            />
+            <Icon className={`text-2xl md:-ml-3 ${iconClass}`} />
           </div>
 
           <h3 className="text-md md:text-xl -ml-3 md:-ml-1 font-bold text-gray-900">
@@ -425,44 +519,210 @@ const DailyAccessories = () => {
           </h3>
         </div>
 
-        <Link
-          to="/daily-accessories"
-          className="flex items-center gap-1 text-[9px] md:text-xs font-bold uppercase tracking-wider text-slate-900 hover:text-white border border-slate-900 hover:bg-slate-900 px-3 py-1.5 md:px-5 md:py-2 rounded-full transition-all duration-300"
-        >
-          View All
-        </Link>
+        {/* CONTROLS */}
+        <div className="flex items-center gap-2">
+          {/* PREVIOUS BUTTON */}
+          <button
+            type="button"
+            className={`
+            ${sliderId}-prev
+            flex items-center justify-center
+            w-8 h-8
+            md:w-9 md:h-9
+            rounded-full
+            border border-slate-200
+            bg-white
+            text-slate-600
+            hover:bg-[#1976d2]
+            hover:text-white
+            hover:border-[#1976d2]
+            transition-all duration-300
+            cursor-pointer
+          `}
+            aria-label={`Previous ${title}`}
+          >
+            <FiChevronLeft size={18} />
+          </button>
+
+          {/* NEXT BUTTON */}
+          <button
+            type="button"
+            className={`
+            ${sliderId}-next
+            flex items-center justify-center
+            w-8 h-8
+            md:w-9 md:h-9
+            rounded-full
+            border border-slate-200
+            bg-white
+            text-slate-600
+            hover:bg-[#1976d2]
+            hover:text-white
+            hover:border-[#1976d2]
+            transition-all duration-300
+            cursor-pointer
+          `}
+            aria-label={`Next ${title}`}
+          >
+            <FiChevronRight size={18} />
+          </button>
+
+          {/* VIEW ALL */}
+          <Link
+            to="/daily-accessories"
+            className="
+            hidden sm:flex
+            items-center
+            text-[9px] md:text-xs
+            font-bold uppercase
+            tracking-wider
+            text-slate-900
+            hover:text-white
+            border border-slate-900
+            hover:bg-slate-900
+            px-3 py-1.5
+            md:px-5 md:py-2
+            rounded-full
+            transition-all duration-300
+          "
+          >
+            View All
+          </Link>
+        </div>
       </div>
 
-      <div className="pb-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 md:gap-2.5 gap-2">
-        {products.map((product) => (
-          <ProductCard key={product._id} data={product} />
-        ))}
+      {/* =========================================
+        PRODUCT SLIDER
+    ========================================= */}
+
+      <div className="relative">
+        <Swiper
+          modules={[Navigation, Scrollbar]}
+          navigation={{
+            nextEl: `.${sliderId}-next`,
+            prevEl: `.${sliderId}-prev`,
+          }}
+          scrollbar={{
+            draggable: true,
+            el: `.${sliderId}-scrollbar`,
+          }}
+          grabCursor={true}
+          spaceBetween={10}
+          slidesPerView={2}
+          breakpoints={{
+            480: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+            },
+
+            640: {
+              slidesPerView: 3,
+              spaceBetween: 10,
+            },
+
+            1024: {
+              slidesPerView: 5,
+              spaceBetween: 12,
+            },
+
+            1280: {
+              slidesPerView: 6,
+              spaceBetween: 12,
+            },
+          }}
+          className="pb-5"
+        >
+          {products.map((product) => (
+            <SwiperSlide key={product._id} className="h-auto">
+              <ProductCard data={product} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* =========================================
+          CUSTOM SCROLLBAR
+      ========================================= */}
+
+        <div
+          className={`
+          ${sliderId}-scrollbar
+          product-swiper-scrollbar
+        `}
+        />
+
+        {/* MOBILE SWIPE HINT */}
+        <div className="flex md:hidden items-center justify-center gap-2 mt-2">
+          <span className="text-[10px] font-medium text-slate-400">
+            Swipe to explore
+          </span>
+
+          <span className="text-slate-400 animate-pulse">← →</span>
+        </div>
       </div>
-    </div>
+    </section>
   );
+  // ============================================================
+  // PAGE
+  // ============================================================
 
   return (
-    <div className="max-w-[1400px] md:px-4 px-2 mx-auto min-h-screen pb-12 md:mt-[101px] mt-12.5 font-sans">
-
-      {/* ========================================================
+    <div
+      className="
+        max-w-[1400px]
+        md:px-4
+        px-2
+        mx-auto
+        min-h-screen
+        pb-12
+        md:mt-[101px]
+        mt-12.5
+        font-sans
+      "
+    >
+      {/* ======================================================
           HERO BANNER
-      ======================================================== */}
-      <div className="py-2 relative group">
+      ====================================================== */}
+
+      <div className="py-2 relative">
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
-          autoplay={{ delay: 3500 }}
-          loop={true}
-          navigation={{
-            nextEl: ".hero-next",
-            prevEl: ".hero-prev",
+          autoplay={{
+            delay: 3500,
+            disableOnInteraction: false,
           }}
-          pagination={{ clickable: true }}
-          className="rounded overflow-hidden border border-slate-200"
+          loop={true}
+          pagination={{
+            clickable: true,
+          }}
+          className="
+            rounded-xl
+            overflow-hidden
+            border
+            border-slate-200
+          "
         >
           {/* HERO 1 */}
+
           <SwiperSlide>
             <div className="bg-slate-900 h-[300px] md:h-[400px] relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-slate-900 to-transparent z-10 p-8 md:p-12 flex flex-col justify-center">
+              <div
+                className="
+                  absolute
+                  inset-0
+                  bg-gradient-to-r
+                  from-slate-950
+                  via-slate-900/80
+                  to-transparent
+                  z-10
+
+                  p-8
+                  md:p-12
+
+                  flex
+                  flex-col
+                  justify-center
+                "
+              >
                 <span className="text-blue-400 font-bold uppercase tracking-widest text-xs mb-2">
                   Everyday Collection
                 </span>
@@ -475,7 +735,17 @@ const DailyAccessories = () => {
 
                 <Link
                   to="/daily-accessories"
-                  className="bg-blue-600 w-fit text-white px-8 py-3 rounded-md font-bold hover:bg-blue-700 transition-all"
+                  className="
+                    bg-[#1976d2]
+                    w-fit
+                    text-white
+                    px-8
+                    py-3
+                    rounded-lg
+                    font-bold
+                    hover:bg-[#1565c0]
+                    transition-all
+                  "
                 >
                   Shop Now
                 </Link>
@@ -490,9 +760,27 @@ const DailyAccessories = () => {
           </SwiperSlide>
 
           {/* HERO 2 */}
+
           <SwiperSlide>
             <div className="bg-slate-800 h-[300px] md:h-[400px] relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10 p-8 md:p-12 flex flex-col justify-center">
+              <div
+                className="
+                  absolute
+                  inset-0
+                  bg-gradient-to-r
+                  from-black/80
+                  via-black/40
+                  to-transparent
+                  z-10
+
+                  p-8
+                  md:p-12
+
+                  flex
+                  flex-col
+                  justify-center
+                "
+              >
                 <span className="text-white font-bold uppercase tracking-widest text-xs mb-2">
                   Travel Collection
                 </span>
@@ -505,7 +793,17 @@ const DailyAccessories = () => {
 
                 <Link
                   to="/daily-accessories"
-                  className="bg-white text-slate-900 w-fit px-8 py-3 rounded-md font-bold hover:bg-slate-100 transition-all"
+                  className="
+                    bg-white
+                    text-slate-900
+                    w-fit
+                    px-8
+                    py-3
+                    rounded-lg
+                    font-bold
+                    hover:bg-slate-100
+                    transition-all
+                  "
                 >
                   Explore Now
                 </Link>
@@ -520,9 +818,27 @@ const DailyAccessories = () => {
           </SwiperSlide>
 
           {/* HERO 3 */}
+
           <SwiperSlide>
             <div className="bg-slate-800 h-[300px] md:h-[400px] relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10 p-8 md:p-12 flex flex-col justify-center">
+              <div
+                className="
+                  absolute
+                  inset-0
+                  bg-gradient-to-r
+                  from-black/80
+                  via-black/40
+                  to-transparent
+                  z-10
+
+                  p-8
+                  md:p-12
+
+                  flex
+                  flex-col
+                  justify-center
+                "
+              >
                 <span className="text-emerald-400 font-bold uppercase tracking-widest text-xs mb-2">
                   New Collection
                 </span>
@@ -535,7 +851,17 @@ const DailyAccessories = () => {
 
                 <Link
                   to="/daily-accessories"
-                  className="bg-emerald-600 text-white w-fit px-8 py-3 rounded-md font-bold hover:bg-emerald-700 transition-all"
+                  className="
+                    bg-emerald-600
+                    text-white
+                    w-fit
+                    px-8
+                    py-3
+                    rounded-lg
+                    font-bold
+                    hover:bg-emerald-700
+                    transition-all
+                  "
                 >
                   Discover
                 </Link>
@@ -551,15 +877,16 @@ const DailyAccessories = () => {
         </Swiper>
       </div>
 
-      {/* ========================================================
+      {/* ======================================================
           PRODUCT SECTIONS
-      ======================================================== */}
+      ====================================================== */}
 
       <ProductSection
         title="Bags & Backpacks"
         icon={FiShoppingBag}
         iconClass="text-blue-600"
         products={bagsBackpacks}
+        sliderId="bags-slider"
       />
 
       <ProductSection
@@ -567,6 +894,7 @@ const DailyAccessories = () => {
         icon={FiBriefcase}
         iconClass="text-emerald-600"
         products={luggageTravel}
+        sliderId="luggage-slider"
       />
 
       <ProductSection
@@ -574,6 +902,7 @@ const DailyAccessories = () => {
         icon={FiCreditCard}
         iconClass="text-orange-500"
         products={walletsAccessories}
+        sliderId="wallet-slider"
       />
 
       <ProductSection
@@ -581,6 +910,7 @@ const DailyAccessories = () => {
         icon={FiCompass}
         iconClass="text-purple-600"
         products={dailyEssentials}
+        sliderId="essentials-slider"
       />
     </div>
   );
