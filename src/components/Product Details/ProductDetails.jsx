@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { DataContext } from "../Context Api/UserContext";
 import Specification from "../Product Details/Specification.jsx";
 import { RelatedProduct } from "./RelatedProduct.jsx";
+import { RecomProduct } from "./RecomProduct.jsx";
 import { Description } from "./Description.jsx";
 import { CartContext } from "../Context Api/CartContext.jsx";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
@@ -22,16 +23,6 @@ const ProductDetail = () => {
   const { categoryData, productData, stockData } = useContext(DataContext);
   const { cat, name } = useParams();
 
-  //   const normalizedProductName = name.replace(/-/g, " ").toLowerCase().trim();
-  //   const product = productData?.find(
-  //     (item) =>
-  //       item.name.replace(/-/g, "").toLowerCase().trim() ===
-  //       normalizedProductName,
-  //   );
-  //  console.log(product);
-
-  // Helper to completely sanitize strings for safe comparison
-  // Helper to completely sanitize strings for safe comparison
   const sanitize = (str) => {
     return str
       ? str
@@ -67,7 +58,7 @@ const ProductDetail = () => {
       .slice(0, 6) || [];
 
   console.log(allProductsInCategory);
-  
+
   useEffect(() => {
     if (!stockData || !product) return;
     const stock = stockData.find((item) => item.pID === product.pID);
@@ -203,7 +194,7 @@ const ProductDetail = () => {
                       onClick={() => setCurrentIndex(idx)}
                       className={`w-14 h-14 md:w-16  md:h-16 flex-shrink-0 object-contain p-1 rounded border-2  transition-all cursor-pointer ${
                         idx === currentIndex
-                          ? "border-[#1976d2] bg-white"
+                          ? "border-blue-600/55 bg-white"
                           : "opacity-60  hover:opacity-100"
                       }`}
                     />
@@ -484,8 +475,13 @@ const ProductDetail = () => {
           </div>
 
           {/* RIGHT COLUMN: Related Products */}
-          <div className="w-full lg:w-[26%] flex flex-col bg-white rounded border border-slate-200 overflow-hidden h-fit">
-            <RelatedProduct data={allProductsInCategory} />
+          <div className="w-full  lg:w-[26%] flex flex-col rounded border border-slate-200 overflow-hidden h-fit">
+            <div>
+              <RelatedProduct data={allProductsInCategory} />
+            </div>
+            <div className="mt-4">
+              <RecomProduct data={productData} currentProduct={product} />
+            </div>
           </div>
         </div>
       </section>

@@ -1,17 +1,88 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { FiChevronRight, FiZap } from "react-icons/fi";
 
-export const RelatedProduct = ({ data }) => {
-  // Graceful fallback if data array is empty or undefined
-  if (!data || data.length === 0) return null;
+export const RecomProduct = ({ data, currentProduct }) => {
+  // ============================================================
+  // CREATE RECOMMENDED PRODUCTS
+  // ============================================================
+
+  const recommendedProducts = useMemo(() => {
+    if (!data || data.length === 0) return [];
+
+    // Remove the currently viewed product
+    const availableProducts = data.filter(
+      (product) =>
+        product._id !== currentProduct?._id &&
+        product.pID !== currentProduct?.pID,
+    );
+
+    // Give each product a recommendation score
+    const scoredProducts = availableProducts.map((product) => {
+      let score = 0;
+
+      // Featured products get high priority
+      if (product?.status?.isFeatured) {
+        score += 40;
+      }
+
+      // Flash sale products get priority
+      if (product?.status?.isFlashSale) {
+        score += 30;
+      }
+
+      // New arrivals get priority
+      if (product?.status?.isNewArrival) {
+        score += 20;
+      }
+
+      // Same brand gets a small boost
+      if (
+        currentProduct?.brandName &&
+        product?.brandName === currentProduct.brandName
+      ) {
+        score += 15;
+      }
+
+      // Similar price range gets a boost
+      const currentPrice = currentProduct?.price?.selling || 0;
+      const productPrice = product?.price?.selling || 0;
+
+      if (currentPrice > 0 && productPrice > 0) {
+        const priceDifference =
+          Math.abs(currentPrice - productPrice) / currentPrice;
+
+        if (priceDifference <= 0.3) {
+          score += 15;
+        }
+      }
+
+      // Random factor so recommendations don't always look identical
+      score += Math.random() * 25;
+
+      return {
+        ...product,
+        recommendationScore: score,
+      };
+    });
+
+    // Sort by recommendation score
+    return scoredProducts
+      .sort((a, b) => b.recommendationScore - a.recommendationScore)
+      .slice(0, 6);
+  }, [data, currentProduct]);
+
+  // Graceful fallback
+  if (!recommendedProducts.length) return null;
 
   return (
-    <div className="w-full font-sans  bg-white border border-slate-200 lg:border-0 overflow-hidden animate-in fade-in duration-500">
-      {/* Section Header */}
+    <div className="w-full font-sans bg-white border border-slate-200 lg:border-0 overflow-hidden animate-in fade-in duration-500">
+      {/* ======================================================
+      SECTION HEADER
+  ====================================================== */}
+
       <div className="relative overflow-hidden px-4 py-2 bg-gradient-to-r from-[#1976d2] via-[#1e88e5] to-[#1565c0] flex items-center justify-between">
-        {/* Glow Effect */}
-        <div className="absolute inset-0 bg-white/5"></div>
+        <div className="absolute inset-0 bg-white/5" />
 
         <div className="relative flex items-center gap-2.5">
           <div className="p-2 bg-white/20 backdrop-blur-sm rounded-xl text-white shadow-sm">
@@ -19,18 +90,21 @@ export const RelatedProduct = ({ data }) => {
           </div>
 
           <h2 className="text-xs font-bold text-white uppercase tracking-[0.2em]">
-            Related Items
+            Recommended Item
           </h2>
         </div>
 
         <span className="relative text-[11px] font-bold text-blue-100 uppercase tracking-wider">
-          {data.slice(0, 5).length} Items
+          {recommendedProducts.length} Items
         </span>
       </div>
 
-      {/* Product List Row */}
+      {/* ======================================================
+      PRODUCT LIST
+  ====================================================== */}
+
       <div className="divide-y divide-slate-200">
-        {data.slice(0, 5).map((element) => {
+        {recommendedProducts.map((element) => {
           const flatSpecs = element?.specifications
             ? Object.values(element.specifications).flat()
             : [];
@@ -42,6 +116,15 @@ export const RelatedProduct = ({ data }) => {
             "-",
           )}`;
 
+          // Discount calculation
+          const sellingPrice = element?.price?.selling || 0;
+          const discount = element?.price?.discount || 0;
+
+          // If discount is percentage
+          const discountAmount = (sellingPrice * discount) / 100;
+
+          const finalPrice = sellingPrice - discountAmount;
+
           return (
             <div
               key={element._id || element.pID}
@@ -49,7 +132,8 @@ export const RelatedProduct = ({ data }) => {
             >
               <Link to={productLink} className="block p-3.5">
                 <div className="flex gap-6 items-center">
-                  {/* Product Image */}
+                  {/* PRODUCT IMAGE */}
+
                   <div className="w-20 h-20 md:w-24 md:h-24 shrink-0 bg-white rounded-xl border border-slate-200/60 p-1.5 overflow-hidden flex items-center justify-center transition-all group-hover:border-[#1976d2]/30 group-hover:shadow-sm">
                     <img
                       className="w-full h-full object-contain transition-transform duration-500 ease-out group-hover:scale-105"
@@ -59,7 +143,8 @@ export const RelatedProduct = ({ data }) => {
                     />
                   </div>
 
-                  {/* Content */}
+                  {/* PRODUCT CONTENT */}
+
                   <div className="flex-1 flex flex-col min-w-0 h-20 md:h-24 justify-between">
                     <div>
                       <h3 className="text-xs md:text-sm font-semibold text-slate-800 tracking-tight leading-tight line-clamp-1 transition-colors group-hover:text-[#1976d2]">
@@ -68,10 +153,10 @@ export const RelatedProduct = ({ data }) => {
 
                       {limitedSpecs.length > 0 && (
                         <div className="flex flex-wrap gap-1 mt-1.5">
-                          {limitedSpecs.slice(0, 2).map((spec, i) => (
+                          {limitedSpecs.map((spec, i) => (
                             <span
                               key={i}
-                              className="text-[10px] font-medium text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded uppercase border border-slate-200/40"
+                              className="text-[10px] font-medium line-clamp-1 text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded uppercase border border-slate-200/40"
                             >
                               {spec.value}
                             </span>
@@ -80,7 +165,8 @@ export const RelatedProduct = ({ data }) => {
                       )}
                     </div>
 
-                    {/* Price */}
+                    {/* PRICE */}
+
                     <div className="flex items-center justify-between mt-1">
                       <div className="flex items-baseline gap-1">
                         <span className="text-xs text-slate-400 font-bold">
@@ -88,20 +174,18 @@ export const RelatedProduct = ({ data }) => {
                         </span>
 
                         <span className="text-sm md:text-base font-black text-slate-900 tracking-tight">
-                          {(
-                            element?.price?.selling -
-                            (element?.price?.discount || 0)
-                          ).toLocaleString()}
+                          {Math.round(finalPrice).toLocaleString()}
                         </span>
 
-                        {element?.price?.discount > 0 && (
+                        {discount > 0 && (
                           <span className="text-[10px] text-slate-400 line-through">
-                            ৳{element.price.selling.toLocaleString()}
+                            ৳{sellingPrice.toLocaleString()}
                           </span>
                         )}
                       </div>
 
-                      {/* Arrow */}
+                      {/* ARROW */}
+
                       <div className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 opacity-60 group-hover:opacity-100 group-hover:bg-[#1976d2] group-hover:text-white group-hover:translate-x-0.5 transition-all duration-300">
                         <FiChevronRight size={14} strokeWidth={3} />
                       </div>
@@ -113,9 +197,6 @@ export const RelatedProduct = ({ data }) => {
           );
         })}
       </div>
-
-   
-
     </div>
   );
 };

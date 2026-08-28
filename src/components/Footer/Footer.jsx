@@ -42,33 +42,76 @@ const Footer = () => {
   const brandColor = "#1976d2";
 
   return (
-    <footer className="relative bg-[#0f172a] text-gray-300 font-sans mt-10">
+    <footer className="relative bg-[#0f172a] text-gray-300 font-sans mt-8">
       {/* Top Gradient Border using Brand Color */}
       <div
         className={`absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#1976d2] to-transparent opacity-40`}
       ></div>
 
-      <div className="max-w-[1400px] mx-auto px-6 md:pt-16 pt-8 md:pb-8 pb-4">
+      <div className="max-w-[1400px] mx-auto px-6 md:pt-10 pt-8 md:pb-8 pb-4">
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 md:mb-16 mb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 md:mb-4 mb-6">
           {/* 1. BRAND SECTION */}
           <div className="space-y-6">
-            <Link
+            {/* <Link
               to="/"
               className="inline-block transition-transform hover:scale-105"
             >
               <img
-                className="h-14 w-auto bg-slate-800/50 p-2 rounded-xl backdrop-blur-sm border border-slate-700"
+                className="h-16 w-auto bg-slate-800/50 p-2 rounded backdrop-blur-sm border border-slate-700"
                 src="/logo full final.png"
                 alt="Victus Byte"
               />
-            </Link>
+            </Link> */}
+            <div className="flex flex-col items-start">
+              <a
+                href="tel:09611-342936"
+                className="
+      flex items-center
+      w-72
+      py-3 px-4
+      rounded-full
+      border border-slate-700/70
+      hover:border-orange-500
+      transition-all
+      group
+    "
+              >
+                {/* Icon */}
+                <div className="flex items-center justify-center pr-4 text-white transition-colors">
+                  <FiPhoneCall size={20} />
+                </div>
+
+                {/* Vertical Divider */}
+                <div
+                  className="
+        h-7 w-[1px]
+        bg-slate-700/60
+        group-hover:bg-orange-500
+        mr-4
+        transition-colors
+      "
+                />
+
+                {/* Text */}
+                <div className="flex flex-col">
+                  <span className="text-xs font-medium text-slate-400 tracking-wide">
+                    9 AM - 8 PM
+                  </span>
+
+                  <span className="text-base font-bold text-orange-500 tracking-wider">
+                    09611-342936
+                  </span>
+                </div>
+              </a>
+            </div>
+
             <p className="text-gray-400 leading-relaxed text-sm">
               Elevating your digital lifestyle with premium tech essentials.
               Join the <strong className="text-[#1976d2]">Victus Byte</strong>{" "}
               community.
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-3 -mt-2">
               {[
                 {
                   name: "Facebook",
@@ -79,7 +122,7 @@ const Footer = () => {
                 {
                   name: "Instagram",
                   icon: <FiInstagram />,
-                  link: "https://instagram.com/victusbyte.bd",
+                  link: "https://instagram.com/victusbyte_official",
                   color:
                     "hover:bg-gradient-to-tr hover:from-[#f9ce34] hover:via-[#ee2a7b] hover:to-[#6228d7]",
                 },
@@ -95,7 +138,7 @@ const Footer = () => {
                   href={social.link}
                   target="_blank"
                   rel="noreferrer"
-                  className={`p-2.5 bg-slate-800 rounded-full text-white transition-all duration-300 ${social.color} hover:scale-110`}
+                  className={`p-2.5 text-xl bg-slate-800 rounded-full text-white transition-all duration-300 ${social.color} hover:scale-110`}
                 >
                   {social.icon}
                 </a>
@@ -172,46 +215,101 @@ const Footer = () => {
         </div>
 
         {/* PAYMENT & COPYRIGHT */}
-        <div className="pt-8 border-t border-slate-800 flex flex-col items-center gap-8">
-          {/* Clear View Payment Icons */}
-          <div className="flex flex-wrap justify-center items-center gap-3 lg:gap-6">
-            <div className="bg-white p-0.5 rounded-md shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
+        <div className="pt-4 border-t border-slate-800 flex flex-col items-center gap-8">
+          {/* Payment Icons */}
+          <div className="flex flex-wrap justify-center items-center gap-3 lg:gap-5">
+            {/* bKash */}
+            <div className="bg-white p-0.5 rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
               <img
                 src="https://freelogopng.com/images/all_img/1656227518bkash-logo-png.png"
                 alt="bKash"
                 className="max-h-full object-contain"
               />
             </div>
-            <div className="bg-white p-0.5 rounded-md shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
+
+            {/* Nagad */}
+            <div className="bg-white p-0.5 rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
               <img
                 src="https://download.logo.wine/logo/Nagad/Nagad-Logo.wine.png"
                 alt="Nagad"
                 className="max-h-full object-contain scale-125"
               />
             </div>
-            <div className="bg-white p-0.5 rounded-md shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
+
+            {/* Rocket */}
+            <div className="bg-white p-0.5 rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
               <img
                 src="https://sajidshop.com/public/frontend/images/payment_method/rocket.png"
                 alt="Rocket"
                 className="max-h-full object-contain"
               />
             </div>
-            <div className="bg-white p-0.5 rounded-md shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
+
+            {/* Visa */}
+            <div className="bg-white p-0.5 rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
               <img
                 src="https://i.pinimg.com/736x/5f/79/a6/5f79a6defe837d721dd2e3b2dba041e1.jpg"
                 alt="Visa"
-                className="max-h-full"
+                className="max-h-full object-contain"
               />
             </div>
-            <div className="bg-white p-0.5 rounded-md shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
+
+            {/* Mastercard */}
+            <div className="bg-white p-0.5 rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png"
                 alt="Mastercard"
                 className="max-h-full object-contain p-0.5"
               />
             </div>
+
+            {/* American Express */}
+            <div className="bg-white p-0.5 rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/American_Express_logo.svg/1280px-American_Express_logo.svg.png"
+                alt="American Express"
+                className="max-h-full object-contain p-1"
+              />
+            </div>
+
+            {/* UnionPay */}
+            <div className="bg-white p-0.5 rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/UnionPay_logo.svg/1280px-UnionPay_logo.svg.png"
+                alt="UnionPay"
+                className="max-h-full object-contain p-1"
+              />
+            </div>
+
+            {/* PayPal */}
+            <div className="bg-white p-0.5 rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1280px-PayPal.svg.png"
+                alt="PayPal"
+                className="max-h-full object-contain p-1"
+              />
+            </div>
+
+            {/* Google Pay */}
+            <div className="bg-white p-0.5 rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/1280px-Google_Pay_Logo.svg.png"
+                alt="Google Pay"
+                className="max-h-full object-contain p-1"
+              />
+            </div>
+
+            {/* Apple Pay */}
+            <div className="bg-white p-0.5 rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Apple_Pay_logo.svg/1280px-Apple_Pay_logo.svg.png"
+                alt="Apple Pay"
+                className="max-h-full object-contain p-1"
+              />
+            </div>
           </div>
 
+          {/* Copyright */}
           <div className="text-center space-y-2">
             <p className="text-xs text-gray-500">
               © {new Date().getFullYear()}{" "}
@@ -220,6 +318,7 @@ const Footer = () => {
               </span>
               . All rights reserved.
             </p>
+
             <p className="text-[9px] text-gray-600 uppercase tracking-[0.3em] font-bold">
               Designed & Developed by Mostakin Ahmed
             </p>
