@@ -20,7 +20,7 @@ const LeftSide = ({ onFilter }) => {
   useEffect(() => {
     if (categoryData && urlParam) {
       const foundCat = categoryData.find(
-        (c) => c.catName.toLowerCase() === urlParam.toLowerCase()
+        (c) => c.catName.toLowerCase() === urlParam.toLowerCase(),
       );
       setCat(foundCat ? foundCat.catID : urlParam); // Set category ID or raw URL param
     }
@@ -39,7 +39,7 @@ const LeftSide = ({ onFilter }) => {
     if (!categoryData || !productData) return;
     const availableCatIds = [...new Set(productData.map((p) => p.category))];
     const filteredCats = categoryData.filter((c) =>
-      availableCatIds.includes(c.catID)
+      availableCatIds.includes(c.catID),
     );
     setCatData(filteredCats);
   }, [categoryData, productData]);
@@ -53,7 +53,7 @@ const LeftSide = ({ onFilter }) => {
     // If checkboxes are picked, show brands for those categories
     if (selectedIds.length > 0) {
       relevantProducts = productData.filter((p) =>
-        selectedIds.includes(p.category)
+        selectedIds.includes(p.category),
       );
     }
     // Else if we are on a specific category page, show brands for that cat
@@ -71,14 +71,14 @@ const LeftSide = ({ onFilter }) => {
 
   const handleCheckboxChange = (id, checked) => {
     setSelectedIds((prev) =>
-      checked ? [...prev, id] : prev.filter((i) => i !== id)
+      checked ? [...prev, id] : prev.filter((i) => i !== id),
     );
     setSelectedBrand([]); // Clear brands when category changes to avoid empty results
   };
 
   const handleBrandChange = (brand, checked) => {
     setSelectedBrand((prev) =>
-      checked ? [...prev, brand] : prev.filter((b) => b !== brand)
+      checked ? [...prev, brand] : prev.filter((b) => b !== brand),
     );
   };
 
@@ -87,14 +87,15 @@ const LeftSide = ({ onFilter }) => {
     setSelectedIds([]);
     setSelectedBrand([]);
 
-    Swal.fire({
-      icon: "info",
-      title: "Filters Cleared",
-      toast: true,
-      position: "top-end",
-      showConfirmButton: false,
-      timer: 1500,
-    });
+    //   Swal.fire({
+    //     icon: "info",
+    //     title: "Filters Cleared",
+    //     toast: true,
+    //     position: "top-start",
+    //     showConfirmButton: false,
+    //     timer: 1500,
+    //     background: "#ffffff",
+    //   });
   };
 
   // Memoized Filter Logic to prevent infinite loops
@@ -243,7 +244,7 @@ const LeftSide = ({ onFilter }) => {
                           handleCheckboxChange(category.catID, e.target.checked)
                         }
                       />
-                      <span className="ml-3 text-sm text-gray-600 group-hover:text-indigo-600 transition-colors">
+                      <span className="ml-2 text-sm text-gray-600 group-hover:text-indigo-600 transition-colors">
                         {category.catName}
                       </span>
                     </label>
@@ -252,7 +253,7 @@ const LeftSide = ({ onFilter }) => {
               </div>
             </div>
             {/* BRAND LIST */}
-            <div className=" pb-2">
+            <div className="ml-1.5 pb-2">
               <h3 className="text-sm font-bold text-gray-800 uppercase mb-3">
                 Brands
               </h3>

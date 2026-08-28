@@ -116,7 +116,7 @@ const RightSide = ({ filterData }) => {
             <h3 className="text-xl font-bold text-gray-800">
               Oops! Item Not Found
             </h3>
-            <p className="text-gray-500 mt-2 max-w-xs mx-auto">
+            <p className="text-gray-500 mt-2 max-w-2xl mx-auto">
               We couldn't find any category or tracking ID matching "{urlParam}
               ".
             </p>
