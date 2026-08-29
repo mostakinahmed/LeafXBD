@@ -176,7 +176,7 @@ const ProductDetail = () => {
       <ResponsiveToaster />
 
       {/* Main Layout Container */}
-      <section className="max-w-[1400px] lg:mt-[56px] p-3 md:px-5 px-2 mx-auto w-full">
+      <section className="max-w-[1400px] lg:mt-[54px] p-3 md:px-5 px-2 mx-auto w-full">
         <div className="flex flex-col lg:flex-row mt-12 md:mt-11 gap-4 lg:gap-3 w-full">
           {/* LEFT COLUMN: Product Images, Details, and Specs */}
           <div className="flex flex-col w-full lg:w-[70%] xl:w-[75%] gap-3">

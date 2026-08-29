@@ -63,7 +63,7 @@ export const Profile = () => {
 
           <button className="relative cursor-pointer z-10 flex items-center gap-3 md:px-2">
             {/* Icon */}
-            <div className="flex h-8 w-8 items-center md:-ml-2 justify-center rounded-full bg-[#1976d2]/15 transition-all duration-300 group-hover:bg-[#1976d2]">
+            <div className="flex h-8 w-8 items-center md:-ml-2 justify-center rounded-full bg-[#1976d2]/20 transition-all duration-300 group-hover:bg-[#1976d2]">
               <User className="md:w-4 md:h-4 w-5 h-5 text-[#1976d2] group-hover:text-white transition-all duration-300" />
             </div>
 

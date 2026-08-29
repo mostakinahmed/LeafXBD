@@ -126,13 +126,13 @@ function App() {
         }`}
       >
         {/* 2. SLIM HEADER CONTAINER: Shrinks height to 0 and fades out */}
-        <div
+        {/* <div
           className={`transition-all md:duration-400 duration-300 ease-in-out overflow-hidden ${
             isScrolled ? "h-0 opacity-0" : "h-7 md:h-10 opacity-100"
           }`}
         >
           <Header />
-        </div>
+        </div> */}
 
         {/* Navbar and Category Menu remain visible but move up with the wrapper */}
         <Navber />
@@ -146,7 +146,7 @@ function App() {
           hidden behind the fixed navigation on load.
       */}
 
-      <main className="md:pt-11 pt-6">
+      <main className="md:pt-5.5">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:cat" element={<AllProduct />} />

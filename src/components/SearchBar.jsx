@@ -98,7 +98,7 @@ export const SearchBar = () => {
   className="relative w-full max-w-xl mx-auto md:mx-0"
 >
   {/* Premium Glow */}
-  <div className="absolute -inset-[1px] rounded-xl bg-gradient-to-r from-[#1976d2]/20 via-transparent to-[#1976d2]/20 blur-sm"></div>
+  {/* <div className="absolute -inset-[1px] rounded-xl bg-gradient-to-r from-[#1976d2]/20 via-transparent to-[#1976d2]/20 blur-sm"></div> */}
 
   {/* Search Box */}
   <div className="relative flex items-center">
@@ -110,11 +110,12 @@ export const SearchBar = () => {
       onKeyDown={(e) => e.key === "Enter" && searchPage()}
       className="
         w-full
-        bg-slate-50
+        
         border
-        border-slate-500/35
+        border-slate-500/70
         rounded-full
         px-5
+        bg-white
         py-2
         pr-14
         text-gray-800

@@ -35,7 +35,7 @@ const NavbarTop = () => {
 
   // Define the dynamic variable here
   // When not scrolled: 80px | When scrolled: 45px
-  const navHeight = isScrolled ? "top-[48px]" : "top-[80px]";
+  const navHeight = isScrolled ? "top-[48px]" : "top-[48px]";
 
   useEffect(() => {
     if (values) {
@@ -64,7 +64,7 @@ const NavbarTop = () => {
     // Height is implicit here, but sticky top-0 is key
     //sticky top-0 z-50
     <>
-      <div className="bg-white font-sans shadow lg:shadow-none text-black py-1  md:py-0 border-b ">
+      <div className="bg-[#0f172a] font-sans shadow lg:shadow-none text-black py-1  md:py-2 border-b ">
         {/* ======= DESKTOP NAV ======= */}
         <div className="max-w-[1400px] mx-auto items-center justify-between px-4 hidden md:flex h-[65px]">
           <div>
@@ -77,8 +77,8 @@ const NavbarTop = () => {
             </Link> */}
             <Link to="/">
               <img
-                className="w-[120px] h-[55px] mb-1.5"
-                src="https://7vgva7cju0vcfvwf.public.blob.vercel-storage.com/c5c44365-8659-46b0-8653-d5af8a80a399.png"
+                className="w-[120px] h-[55px]"
+                src="https://7vgva7cju0vcfvwf.public.blob.vercel-storage.com/c5c44365-8659-46b0-8653-d5af8a80a399-removebg-preview.png"
                 alt="Logo"
               />
             </Link>
@@ -180,8 +180,8 @@ const NavbarTop = () => {
               className="
     group
     cursor-pointer
-    h-11
-    w-11
+    h-8
+    w-12
     rounded-xl
 
     bg-white
@@ -214,8 +214,8 @@ const NavbarTop = () => {
               className="
     relative
     group
-    h-11
-    w-11
+    h-8
+    w-12
     rounded-xl
     bg-white
     flex
@@ -325,7 +325,6 @@ const NavbarTop = () => {
         )}
 
         {/* ======= SIDEBAR + OVERLAY ======= */}
-        {/* Overlay starts below Navbar */}
         <div
           className={`fixed inset-0  ${navHeight}  bg-black/20 backdrop-blur-sm z-40 transition-opacity duration-300 ${
             values ? "opacity-100 visible" : "opacity-0 invisible"
