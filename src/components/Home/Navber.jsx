@@ -320,7 +320,7 @@ const NavbarTop = () => {
         </div>
 
         {sBar && (
-          <div className=" bg-red-700 mx-2 mt-5 pb-2 md:hidden">
+          <div className="  mx-2 mt-5 pb-2 md:hidden">
             <SearchBar />
           </div>
         )}
