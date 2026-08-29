@@ -36,9 +36,9 @@ export default function AllProduct() {
       {/* Section Title */}
       <div className="flex items-center justify-between bg-white shadow-sm border border-gray-100 md:p-4 px-4 py-2  mb-3">
         <div className="flex items-center gap-3">
-          <div className="p-2 -ml-4 md:ml-0">
+          {/* <div className="p-2 -ml-4 md:ml-0">
             <FiZap className="text-xl md:-ml-3 text-[#fe741d] animate-pulse" />
-          </div>
+          </div> */}
           <h3 className=" md:text-xl -ml-3  md:-ml-1 font-bold text-gray-900">
             All Product
           </h3>

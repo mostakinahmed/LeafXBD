@@ -24,7 +24,7 @@ export const Description = ({ data }) => {
             <FiFileText className="text-white text-lg" />
           </div>
 
-          <h1 className="lg:text-xl text-lg font-bold text-white">
+          <h1 className="lg:text-xl text-lg font-medium text-white">
             Product Description
           </h1>
         </div>

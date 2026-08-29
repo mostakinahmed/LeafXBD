@@ -11,21 +11,24 @@ const AlsoLike = () => {
 
   return (
     <div
-      className="max-w-[1360px] md:-mb-6 mx-auto rounded pb-5 overflow-hidden relative
-      bg-gradient-to-r from-slate-900 via-purple-900 to-pink-900
-      border border-white/10 shadow-xl"
+      className="
+        max-w-[1360px] md:-mb-6 mx-auto rounded pb-5 overflow-hidden relative
+        bg-gradient-to-r from-[#0f172a] via-[#1976d2] to-[#0b3d91]
+        border border-white/10 shadow-xl
+      "
     >
       {/* Background Glow Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -left-24 w-80 h-80 bg-pink-500/20 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute -top-24 -left-24 w-80 h-80 bg-[#1976d2]/25 rounded-full blur-3xl" />
+
+        <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-[#1e88e5]/25 rounded-full blur-3xl" />
       </div>
 
       {/* Header Section */}
       <div className="relative z-10 flex items-center justify-between bg-white/10 backdrop-blur-md border-b border-white/10 p-4 mb-4">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-xl bg-pink-500/20">
-            <FiHeart className="text-xl text-pink-400" />
+          <div className="p-2 rounded-xl bg-blue-400/20">
+            <FiHeart className="text-xl text-blue-300" />
           </div>
 
           <h3 className="text-lg font-bold text-white uppercase tracking-tight">
@@ -34,10 +37,8 @@ const AlsoLike = () => {
         </div>
       </div>
 
-      {/* Auto-scrolling Row */}
+      {/* Products */}
       <div className="relative w-full group flex overflow-hidden">
-       
-        {/* Scrolling Products */}
         <div className="relative z-0 flex gap-2 w-max my-custom-scroll px-2">
           {[...productData, ...productData].map((product, index) => (
             <div
@@ -57,7 +58,7 @@ const AlsoLike = () => {
       </div>
 
       {/* Bottom Accent Line */}
-      <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-pink-500 via-purple-400 to-pink-500"></div>
+      <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#1565c0] via-[#1e88e5] to-[#1976d2]" />
     </div>
   );
 };

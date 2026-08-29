@@ -241,7 +241,7 @@ const CategoryDropdown = () => {
                 shadow-lg
                 shadow-blue-900/10
 
-                backdrop-blur-xl
+                backdrop-blur-lg
               "
             >
               {/* GLASS LIGHT EFFECT */}
@@ -559,9 +559,9 @@ const CategoryDropdown = () => {
                         >
                           <h3
                             className="
-                                text-sm
-                                font-extrabold
-                                text-slate-700
+                                
+                                font-medium
+                                text-slate-800
 
                                 group-hover:text-[#1976d2]
 

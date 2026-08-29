@@ -219,7 +219,7 @@ const Footer = () => {
           {/* Payment Icons */}
           <div className="flex flex-wrap justify-center items-center gap-3 lg:gap-5">
             {/* bKash */}
-            <div className="bg-white p-0.5 rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
+            <div className="bg-white p-1 rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
               <img
                 src="https://freelogopng.com/images/all_img/1656227518bkash-logo-png.png"
                 alt="bKash"
@@ -237,7 +237,7 @@ const Footer = () => {
             </div>
 
             {/* Rocket */}
-            <div className="bg-white p-0.5 rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
+            <div className="bg-white p-1 rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
               <img
                 src="https://sajidshop.com/public/frontend/images/payment_method/rocket.png"
                 alt="Rocket"
@@ -264,7 +264,7 @@ const Footer = () => {
             </div>
 
             {/* American Express */}
-            <div className="bg-white p-0.5 rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
+            <div className="bg-white rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/American_Express_logo.svg/1280px-American_Express_logo.svg.png"
                 alt="American Express"
@@ -273,7 +273,7 @@ const Footer = () => {
             </div>
 
             {/* UnionPay */}
-            <div className="bg-white p-0.5 rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
+            <div className="bg-white  rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/UnionPay_logo.svg/1280px-UnionPay_logo.svg.png"
                 alt="UnionPay"
@@ -282,7 +282,7 @@ const Footer = () => {
             </div>
 
             {/* PayPal */}
-            <div className="bg-white p-0.5 rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
+            <div className="bg-white  rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1280px-PayPal.svg.png"
                 alt="PayPal"
@@ -290,8 +290,7 @@ const Footer = () => {
               />
             </div>
 
-            {/* Google Pay */}
-            <div className="bg-white p-0.5 rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
+            <div className="bg-white p-1 rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-17 h-7 lg:h-9">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/1280px-Google_Pay_Logo.svg.png"
                 alt="Google Pay"
@@ -300,7 +299,7 @@ const Footer = () => {
             </div>
 
             {/* Apple Pay */}
-            <div className="bg-white p-0.5 rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-16 h-7 lg:h-9">
+            <div className="bg-white p-1 rounded shadow-sm border border-slate-700/50 flex items-center justify-center w-12 lg:w-17 h-7 lg:h-9">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Apple_Pay_logo.svg/1280px-Apple_Pay_logo.svg.png"
                 alt="Apple Pay"

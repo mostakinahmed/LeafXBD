@@ -68,9 +68,7 @@ export const FeatureProduct = () => {
       {/* Header */}
       <div className="relative z-10 flex items-center justify-between bg-white/10 backdrop-blur-md border-b border-white/10 md:p-4 px-4 py-3 md:mb-8 mb-5">
         <div className="flex items-center gap-3">
-          <div className="p-2">
-            <FiZap className="text-xl text-orange-400 animate-pulse" />
-          </div>
+          
 
           <h3 className="md:text-xl text-lg font-bold text-white">
             Featured Products

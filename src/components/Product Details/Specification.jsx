@@ -17,7 +17,7 @@ export default function ProductSpecTable({ data }) {
             <FiList className="text-white text-lg" />
           </div>
 
-          <h2 className="text-lg lg:text-xl font-bold text-white">
+          <h2 className="text-lg lg:text-xl font-medium text-white">
             Product Specifications
           </h2>
         </div>
@@ -35,7 +35,7 @@ export default function ProductSpecTable({ data }) {
             </div>
 
             {/* Specification Rows */}
-            <dl className="divide-y divide-slate-200">
+            <dl className="divide-y divide-slate-200/60">
               {items.map((item, index) => (
                 <div
                   key={index}

@@ -19,7 +19,7 @@ const TopCategoryCards = () => {
             {/* Left side */}
             <div className="flex items-center gap-3">
               {/* Icon badge */}
-              <div className="w-10 h-10 rounded-lg bg-[#1976d2] flex items-center justify-center shadow-md">
+              {/* <div className="w-10 h-10 rounded-lg bg-[#1976d2] flex items-center justify-center shadow-md">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-5 h-5 text-white"
@@ -34,7 +34,7 @@ const TopCategoryCards = () => {
                     d="M3 7h18M3 12h18M3 17h18"
                   />
                 </svg>
-              </div>
+              </div> */}
 
               {/* Title */}
               <div>
@@ -42,7 +42,7 @@ const TopCategoryCards = () => {
                   Top Categories
                 </h2>
 
-                <div className="h-0.5 w-16 bg-gradient-to-r from-[#1976d2] to-transparent rounded-full mt-1"></div>
+                <div className="h-0.5 w-80 bg-gradient-to-r from-[#1976d2] to-transparent rounded-full mt-1"></div>
               </div>
             </div>
 
@@ -57,7 +57,7 @@ const TopCategoryCards = () => {
       </div>
 
       {/* GRID */}
-      <div className="grid grid-cols-5 lg:grid-cols-6 xl:grid-cols-12 border-l border-t border-blue-100 md:mx-3.5 mx-2 rounded overflow-hidden">
+      <div className="grid grid-cols-5 lg:grid-cols-6 xl:grid-cols-10 border-l border-t border-blue-100 md:mx-3.5 mx-2 rounded overflow-hidden">
         {categoryData && categoryData.length > 0 ? (
           categoryData
             .filter((cat) => cat.topCategory === true)
@@ -84,7 +84,7 @@ const TopCategoryCards = () => {
                   "
                 >
                   {/* ICON */}
-                  <div className="h-9 w-10 lg:h-12 lg:w-12 mb-2 flex items-center justify-center rounded-xl bg-blue-50 group-hover:bg-[#1976d2]/10 transition-all duration-300">
+                  <div className="h-9 w-10 lg:h-18 lg:w-18 mb-2 flex items-center justify-center rounded-xl bg-blue-50 group-hover:bg-[#1976d2]/10 transition-all duration-300">
                     {cat.catIcon ? (
                       <img
                         src={cat.catIcon}
