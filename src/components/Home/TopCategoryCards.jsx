@@ -15,7 +15,7 @@ const TopCategoryCards = () => {
           <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#1976d2]/20 blur-3xl rounded-full"></div>
           <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#1976d2]/10 blur-3xl rounded-full"></div>
 
-          <div className="relative px-5 py-3 flex items-center justify-between">
+          <div className="relative px-5 md:py-3 py-1.5 flex items-center justify-between">
             {/* Left side */}
             <div className="flex items-center gap-3">
               {/* Icon badge */}
@@ -42,12 +42,12 @@ const TopCategoryCards = () => {
                   Top Categories
                 </h2>
 
-                <div className="h-0.5 w-80 bg-gradient-to-r from-[#1976d2] to-transparent rounded-full mt-1"></div>
+                <div className="h-0.5 md:w-80 w-40 bg-gradient-to-r from-[#1976d2] to-transparent rounded-full mt-1"></div>
               </div>
             </div>
 
             {/* Right badge */}
-            <div className="px-3 py-1 rounded-full bg-blue-50 border border-blue-200">
+            <div className="px-3 py-1 hidden md:block rounded-full bg-blue-50 border border-blue-200">
               <span className="text-[#1976d2] text-xs md:text-sm font-semibold">
                 {categoryData?.length || 0} Categories
               </span>
@@ -57,6 +57,7 @@ const TopCategoryCards = () => {
       </div>
 
       {/* GRID */}
+
       <div className="grid grid-cols-5 lg:grid-cols-6 xl:grid-cols-10 border-l border-t border-blue-100 md:mx-3.5 mx-2 rounded overflow-hidden">
         {categoryData && categoryData.length > 0 ? (
           categoryData
@@ -70,21 +71,22 @@ const TopCategoryCards = () => {
               >
                 <div
                   className="
-                    bg-white
-                    flex flex-col items-center justify-center
-                    aspect-square text-center
-                    border-r border-b border-blue-100
-                    transition-all duration-300
-                    cursor-pointer p-2
-                    hover:bg-gradient-to-b
-                    hover:from-blue-50
-                    hover:to-white
-                    hover:-translate-y-1
-                    hover:shadow-md
-                  "
+              bg-white
+              flex flex-col items-center justify-center
+              aspect-square
+              text-center
+              border-r border-b border-blue-100
+              transition-all duration-300
+              cursor-pointer px-2 py-1
+              hover:bg-gradient-to-b
+              hover:from-blue-50
+              hover:to-white
+              hover:-translate-y-1
+              hover:shadow-md
+            "
                 >
                   {/* ICON */}
-                  <div className="h-9 w-10 lg:h-18 lg:w-18 mb-2 flex items-center justify-center rounded-xl bg-blue-50 group-hover:bg-[#1976d2]/10 transition-all duration-300">
+                  <div className="h-10 w-11 lg:h-18 lg:w-18 mb-2 flex items-center justify-center rounded-xl bg-blue-50 group-hover:bg-[#1976d2]/10 transition-all duration-300">
                     {cat.catIcon ? (
                       <img
                         src={cat.catIcon}
@@ -97,7 +99,18 @@ const TopCategoryCards = () => {
                   </div>
 
                   {/* TEXT */}
-                  <span className="text-[10px] md:text-[11px] lg:text-sm font-medium text-gray-700 group-hover:text-[#1976d2] transition-colors leading-tight px-1 line-clamp-2">
+                  <span
+                    className="
+                min-h-[1.5rem]
+                flex items-center justify-center
+                text-[10px] md:text-[11px] lg:text-sm
+                font-medium text-gray-700
+                group-hover:text-[#1976d2]
+                transition-colors
+                leading-tight px-1
+                line-clamp-2
+              "
+                  >
                     {cat.catName}
                   </span>
                 </div>
