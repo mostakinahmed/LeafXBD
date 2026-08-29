@@ -19,10 +19,10 @@ const MobileCategoryRow = () => {
       path: "/kids-zone",
     },
     {
-      name: "Daily Deals",
+      name: "Daily Accessories",
       icon: <Zap size={22} />,
       color: "from-orange-400 to-yellow-500",
-      path: "/daily-deals",
+      path: "/daily-accessories",
     },
   ];
 

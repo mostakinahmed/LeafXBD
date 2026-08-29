@@ -72,7 +72,7 @@ export default function VictusByteAssistant() {
   };
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 font-sans">
+    <div className="fixed hidden md:block bottom-5 right-5 z-50 font-sans">
       {/* 1. Floating Action Button (Bottom Right) */}
       {!isOpen && (
         <button

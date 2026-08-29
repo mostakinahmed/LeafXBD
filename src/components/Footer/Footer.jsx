@@ -48,7 +48,7 @@ const Footer = () => {
         className={`absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#1976d2] to-transparent opacity-40`}
       ></div>
 
-      <div className="max-w-[1400px] mx-auto px-6 md:pt-10 pt-8 md:pb-8 pb-4">
+      <div className="max-w-[1400px] mx-auto px-6 md:pt-10 pt-8 pb-4">
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 md:mb-4 mb-6">
           {/* 1. BRAND SECTION */}
@@ -63,7 +63,7 @@ const Footer = () => {
                 alt="Victus Byte"
               />
             </Link> */}
-            <div className="flex flex-col items-start">
+            <div className="flex flex-col md:items-start items-center">
               <a
                 href="tel:09611-342936"
                 className="

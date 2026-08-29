@@ -35,7 +35,7 @@ const NavbarTop = () => {
 
   // Define the dynamic variable here
   // When not scrolled: 80px | When scrolled: 45px
-  const navHeight = isScrolled ? "top-[48px]" : "top-[48px]";
+  const navHeight = isScrolled ? "top-[48px]" : "top-[51.5px]";
 
   useEffect(() => {
     if (values) {
@@ -280,19 +280,20 @@ const NavbarTop = () => {
         </div>
 
         {/* ======= MOBILE NAV ======= */}
-        <div className="bg-white w-full h-[40px] md:hidden flex items-center justify-between px-3">
-          <div className="text-2xl cursor-pointer" onClick={toggle}>
+        <div className="bg-[#0f172a] w-full h-[43px] md:hidden flex items-center justify-between px-3">
+          <div
+            className="text-2xl cursor-pointer text-white/90"
+            onClick={toggle}
+          >
             <i
-              className={
-                values ? "ri-close-line text-indigo-600" : "ri-menu-3-line"
-              }
+              className={values ? "ri-close-line text-white" : "ri-menu-3-line"}
             ></i>
           </div>
 
           <Link to="/">
             <img
               className="h-[39px]  ml-18"
-              src="https://7vgva7cju0vcfvwf.public.blob.vercel-storage.com/c5c44365-8659-46b0-8653-d5af8a80a399.png"
+              src="https://7vgva7cju0vcfvwf.public.blob.vercel-storage.com/c5c44365-8659-46b0-8653-d5af8a80a399-removebg-preview.png"
               alt="Logo"
             />
           </Link>
@@ -300,13 +301,13 @@ const NavbarTop = () => {
           <div className="flex items-center gap-3 w-[110px] justify-end">
             {searchIcon && (
               <i
-                className="ri-search-line text-xl"
+                className="ri-search-line text-xl text-white/90"
                 onClick={() => setSbar(!sBar)}
               ></i>
             )}
             <div className="relative ml-1">
               <Link to="/checkout/cart">
-                <i className="ri-shopping-cart-2-line text-2xl text-gray-800"></i>
+                <i className="ri-shopping-cart-2-line text-2xl text-white/70"></i>
               </Link>
               {cartItems.length > 0 && (
                 <span className="absolute -top-1 -right-1 bg-[#fe741d] text-white text-[10px] px-1 rounded-full">
@@ -319,7 +320,7 @@ const NavbarTop = () => {
         </div>
 
         {sBar && (
-          <div className="mx-2 mt-5 pb-2 md:hidden">
+          <div className=" bg-red-700 mt-5 pb-2 md:hidden">
             <SearchBar />
           </div>
         )}
