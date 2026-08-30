@@ -57,8 +57,6 @@ const ProductDetail = () => {
       })
       .slice(0, 6) || [];
 
-  console.log(allProductsInCategory);
-
   useEffect(() => {
     if (!stockData || !product) return;
     const stock = stockData.find((item) => item.pID === product.pID);
@@ -87,6 +85,7 @@ const ProductDetail = () => {
       prev === product.images.length - 1 ? 0 : prev + 1,
     );
 
+  //handle cart
   const saveCart = (cart) =>
     sessionStorage.setItem("cart", JSON.stringify(cart));
 
@@ -96,22 +95,33 @@ const ProductDetail = () => {
       return;
     }
 
-    let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+    const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
 
-    for (let i = 0; i < quantity; i++) {
+    // Check if the same product with the same color already exists
+    const alreadyExists = cart.some(
+      (item) =>
+        item.pID === product.pID &&
+        item.color?.toLowerCase() === selectedColor?.toLowerCase(),
+    );
+
+    // If product does not exist, add it
+    if (!alreadyExists) {
       cart.push({
         pID: product.pID,
         name: product.name,
         price: product.price.selling,
         image: product.images[0],
-        qty: 1,
+        qty: quantity,
         color: selectedColor,
         cartItemId: Date.now() + Math.random(),
       });
+
+      saveCart(cart);
+      updateCart();
     }
 
-    saveCart(cart);
-    updateCart();
+    // Product already exists OR was just added
+    // Go directly to checkout
     navigate("/checkout/purchase");
   };
 
@@ -123,20 +133,33 @@ const ProductDetail = () => {
 
     const existingCart = JSON.parse(sessionStorage.getItem("cart")) || [];
 
-    for (let i = 0; i < quantity; i++) {
-      existingCart.push({
-        pID: product.pID,
-        name: product.name,
-        price: product.price.selling,
-        image: product.images[0],
-        qty: 1,
-        color: selectedColor,
-        cartItemId: Date.now() + Math.random(),
-      });
+    // Check if this product with the same color already exists
+    const alreadyAdded = existingCart.some(
+      (item) =>
+        item.pID === product.pID &&
+        item.color?.toLowerCase() === selectedColor?.toLowerCase(),
+    );
+
+    if (alreadyAdded) {
+      toast.info("This product is already added to your cart!");
+      return;
     }
 
+    // Add product
+    existingCart.push({
+      pID: product.pID,
+      name: product.name,
+      price: product.price.selling,
+      image: product.images[0],
+      qty: quantity,
+      color: selectedColor,
+      cartItemId: Date.now() + Math.random(),
+    });
+
     sessionStorage.setItem("cart", JSON.stringify(existingCart));
+
     updateCart();
+
     toast.success(
       `${quantity} ${quantity > 1 ? "units" : "unit"} added to cart!`,
     );
