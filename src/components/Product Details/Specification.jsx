@@ -39,7 +39,7 @@ export default function ProductSpecTable({ data }) {
               {items.map((item, index) => (
                 <div
                   key={index}
-                  className="grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-6 px-6 py-3 hover:bg-blue-50/40 transition-colors duration-200"
+                  className="grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-6 px-6 md:py-3 py-1.5 hover:bg-blue-50/40 transition-colors duration-200"
                 >
                   {/* Key */}
                   <dt className="text-sm md:text-[15px] font-medium text-slate-500 lg:col-span-1">
