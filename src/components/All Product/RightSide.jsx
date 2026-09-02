@@ -123,13 +123,20 @@ const RightSide = ({ filterData }) => {
             <div className="flex gap-2 justify-center mt-6">
               <Link
                 to="/"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded transition-all"
+                className="text-white px-6 py-2 rounded transition-all"
+                style={{ backgroundColor: "#F66107" }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = "#D35000")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = "#F66107")
+                }
               >
                 Return Home
               </Link>
               <button
                 onClick={() => navigate(-1)}
-                className="border border-gray-300 hover:bg-gray-50 text-gray-700 px-6 py-2 rounded transition-all"
+                className="border border-gray-300 hover:bg-gray-50 text-gray-700 px-6 py-2 rounded transition-all cursor-pointer"
               >
                 Go Back
               </button>
