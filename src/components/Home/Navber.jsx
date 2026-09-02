@@ -64,7 +64,7 @@ const NavbarTop = () => {
     // Height is implicit here, but sticky top-0 is key
     //sticky top-0 z-50
     <>
-      <div className="bg-[#0f172a] font-sans shadow lg:shadow-none text-black py-1  md:py-2 md:border-b ">
+      <div className="bg-white font-sans shadow lg:shadow-none text-black py-1  md:py-2 md:border-b ">
         {/* ======= DESKTOP NAV ======= */}
         <div className="max-w-[1400px] mx-auto items-center justify-between px-4 hidden md:flex h-[65px]">
           <div>
@@ -77,14 +77,14 @@ const NavbarTop = () => {
             </Link> */}
             <Link to="/">
               <img
-                className="w-[120px] h-[55px]"
-                src="https://7vgva7cju0vcfvwf.public.blob.vercel-storage.com/c5c44365-8659-46b0-8653-d5af8a80a399-removebg-preview.png"
+                className="w-[190px] h-[53px]"
+                src="/logo/web head tp  black color byte.png"
                 alt="Logo"
               />
             </Link>
           </div>
 
-          <div className="w-1/2">
+          <div className="w-[550px] md:ml-5">
             <SearchBar />
           </div>
 
@@ -280,20 +280,20 @@ const NavbarTop = () => {
         </div>
 
         {/* ======= MOBILE NAV ======= */}
-        <div className="bg-[#0f172a] w-full h-[43px] md:hidden flex items-center justify-between px-3">
+        <div className="bg-white w-full h-[43px] md:hidden flex items-center justify-between px-3">
           <div
-            className="text-2xl cursor-pointer text-white/90"
+            className="text-2xl cursor-pointer text-slate-900/90"
             onClick={toggle}
           >
             <i
-              className={values ? "ri-close-line text-white" : "ri-menu-3-line"}
+              className={values ? "ri-close-line text-slate-900/90" : "ri-menu-3-line"}
             ></i>
           </div>
 
           <Link to="/">
             <img
-              className="h-[39px]  ml-18"
-              src="https://7vgva7cju0vcfvwf.public.blob.vercel-storage.com/c5c44365-8659-46b0-8653-d5af8a80a399-removebg-preview.png"
+              className="h-[39px]  ml-15 p-1"
+              src="https://7vgva7cju0vcfvwf.public.blob.vercel-storage.com/website%20top%20logo.png"
               alt="Logo"
             />
           </Link>
@@ -301,13 +301,13 @@ const NavbarTop = () => {
           <div className="flex items-center gap-3 w-[110px] justify-end">
             {searchIcon && (
               <i
-                className="ri-search-line text-xl text-white/90"
+                className="ri-search-line text-xl text-slate-900/85"
                 onClick={() => setSbar(!sBar)}
               ></i>
             )}
             <div className="relative ml-1">
               <Link to="/checkout/cart">
-                <i className="ri-shopping-cart-2-line text-2xl text-white/80"></i>
+                <i className="ri-shopping-cart-2-line text-2xl text-slate-900/80"></i>
               </Link>
               {cartItems.length > 0 && (
                 <span className="absolute -top-1 -right-1 bg-[#fe741d] text-white text-[10px] px-1 rounded-full">
