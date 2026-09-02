@@ -139,7 +139,7 @@ function App() {
         <CatMenu />
         {/* <FloatingWhatsApp /> */}
         <FloatingSocials />
-        <VictusByteAssistant />
+        {/* <VictusByteAssistant /> */}
       </div>
 
       {/* 3. MAIN CONTENT: Added padding-top (pt-44) so content isn't 

@@ -286,14 +286,16 @@ const NavbarTop = () => {
             onClick={toggle}
           >
             <i
-              className={values ? "ri-close-line text-slate-900/90" : "ri-menu-3-line"}
+              className={
+                values ? "ri-close-line text-slate-900/90" : "ri-menu-3-line"
+              }
             ></i>
           </div>
 
           <Link to="/">
             <img
-              className="h-[39px]  ml-15 p-1"
-              src="https://7vgva7cju0vcfvwf.public.blob.vercel-storage.com/website%20top%20logo.png"
+              className="h-[42px]  ml-17 p-1"
+              src="/logo/web head tp  black color byte.png"
               alt="Logo"
             />
           </Link>
