@@ -332,11 +332,11 @@ const TestBuy = ({ data }) => {
       <div className="w-full md:flex gap-4 ">
         {/* SECTION 1: CUSTOMER INFO */}
         <div className="md:w-1/3 min-h-[750px] rounded bg-white shadow flex-shrink-0">
-          <div className="h-12 bg-slate-800 rounded-t flex items-center px-5 gap-3">
-            <span className="flex items-center justify-center w-8 h-8 bg-slate-700 text-white font-semibold text-lg rounded-full">
+          <div className="h-12 bg-black rounded-t flex items-center px-5 gap-3">
+            <span className="flex items-center justify-center w-8 h-8 bg-brand text-white font-semibold text-lg rounded-full">
               1
             </span>
-            <h2 className="text-lg font-bold text-white">
+            <h2 className="text-lg font-bold text-white/90">
               Customer Information
             </h2>
           </div>
@@ -395,7 +395,7 @@ const TestBuy = ({ data }) => {
               <div className="bg-emerald-50 border border-slate-200 rounded p-3 space-y-5 shadow-sm">
                 {/* Header for the group */}
                 <div className="flex items-center gap-2 pb-2 border-b border-slate-200">
-                  <div className="w-2 h-6 bg-[#1976d2] rounded-full"></div>
+                  <div className="w-2 h-6 bg-brand rounded-full"></div>
                   <h3 className="text-sm font-black uppercase tracking-widest text-slate-600">
                     Shipping Destination
                   </h3>
@@ -597,11 +597,11 @@ const TestBuy = ({ data }) => {
           <div className="flex md:flex-row flex-col w-full gap-4">
             {/* SECTION 2: PAYMENT METHOD */}
             <div className="md:w-1/2 rounded bg-white shadow overflow-hidden">
-              <div className="h-12 bg-slate-800 flex items-center px-5 gap-3">
-                <span className="flex items-center justify-center w-8 h-8 bg-slate-700 text-white font-semibold rounded-full">
+              <div className="h-12 bg-black flex items-center px-5 gap-3">
+                <span className="flex items-center justify-center w-8 h-8 bg-brand text-white font-semibold rounded-full">
                   2
                 </span>
-                <h2 className="text-lg font-bold text-white">Payment Method</h2>
+                <h2 className="text-lg font-bold text-white/90">Payment Method</h2>
               </div>
               <div className="p-5 text-black">
                 <p className="text-[17px] font-medium mb-4 text-slate-800">
@@ -680,11 +680,11 @@ const TestBuy = ({ data }) => {
 
             {/* SECTION 3: DELIVERY METHOD */}
             <div className="md:w-1/2 rounded bg-white shadow overflow-hidden">
-              <div className="h-12 bg-slate-800 flex items-center px-5 gap-3">
-                <span className="flex items-center justify-center w-8 h-8 bg-slate-700 text-white font-semibold rounded-full">
+              <div className="h-12 bg-black flex items-center px-5 gap-3">
+                <span className="flex items-center justify-center w-8 h-8 bg-brand text-white font-semibold rounded-full">
                   3
                 </span>
-                <h2 className="text-lg font-bold text-white">
+                <h2 className="text-lg font-bold text-white/90">
                   Delivery Method
                 </h2>
               </div>
@@ -755,7 +755,7 @@ const TestBuy = ({ data }) => {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className={isApplied ? "text-green-600" : "text-blue-600"}
+                  className={isApplied ? "text-green-600" : "text-brand"}
                 >
                   <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z" />
                   <line x1="7" y1="7" x2="7.01" y2="7" />
@@ -785,7 +785,7 @@ const TestBuy = ({ data }) => {
                       />
                       <button
                         onClick={handleApply}
-                        className="md:hover:bg-slate-800 bg-slate-800 md:bg-white md:text-slate-800 text-sm md:text-[16px] text-white md:w-50 w-50 border-2 border-slate-800 font-semibold md:px-6 py-1.5 rounded transition-all shadow hover:text-white"
+                        className="md:hover:bg-black bg-slate-800 md:bg-white md:text-slate-800 text-sm md:text-[16px] text-white md:w-50 w-50 border-2 border-slate-800 font-semibold md:px-6 py-1.5 rounded transition-all shadow hover:text-white"
                       >
                         Apply Coupon
                       </button>
@@ -976,7 +976,7 @@ const TestBuy = ({ data }) => {
               <button
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className="group w-full md:w-auto px-5 py-3 bg-slate-800 text-white font-black uppercase rounded shadow-md active:scale-95 flex items-center justify-center gap-2"
+                className="group w-full md:w-auto px-5 py-3 bg-brand text-white font-black uppercase rounded shadow-md active:scale-95 flex items-center justify-center gap-2"
               >
                 {isSubmitting ? "Processing..." : "Place Order"}
                 <svg
