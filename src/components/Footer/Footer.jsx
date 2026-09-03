@@ -42,7 +42,7 @@ const Footer = () => {
   const brandColor = "#1976d2";
 
   return (
-    <footer className="relative bg-[#0f172a] text-gray-300 font-sans mt-8">
+    <footer className="relative bg-black text-gray-300 font-sans mt-8">
       {/* Top Gradient Border using Brand Color */}
       <div
         className={`absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#1976d2] to-transparent opacity-40`}

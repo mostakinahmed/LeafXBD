@@ -695,7 +695,7 @@ const DailyAccessories = () => {
             clickable: true,
           }}
           className="
-            rounded
+            rounded-xl
             overflow-hidden
             border
             border-slate-200

@@ -1,6 +1,7 @@
 import { React, useContext, useEffect, useState } from "react";
 import { useLocation, Route, Routes } from "react-router-dom";
 import Navber from "./components/Home/Navber";
+import NavberDark from "./components/Home/NavberDark";
 import CatMenu from "./components/Home/CatMenu.jsx";
 import { Home } from "./pages/Home";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
@@ -135,7 +136,8 @@ function App() {
         </div> */}
 
         {/* Navbar and Category Menu remain visible but move up with the wrapper */}
-        <Navber />
+        {/* <Navber /> */}
+        <NavberDark />
         <CatMenu />
         {/* <FloatingWhatsApp /> */}
         <FloatingSocials />
@@ -146,7 +148,7 @@ function App() {
           hidden behind the fixed navigation on load.
       */}
 
-      <main className="md:pt-5.5">
+      <main className="md:pt-10">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:cat" element={<AllProduct />} />

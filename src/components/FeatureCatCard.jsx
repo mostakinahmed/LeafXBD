@@ -118,7 +118,7 @@ const dummyCategories = [
 const CategoryBox = ({ data }) => {
   return (
     <div
-      className="bg-gradient-to-br from-white via-[#FDF2EC]/40 to-[#F8CDB8]/30 p-4 border h-full hover:shadow-lg hover:-translate-y-1 transition-all duration-300 rounded-t-lg flex flex-col justify-between overflow-hidden"
+      className="bg-gradient-to-br from-white via-[#FDF2EC]/10 to-[#F8CDB8]/20 p-4 border h-full hover:shadow-lg hover:-translate-y-1 transition-all duration-300 rounded-t-lg flex flex-col justify-between overflow-hidden"
       style={{ borderColor: "#F8CDB8" }}
     >
       {/* Top Brand Accent */}

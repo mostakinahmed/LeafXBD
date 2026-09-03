@@ -17,7 +17,7 @@ const BannerSection = () => {
 
   return (
     <>
-      <div className="max-w-[1400px] mx-auto mt-[35px] md:mt-[70px] lg:mt-[86px] px-2 lg:px-4 pt-6 grid grid-cols-1 md:grid-cols-3 md:gap-2 gap-1.5">
+      <div className="max-w-[1400px] mx-auto mt-[35px] md:mt-[70px] lg:mt-[86px] px-2 lg:px-4 pt-6 grid grid-cols-1 md:grid-cols-3 md:gap-4.5 gap-1.5">
         {/* Main Banner / Search box */}
         <div className="md:hidden">
           <SearchBar />
@@ -28,7 +28,7 @@ const BannerSection = () => {
           <img
             src={images[index]}
             alt="Banner"
-            className="w-full md:h-[263px] lg:h-[349px] xl:h-[480px] h-[210px] rounded transition-all duration-500 object-fill"
+            className="w-full md:h-[263px] lg:h-[349px] xl:h-[480px] h-[210px] rounded-lg transition-all duration-500 object-fill"
           />
 
           {/* Indicator Dots Container */}
@@ -37,10 +37,10 @@ const BannerSection = () => {
               <button
                 key={i}
                 onClick={() => setIndex(i)}
-                className={`md:h-2.5 h-2 transition-all duration-300 rounded-full ${
+                className={`md:h-2 h-2 transition-all duration-300 rounded-full ${
                   index === i
-                    ? "md:w-10 w-6 bg-white rounded-sm" // Active dot: wider and white
-                    : "md:w-2.5 w-2 bg-white/70 hover:bg-white/90" // Inactive: small and semi-transparent
+                    ? "md:w-12 w-6 bg-[#f66107ff] rounded-sm" // Active dot: wider and white
+                    : "md:w-2.5 w-2 bg-white hover:bg-white/90" // Inactive: small and semi-transparent
                 }`}
                 aria-label={`Go to slide ${i + 1}`}
               />
@@ -50,19 +50,19 @@ const BannerSection = () => {
 
         {/* Right Sideboxes */}
         <div className="flex lg:flex-col gap rounded">
-          <div className="flex w-full md:gap-2 gap-1.5 lg:block ">
+          <div className="flex w-full md:gap-1 gap-1.5 lg:block ">
             <div className="w-1/2 lg:w-full">
               <img
                 src="right-side-1.png"
                 alt="Career Banner"
-                className="lg:w-full h-auto rounded"
+                className="lg:w-full h-auto rounded-lg"
               />
             </div>
             <div className="w-1/2 lg:w-full">
               <img
                 src="right-side-2.png"
                 alt="Career Banner"
-                className="lg:w-full h-auto rounded lg:mt-2"
+                className="lg:w-full h-auto rounded-lg lg:mt-4.5"
               />
             </div>
           </div>

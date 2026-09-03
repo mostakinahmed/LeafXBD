@@ -263,7 +263,7 @@ const Electronics = () => {
           loop={true}
           navigation={{ nextEl: ".hero-next", prevEl: ".hero-prev" }}
           pagination={{ clickable: true }}
-          className="rounded overflow-hidden border border-slate-200"
+          className="rounded-xl overflow-hidden border border-slate-200"
         >
           <SwiperSlide>
             <div className="bg-slate-900 h-[300px] md:h-[400px] relative overflow-hidden">

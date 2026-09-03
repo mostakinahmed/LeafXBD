@@ -86,7 +86,7 @@ const CategoryDropdown = () => {
       {/* ========================================================
           NAVBAR
       ======================================================== */}
-      <div className="flex items-center font-sans">
+      <div className="flex items-center">
         {/* HOME */}
         <Link
           to="/"
@@ -124,21 +124,23 @@ const CategoryDropdown = () => {
             px-4
             py-2
             rounded-lg
-            text-slate-700
+           
             hover:text-[#1976d2]
             hover:bg-blue-50
             transition-all
             duration-200
             font-bold
-            uppercase
+            
             tracking-wide
             cursor-pointer
-            text-[13px]
+           
           "
         >
           <FiGrid className="text-[15px] text-[#1976d2]" />
 
-          <span className="text-slate-800">All Categories</span>
+          <span className="flex items-center gap-2  hover:text-[#1976d2] font-medium text-sm  tracking-wider transition-all">
+            All Categories
+          </span>
         </button>
       </div>
 

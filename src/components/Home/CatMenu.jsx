@@ -34,7 +34,7 @@ const CategoryMenu = () => {
   ];
 
   return (
-    <nav className="bg-white font-sans shadow-sm w-full hidden md:flex h-10 sticky top-0 z-[80] border-b border-slate-200">
+    <nav className="bg-white  shadow w-full hidden md:flex h-11  sticky top-0 z-[80] ">
       <div className="xl:max-w-[1380px] w-full mx-auto flex justify-between items-center px-4">
         {/* --- LEFT SECTION: Primary Navigation --- */}
         <div className="flex items-center h-full">
@@ -45,21 +45,21 @@ const CategoryMenu = () => {
         <div className="flex-grow flex items-center xl:gap-8 lg:gap-4 ml-8">
           <Link
             to="/electronics"
-            className="flex items-center gap-2 text-slate-800 hover:text-[#1976d2] font-bold text-[13px] uppercase tracking-wider transition-all"
+            className="flex items-center gap-2  hover:text-[#1976d2] font-medium text-sm  tracking-wider transition-all"
           >
             <FiLayers className="text-[#1976d2] opacity-90" />
             IoT & Electronics
           </Link>
           <Link
             to="/kids-zone"
-            className="flex items-center gap-2 text-slate-800 hover:text-[#1976d2] font-bold text-[13px] uppercase tracking-wider transition-all"
+            className="flex items-center gap-2  hover:text-[#1976d2] font-medium text-sm  tracking-wider transition-all"
           >
             <FiShoppingBag className="text-[#1976d2] opacity-90" />
             Kids Zone
           </Link>
           <Link
             to="/daily-accessories"
-            className="flex items-center gap-2 text-slate-800 hover:text-[#1976d2] font-bold text-[13px] uppercase tracking-wider transition-all"
+            className="flex items-center gap-2  hover:text-[#1976d2] font-medium text-sm  tracking-wider transition-all"
           >
             <FiZap className="text-orange-500 animate-pulse" />
             Daily Accessories

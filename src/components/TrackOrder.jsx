@@ -36,7 +36,7 @@ const TrackOrderPage = () => {
   const [orderId, setOrderId] = useState(oid || "");
   const [currentStatus, setCurrentStatus] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [notFound, setNotFound] = useState(false); // New state for "Not Found"
+  const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
     if (orderId.trim() === "") {
@@ -49,23 +49,15 @@ const TrackOrderPage = () => {
     let targetId = idToTrack || orderId;
     if (!targetId) return;
 
-    // --- NEW: Reset logic if blank ---
     if (!targetId.trim()) {
       setNotFound(false);
       setCurrentStatus(null);
       return;
     }
 
-    // Auto-prefix OID logic
-    // targetId = targetId.trim().toUpperCase();
-    // if (!targetId.startsWith("OID")) {
-    //   targetId = `OID${targetId}`;
-    //   setOrderId(targetId);
-    // }
-
     setLoading(true);
-    setNotFound(false); // Reset UI before search
-    setCurrentStatus(null); // Clear previous status
+    setNotFound(false);
+    setCurrentStatus(null);
 
     try {
       const res = await axios.get(
@@ -75,18 +67,15 @@ const TrackOrderPage = () => {
         },
       );
 
-      // If request is successful (Status 200)
       if (res.data.success) {
         setCurrentStatus(res.data.statusIndex);
         setNotFound(false);
       }
     } catch (error) {
-      // --- THIS HANDLES THE 404 ---
       if (error.response && error.response.status === 404) {
-        setNotFound(true); // Trigger your "Order Not Found" component
+        setNotFound(true);
         setCurrentStatus(null);
       } else {
-        // Handle other errors (500, Network down, etc.)
         toast.error("An unexpected error occurred.");
       }
     } finally {
@@ -104,11 +93,11 @@ const TrackOrderPage = () => {
       animate={{ opacity: 1 }}
       className="max-w-[1400px] lg:mt-[70px] mt-[38px] px-2 lg:px-4 mx-auto md:py-10 py-6 font-sans"
     >
-      <div className="bg-white border border-slate-100 rounded md:p-10 pb-10 m p-3 min-h-[75vh]">
+      <div className="bg-white border border-slate-100 rounded md:p-10 pb-10 p-3 min-h-[75vh]">
         {/* Header */}
         <div className="text-center md:mb-12 mt-3 md:mt-0 mb-6">
           <h1 className="text-xl md:text-3xl font-black text-slate-900 tracking-tight md:mb-3 uppercase">
-            Track Your <span className="text-[#1976d2]">Order</span>
+            Track Your <span style={{ color: "#F66107" }}>Order</span>
           </h1>
         </div>
 
@@ -118,7 +107,7 @@ const TrackOrderPage = () => {
             {/* Icon and Fixed Prefix Container */}
             <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-2 pointer-events-none">
               <FiSearch
-                className="text-slate-400 group-focus-within:text-[#1976d2] transition-colors"
+                className="text-slate-400 transition-colors"
                 size={20}
               />
               {/* Fixed OID Text */}
@@ -129,12 +118,16 @@ const TrackOrderPage = () => {
 
             <input
               type="text"
-              placeholder="123456" // Just the 6 digits in placeholder
-              maxLength={6} // Changed to 6 for your 6-digit plan
-              className="w-full pl-24 pr-4 py-3 uppercase rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-[#1976d2] transition-all font-bold text-[#1976d2] tracking-widest"
+              placeholder="123456"
+              maxLength={6}
+              className="w-full pl-24 pr-4 py-3 uppercase rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-4 transition-all font-bold tracking-widest"
+              style={{
+                color: "#F66107",
+                "--tw-ring-color": "rgba(246, 97, 7, 0.1)",
+                borderColor: orderId ? "#F66107" : undefined,
+              }}
               value={orderId}
               onChange={(e) => {
-                // Only allow numbers to be typed
                 const val = e.target.value.replace(/\D/g, "");
                 setOrderId(val);
               }}
@@ -143,7 +136,17 @@ const TrackOrderPage = () => {
           <button
             onClick={() => handleTrack()}
             disabled={loading}
-            className="bg-[#1976d2] text-white px-10 py-3.5 rounded-xl font-black uppercase text-sm tracking-widest hover:bg-[#1565c0] transition-all active:scale-95 shadow-xl shadow-blue-200 disabled:opacity-50"
+            className="text-white px-10 py-3.5 rounded-xl font-black uppercase text-sm tracking-widest transition-all active:scale-95 shadow-xl disabled:opacity-50 cursor-pointer"
+            style={{
+              backgroundColor: "#F66107",
+              boxShadow: "0 20px 25px -5px rgba(246, 97, 7, 0.2)",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor = "#D35000")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = "#F66107")
+            }
           >
             {loading ? "Searching..." : "Track System"}
           </button>
@@ -166,7 +169,11 @@ const TrackOrderPage = () => {
                   animate={{
                     width: `${(currentStatus / (statuses.length - 1)) * 100}%`,
                   }}
-                  className="absolute top-8 left-0 h-1 bg-[#1976d2] z-0 rounded-full shadow-[0_0_15px_rgba(25,118,210,0.4)]"
+                  className="absolute top-8 left-0 h-1 z-0 rounded-full"
+                  style={{
+                    backgroundColor: "#F66107",
+                    boxShadow: "0 0 15px rgba(246, 97, 7, 0.4)",
+                  }}
                 ></motion.div>
 
                 {statuses.map((status, index) => {
@@ -180,9 +187,14 @@ const TrackOrderPage = () => {
                       <motion.div
                         className={`w-16 h-16 flex justify-center items-center rounded-2xl border-2 transition-all duration-500 ${
                           isActive
-                            ? "border-[#1976d2] bg-[#1976d2] text-white shadow-lg"
+                            ? "text-white shadow-lg"
                             : "border-slate-100 bg-white text-slate-200"
-                        } ${isCurrent ? "ring-4 ring-blue-100 animate-pulse" : ""}`}
+                        } ${isCurrent ? "ring-4 animate-pulse" : ""}`}
+                        style={{
+                          borderColor: isActive ? "#F66107" : undefined,
+                          backgroundColor: isActive ? "#F66107" : undefined,
+                          "--tw-ring-color": isCurrent ? "#F8CDB8" : undefined,
+                        }}
                       >
                         {status.icon}
                       </motion.div>
@@ -196,8 +208,14 @@ const TrackOrderPage = () => {
                 })}
               </div>
 
-              <motion.div className="bg-slate-900 rounded-3xl md:p-10 p-5 max-w-xl mx-auto text-center border-b-8 border-[#1976d2] shadow-2xl">
-                <h2 className="text-[10px] font-black text-[#1976d2] uppercase tracking-[0.3em] mb-2">
+              <motion.div
+                className="bg-slate-900 rounded-3xl md:p-10 p-5 max-w-xl mx-auto text-center shadow-2xl border-b-8"
+                style={{ borderBottomColor: "#F66107" }}
+              >
+                <h2
+                  className="text-[10px] font-black uppercase tracking-[0.3em] mb-2"
+                  style={{ color: "#F66107" }}
+                >
                   Reference: #{orderId}
                 </h2>
                 <p className="text-3xl font-black text-white mb-6 uppercase tracking-tight">

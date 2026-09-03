@@ -38,20 +38,15 @@ const TopCategoryCards = () => {
 
               {/* Title */}
               <div>
-                <h2 className="text-lg md:text-xl font-extrabold text-[#1976d2] tracking-tight">
+                <h2 className="text-lg md:text-2xl font-extrabold text-black tracking-tight">
                   Top Categories
                 </h2>
 
-                <div className="h-0.5 md:w-80 w-40 bg-gradient-to-r from-[#1976d2] to-transparent rounded-full mt-1"></div>
+                <div className="h-0.5 md:w-80 w-40 bg-gradient-to-r from-[#f66107ff] to-transparent rounded-full mt-1"></div>
               </div>
             </div>
 
-            {/* Right badge */}
-            <div className="px-3 py-1 hidden md:block rounded-full bg-blue-50 border border-blue-200">
-              <span className="text-[#1976d2] text-xs md:text-sm font-semibold">
-                {categoryData?.length || 0} Categories
-              </span>
-            </div>
+
           </div>
         </div>
       </div>
