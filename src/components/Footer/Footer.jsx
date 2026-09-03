@@ -312,8 +312,8 @@ const Footer = () => {
           <div className="text-center space-y-2">
             <p className="text-xs text-gray-500">
               © {new Date().getFullYear()}{" "}
-              <span className="text-[#1976d2] font-bold tracking-wide">
-                Victus Byte
+              <span className="text-brand font-bold tracking-wide">
+                Victus <span className="text-white/90">Byte</span>
               </span>
               . All rights reserved.
             </p>

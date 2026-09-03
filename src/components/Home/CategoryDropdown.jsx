@@ -97,7 +97,7 @@ const CategoryDropdown = () => {
             px-4
             py-2
             -ml-3
-            text-slate-700
+            text-brand
             hover:text-brand
             font-bold
             text-[14px]

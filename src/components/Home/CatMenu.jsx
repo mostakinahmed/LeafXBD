@@ -42,7 +42,7 @@ const CategoryMenu = () => {
         </div>
 
         {/* --- MIDDLE SECTION: Trending / Direct Links --- */}
-        <div className="flex-grow flex items-center xl:gap-8 lg:gap-4 ml-8">
+        <div className="flex-grow flex items-center xl:gap-8 lg:gap-4 ml-5">
           <Link
             to="/electronics"
             className="flex items-center gap-2  hover:text-brand font-medium text-sm  tracking-wider transition-all"
