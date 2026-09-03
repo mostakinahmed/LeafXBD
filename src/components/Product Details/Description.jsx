@@ -20,8 +20,6 @@ export const Description = ({ data }) => {
         <div className="absolute inset-0 bg-white/5"></div>
 
         <div className="relative flex items-center gap-3">
-         
-
           <h1 className="lg:text-xl text-lg font-bold text-black">
             Product Description
           </h1>
@@ -67,9 +65,6 @@ export const Description = ({ data }) => {
           </div>
         </div>
       </div>
-
-      {/* Bottom Brand Accent */}
-      <div className="h-1.5 bg-gradient-to-r from-[#1976d2] via-[#64b5f6] to-[#1976d2]"></div>
     </div>
   );
 };

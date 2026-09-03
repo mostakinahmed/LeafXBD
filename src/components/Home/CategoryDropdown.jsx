@@ -98,7 +98,7 @@ const CategoryDropdown = () => {
             py-2
             -ml-3
             text-slate-700
-            hover:text-[#1976d2]
+            hover:text-brand
             font-bold
             text-[14px]
             transition-colors
@@ -106,7 +106,7 @@ const CategoryDropdown = () => {
             tracking-wide
           "
         >
-          <FiHome className="text-lg text-[#1976d2]" />
+          <FiHome className="text-lg text-brand" />
           Home
         </Link>
 
@@ -125,8 +125,7 @@ const CategoryDropdown = () => {
             py-2
             rounded-lg
            
-            hover:text-[#1976d2]
-            hover:bg-blue-50
+            hover:text-brand
             transition-all
             duration-200
             font-bold
@@ -136,9 +135,9 @@ const CategoryDropdown = () => {
            
           "
         >
-          <FiGrid className="text-[15px] text-[#1976d2]" />
+          <FiGrid className="text-[15px] text-brand" />
 
-          <span className="flex items-center gap-2  hover:text-[#1976d2] font-medium text-sm  tracking-wider transition-all">
+          <span className="flex items-center gap-2  hover:text-brand font-medium text-sm  tracking-wider transition-all">
             All Categories
           </span>
         </button>

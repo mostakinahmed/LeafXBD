@@ -651,9 +651,9 @@ const TestBuy = ({ data }) => {
                         />
 
                         <img
-                          src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
+                          src="https://logos-world.net/wp-content/uploads/2020/05/Visa-Logo.png"
                           alt="Visa"
-                          className="md:h-4 h-3"
+                          className="md:h-5 h-3"
                         />
 
                         <span className="text-[#D12053] font-bold italic text-sm">

@@ -87,7 +87,7 @@ export const RecomProduct = ({ data, currentProduct }) => {
         <div className="relative flex items-center gap-2.5">
          
 
-          <h2 className="text-xs font-bold text-white uppercase tracking-[0.2em]">
+          <h2 className="text-xs font-bold text-white/90 uppercase tracking-[0.2em]">
             Recommended Item
           </h2>
         </div>
@@ -102,7 +102,7 @@ export const RecomProduct = ({ data, currentProduct }) => {
   ====================================================== */}
 
       <div className="divide-y divide-slate-200">
-        {recommendedProducts.map((element) => {
+        {recommendedProducts.slice(0,5).map((element) => {
           const flatSpecs = element?.specifications
             ? Object.values(element.specifications).flat()
             : [];

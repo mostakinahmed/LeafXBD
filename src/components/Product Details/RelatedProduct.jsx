@@ -16,7 +16,7 @@ export const RelatedProduct = ({ data }) => {
         <div className="relative flex items-center gap-2.5">
     
 
-          <h2 className="text-xs font-bold text-white uppercase tracking-[0.2em]">
+          <h2 className="text-xs font-bold text-white/90 uppercase tracking-[0.2em]">
             Related Items
           </h2>
         </div>

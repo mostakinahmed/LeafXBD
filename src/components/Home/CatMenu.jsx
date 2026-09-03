@@ -45,23 +45,23 @@ const CategoryMenu = () => {
         <div className="flex-grow flex items-center xl:gap-8 lg:gap-4 ml-8">
           <Link
             to="/electronics"
-            className="flex items-center gap-2  hover:text-[#1976d2] font-medium text-sm  tracking-wider transition-all"
+            className="flex items-center gap-2  hover:text-brand font-medium text-sm  tracking-wider transition-all"
           >
-            <FiLayers className="text-[#1976d2] opacity-90" />
+            <FiLayers className="text-brand" />
             IoT & Electronics
           </Link>
           <Link
             to="/kids-zone"
-            className="flex items-center gap-2  hover:text-[#1976d2] font-medium text-sm  tracking-wider transition-all"
+            className="flex items-center gap-2  hover:text-brand font-medium text-sm  tracking-wider transition-all"
           >
-            <FiShoppingBag className="text-[#1976d2] opacity-90" />
+            <FiShoppingBag className="text-brand" />
             Kids Zone
           </Link>
           <Link
             to="/daily-accessories"
-            className="flex items-center gap-2  hover:text-[#1976d2] font-medium text-sm  tracking-wider transition-all"
+            className="flex items-center gap-2  hover:text-brand font-medium text-sm  tracking-wider transition-all"
           >
-            <FiZap className="text-orange-500 animate-pulse" />
+            <FiZap className="text-brand animate-pulse" />
             Daily Accessories
           </Link>
         </div>

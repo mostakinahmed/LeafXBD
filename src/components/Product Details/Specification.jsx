@@ -49,8 +49,7 @@ export default function ProductSpecTable({ data }) {
         ))}
       </div>
 
-      {/* Bottom Brand Accent */}
-      <div className="h-1.5 bg-gradient-to-r from-[#1976d2] via-[#64b5f6] to-[#1976d2]"></div>
+
     </div>
   );
 }
