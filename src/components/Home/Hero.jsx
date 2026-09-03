@@ -6,8 +6,8 @@ const BannerSection = () => {
   const images = [
     "https://7vgva7cju0vcfvwf.public.blob.vercel-storage.com/city-ebl-offer-slider-4098.webp",
     "https://7vgva7cju0vcfvwf.public.blob.vercel-storage.com/desktop-deal-982x500.webp",
-    "ads-1.png",
     "https://7vgva7cju0vcfvwf.public.blob.vercel-storage.com/1.png",
+    "ads-1.png",
   ];
 
   const [index, setIndex] = useState(0);
