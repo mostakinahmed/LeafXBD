@@ -205,7 +205,7 @@ const CategoryDropdown = () => {
               overflow-hidden
 
               bg-white       
-              rounded-sm
+              rounded-xl
               shadow-[0_30px_90px_rgba(15,23,42,0.22)]
 
               transform
@@ -235,9 +235,9 @@ const CategoryDropdown = () => {
                 overflow-hidden
 
                 bg-gradient-to-r
-                from-blue-600/95
-                via-[#1976d2]/95
-                to-indigo-600/95
+                from-brand/95
+                via-brand/95
+                to-brand/95
 
            
                 shadow-lg
@@ -312,35 +312,7 @@ const CategoryDropdown = () => {
                   gap-3
                 "
               >
-                {/* ICON */}
-                <div
-                  className="
-                    flex
-                    items-center
-                    justify-center
-                    w-10
-                    h-10
-                    rounded-xl
-
-                    bg-white/15
-                    border
-                    border-white/25
-
-                    text-white
-
-                    shadow-lg
-                    shadow-blue-900/20
-
-                    backdrop-blur-md
-
-                    transition-all
-                    duration-300
-
-                    hover:bg-white/20
-                  "
-                >
-                  <FiGrid size={19} />
-                </div>
+            
 
                 {/* HEADING */}
                 <div className="flex flex-col">
@@ -403,15 +375,15 @@ const CategoryDropdown = () => {
                   w-9
                   h-9
 
-                  rounded-xl
+                  rounded-lg
 
-                  bg-white/10
+                  bg-white
                   border
-                  border-white/20
-                  text-white
+          
+                  text-black
                   backdrop-blur-md
                   hover:bg-white
-                  hover:text-[#1976d2] hover:border-white
+                  hover:text-brand
 
                   hover:shadow-lg
                   hover:shadow-blue-900/20
@@ -771,9 +743,9 @@ const CategoryDropdown = () => {
 
                   rounded-xl
 
-                  bg-[#1976d2]
+                  bg-black
 
-                  hover:bg-[#1565c0]
+                  hover:bg-brand
 
                   text-white
 

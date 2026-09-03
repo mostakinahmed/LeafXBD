@@ -54,7 +54,7 @@ export const Profile = () => {
       ) : (
         <div
           onClick={() => navigate("/signin")}
-          className="group relative cursor-pointer overflow-hidden rounded-full border border-[#1976d2]/30 bg-white md:px-1.5  md:py-1 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#1976d2]/40 hover:shadow-[0_10px_25px_rgba(25,118,210,0.20)]"
+          className="group relative cursor-pointer overflow-hidden rounded-full border border-brand/30 bg-white md:px-1.5  md:py-1 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-[0_10px_25px_rgba(25,118,210,0.20)]"
         >
           {/* Shine Effect */}
           <div className="absolute inset-0 overflow-hidden rounded-full">
@@ -63,12 +63,12 @@ export const Profile = () => {
 
           <button className="relative cursor-pointer z-10 flex items-center gap-3 md:px-2">
             {/* Icon */}
-            <div className="flex h-8 w-8 items-center md:-ml-2 justify-center rounded-full bg-[#1976d2]/20 transition-all duration-300 group-hover:bg-[#1976d2]">
-              <User className="md:w-4 md:h-4 w-5 h-5 text-[#1976d2] group-hover:text-white transition-all duration-300" />
+            <div className="flex h-8 w-8 items-center md:-ml-2 justify-center rounded-full bg-brand/20 transition-all duration-300 group-hover:bg-brand">
+              <User className="md:w-4 md:h-4 w-5 h-5 text-brand group-hover:text-white transition-all duration-300" />
             </div>
 
             {/* Text */}
-            <h2 className="hidden lg:flex text-sm font-semibold tracking-wide text-slate-700 group-hover:text-[#1976d2] transition-colors duration-300">
+            <h2 className="hidden lg:flex text-sm font-semibold tracking-wide text-slate-900 group-hover:text-brand transition-colors duration-300">
               Sign In
             </h2>
           </button>

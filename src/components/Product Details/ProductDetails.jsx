@@ -208,17 +208,17 @@ const ProductDetail = () => {
               {/* Image Gallery Section */}
               <div className="w-full md:w-[50%] pt-1  flex flex-col md:flex-row bg-white">
                 {/* Thumbnails */}
-                <div className="order-2 md:order-1 flex md:flex-col gap-2 border-t md:border-t-0 md:border-r border-slate-100 p-3 justify-center md:justify-start overflow-x-auto bg-slate-50/50 hide-scrollbar">
+                <div className="order-2 md:order-1 flex md:flex-col gap-2 border-t md:border-t-0 md:border-r border-slate-100 p-3 justify-center md:justify-start overflow-x-auto md:overflow-y-auto md:overflow-x-hidden md:h-[376px] bg-slate-50/50 hide-scrollbar">
                   {product.images?.map((img, idx) => (
                     <img
                       key={idx}
                       src={img}
-                      alt="thumb"
+                      alt={`Product thumbnail ${idx + 1}`}
                       onClick={() => setCurrentIndex(idx)}
-                      className={`w-14 h-14 md:w-16  md:h-16 flex-shrink-0 object-contain p-1 rounded border-2  transition-all cursor-pointer ${
+                      className={`w-14 h-14 md:w-16 md:h-16 flex-shrink-0 object-contain p-1 rounded border-2 transition-all cursor-pointer ${
                         idx === currentIndex
-                          ? "border-blue-600/55 bg-white"
-                          : "opacity-60  hover:opacity-100"
+                          ? "border-brand/55 bg-white"
+                          : "opacity-70 hover:opacity-100"
                       }`}
                     />
                   ))}
@@ -463,9 +463,9 @@ const ProductDetail = () => {
                     <button
                       onClick={() => addToCartBtn(product)}
                       disabled={currentStock <= 0}
-                      className={`group ${currentStock <= 0 ? "hidden" : "block"} relative flex-1 h-12 text-sm md:text-base font-bold border-2 border-[#fe741d] text-[#fe741d] rounded overflow-hidden transition-colors duration-300`}
+                      className={`group ${currentStock <= 0 ? "hidden" : "block"} relative flex-1 h-12 text-sm md:text-base font-bold border-2 border-[#fe741d] hover:border-black text-[#fe741d] rounded overflow-hidden transition-colors duration-300`}
                     >
-                      <span className="absolute inset-0 w-full h-full bg-[#fe741d] transition-transform duration-300 ease-out -translate-y-full group-hover:translate-y-0"></span>
+                      <span className="absolute inset-0 w-full h-full bg-black  transition-transform duration-300 ease-out -translate-y-full group-hover:translate-y-0"></span>
                       <span className="relative z-10 group-hover:text-white transition-colors duration-300">
                         Add to Cart
                       </span>
@@ -474,9 +474,9 @@ const ProductDetail = () => {
                     <button
                       onClick={() => buyNowBtn(product)}
                       disabled={currentStock <= 0}
-                      className="group relative flex-1 h-12 text-sm md:text-base font-bold bg-slate-800 text-white rounded overflow-hidden transition-all duration-300 disabled:bg-slate-400 disabled:cursor-not-allowed"
+                      className="group relative flex-1 h-12 text-sm md:text-base font-bold bg-brand text-white rounded overflow-hidden transition-all duration-300 disabled:bg-slate-400 disabled:cursor-not-allowed"
                     >
-                      <span className="absolute inset-0 w-full h-full bg-slate-700 transition-transform duration-300 ease-out -translate-y-full group-enabled:group-hover:translate-y-0"></span>
+                      <span className="absolute inset-0 w-full h-full bg-black transition-transform duration-300 ease-out -translate-y-full group-enabled:group-hover:translate-y-0"></span>
                       <span className="relative z-10 transition-colors duration-300">
                         {currentStock > 0 ? "Buy Now" : "Unavailable"}
                       </span>

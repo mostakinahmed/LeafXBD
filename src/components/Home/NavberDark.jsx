@@ -280,9 +280,9 @@ const NavbarDark = () => {
         </div>
 
         {/* ======= MOBILE NAV ======= */}
-        <div className="bg-white w-full h-[43px] md:hidden flex items-center justify-between px-3">
+        <div className="bg-black w-full h-[45px] md:hidden flex items-center justify-between px-3">
           <div
-            className="text-2xl cursor-pointer text-slate-900/90"
+            className="text-2xl cursor-pointer text-white"
             onClick={toggle}
           >
             <i
@@ -295,7 +295,7 @@ const NavbarDark = () => {
           <Link to="/">
             <img
               className="h-[42px]  ml-17 p-1"
-              src="/logo/web head tp  black color byte.png"
+              src="/logo/web NAV tp white1.png"
               alt="Logo"
             />
           </Link>
@@ -303,13 +303,13 @@ const NavbarDark = () => {
           <div className="flex items-center gap-3 w-[110px] justify-end">
             {searchIcon && (
               <i
-                className="ri-search-line text-xl text-slate-900/85"
+                className="ri-search-line text-xl text-white/85"
                 onClick={() => setSbar(!sBar)}
               ></i>
             )}
             <div className="relative ml-1">
               <Link to="/checkout/cart">
-                <i className="ri-shopping-cart-2-line text-2xl text-slate-900/80"></i>
+                <i className="ri-shopping-cart-2-line text-2xl text-white/80"></i>
               </Link>
               {cartItems.length > 0 && (
                 <span className="absolute -top-1 -right-1 bg-[#fe741d] text-white text-[10px] px-1 rounded-full">

@@ -231,3 +231,7 @@ body {
 .animate-shine {
   animation: shine 0.9s ease;
 }
+
+@theme {
+  --color-brand: #f66107;
+}

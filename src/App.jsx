@@ -148,7 +148,7 @@ function App() {
           hidden behind the fixed navigation on load.
       */}
 
-      <main className="md:pt-10">
+      <main className="md:pt-10 pt-1">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:cat" element={<AllProduct />} />

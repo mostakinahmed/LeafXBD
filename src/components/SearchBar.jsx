@@ -92,23 +92,20 @@ export const SearchBar = () => {
     setSearch("");
   };
 
- return (
-  <div
-  ref={wrapperRef}
-  className="relative w-full max-w-xl mx-auto md:mx-0"
->
-  {/* Premium Glow */}
-  <div className="absolute -inset-[1px] rounded-xl bg-gradient-to-r from-[#1976d2]/20 via-transparent to-[#1976d2]/20 blur-sm"></div>
+  return (
+    <div ref={wrapperRef} className="relative w-full max-w-xl mx-auto md:mx-0 pb-1 md:pb-0">
+      {/* Premium Glow */}
+      <div className="absolute -inset-[1px] rounded-xl bg-gradient-to-r from-[#1976d2]/20 via-transparent to-[#1976d2]/20 blur-sm"></div>
 
-  {/* Search Box */}
-  <div className="relative flex items-center">
-    <input
-      type="text"
-      placeholder={placeholder}
-      value={search}
-      onChange={(e) => setSearch(e.target.value)}
-      onKeyDown={(e) => e.key === "Enter" && searchPage()}
-      className="
+      {/* Search Box */}
+      <div className="relative flex items-center">
+        <input
+          type="text"
+          placeholder={placeholder}
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && searchPage()}
+          className="
         w-full
         bg-slate-50
         border
@@ -136,12 +133,12 @@ export const SearchBar = () => {
         placeholder:text-xs
         placeholder:tracking-wide
       "
-    />
+        />
 
-    {/* Search Button */}
-    <button
-      onClick={searchPage}
-      className="
+        {/* Search Button */}
+        <button
+          onClick={searchPage}
+          className="
         absolute
         right-1
         md:h-9
@@ -149,7 +146,7 @@ export const SearchBar = () => {
         h-8
         w-8
         rounded-full
-        bg-[#1976d2]
+        bg-[#f66107ff]
         flex
         items-center
         justify-center
@@ -159,50 +156,51 @@ export const SearchBar = () => {
         transition-all
         duration-300
       "
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={2}
-        stroke="currentColor"
-        className="w-4 h-4 text-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={3}
+            stroke="currentColor"
+            className="w-4 h-4 text-white"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m21 21-4.35-4.35m0 0A7.5 7.5 0 1 0 5.64 5.64a7.5 7.5 0 0 0 10.61 10.61Z"
+            />
+          </svg>
+        </button>
+      </div>
+
+      {/* Search Results Dropdown */}
+      <div
+        className={`absolute left-0 top-full mt-2 w-full bg-white rounded-xl shadow-2xl overflow-hidden z-[110] transition-all duration-300 ${
+          search
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 -translate-y-2 pointer-events-none"
+        }`}
       >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="m21 21-4.35-4.35m0 0A7.5 7.5 0 1 0 5.64 5.64a7.5 7.5 0 0 0 10.61 10.61Z"
-        />
-      </svg>
-    </button>
-  </div>
+        <div
+          className="px-4 py-2 flex justify-between items-center bg-[#f66107ff]"
+    
+        >
+          <span className="text-white text-xs font-bold uppercase tracking-widest">
+            Quick Results
+          </span>
 
-  {/* Search Results Dropdown */}
-  <div
-    className={`absolute left-0 top-full mt-2 w-full bg-white rounded-xl border border-slate-200 shadow-2xl overflow-hidden z-[110] transition-all duration-300 ${
-      search
-        ? "opacity-100 translate-y-0"
-        : "opacity-0 -translate-y-2 pointer-events-none"
-    }`}
-  >
-    <div className="bg-gradient-to-r from-[#1976d2] to-[#2196f3] px-4 py-2 flex justify-between items-center">
-      <span className="text-white text-xs font-bold uppercase tracking-widest">
-        Quick Results
-      </span>
+        
+        </div>
 
-      <span className="text-white/80 text-[10px]">
-        {filtered.length} Found
-      </span>
-    </div>
-
-    <div className="max-h-[350px] overflow-y-auto">
-      {filtered.length > 0 ? (
-        filtered.slice(0, 5).map((p) => (
-          <Link
-            key={p.pID}
-            to={`/${p.category}/${p.name}`}
-            onClick={() => setSearch("")}
-            className="
+        <div className="max-h-[350px] overflow-y-auto">
+          {filtered.length > 0 ? (
+            filtered.slice(0, 5).map((p) => (
+              <Link
+                key={p.pID}
+                to={`/${p.category}/${p.name}`}
+                onClick={() => setSearch("")}
+                className="
               flex
               items-center
               gap-4
@@ -210,60 +208,76 @@ export const SearchBar = () => {
               py-3
               border-b
               border-slate-100
-              hover:bg-blue-50
               transition
               group
             "
-          >
-            <div className="w-12 h-12 bg-white rounded-lg border border-slate-100 p-1 shadow-sm">
-              <img
-                src={p.images[0]}
-                alt={p.name}
-                className="w-full h-full object-contain"
-              />
-            </div>
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = "#FDF2EC")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = "transparent")
+                }
+              >
+                <div className="w-12 h-12 bg-white rounded-lg border border-slate-100 p-1 shadow-sm">
+                  <img
+                    src={p.images[0]}
+                    alt={p.name}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
 
-            <div className="flex flex-col min-w-0">
-              <span className="text-sm font-semibold text-gray-800 truncate group-hover:text-[#1976d2] transition">
-                {p.name}
-              </span>
+                <div className="flex flex-col min-w-0">
+                  <span
+                    className="text-sm font-semibold text-gray-800 truncate transition"
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.color = "#F66107")
+                    }
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "")}
+                  >
+                    {p.name}
+                  </span>
 
-              <span className="text-[10px] uppercase tracking-wider text-slate-400">
-                {p.category}
-              </span>
+                  <span className="text-[10px] uppercase tracking-wider text-slate-400">
+                    {p.category}
+                  </span>
+                </div>
+              </Link>
+            ))
+          ) : (
+            <div className="py-10 text-center">
+              <p className="text-sm text-slate-400">No products found</p>
             </div>
-          </Link>
-        ))
-      ) : (
-        <div className="py-10 text-center">
-          <p className="text-sm text-slate-400">
-            No products found
-          </p>
+          )}
         </div>
-      )}
-    </div>
 
-    {filtered.length > 5 && (
-      <button
-        onClick={searchPage}
-        className="
+        {filtered.length > 5 && (
+          <button
+            onClick={searchPage}
+            className="
           w-full
           py-3
           bg-slate-50
-          text-[#1976d2]
           font-bold
           text-xs
           uppercase
           tracking-widest
-          hover:bg-[#1976d2]
-          hover:text-white
           transition-all
+          cursor-pointer
         "
-      >
-        View All Results ({filtered.length})
-      </button>
-    )}
-  </div>
-</div>
-);
+            style={{ color: "#F66107" }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "#F66107";
+              e.currentTarget.style.color = "#FFFFFF";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "#F8FAFC";
+              e.currentTarget.style.color = "#F66107";
+            }}
+          >
+            View All Results ({filtered.length})
+          </button>
+        )}
+      </div>
+    </div>
+  );
 };
