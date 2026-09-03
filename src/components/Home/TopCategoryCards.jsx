@@ -57,7 +57,7 @@ const TopCategoryCards = () => {
         {categoryData && categoryData.length > 0 ? (
           categoryData
             .filter((cat) => cat.topCategory === true)
-            .slice(0, 12)
+            .slice(0, 20)
             .map((cat, index) => (
               <Link
                 key={cat._id || index}
