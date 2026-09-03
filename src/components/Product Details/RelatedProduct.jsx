@@ -9,21 +9,19 @@ export const RelatedProduct = ({ data }) => {
   return (
     <div className="w-full font-sans  bg-white border border-slate-200 lg:border-0 overflow-hidden animate-in fade-in duration-500">
       {/* Section Header */}
-      <div className="relative overflow-hidden px-4 py-2 bg-gradient-to-r from-[#1976d2] via-[#1e88e5] to-[#1565c0] flex items-center justify-between">
+      <div className="relative overflow-hidden px-4 py-3.5 bg-black flex items-center justify-between">
         {/* Glow Effect */}
         <div className="absolute inset-0 bg-white/5"></div>
 
         <div className="relative flex items-center gap-2.5">
-          <div className="p-2 bg-white/20 backdrop-blur-sm rounded-xl text-white shadow-sm">
-            <FiZap size={16} />
-          </div>
+    
 
           <h2 className="text-xs font-bold text-white uppercase tracking-[0.2em]">
             Related Items
           </h2>
         </div>
 
-        <span className="relative text-[11px] font-bold text-blue-100 uppercase tracking-wider">
+        <span className="relative text-[11px] font-bold text-slate-300 uppercase tracking-wider">
           {data.slice(0, 5).length} Items
         </span>
       </div>
@@ -113,9 +111,6 @@ export const RelatedProduct = ({ data }) => {
           );
         })}
       </div>
-
-   
-
     </div>
   );
 };

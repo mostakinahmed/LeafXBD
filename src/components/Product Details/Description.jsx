@@ -16,15 +16,13 @@ export const Description = ({ data }) => {
   return (
     <div className="bg-white rounded overflow-hidden hover:shadow-lg transition-shadow duration-300">
       {/* Header */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-[#1976d2] via-[#1e88e5] to-[#1565c0] px-6 py-2 shadow-md">
+      <div className="relative overflow-hidden  px-6 py-3.5 shadow-sm">
         <div className="absolute inset-0 bg-white/5"></div>
 
         <div className="relative flex items-center gap-3">
-          <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
-            <FiFileText className="text-white text-lg" />
-          </div>
+         
 
-          <h1 className="lg:text-xl text-lg font-medium text-white">
+          <h1 className="lg:text-xl text-lg font-bold text-black">
             Product Description
           </h1>
         </div>

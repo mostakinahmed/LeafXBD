@@ -226,7 +226,7 @@ const ProductDetail = () => {
 
                 {/* Main Image View */}
                 <div className="order-1 md:order-2 flex-1 relative  h-[300px] md:h-[400px] flex items-center justify-center p-8">
-                  <span className="absolute top-5 right-3 z-10 bg-slate-800 backdrop-blur-sm px-2 rounded border border-slate-200 py-[2px] text-[11px] md:text-[12px] font-extrabold text-white uppercase tracking-widest pointer-events-none select-none">
+                  <span className="absolute top-5 right-3 z-10 bg-black backdrop-blur-sm px-2 rounded border border-slate-200 py-[2px] text-[11px] md:text-[12px] font-extrabold text-white uppercase tracking-widest pointer-events-none select-none">
                     {product.brandName}
                   </span>
 

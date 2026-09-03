@@ -9,22 +9,14 @@ export default function ProductSpecTable({ data }) {
   return (
     <div className="font-sans bg-white rounded border border-slate-200 overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
       {/* Header */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-[#1976d2] via-[#1e88e5] to-[#1565c0] px-6 py-2">
-        <div className="absolute inset-0 bg-white/5"></div>
-
-        <div className="relative flex items-center gap-3">
-          <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
-            <FiList className="text-white text-lg" />
-          </div>
-
-          <h2 className="text-lg lg:text-xl font-medium text-white">
-            Product Specifications
-          </h2>
-        </div>
+      <div className="relative overflow-hidden px-6 md:py-5 py-2 mt-1 md:-mb-2.5 ">
+        <h2 className="text-lg lg:text-xl font-bold text-black">
+          Product Specifications
+        </h2>
       </div>
 
       {/* Specifications */}
-      <div className="flex flex-col md:p-4 p-2">
+      <div className="flex flex-col  p-2">
         {Object.entries(productSpecs).map(([section, items]) => (
           <div key={section} className="flex flex-col">
             {/* Category Header */}

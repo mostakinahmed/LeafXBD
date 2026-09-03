@@ -81,13 +81,11 @@ export const RecomProduct = ({ data, currentProduct }) => {
       SECTION HEADER
   ====================================================== */}
 
-      <div className="relative overflow-hidden px-4 py-2 bg-gradient-to-r from-[#1976d2] via-[#1e88e5] to-[#1565c0] flex items-center justify-between">
+      <div className="relative overflow-hidden px-4 py-3.5 bg-black flex items-center justify-between">
         <div className="absolute inset-0 bg-white/5" />
 
         <div className="relative flex items-center gap-2.5">
-          <div className="p-2 bg-white/20 backdrop-blur-sm rounded-xl text-white shadow-sm">
-            <FiZap size={16} />
-          </div>
+         
 
           <h2 className="text-xs font-bold text-white uppercase tracking-[0.2em]">
             Recommended Item

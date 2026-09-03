@@ -20,18 +20,13 @@ const AlsoLike = () => {
       }}
     >
       {/* Header Section */}
-      <div className="relative z-10 flex items-center justify-between px-6 py-4 mb-5 border-b border-[#F8CDB8]/60 bg-white/60 backdrop-blur-sm">
+      <div className="relative z-10 flex items-center justify-between px-6 py-3.5 mb-5 border-b border-[#F8CDB8]/60 bg-white/60 backdrop-blur-sm">
         <div className="flex items-center gap-3">
-          <div 
-            className="p-2 rounded-md border shadow-sm"
-            style={{ backgroundColor: "#FFFFFF", borderColor: "#F8CDB8" }}
-          >
-            <FiHeart className="text-lg" style={{ color: "#F66107" }} />
-          </div>
+        
 
-          <h3 className="text-base md:text-lg font-bold text-gray-800 tracking-tight uppercase">
+              <h2 className="text-lg lg:text-xl font-bold text-black">
             You May Also Like
-          </h3>
+          </h2>
         </div>
       </div>
 
