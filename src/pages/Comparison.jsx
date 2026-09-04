@@ -172,21 +172,10 @@ const Comparison = () => {
   // ============================================================
 
   return (
-    <div className="max-w-[1400px] mx-auto px-4 py-8 font-sans">
+    <div className="max-w-[1400px] mx-auto px-4 py-8 mt-20 font-sans">
       {/* ======================================================
           PAGE TITLE
       ====================================================== */}
-
-      <div className="mb-7">
-        <h1 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">
-          Compare Products
-        </h1>
-
-        <p className="text-sm text-slate-500 mt-1">
-          Compare two products and find the differences between their
-          specifications.
-        </p>
-      </div>
 
       {/* ======================================================
           COMPARISON TABLE
@@ -217,39 +206,23 @@ const Comparison = () => {
                 "
               >
                 <div className="sticky top-0">
-                  <div
-                    className="
-                      w-10
-                      h-10
-                      rounded-xl
-                      bg-[#F66107]/10
-                      text-[#F66107]
-                      flex
-                      items-center
-                      justify-center
-                      mb-4
-                    "
-                  >
-                    <FiShoppingBag size={19} />
-                  </div>
-
-                  <h3 className="text-base font-bold text-slate-900 mb-2">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">
                     Compare Products
                   </h3>
 
-                  <p className="text-xs text-slate-500 font-normal leading-relaxed">
+                  <p className="text-sm text-slate-500 font-normal leading-relaxed">
                     Select two products to compare their specifications,
                     features, and differences.
                   </p>
 
                   {/* Selected count */}
 
-                  <div className="mt-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200">
-                    <span className="text-[11px] font-bold text-slate-500">
+                  <div className="mt-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-300">
+                    <span className="text-[13px] font-medium text-black/60">
                       Selected
                     </span>
 
-                    <span className="text-[11px] font-black text-[#F66107]">
+                    <span className="text-[13px] font-black text-[#F66107]">
                       {selectedProducts.filter(Boolean).length}
                       /2
                     </span>
@@ -314,9 +287,9 @@ const Comparison = () => {
                             pr-9
                             rounded-full
                             border
-                            border-slate-200
+                            border-slate-300
                             bg-white
-                            text-xs
+                            placeholder:font-normal
                             font-medium
                             text-slate-700
                             placeholder:text-slate-400
@@ -370,7 +343,7 @@ const Comparison = () => {
                                 w-full
                                 bg-white
                                 border
-                                border-slate-200
+                                border-slate-300
                                 rounded-xl
                                 shadow-xl
                                 overflow-hidden
@@ -405,8 +378,8 @@ const Comparison = () => {
 
                                     <div
                                       className="
-                                            w-10
-                                            h-10
+                                            w-12
+                                            h-12
                                             rounded-lg
                                             bg-slate-50
                                             flex
@@ -430,7 +403,7 @@ const Comparison = () => {
                                     {/* Product information */}
 
                                     <div className="min-w-0 flex-1">
-                                      <p className="text-xs font-bold text-slate-800 truncate">
+                                      <p className="text-sm font-bold text-slate-800 truncate">
                                         {p.name}
                                       </p>
 
@@ -462,22 +435,22 @@ const Comparison = () => {
                       ======================================== */}
 
                     {product ? (
-                      <div className="flex flex-col min-h-[330px]">
+                      <div className="flex flex-col min-h-[320px]">
                         {/* Product image */}
 
                         <div
                           className="
                               relative
-                              h-40
+                              h-45
                               rounded-xl
-                              bg-slate-50
-                              border
-                              border-slate-100
+                            
+                             
                               flex
                               items-center
                               justify-center
-                              p-3
-                              mb-4
+                              p-2
+                              mb-3
+                              -mt-3
                             "
                         >
                           <img
@@ -485,7 +458,7 @@ const Comparison = () => {
                             alt={product.name}
                             className="
                                 max-h-full
-                                max-w-[190px]
+                                max-w-[200px]
                                 object-contain
                                 mix-blend-multiply
                               "
@@ -496,12 +469,12 @@ const Comparison = () => {
 
                         <h4
                           className="
-                              text-sm
-                              font-bold
+                              
+                              font-medium
                               text-slate-900
                               line-clamp-2
-                              min-h-[40px]
-                              mb-2
+                              min-h-[30px]
+                              
                             "
                         >
                           {product.name}
@@ -510,7 +483,7 @@ const Comparison = () => {
                         {/* Brand */}
 
                         {product.brandName && (
-                          <p className="text-[11px] text-slate-400 mb-2">
+                          <p className="font-bold text-brand mb-2">
                             {product.brandName}
                           </p>
                         )}
@@ -518,7 +491,7 @@ const Comparison = () => {
                         {/* Price */}
 
                         <div className="mb-4">
-                          <span className="text-lg font-black text-slate-900">
+                          <span className="text-xl font-black text-slate-900">
                             ৳{product.price?.selling || "N/A"}
                           </span>
 
@@ -543,9 +516,9 @@ const Comparison = () => {
                                 border
                                 border-slate-300
                                 text-slate-700
-                                text-xs
+                                text-sm
                                 font-bold
-                                hover:bg-slate-50
+                                hover:bg-slate-100
                                 transition
                                 cursor-pointer
                               "
@@ -561,21 +534,22 @@ const Comparison = () => {
                                 px-3
                                 rounded-full
                                 text-white
-                                text-xs
+                                text-sm
                                 font-bold
                                 flex
                                 items-center
                                 justify-center
                                 gap-1
                                 shadow-sm
-                                hover:opacity-90
+                                
+                              
                                 transition
+                                cursor-pointer
                               "
                             style={{
                               backgroundColor: "#F66107",
                             }}
                           >
-                            <FiShoppingBag size={13} />
                             Shop Now
                           </button>
                         </div>
@@ -587,35 +561,18 @@ const Comparison = () => {
 
                       <div
                         className="
-                            min-h-[330px]
+                            min-h-[250px]
                             flex
                             flex-col
                             items-center
                             justify-center
                           "
                       >
-                        <div
-                          className="
-                              w-16
-                              h-16
-                              rounded-full
-                              bg-slate-100
-                              flex
-                              items-center
-                              justify-center
-                              text-slate-400
-                            "
-                        >
-                          <FiPlus size={24} />
-                        </div>
-
-                        <p className="text-xs font-semibold text-slate-500 mt-4">
-                          Add a product
-                        </p>
-
-                        <p className="text-[11px] text-slate-400 mt-1">
-                          Search above to compare
-                        </p>
+                        <img
+                          className="w-30 h-30 opacity-60"
+                          src="https://img.magnific.com/premium-vector/picture-icon-symbol-mark-filled-style_1223784-5604.jpg?semt=ais_hybrid&w=740&q=80"
+                          alt=""
+                        />
                       </div>
                     )}
                   </th>
@@ -641,15 +598,12 @@ const Comparison = () => {
                       colSpan={3}
                       className="
                           px-5
-                          py-3
+                          py-2
                           bg-slate-100
                           border-b
-                          border-slate-200
-                          text-[10px]
-                          font-black
-                          uppercase
-                          tracking-[0.12em]
-                          text-slate-500
+                          text-lg
+                          border-slate-200                    
+                          font-extrabold
                         "
                     >
                       {category}
@@ -675,14 +629,14 @@ const Comparison = () => {
                       <td
                         className="
                             w-[260px]
-                            p-4
+                            px-4 py-1
                             border-r
                             border-slate-200
-                            bg-slate-50/30
-                            align-top
+                            
+                            
                           "
                       >
-                        <span className="text-xs font-bold text-slate-600">
+                        <span className=" font-semibold text-slate-900">
                           {key}
                         </span>
                       </td>
@@ -697,11 +651,9 @@ const Comparison = () => {
                             key={index}
                             className="
                                   w-[340px]
-                                  p-4
+                                  px-4 py-3
                                   border-r
                                   border-slate-200
-                                  align-top
-                                  text-xs
                                   leading-relaxed
                                 "
                           >
@@ -710,7 +662,7 @@ const Comparison = () => {
                                 className={
                                   value === "-"
                                     ? "text-slate-300"
-                                    : "text-slate-700 font-medium"
+                                    : "text-slate-800 font-medium"
                                 }
                               >
                                 {value}
@@ -730,34 +682,7 @@ const Comparison = () => {
                   NO SPECIFICATIONS YET
               ============================================== */
 
-              <tr>
-                <td colSpan={3} className="py-16 text-center">
-                  <div
-                    className="
-                      w-14
-                      h-14
-                      rounded-full
-                      bg-slate-100
-                      flex
-                      items-center
-                      justify-center
-                      mx-auto
-                      mb-3
-                      text-slate-400
-                    "
-                  >
-                    <FiSearch size={22} />
-                  </div>
-
-                  <p className="text-sm font-semibold text-slate-600">
-                    Select products to compare
-                  </p>
-
-                  <p className="text-xs text-slate-400 mt-1">
-                    Choose two products from the search boxes above.
-                  </p>
-                </td>
-              </tr>
+              <tr></tr>
             )}
           </tbody>
         </table>

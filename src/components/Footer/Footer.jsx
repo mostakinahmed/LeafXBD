@@ -149,7 +149,7 @@ const Footer = () => {
           {/* 2. EXPLORE & SERVICE (Two columns) */}
           <div className="lg:col-span-2 grid grid-cols-2 gap-4">
             <div>
-              <h4 className="text-white font-bold text-base mb-6 flex items-center gap-2 uppercase tracking-wider">
+              <h4 className="text-white/90 font-bold text-base mb-6 flex items-center gap-2 uppercase tracking-wider">
                 <span className="w-1.5 h-1.5 bg-[#1976d2] rounded-full"></span>{" "}
                 Explore
               </h4>
@@ -172,7 +172,7 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-bold text-base mb-6 flex items-center gap-2 uppercase tracking-wider">
+              <h4 className="text-white/90 font-bold text-base mb-6 flex items-center gap-2 uppercase tracking-wider">
                 <span className="w-1.5 h-1.5 bg-[#1976d2] rounded-full"></span>{" "}
                 Service
               </h4>
@@ -198,7 +198,7 @@ const Footer = () => {
 
           {/* 4. NEWSLETTER SECTION */}
           <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-700/50 backdrop-blur-md">
-            <h4 className="text-white font-bold text-base mb-4 uppercase tracking-wider">
+            <h4 className="text-white/90 font-bold text-base mb-4 uppercase tracking-wider">
               Stay Updated
             </h4>
             <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
