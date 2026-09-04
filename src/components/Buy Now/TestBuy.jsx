@@ -62,8 +62,6 @@ const TestBuy = ({ data }) => {
   const distRef = useRef(null);
   const upazilaRef = useRef(null);
 
-
-
   useEffect(() => {
     const fetchStations = async () => {
       try {
@@ -84,8 +82,6 @@ const TestBuy = ({ data }) => {
 
     fetchStations();
   }, []);
-
- 
 
   const [form, setForm] = useState({
     name: user?.userName || "",
@@ -203,8 +199,6 @@ const TestBuy = ({ data }) => {
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: false }));
   };
 
-
-
   // 6. Submit Logic
   const handleSubmit = async (e) => {
     const newErrors = {
@@ -269,7 +263,6 @@ const TestBuy = ({ data }) => {
 
       sessionStorage.removeItem("cart");
       updateCart();
-   
 
       Swal.fire({
         title: "Order Placed Successfully!",
@@ -333,7 +326,7 @@ const TestBuy = ({ data }) => {
         {/* SECTION 1: CUSTOMER INFO */}
         <div className="md:w-1/3 min-h-[750px] rounded bg-white shadow flex-shrink-0">
           <div className="h-12 bg-black rounded-t flex items-center px-5 gap-3">
-            <span className="flex items-center justify-center w-8 h-8 bg-brand text-white font-semibold text-lg rounded-full">
+            <span className="flex items-center justify-center w-8 h-8 bg-slate-800 text-white/90 font-semibold text-lg rounded-full">
               1
             </span>
             <h2 className="text-lg font-bold text-white/90">
@@ -598,10 +591,12 @@ const TestBuy = ({ data }) => {
             {/* SECTION 2: PAYMENT METHOD */}
             <div className="md:w-1/2 rounded bg-white shadow overflow-hidden">
               <div className="h-12 bg-black flex items-center px-5 gap-3">
-                <span className="flex items-center justify-center w-8 h-8 bg-brand text-white font-semibold rounded-full">
+                <span className="flex items-center justify-center w-8 h-8  bg-slate-800 text-white/90 font-semibold rounded-full">
                   2
                 </span>
-                <h2 className="text-lg font-bold text-white/90">Payment Method</h2>
+                <h2 className="text-lg font-bold text-white/90">
+                  Payment Method
+                </h2>
               </div>
               <div className="p-5 text-black">
                 <p className="text-[17px] font-medium mb-4 text-slate-800">
@@ -681,7 +676,7 @@ const TestBuy = ({ data }) => {
             {/* SECTION 3: DELIVERY METHOD */}
             <div className="md:w-1/2 rounded bg-white shadow overflow-hidden">
               <div className="h-12 bg-black flex items-center px-5 gap-3">
-                <span className="flex items-center justify-center w-8 h-8 bg-brand text-white font-semibold rounded-full">
+                <span className="flex items-center justify-center w-8 h-8  bg-slate-800 text-white/90 font-semibold rounded-full">
                   3
                 </span>
                 <h2 className="text-lg font-bold text-white/90">

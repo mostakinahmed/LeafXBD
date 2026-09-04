@@ -128,7 +128,7 @@ export const SearchBar = () => {
         focus:ring-[#1976d2]/10
         focus:outline-none
 
-        placeholder:text-slate-400
+        placeholder:text-slate-500
         md:placeholder:text-sm
         placeholder:text-xs
         placeholder:tracking-wide
