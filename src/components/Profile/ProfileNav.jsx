@@ -54,21 +54,112 @@ export const Profile = () => {
       ) : (
         <div
           onClick={() => navigate("/signin")}
-          className="group relative cursor-pointer overflow-hidden rounded-full border border-brand/30 bg-white md:px-1.5  md:py-1 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-[0_10px_25px_rgba(25,118,210,0.20)]"
+          className="
+    group
+    relative
+    cursor-pointer
+    overflow-hidden
+    rounded-full
+
+    border border-brand/30
+    bg-white/5
+
+    md:px-1.5
+    md:py-1
+
+    shadow-sm
+
+    transition-all
+    duration-300
+
+    hover:-translate-y-0.5
+    hover:border-brand/40
+    hover:bg-brand/10
+    hover:shadow-[0_10px_25px_rgba(25,118,210,0.20)]
+  "
         >
           {/* Shine Effect */}
           <div className="absolute inset-0 overflow-hidden rounded-full">
-            <div className="absolute top-0 -left-20 h-full w-8 bg-white/50 skew-x-12 group-hover:animate-shine"></div>
+            <div
+              className="
+        absolute
+        top-0
+        -left-20
+        h-full
+        w-8
+        bg-white/20
+        skew-x-12
+        group-hover:animate-shine
+      "
+            />
           </div>
 
-          <button className="relative cursor-pointer z-10 flex items-center gap-3 md:px-2">
+          <button
+            className="
+      relative
+      z-10
+      flex
+      cursor-pointer
+      items-center
+      gap-3
+      md:px-2
+    "
+          >
             {/* Icon */}
-            <div className="flex h-8 w-8 items-center md:-ml-2 justify-center rounded-full bg-brand/20 transition-all duration-300 group-hover:bg-brand">
-              <User className="md:w-4 md:h-4 w-5 h-5 text-brand group-hover:text-white transition-all duration-300" />
+            <div
+              className="
+        flex
+        h-8
+        w-8
+        md:-ml-2
+        items-center
+        justify-center
+        rounded-full
+
+        bg-brand/30
+
+        transition-all
+        duration-300
+
+        group-hover:bg-brand
+        group-hover:shadow-[0_0_12px_rgba(25,118,210,0.35)]
+      "
+            >
+              <User
+                className="
+          h-5
+          w-5
+          md:h-4
+          md:w-4
+
+          text-brand
+
+          transition-all
+          duration-300
+
+          group-hover:text-white
+          group-hover:scale-110
+        "
+              />
             </div>
 
             {/* Text */}
-            <h2 className="hidden lg:flex text-sm font-semibold tracking-wide text-slate-900 group-hover:text-brand transition-colors duration-300">
+            <h2
+              className="
+        hidden
+        lg:flex
+        text-[15.5px]
+        font-bold
+        tracking-wide
+
+        text-white/90
+
+        transition-colors
+        duration-300
+
+        group-hover:text-brand
+      "
+            >
               Sign In
             </h2>
           </button>
@@ -79,7 +170,7 @@ export const Profile = () => {
       {user && open && (
         <div className="relative z-[100]">
           {/* Reduced width from 320px to 260px and padding from p-4 to p-3 */}
-          <div className="absolute md:top-2 top-2 md:right-0 -right-2 w-max md:min-w-[260px] min-w-[220px] bg-white backdrop-blur-md shadow-xl rounded-b border border-slate-300 z-[100] p-3 animate-in fade-in zoom-in-95 duration-200">
+          <div className="absolute md:top-5 top-2 md:right-0 -right-2 w-max md:min-w-[260px] min-w-[220px] bg-white backdrop-blur-md shadow-2xl rounded-b border border-slate-300 z-[100] p-3 animate-in fade-in zoom-in-95 duration-200">
             {/* User Identity Header - Compacted gap and padding */}
             <div className="flex items-center justify-center gap-3 pb-3 border-b border-slate-300">
               {/* Smaller Avatar Icon (w-10 h-10) */}

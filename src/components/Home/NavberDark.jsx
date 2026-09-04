@@ -91,7 +91,7 @@ const NavbarDark = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <Link to="/offer" className="group">
+            {/* <Link to="/offer" className="group">
               <div
                 className="
       relative
@@ -113,10 +113,10 @@ const NavbarDark = () => {
       hover:scale-[1.03]
     "
               >
-                {/* Animated Glow */}
+            
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-[shine_4s_linear_infinite]" />
 
-                {/* Live Pulse */}
+         
                 <div className="absolute left-2">
                   <span className="relative flex h-2.5 w-2.5">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75"></span>
@@ -124,7 +124,7 @@ const NavbarDark = () => {
                   </span>
                 </div>
 
-                {/* Icon */}
+             
                 <div
                   className="
         ml-4
@@ -141,7 +141,7 @@ const NavbarDark = () => {
                   <FiPercent size={13} className="text-[#1976d2]" />
                 </div>
 
-                {/* Text */}
+             
                 <span
                   className="
         relative
@@ -156,113 +156,32 @@ const NavbarDark = () => {
                   Live Offers
                 </span>
               </div>
-            </Link>
+            </Link> */}
 
-            {/* Track Order */}
-            <div
-              onClick={() => navigate("/track-order")}
-              className="
-    group
-    cursor-pointer
-    h-8
-    w-12
-    rounded-xl
-
-    bg-white
-    flex
-    items-center
-    justify-center
-
-    hover:border-[#1976d2]/30
-    hover:bg-blue-50
-    hover:shadow-md
-    transition-all
-    duration-300
-  "
-              title="Track Order"
+            <Link
+              to="/offer"
+              className="flex items-center gap-1 text-sm font-semibold"
             >
-              <FiTruck
-                size={20}
+              <span className="text-base">🎁</span>
+
+              <span
                 className="
-      text-slate-700
-      group-hover:text-[#1976d2]
-      group-hover:scale-110
-      transition-all
-      duration-300
-    "
-              />
-            </div>
-
-            {/* Cart */}
-            <div
-              className="
-    relative
-    group
-    h-8
-    w-12
-    rounded-xl
-    bg-white
-    flex
-    items-center
-    justify-center
-    hover:border-[#1976d2]/30
-    hover:bg-blue-50
-    hover:shadow-md
-    transition-all
-    duration-300
+    bg-gradient-to-r
+    from-brand
+    via-red-700
+    to-yellow-400
+    bg-clip-text
+    text-transparent text-[17px] font-extrabold
   "
-              title="Cart"
-            >
-              <Link to="/checkout/cart">
-                <i
-                  className="
-        ri-shopping-cart-2-line
-        text-[22px]
-        text-slate-700
-        group-hover:text-[#1976d2]
-        group-hover:scale-110
-        transition-all
-        duration-300
-      "
-                />
-              </Link>
-
-              {cartItems.length > 0 && (
-                <>
-                  {/* Pulse Ring */}
-                  <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-[#fe741d] animate-ping opacity-30"></span>
-
-                  {/* Counter */}
-                  <span
-                    className="
-          absolute
-          -top-1
-          -right-1
-          min-w-[18px]
-          h-[18px]
-          flex
-          items-center
-          justify-center
-          bg-[#fe741d]
-          text-white
-          text-[10px]
-          font-bold
-          rounded-full
-          shadow-md
-          border
-          border-white
-        "
-                  >
-                    {cartItems.length}
-                  </span>
-                </>
-              )}
-            </div>
+              >
+                Offers
+              </span>
+            </Link>
 
             {/*   for compare */}
             <button
               onClick={() => navigate("/product/compare")}
-              className="relative flex items-center gap-2 px-1 py-1.5 rounded-full transition-all group cursor-pointer d"
+              className="relative flex items-center gap-2 px-1 py-1.5 rounded-full transition-all group cursor-pointer"
               aria-label="Compare Products"
             >
               {/* Compare Icon */}
@@ -286,6 +205,137 @@ const NavbarDark = () => {
                 </span>
               )}
             </button>
+            {/* Track Order */}
+            <div
+              onClick={() => navigate("/track-order")}
+              className="
+    group
+    relative
+    cursor-pointer
+    h-9
+    w-11
+    rounded-xl
+
+    bg-white/5
+    border
+    border-white/10
+
+    flex
+    items-center
+    justify-center
+
+    hover:bg-[#1976d2]/10
+    hover:border-[#1976d2]/40
+    hover:shadow-[0_0_15px_rgba(25,118,210,0.20)]
+
+    transition-all
+    duration-300
+  "
+              title="Track Order"
+            >
+              <FiTruck
+                size={19}
+                className="
+      text-slate-300
+      group-hover:text-[#1976d2]
+      group-hover:scale-110
+      transition-all
+      duration-300
+    "
+              />
+            </div>
+
+            {/* Cart */}
+            <div
+              className="
+    relative
+    group
+    h-9
+    w-11
+    rounded-xl
+
+    bg-white/5
+    border
+    border-white/10
+
+    flex
+    items-center
+    justify-center
+
+    hover:bg-[#F66107]/10
+    hover:border-[#F66107]/40
+    hover:shadow-[0_0_15px_rgba(246,97,7,0.20)]
+
+    transition-all
+    duration-300
+  "
+              title="Cart"
+            >
+              <Link
+                to="/checkout/cart"
+                className="flex items-center justify-center"
+              >
+                <i
+                  className="
+        ri-shopping-cart-2-line
+        text-[21px]
+        text-slate-300
+
+        group-hover:text-[#F66107]
+        group-hover:scale-110
+
+        transition-all
+        duration-300
+      "
+                />
+              </Link>
+
+              {cartItems.length > 0 && (
+                <>
+                  {/* Pulse Ring */}
+                  <span
+                    className="
+          absolute
+          -top-1
+          -right-1
+          h-5
+          w-5
+          rounded-full
+          bg-[#F66107]
+          animate-ping
+          opacity-30
+        "
+                  />
+
+                  {/* Counter */}
+                  <span
+                    className="
+          absolute
+          -top-1
+          -right-1
+          min-w-[18px]
+          h-[18px]
+
+          flex
+          items-center
+          justify-center
+
+          bg-[#F66107]
+          text-white
+          text-[10px]
+          font-bold
+
+          rounded-full
+          shadow-lg
+          border
+          border-black
+        "
+                  >
+                    {cartItems.length}
+                  </span>
+                </>
+              )}
+            </div>
 
             <Profile />
           </div>
