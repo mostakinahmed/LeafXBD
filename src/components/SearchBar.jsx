@@ -107,9 +107,10 @@ export const SearchBar = () => {
           onKeyDown={(e) => e.key === "Enter" && searchPage()}
           className="
         w-full
-        bg-gray-900
+        bg-slate-50
+        md:bg-gray-900
         border
-        border-slate-500/40
+        border-slate-500/35
         rounded-full
         px-5
         py-2
@@ -118,10 +119,14 @@ export const SearchBar = () => {
         text-md
         transition-all
         duration-300
-       
+
+      
+   
+
         focus:bg-white
+        focus:border-brand
         focus:ring-4
-        focus:ring-[#1976d2]/10
+        focus:ring-brand/10
         focus:outline-none
 
         placeholder:text-slate-500
