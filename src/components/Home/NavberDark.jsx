@@ -5,7 +5,8 @@ import { CartContext } from "../Context Api/CartContext";
 import { DataContext } from "../Context Api/UserContext";
 import { SearchBar } from "../SearchBar";
 import { Profile } from "../Profile/ProfileNav";
-import { FiTruck, FiPercent } from "react-icons/fi";
+import { FiTruck, FiPercent, FiRefreshCw } from "react-icons/fi";
+import { ArrowLeftRight } from "lucide-react";
 import Header from "../Home/Header";
 
 const NavbarDark = () => {
@@ -14,6 +15,7 @@ const NavbarDark = () => {
   const { cartItems, updateCart } = useContext(CartContext);
   const { categoryData, productData } = useContext(DataContext);
 
+  const [compare, setComapre] = useState(0);
   const [values, setValue] = useState(false);
   const [sBar, setSbar] = useState(false);
   const [searchIcon, setSearchIcon] = useState(true);
@@ -153,24 +155,6 @@ const NavbarDark = () => {
                 >
                   Live Offers
                 </span>
-
-                {/* Badge */}
-                <span
-                  className="
-        bg-white/10
-        backdrop-blur-sm
-        text-white
-        text-[9px]
-        font-bold
-        px-2
-        py-[2px]
-        rounded-full
-        border
-        border-white/30
-      "
-                >
-                  HOT
-                </span>
               </div>
             </Link>
 
@@ -275,16 +259,41 @@ const NavbarDark = () => {
               )}
             </div>
 
+            {/*   for compare */}
+            <button
+              onClick={() => navigate("/product/compare")}
+              className="relative flex items-center gap-2 px-1 py-1.5 rounded-full transition-all group cursor-pointer d"
+              aria-label="Compare Products"
+            >
+              {/* Compare Icon */}
+              <img
+                src="https://7vgva7cju0vcfvwf.public.blob.vercel-storage.com/Untitled%20design%20%289%29.png"
+                alt=""
+                className="w-4 h-5"
+              />
+              {/* Button Text */}
+              <span className="md:text-md font-bold tracking-wide  text-white/90 hover:text-brand">
+                Compare
+              </span>
+
+              {/* Notification Count Badge */}
+              {compare > 0 && (
+                <span
+                  className="absolute -top-1.5 left-4 w-5 h-5 flex items-center justify-center text-[12px] font-black text-white rounded-full "
+                  style={{ backgroundColor: "#F66107" }}
+                >
+                  {compare}
+                </span>
+              )}
+            </button>
+
             <Profile />
           </div>
         </div>
 
         {/* ======= MOBILE NAV ======= */}
         <div className="bg-black w-full h-[45px] md:hidden flex items-center justify-between px-3">
-          <div
-            className="text-2xl cursor-pointer text-white"
-            onClick={toggle}
-          >
+          <div className="text-2xl cursor-pointer text-white" onClick={toggle}>
             <i
               className={
                 values ? "ri-close-line text-slate-900/90" : "ri-menu-3-line"
@@ -317,6 +326,7 @@ const NavbarDark = () => {
                 </span>
               )}
             </div>
+
             <Profile />
           </div>
         </div>

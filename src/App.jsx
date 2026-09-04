@@ -39,6 +39,7 @@ import Maintenance from "./components/Maintenance";
 import TrackOrderSttedFast from "./components/TrackOrderSteedFast";
 import DailyAccessories from "./components/Daily Accessories/DailyAccessores";
 import VictusByteAssistant from "./components/VictusByteAssistant";
+import Comparison from "./pages/Comparison";
 
 const Loader = () => (
   <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
@@ -189,6 +190,7 @@ function App() {
           <Route path="/return-policy" element={<Return />} />
           <Route path="/payment-info" element={<Payment />} />
           <Route path="/test-buy" element={<TestBuy />} />
+          <Route path="/product/compare" element={<Comparison />} />
           {/* <Route path="/:shortId" element={<OrderRedirect />} /> */}
           {/* Landing page */}
           <Route
