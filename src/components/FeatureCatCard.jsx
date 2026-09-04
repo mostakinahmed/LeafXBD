@@ -160,7 +160,7 @@ const CategoryBox = ({ data }) => {
                   </div>
 
                   <span
-                    className="text-[11px] md:text-xs text-slate-600 transition-colors duration-300 leading-tight block truncate font-medium"
+                    className="text-[11px] text-center md:text-sm text-slate-600 transition-colors duration-300 leading-tight block truncate font-medium"
                     onMouseEnter={(e) =>
                       (e.currentTarget.style.color = "#F66107")
                     }

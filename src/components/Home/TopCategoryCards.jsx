@@ -74,14 +74,13 @@ const TopCategoryCards = () => {
               transition-all duration-300
               cursor-pointer px-2 py-1
               hover:bg-gradient-to-b
-              hover:from-blue-50
-              hover:to-white
+             
               hover:-translate-y-1
               hover:shadow-md
             "
                 >
                   {/* ICON */}
-                  <div className="h-10 w-11 lg:h-18 lg:w-18 mb-2 flex items-center justify-center rounded-xl bg-blue-50 group-hover:bg-[#1976d2]/10 transition-all duration-300">
+                  <div className="h-10 w-11 lg:h-20 lg:w-20 mb-2 flex items-center justify-center rounded-xl transition-all duration-300">
                     {cat.catIcon ? (
                       <img
                         src={cat.catIcon}
@@ -100,7 +99,7 @@ const TopCategoryCards = () => {
                 flex items-center justify-center
                 text-[10px] md:text-[11px] lg:text-sm
                 font-medium text-gray-700
-                group-hover:text-[#1976d2]
+                group-hover:text-brand 
                 transition-colors
                 leading-tight px-1
                 line-clamp-2
