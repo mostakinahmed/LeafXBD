@@ -343,10 +343,10 @@ const NavbarDark = () => {
 
         {/* ======= MOBILE NAV ======= */}
         <div className="bg-black w-full h-[45px] md:hidden flex items-center justify-between px-3">
-          <div className="text-2xl cursor-pointer text-white" onClick={toggle}>
+          <div className="text-2xl cursor-pointer text-white/90" onClick={toggle}>
             <i
               className={
-                values ? "ri-close-line text-slate-900/90" : "ri-menu-3-line"
+                values ? "ri-close-line text-white/90" : "ri-menu-3-line"
               }
             ></i>
           </div>

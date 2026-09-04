@@ -116,7 +116,7 @@ export const Profile = () => {
         justify-center
         rounded-full
 
-        bg-brand/30
+        md:bg-brand/30 
 
         transition-all
         duration-300
@@ -170,7 +170,7 @@ export const Profile = () => {
       {user && open && (
         <div className="relative z-[100]">
           {/* Reduced width from 320px to 260px and padding from p-4 to p-3 */}
-          <div className="absolute md:top-5 top-2 md:right-0 -right-2 w-max md:min-w-[260px] min-w-[220px] bg-white backdrop-blur-md shadow-2xl rounded-b border border-slate-300 z-[100] p-3 animate-in fade-in zoom-in-95 duration-200">
+          <div className="absolute md:top-5 top-2.5 md:right-0 -right-3 w-max md:min-w-[260px] min-w-[220px] bg-white backdrop-blur-md shadow-2xl rounded-b border border-slate-300 z-[100] p-3 animate-in fade-in zoom-in-95 duration-200">
             {/* User Identity Header - Compacted gap and padding */}
             <div className="flex items-center justify-center gap-3 pb-3 border-b border-slate-300">
               {/* Smaller Avatar Icon (w-10 h-10) */}
