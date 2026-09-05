@@ -569,7 +569,7 @@ const Comparison = () => {
                           "
                       >
                         <img
-                          className="w-30 h-30 opacity-60"
+                          className="w-30 h-30 opacity-20"
                           src="https://img.magnific.com/premium-vector/picture-icon-symbol-mark-filled-style_1223784-5604.jpg?semt=ais_hybrid&w=740&q=80"
                           alt=""
                         />
