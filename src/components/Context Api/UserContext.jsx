@@ -43,7 +43,7 @@ export const UserContext = ({ children }) => {
     error,
   };
 
-  console.log(productData);
+
   
   return (
     <DataContext.Provider value={contextValue}>{children}</DataContext.Provider>

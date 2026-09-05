@@ -15,7 +15,13 @@ export const BuyNow = () => {
       .map((cartItem) => {
         const product = productData.find((p) => p.pID === cartItem.pID);
         if (!product) return null;
-        return { ...product, qty: cartItem.qty || 1, colors: cartItem.color };
+        return {
+          ...product,
+          qty: cartItem.qty || 1,
+          colors: cartItem.color,
+          phone_price: cartItem.price,
+          storage: cartItem.storage,
+        };
       })
       .filter(Boolean);
     setItems(merged);
@@ -44,25 +50,7 @@ export const BuyNow = () => {
     },
   };
 
-  const leftSlide = {
-    hidden: { opacity: 0, x: -15 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.3, ease: "easeOut" },
-    },
-  };
-
-  const rightSlide = {
-    hidden: { opacity: 0, x: 15 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.3, ease: "easeOut" },
-    },
-  };
-
-  console.log(items);
+  
 
   return (
     <div

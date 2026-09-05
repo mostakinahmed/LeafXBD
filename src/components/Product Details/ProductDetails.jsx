@@ -495,7 +495,7 @@ const ProductDetail = () => {
                               }}
                               className={`flex items-center gap-2 rounded-full border px-3 py-2 text-sm font-medium transition-all ${
                                 isSelected
-                                  ? "border-[#fe741d] text-[#fe741d]"
+                                  ? "border-brand"
                                   : "border-gray-300 bg-white text-slate-800"
                               }`}
                             >
@@ -541,7 +541,7 @@ const ProductDetail = () => {
               cursor-pointer
               ${
                 isSelected
-                  ? "border-[#f66107]  text-[#f66107]"
+                  ? "border-brand"
                   : "border-gray-300 bg-white text-gray-800"
               }
             `}

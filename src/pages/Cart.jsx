@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { motion } from "framer-motion"; // 1. Import motion
+import { motion } from "framer-motion";
 import { CartContext } from "../components/Context Api/CartContext";
 import { DataContext } from "../components/Context Api/UserContext";
 import { useNavigate } from "react-router-dom";
@@ -14,11 +14,11 @@ export const Cart = () => {
 
   useEffect(() => {
     const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
-
     const merged = cartItems
       .map((cartItem) => {
         const product = productData.find((p) => p.pID === cartItem.pID);
         if (!product) return null;
+
         if (cartItem?.category === "mobile-phone") {
           return {
             ...product,
@@ -26,23 +26,42 @@ export const Cart = () => {
             colors: cartItem.color,
             phone_price: cartItem.price,
             storage: cartItem.storage,
+            cartItemId: cartItem.cartItemId,
           };
         }
-        return { ...product, qty: cartItem.qty || 1, colors: cartItem.color };
+        return {
+          ...product,
+          qty: cartItem.qty || 1,
+          colors: cartItem.color,
+          storage: cartItem.storage,
+          cartItemId: cartItem.cartItemId,
+        };
       })
       .filter(Boolean);
     setItems(merged);
   }, [productData]);
 
-  {
-    /* Calculate unit price safely based on category */
-  }
+  const onRemove = (cartItemId) => {
+    const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
 
-  //for total price
+    // 1. Filter out from session storage raw data using unique cartItemId
+    const updatedCartItems = cartItems.filter(
+      (item) => item.cartItemId !== cartItemId,
+    );
+    sessionStorage.setItem("cart", JSON.stringify(updatedCartItems));
+
+    // 2. Filter out from UI state using unique cartItemId
+    setItems((prevItems) =>
+      prevItems.filter((item) => item.cartItemId !== cartItemId),
+    );
+
+    updateCart();
+  };
+
+  // For total price calculation
   const totalPrice = items.reduce((sum, item) => {
     const isMobile = item?.category?.toLowerCase() === "mobile-phone";
 
-    // Get the correct unit price based on category
     const unitPrice = isMobile
       ? Number(item?.phone_price || item?.price?.selling || 0)
       : Number(item?.price?.selling || 0);
@@ -50,37 +69,19 @@ export const Cart = () => {
     const qty = Number(item?.qty || 1);
     const discount = Number(item?.price?.discount || 0);
 
-    // Calculate total for the current item (Price * Qty - Discount * Qty)
     const itemTotal = unitPrice * qty - discount * qty;
 
     return sum + itemTotal;
   }, 0);
 
-  console.log(totalPrice);
-
-  //total dis
+  // Total discount calculation
   const totalDiscount = items.reduce((sum, item) => {
     const discount = Number(item?.price?.discount || 0);
     const qty = Number(item?.qty || 1);
-
-    // Multiply discount by quantity for each item and add to sum
     return sum + discount * qty;
   }, 0);
-  const onRemove = (pID) => {
-    const updatedItems = items.filter((item) => item.pID !== pID);
-    setItems(updatedItems);
-    sessionStorage.setItem(
-      "cart",
-      JSON.stringify(
-        updatedItems.map((item) => ({ pID: item.pID, qty: item.qty })),
-      ),
-    );
-    updateCart();
-  };
 
   const ProceedBtn = () => navigate("/checkout/purchase");
-
-  console.log(items);
 
   const leftSideVariants = {
     hidden: { opacity: 0, x: -20 },
@@ -95,7 +96,7 @@ export const Cart = () => {
     <div className="max-w-[1400px] lg:mt-[90px] font-sans mt-[40px] pt-5 mx-auto md:px-4 px-2 mb-60">
       <div className="flex bg-white shadow-xs flex-col lg:flex-row">
         {/* --- Left Side: Product List --- */}
-        <div variants={leftSideVariants} className="flex-1">
+        <div className="flex-1">
           <div className="bg-white overflow-hidden border border-slate-200">
             {/* Table (Desktop) */}
             <div className="hidden md:block overflow-x-auto">
@@ -106,12 +107,11 @@ export const Cart = () => {
                       Product
                     </th>
                     <th className="px-4 py-4 text-[11px] font-bold text-slate-500 uppercase tracking-widest text-center">
-                      Color
+                      Color / Storage
                     </th>
                     <th className="px-4 py-4 text-[11px] font-bold text-slate-500 uppercase tracking-widest text-center">
                       Quantity
                     </th>
-
                     <th className="px-4 py-4 text-[11px] font-bold text-slate-500 uppercase tracking-widest text-center">
                       Unit Price
                     </th>
@@ -124,17 +124,17 @@ export const Cart = () => {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
-                  {items.map((item, index) => (
+                  {items?.map((item) => (
                     <tr
-                      key={index}
+                      key={item.cartItemId}
                       className="group hover:bg-slate-50/50 transition-all"
                     >
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-4">
                           <div className="w-16 h-16 shrink-0 bg-white border border-slate-100 p-1 rounded">
                             <img
-                              src={item.images[0]}
-                              alt={item.name}
+                              src={item?.images?.[0]}
+                              alt={item?.name}
                               className="w-full h-full object-contain"
                             />
                           </div>
@@ -151,9 +151,16 @@ export const Cart = () => {
                         </div>
                       </td>
                       <td className="px-4 py-4 text-center">
-                        <span className="text-sm font-semibold uppercase text-slate-700 bg-slate-100 px-3 py-1 rounded-md">
-                          {item.colors}
-                        </span>
+                        <div className="flex flex-col items-center gap-1">
+                          <span className="text-xs font-semibold uppercase text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded">
+                            {item.colors}
+                          </span>
+                          {item.storage && (
+                            <span className="text-[10px] font-bold text-slate-500">
+                              {item.storage}
+                            </span>
+                          )}
+                        </div>
                       </td>
 
                       <td className="px-4 py-4 text-center">
@@ -163,40 +170,41 @@ export const Cart = () => {
                       </td>
 
                       <td className="px-4 py-4 text-center">
-                        {item.category === "mobile-phone" ? (
+                        {item.category?.toLowerCase() === "mobile-phone" ? (
                           <span className="text-sm font-bold text-slate-800">
-                            ৳{item.phone_price.toLocaleString()}
+                            ৳{Number(item?.phone_price || 0).toLocaleString()}
                           </span>
                         ) : (
                           <span className="text-sm font-bold text-slate-800">
-                            ৳{item.price.selling.toLocaleString()}
+                            ৳
+                            {Number(item?.price?.selling || 0).toLocaleString()}
                           </span>
                         )}
                       </td>
                       <td className="px-4 py-4 text-right font-black text-slate-900 text-sm">
-                        ৳{/* Calculate unit price safely based on category */}
+                        ৳
                         {(() => {
                           const isMobile =
                             item?.category?.toLowerCase() === "mobile-phone";
-                          // Fallback safely if phone_price or selling price is missing
                           const unitPrice = isMobile
-                            ? Number(item?.phone_price) ||
-                              item?.price?.selling ||
-                              0
-                            : item?.price?.selling || 0;
+                            ? Number(
+                                item?.phone_price || item?.price?.selling || 0,
+                              )
+                            : Number(item?.price?.selling || 0);
 
-                          const discount = item?.price?.discount || 0;
-                          const qty = item?.qty || 1;
+                          const discount = Number(item?.price?.discount || 0);
+                          const qty = Number(item?.qty || 1);
 
-                          const totalPrice = unitPrice * qty - discount * qty;
-
-                          return totalPrice.toLocaleString();
+                          return (
+                            unitPrice * qty -
+                            discount * qty
+                          ).toLocaleString();
                         })()}
                       </td>
                       <td className="px-6 py-4 text-center">
                         <button
-                          onClick={() => onRemove(item.pID)}
-                          className="p-2 text-slate-400 hover:text-rose-500 hover:bg-rose-50 rounded-full transition-all"
+                          onClick={() => onRemove(item.cartItemId)}
+                          className="p-2 text-slate-400 hover:text-rose-500 hover:bg-rose-50 rounded-full transition-all cursor-pointer"
                         >
                           <IoClose size={18} />
                         </button>
@@ -209,12 +217,12 @@ export const Cart = () => {
 
             {/* Mobile View */}
             <div className="md:hidden divide-y divide-slate-100">
-              {items.map((item, index) => (
-                <div key={index} className="p-4 flex flex-col gap-4">
+              {items.map((item) => (
+                <div key={item.cartItemId} className="p-4 flex flex-col gap-4">
                   <div className="flex gap-4">
                     <div className="w-20 h-20 shrink-0 bg-white border border-slate-100 p-1 rounded-lg">
                       <img
-                        src={item.images[0]}
+                        src={item.images?.[0]}
                         alt={item.name}
                         className="w-full h-full object-contain"
                       />
@@ -225,15 +233,42 @@ export const Cart = () => {
                           {item.name}
                         </h3>
                         <button
-                          onClick={() => onRemove(item.pID)}
-                          className="text-slate-500 p-1"
+                          onClick={() => onRemove(item.cartItemId)}
+                          className="text-slate-500 p-1 cursor-pointer"
                         >
                           <IoClose size={20} />
                         </button>
                       </div>
+                      <div className="mt-2 flex gap-2 text-xs">
+                        <span className="bg-slate-100 px-2 py-0.5 rounded text-slate-700 font-medium">
+                          {item.colors}
+                        </span>
+                        {item.storage && (
+                          <span className="bg-slate-100 px-2 py-0.5 rounded text-slate-700 font-medium">
+                            {item.storage}
+                          </span>
+                        )}
+                      </div>
                       <div className="mt-3 flex justify-between items-end">
                         <span className="text-sm font-black text-slate-900">
-                          ৳{(item.price.selling * item.qty).toLocaleString()}
+                          ৳
+                          {(() => {
+                            const isMobile =
+                              item?.category?.toLowerCase() === "mobile-phone";
+                            const unitPrice = isMobile
+                              ? Number(
+                                  item?.phone_price ||
+                                    item?.price?.selling ||
+                                    0,
+                                )
+                              : Number(item?.price?.selling || 0);
+                            const discount = Number(item?.price?.discount || 0);
+                            const qty = Number(item?.qty || 1);
+                            return (
+                              unitPrice * qty -
+                              discount * qty
+                            ).toLocaleString();
+                          })()}
                         </span>
                         <div className="bg-slate-100 px-3 py-1 rounded text-xs font-bold text-slate-800">
                           Qty: {item.qty}
@@ -265,12 +300,14 @@ export const Cart = () => {
               <div className="md:space-y-4 space-y-2">
                 <div className="flex justify-between items-center text-slate-400 text-sm">
                   <span>Sub-Total</span>
-                  <span className="text-white font-bold">৳{totalPrice}</span>
+                  <span className="text-white font-bold">
+                    ৳{totalPrice.toLocaleString()}
+                  </span>
                 </div>
                 <div className="flex justify-between items-center text-slate-400 text-sm">
                   <span>Savings</span>
                   <span className="text-rose-400 font-bold">
-                    -৳{totalDiscount}
+                    -৳{totalDiscount.toLocaleString()}
                   </span>
                 </div>
                 <div className="md:pt-6 pt-3 md:mt-6 mt-4 border-t border-white/10">
@@ -280,13 +317,13 @@ export const Cart = () => {
                         Total Payable
                       </p>
                       <p className="text-3xl font-black tracking-tighter">
-                        ৳{totalPrice + 60}
+                        ৳{(totalPrice + 60).toLocaleString()}
                       </p>
                     </div>
                   </div>
                   <button
                     onClick={ProceedBtn}
-                    className="group w-full py-5 bg-indigo-600 text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-white hover:text-slate-900 transition-all duration-300 flex items-center justify-center gap-2"
+                    className="group w-full py-5 bg-indigo-600 text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-white hover:text-slate-900 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                   >
                     Proceed to Checkout
                     <IoArrowForward className="group-hover:translate-x-1 transition-transform" />

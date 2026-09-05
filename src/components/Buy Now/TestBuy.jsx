@@ -57,7 +57,6 @@ const TestBuy = ({ data }) => {
   const [discount, setDiscount] = useState(0);
   const [subTotalTk, setSubTotalTk] = useState(0);
   const [errors, setErrors] = useState({});
-  const [isNavigating, setIsNavigating] = useState(false); // New navigation state
 
   const distRef = useRef(null);
   const upazilaRef = useRef(null);
@@ -75,8 +74,6 @@ const TestBuy = ({ data }) => {
         setDistricts(result.data);
       } catch (error) {
         console.error("Error fetching police stations:", error);
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -143,17 +140,39 @@ const TestBuy = ({ data }) => {
   };
 
   // --- CALCULATION LOGIC ---
+  // const subTotal =
+  //   data?.reduce((acc, item) => acc + item.price.selling * item.qty, 0) || 0;
+  // const deliverTk = isDhakaRegion
+  //   ? deliveryMethod === "home"
+  //     ? 60
+  //     : deliveryMethod === "express"
+  //       ? 160
+  //       : 120
+  //   : deliveryMethod === "express"
+  //     ? 160
+  //     : 120;
+  // --- CALCULATION LOGIC ---
+  // --- CALCULATION LOGIC ---
   const subTotal =
-    data?.reduce((acc, item) => acc + item.price.selling * item.qty, 0) || 0;
-  const deliverTk = isDhakaRegion
-    ? deliveryMethod === "home"
-      ? 60
-      : deliveryMethod === "express"
-        ? 160
-        : 120
-    : deliveryMethod === "express"
-      ? 160
-      : 120;
+    data?.reduce((acc, item) => {
+      const isMobile = item?.category?.toLowerCase() === "mobile-phone";
+      const itemPrice = isMobile
+        ? Number(item?.phone_price || item?.price?.selling || 0)
+        : Number(item?.price?.selling || 0);
+      return acc + itemPrice * item.qty;
+    }, 0) || 0;
+
+  // Dynamic delivery charge calculation based on region and selected method
+  const deliverTk = (() => {
+    if (isDhakaRegion) {
+      if (deliveryMethod === "home") return 60;
+      if (deliveryMethod === "express") return 160;
+      return 120; // regular delivery inside Dhaka
+    } else {
+      if (deliveryMethod === "express") return 160;
+      return 120; // regular delivery outside Dhaka
+    }
+  })();
 
   //  const totalTk = subTotal + deliverTk - discount - (couponValue?.value || 0);
   const totalTk = subTotal + deliverTk - discount - (couponValue?.value || 0);
@@ -232,7 +251,11 @@ const TestBuy = ({ data }) => {
           product_price: item.price.selling, // Full Web Price
           discount: item.price.discount || 0, // Static Item Discount
           quantity: 1, // Always 1 for unique tracking
-          product_comments: item.color || item.colors,
+          product_comments: {
+            color: item?.color || item?.colors || "N/A",
+            storage: item?.storage || "N/A",
+            phone_price: item?.phone_price || "N/A",
+          },
           skuID: "",
           imei: "",
         })),
@@ -255,6 +278,8 @@ const TestBuy = ({ data }) => {
       total_amount: totalTk, // subtotal - itemDiscounts - coupon + shipping
     };
 
+    console.log(orderPayload);
+    
     try {
       const res = await axios.post(
         "https://api.victusbyte.com/api/order/create-order/client",
@@ -858,10 +883,16 @@ const TestBuy = ({ data }) => {
                     {item.name} ({item.colors})
                   </div>
                   <div className="col-span-3">
-                    {item.price.selling}৳ x {item.qty}
+                    {item.category === "mobile-phone"
+                      ? item.phone_price
+                      : item.price.selling}
+                    ৳ x {item.qty}
                   </div>
                   <div className="col-span-3 text-right font-semibold">
-                    {item.price.selling * item.qty}৳
+                    {item.category === "mobile-phone"
+                      ? item.phone_price * item.qty
+                      : item.price.selling * item.qty}
+                    ৳
                   </div>
                 </div>
               ))}
