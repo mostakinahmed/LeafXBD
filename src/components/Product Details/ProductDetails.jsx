@@ -19,6 +19,8 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState(null);
   const [showColorError, setShowColorError] = useState(false);
+  // Add this near the top of your ProductDetail / ProductDetails component where states are initialized:
+  const [selectedStorage, setSelectedStorage] = useState("");
 
   const { categoryData, productData, stockData } = useContext(DataContext);
   const { cat, name } = useParams();
@@ -36,12 +38,30 @@ const ProductDetail = () => {
 
   const normalizedURLName = sanitize(name);
 
+  // 1. Find the product cleanly
   const product = productData?.find(
     (item) => sanitize(item.name) === normalizedURLName,
   );
 
-  const CurrCat = categoryData?.find(
-    (item) => item.catID === cat?.toUpperCase(),
+  useEffect(() => {
+    if (product) {
+      // Check 'colors' (plural) and safely fallback to an empty string
+      setSelectedColor(product?.colors?.[0] || "");
+    }
+  }, [product]);
+
+  useEffect(() => {
+    if (product) {
+      // Check 'storage' (plural) and safely fallback to an empty string
+      setSelectedStorage(product?.specifications?.storage?.[0].key || "");
+    }
+  }, [product]);
+
+  const CurrCat = categoryData?.find((item) => item.catID === cat);
+
+  //find current storage for price update
+  const matchedStorage = product?.specifications?.storage?.find(
+    (item) => item.key === selectedStorage,
   );
 
   // Bulletproof sanitized filter for category products
@@ -90,10 +110,10 @@ const ProductDetail = () => {
     sessionStorage.setItem("cart", JSON.stringify(cart));
 
   const buyNowBtn = (product) => {
-    if (!selectedColor) {
-      setShowColorError(true);
-      return;
-    }
+    // if (!selectedColor) {
+    //   setShowColorError(true);
+    //   return;
+    // }
 
     const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
 
@@ -105,14 +125,34 @@ const ProductDetail = () => {
     );
 
     // If product does not exist, add it
+    // Add
+    let price;
+    if (product.category === "mobile-phone") {
+      price = matchedStorage?.value;
+    } else {
+      price = product?.price?.selling;
+    }
+
     if (!alreadyExists) {
+      // cart.push({
+      //   pID: product.pID,
+      //   name: product.name,
+      //   price: product.price.selling,
+      //   image: product.images[0],
+      //   qty: quantity,
+      //   color: selectedColor,
+      //   cartItemId: Date.now() + Math.random(),
+      // });
+
       cart.push({
         pID: product.pID,
         name: product.name,
-        price: product.price.selling,
+        price: price,
         image: product.images[0],
         qty: quantity,
         color: selectedColor,
+        category: product.category,
+        storage: matchedStorage?.key || null,
         cartItemId: Date.now() + Math.random(),
       });
 
@@ -126,10 +166,10 @@ const ProductDetail = () => {
   };
 
   const addToCartBtn = (product) => {
-    if (!selectedColor) {
-      setShowColorError(true);
-      return;
-    }
+    // if (!selectedColor) {
+    //   setShowColorError(true);
+    //   return;
+    // }
 
     const existingCart = JSON.parse(sessionStorage.getItem("cart")) || [];
 
@@ -145,14 +185,23 @@ const ProductDetail = () => {
       return;
     }
 
-    // Add product
+    // Add
+    let price;
+    if (product.category === "mobile-phone") {
+      price = matchedStorage.value;
+    } else {
+      price = product?.price?.selling;
+    }
+
     existingCart.push({
       pID: product.pID,
       name: product.name,
-      price: product.price.selling,
+      price: price,
       image: product.images[0],
       qty: quantity,
       color: selectedColor,
+      category: product?.category,
+      storage: matchedStorage?.key || null,
       cartItemId: Date.now() + Math.random(),
     });
 
@@ -202,13 +251,44 @@ const ProductDetail = () => {
       <section className="max-w-[1400px] lg:mt-[54px] p-3 md:px-5 px-2 mx-auto w-full">
         <div className="flex flex-col lg:flex-row mt-12 md:mt-11 gap-4 lg:gap-3 w-full">
           {/* LEFT COLUMN: Product Images, Details, and Specs */}
-          <div className="flex flex-col w-full lg:w-[70%] xl:w-[75%] gap-3">
+          <div className="flex flex-col w-full lg:w-[70%] xl:w-[80%] gap-3">
             {/* Top Product Card */}
-            <div className="flex flex-col md:flex-row gap-4 bg-white rounded border border-slate-200 overflow-hidden">
+            <div className="flex flex-col md:flex-row gap-2 bg-white rounded border border-slate-200 overflow-hidden">
               {/* Image Gallery Section */}
-              <div className="w-full md:w-[50%] pt-1  flex flex-col md:flex-row bg-white">
-                {/* Thumbnails */}
-                <div className="order-2 md:order-1 flex md:flex-col gap-2 border-t md:border-t-0 md:border-r border-slate-100 p-3 justify-center md:justify-start overflow-x-auto md:overflow-y-auto md:overflow-x-hidden md:h-[376px] bg-slate-50/50 hide-scrollbar">
+              <div className="w-full md:w-[50%] pt-1 flex flex-col bg-white">
+                {/* 1. Main Image View (Now on Top) */}
+                <div className="relative order-1 h-[300px] md:min-h-[420px] flex items-center justify-center p-3">
+                  <span className="absolute top-5 right-3 z-10 bg-black backdrop-blur-sm px-2 rounded border border-slate-200 py-[2px] text-[11px] md:text-[12px] font-extrabold text-white uppercase tracking-widest pointer-events-none select-none">
+                    {product.brandName}
+                  </span>
+
+                  <img
+                    key={currentIndex}
+                    src={product.images?.[currentIndex]}
+                    alt={product.name}
+                    className="w-full h-full object-contain"
+                  />
+
+                  {product.images?.length > 1 && (
+                    <>
+                      <button
+                        onClick={prevImage}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 p-1.5 rounded-full border border-slate-200 shadow-sm hover:bg-white transition-colors cursor-pointer"
+                      >
+                        <FiChevronLeft size={20} />
+                      </button>
+                      <button
+                        onClick={nextImage}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 p-1.5 rounded-full border border-slate-200 shadow-sm hover:bg-white transition-colors cursor-pointer"
+                      >
+                        <FiChevronRight size={20} />
+                      </button>
+                    </>
+                  )}
+                </div>
+
+                {/* 2. Thumbnails (Now Below, Horizontal Row) */}
+                <div className="order-2 flex gap-2 border-t border-slate-100 p-3 justify-center overflow-x-auto bg-slate-50/50 hide-scrollbar">
                   {product.images?.map((img, idx) => (
                     <img
                       key={idx}
@@ -217,42 +297,11 @@ const ProductDetail = () => {
                       onClick={() => setCurrentIndex(idx)}
                       className={`w-14 h-14 md:w-16 md:h-16 flex-shrink-0 object-contain p-1 rounded border-2 transition-all cursor-pointer ${
                         idx === currentIndex
-                          ? "border-brand/55 bg-white"
-                          : "opacity-70 hover:opacity-100"
+                          ? "border-[#F66107] bg-white shadow-sm"
+                          : "border-slate-200 opacity-70 hover:opacity-100"
                       }`}
                     />
                   ))}
-                </div>
-
-                {/* Main Image View */}
-                <div className="order-1 md:order-2 flex-1 relative  h-[300px] md:h-[400px] flex items-center justify-center p-8">
-                  <span className="absolute top-5 right-3 z-10 bg-black backdrop-blur-sm px-2 rounded border border-slate-200 py-[2px] text-[11px] md:text-[12px] font-extrabold text-white uppercase tracking-widest pointer-events-none select-none">
-                    {product.brandName}
-                  </span>
-
-                  <img
-                    key={currentIndex}
-                    src={product.images[currentIndex]}
-                    alt={product.name}
-                    className="w-full h-full object-contain"
-                  />
-
-                  {product.images.length > 1 && (
-                    <>
-                      <button
-                        onClick={prevImage}
-                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 p-1.5 rounded-full border border-slate-200 shadow-sm hover:bg-white transition-colors"
-                      >
-                        <FiChevronLeft size={20} />
-                      </button>
-                      <button
-                        onClick={nextImage}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 p-1.5 rounded-full border border-slate-200 shadow-sm hover:bg-white transition-colors"
-                      >
-                        <FiChevronRight size={20} />
-                      </button>
-                    </>
-                  )}
                 </div>
               </div>
 
@@ -283,7 +332,7 @@ const ProductDetail = () => {
                   </div>
 
                   <hr className="border-slate-100 mb-4" />
-
+                  {/* 
                   <div className="flex flex-col mb-4">
                     <div className="flex items-baseline gap-2">
                       <span className="text-3xl font-black text-slate-900">
@@ -298,12 +347,51 @@ const ProductDetail = () => {
                         </span>
                       )}
                     </div>
-                  </div>
+                  </div> */}
+
+                  {product?.category?.toLowerCase() === "mobile-phone" ? (
+                    <div className="flex flex-col mb-4">
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-3xl font-black text-slate-900">
+                          ৳
+                          {(
+                            Number(
+                              matchedStorage?.value ||
+                                product.price?.selling ||
+                                0,
+                            ) - (product.price?.discount || 0)
+                          ).toLocaleString()}
+                        </span>
+                        {product.price?.discount > 0 && (
+                          <span className="text-base text-slate-400 line-through">
+                            ৳{product.price.selling.toLocaleString()}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col mb-4">
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-3xl font-black text-slate-900">
+                          ৳
+                          {(
+                            (product.price?.selling || 0) -
+                            (product.price?.discount || 0)
+                          ).toLocaleString()}
+                        </span>
+                        {product.price?.discount > 0 && (
+                          <span className="text-base text-slate-400 line-through">
+                            ৳{product.price.selling.toLocaleString()}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  )}
 
                   {/* Colors */}
                   <div className="space-y-4 mt-2">
                     <div
-                      className={`py-2 px-2 rounded-xl transition-all duration-500 -ml-2 -mb- ${
+                      className={`py-2 px-2 hidden rounded-xl transition-all duration-500 -ml-2 -mb- ${
                         showColorError && !selectedColor
                           ? "bg-red-50 border border-red-200"
                           : "border border-transparent"
@@ -374,10 +462,103 @@ const ProductDetail = () => {
                       </div>
                     </div>
 
+                    <div
+                      className={`py-3 px-3 rounded-xl border transition-all duration-300 ${
+                        showColorError && !selectedColor
+                          ? "border-red-200 bg-red-50"
+                          : "border-gray-300 bg-white"
+                      }`}
+                    >
+                      <div className="flex justify-between items-center mb-3">
+                        <h3 className="mb-2 text-base font-semibold text-gray-900">
+                          Colors
+                        </h3>
+
+                        {showColorError && !selectedColor && (
+                          <span className="text-[10px] font-semibold text-red-500 animate-pulse">
+                            ⚠️ Please select a color
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="flex flex-wrap gap-2">
+                        {product?.colors?.map((name) => {
+                          const isSelected = selectedColor === name;
+
+                          return (
+                            <button
+                              key={name}
+                              type="button"
+                              onClick={() => {
+                                setSelectedColor(name);
+                                setShowColorError(false);
+                              }}
+                              className={`flex items-center gap-2 rounded-full border px-3 py-2 text-sm font-medium transition-all ${
+                                isSelected
+                                  ? "border-[#fe741d] text-[#fe741d]"
+                                  : "border-gray-300 bg-white text-slate-800"
+                              }`}
+                            >
+                              <span
+                                className="w-4 h-4 rounded-full border border-black/10 shadow-sm"
+                                style={{ backgroundColor: name.toLowerCase() }}
+                              />
+
+                              <span className="capitalize">{name}</span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {product?.category?.toLowerCase() === "mobile-phone" &&
+                      product?.specifications?.storage && (
+                        <div className="w-full rounded-xl border border-gray-300 p-4">
+                          <h3 className="mb-2 text-base font-semibold text-gray-900">
+                            Storage
+                          </h3>
+
+                          <div className="flex flex-wrap gap-2">
+                            {product.specifications.storage.map(
+                              (storageItem, index) => {
+                                const storageVal = storageItem.key; // e.g., "8/256"
+                                const isSelected =
+                                  selectedStorage === storageVal;
+
+                                return (
+                                  <button
+                                    key={index}
+                                    type="button"
+                                    onClick={() =>
+                                      setSelectedStorage(storageVal)
+                                    }
+                                    className={`
+              rounded-full
+              border
+              px-4 py-1.5
+              text-sm font-medium
+              transition-all duration-200
+              cursor-pointer
+              ${
+                isSelected
+                  ? "border-[#f66107]  text-[#f66107]"
+                  : "border-gray-300 bg-white text-gray-800"
+              }
+            `}
+                                  >
+                                    {storageVal}
+                                  </button>
+                                );
+                              },
+                            )}
+                          </div>
+                        </div>
+                      )}
+
                     {/* Quantity & Stock */}
                     <div className="select-none -mb-1">
                       <div className="flex items-center mb-2">
-                        <h3 className="text-xs tracking-wider font-bold text-slate-800 uppercase">
+                        <h3 className="mb-2 text-base font-semibold text-gray-900">
                           Quantity
                         </h3>
                       </div>

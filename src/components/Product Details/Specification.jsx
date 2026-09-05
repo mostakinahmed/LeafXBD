@@ -16,40 +16,41 @@ export default function ProductSpecTable({ data }) {
       </div>
 
       {/* Specifications */}
-      <div className="flex flex-col  p-2">
-        {Object.entries(productSpecs).map(([section, items]) => (
-          <div key={section} className="flex flex-col">
-            {/* Category Header */}
-            <div className="bg-blue-50 px-6 py-3 border-y border-blue-100 first:border-t-0">
-              <h3 className="text-xs lg:text-sm font-bold uppercase tracking-wider text-[#1976d2]">
-                {section}
-              </h3>
+      {/* Specifications */}
+      <div className="flex flex-col p-2">
+        {Object.entries(productSpecs)
+          .filter(([section]) => section.toLowerCase() !== "storage")
+          .map(([section, items]) => (
+            <div key={section} className="flex flex-col">
+              {/* Category Header */}
+              <div className="bg-blue-50 px-6 py-3 border-y border-blue-100 first:border-t-0">
+                <h3 className="text-xs lg:text-sm font-bold uppercase tracking-wider text-[#1976d2]">
+                  {section}
+                </h3>
+              </div>
+
+              {/* Specification Rows */}
+              <dl className="divide-y divide-slate-200/60">
+                {items.map((item, index) => (
+                  <div
+                    key={index}
+                    className="grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-6 px-6 md:py-3 py-1.5 hover:bg-blue-50/40 transition-colors duration-200"
+                  >
+                    {/* Key */}
+                    <dt className="text-sm md:text-[15px] font-medium text-slate-500 lg:col-span-1">
+                      {item.key}
+                    </dt>
+
+                    {/* Value */}
+                    <dd className="text-sm md:text-[15px] font-semibold text-slate-800 lg:col-span-2">
+                      {item.value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
             </div>
-
-            {/* Specification Rows */}
-            <dl className="divide-y divide-slate-200/60">
-              {items.map((item, index) => (
-                <div
-                  key={index}
-                  className="grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-6 px-6 md:py-3 py-1.5 hover:bg-blue-50/40 transition-colors duration-200"
-                >
-                  {/* Key */}
-                  <dt className="text-sm md:text-[15px] font-medium text-slate-500 lg:col-span-1">
-                    {item.key}
-                  </dt>
-
-                  {/* Value */}
-                  <dd className="text-sm md:text-[15px] font-semibold text-slate-800 lg:col-span-2">
-                    {item.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        ))}
+          ))}
       </div>
-
-
     </div>
   );
 }

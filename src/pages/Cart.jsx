@@ -14,26 +14,58 @@ export const Cart = () => {
 
   useEffect(() => {
     const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
- 
+
     const merged = cartItems
       .map((cartItem) => {
         const product = productData.find((p) => p.pID === cartItem.pID);
         if (!product) return null;
+        if (cartItem?.category === "mobile-phone") {
+          return {
+            ...product,
+            qty: cartItem.qty || 1,
+            colors: cartItem.color,
+            phone_price: cartItem.price,
+            storage: cartItem.storage,
+          };
+        }
         return { ...product, qty: cartItem.qty || 1, colors: cartItem.color };
       })
       .filter(Boolean);
     setItems(merged);
   }, [productData]);
 
-  const totalPrice = items.reduce(
-    (sum, item) => sum + item.price.selling * item.qty,
-    0,
-  );
-  const totalDiscount = items.reduce(
-    (sum, item) => sum + item.price.discount,
-    0,
-  );
+  {
+    /* Calculate unit price safely based on category */
+  }
 
+  //for total price
+  const totalPrice = items.reduce((sum, item) => {
+    const isMobile = item?.category?.toLowerCase() === "mobile-phone";
+
+    // Get the correct unit price based on category
+    const unitPrice = isMobile
+      ? Number(item?.phone_price || item?.price?.selling || 0)
+      : Number(item?.price?.selling || 0);
+
+    const qty = Number(item?.qty || 1);
+    const discount = Number(item?.price?.discount || 0);
+
+    // Calculate total for the current item (Price * Qty - Discount * Qty)
+    const itemTotal = unitPrice * qty - discount * qty;
+
+    return sum + itemTotal;
+  }, 0);
+
+  console.log(totalPrice);
+
+  //total dis
+  const totalDiscount = items.reduce((sum, item) => {
+    const discount = Number(item?.price?.discount || 0);
+    const qty = Number(item?.qty || 1);
+
+    // Multiply discount by quantity for each item and add to sum
+    return sum + discount * qty;
+  }, 0);
   const onRemove = (pID) => {
     const updatedItems = items.filter((item) => item.pID !== pID);
     setItems(updatedItems);
@@ -48,26 +80,10 @@ export const Cart = () => {
 
   const ProceedBtn = () => navigate("/checkout/purchase");
 
-  // Animation Variants (Fast & Snappy)
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.1 },
-    },
-  };
+  console.log(items);
 
   const leftSideVariants = {
     hidden: { opacity: 0, x: -20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.4, ease: "easeOut" },
-    },
-  };
-
-  const rightSideVariants = {
-    hidden: { opacity: 0, x: 20 },
     visible: {
       opacity: 1,
       x: 0,
@@ -147,16 +163,35 @@ export const Cart = () => {
                       </td>
 
                       <td className="px-4 py-4 text-center">
-                        <span className="text-sm font-bold text-slate-800">
-                          ৳{item.price.selling.toLocaleString()}
-                        </span>
+                        {item.category === "mobile-phone" ? (
+                          <span className="text-sm font-bold text-slate-800">
+                            ৳{item.phone_price.toLocaleString()}
+                          </span>
+                        ) : (
+                          <span className="text-sm font-bold text-slate-800">
+                            ৳{item.price.selling.toLocaleString()}
+                          </span>
+                        )}
                       </td>
                       <td className="px-4 py-4 text-right font-black text-slate-900 text-sm">
-                        ৳
-                        {(
-                          item.price.selling * item.qty -
-                          item.price.discount
-                        ).toLocaleString()}
+                        ৳{/* Calculate unit price safely based on category */}
+                        {(() => {
+                          const isMobile =
+                            item?.category?.toLowerCase() === "mobile-phone";
+                          // Fallback safely if phone_price or selling price is missing
+                          const unitPrice = isMobile
+                            ? Number(item?.phone_price) ||
+                              item?.price?.selling ||
+                              0
+                            : item?.price?.selling || 0;
+
+                          const discount = item?.price?.discount || 0;
+                          const qty = item?.qty || 1;
+
+                          const totalPrice = unitPrice * qty - discount * qty;
+
+                          return totalPrice.toLocaleString();
+                        })()}
                       </td>
                       <td className="px-6 py-4 text-center">
                         <button
