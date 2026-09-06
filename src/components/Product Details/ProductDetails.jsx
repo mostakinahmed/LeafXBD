@@ -297,7 +297,7 @@ const ProductDetail = () => {
                       onClick={() => setCurrentIndex(idx)}
                       className={`w-14 h-14 md:w-16 md:h-16 flex-shrink-0 object-contain p-1 rounded border-2 transition-all cursor-pointer ${
                         idx === currentIndex
-                          ? "border-[#F66107] bg-white shadow-sm"
+                          ? "border-brand bg-white shadow-sm"
                           : "border-slate-200 opacity-70 hover:opacity-100"
                       }`}
                     />
