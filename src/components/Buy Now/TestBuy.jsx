@@ -217,8 +217,6 @@ const TestBuy = ({ data }) => {
     setForm((prev) => ({ ...prev, [name]: value }));
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: false }));
   };
-
-  // 6. Submit Logic
   const handleSubmit = async (e) => {
     const newErrors = {
       name: !form.name,
@@ -243,29 +241,35 @@ const TestBuy = ({ data }) => {
       mode: "Online",
       customer_id: user?.cID || "GUEST_USER",
 
-      // Flat Mapping: Splits Qty 2 into 2 separate rows
-      items: data.flatMap((item) =>
-        Array.from({ length: item.qty }).map(() => ({
+      // Flat Mapping: Splits Qty into separate rows
+      items: data.flatMap((item) => {
+        const isMobile = item?.category?.toLowerCase() === "mobile-phone";
+
+        // Correct unit price: phone_price for mobile variants, selling for standard
+        const resolvedPrice = isMobile
+          ? Number(item?.phone_price || item?.price?.selling || 0)
+          : Number(item?.price?.selling || 0);
+
+        return Array.from({ length: item.qty }).map(() => ({
           product_id: item.pID,
           product_name: item.name,
-          product_price: item.price.selling, // Full Web Price
-          discount: item.price.discount || 0, // Static Item Discount
-          quantity: 1, // Always 1 for unique tracking
+          product_price: resolvedPrice, // Uses the matched variant price
+          discount: Number(item.price?.discount || 0),
+          quantity: 1,
           product_comments: {
-            color: item?.color || item?.colors || "N/A",
-            storage: item?.storage || "N/A",
-            phone_price: item?.phone_price || "N/A",
+            color: item?.color || item?.colors || "Default", // Always string
+            storage: item?.storage || "",
+            phone_price: Number(item?.phone_price || 0), // Always numeric
           },
           skuID: "",
           imei: "",
-        })),
-      ),
+        }));
+      }),
 
       shipping_address: {
         recipient_name: form.name,
         phone: form.phone,
         email: form.email,
-        // selectedUpazila is a string, selectedDistrict.district is the name
         address_line1: `${form.address}, ${selectedUpazila}, ${selectedDistrict.name}`,
       },
 
@@ -275,16 +279,17 @@ const TestBuy = ({ data }) => {
 
       subtotal: subTotal,
       coupon: couponValue,
-      total_amount: totalTk, // subtotal - itemDiscounts - coupon + shipping
+      total_amount: totalTk,
     };
 
-    console.log(orderPayload);
-    
+    console.log("Submitting Order Payload:", orderPayload);
+
     try {
       const res = await axios.post(
-        "https://api.victusbyte.com/api/order/create-order/client",
+        "http://localhost:3000/api/order/create-order/client",
         orderPayload,
       );
+      console.log("Order Success:", res.data);
 
       sessionStorage.removeItem("cart");
       updateCart();
@@ -306,13 +311,13 @@ const TestBuy = ({ data }) => {
   `,
         icon: "success",
         iconColor: "#22c55e",
-        background: "#ffffff", // Solid white for the alert box
-        backdrop: `rgba(30, 41, 59, 0.5)`, // Slate-800 tint at 50% opacity
+        background: "#ffffff",
+        backdrop: `rgba(30, 41, 59, 0.5)`,
         confirmButtonText: "Back to Home",
-        confirmButtonColor: "#1e293b", // Slate-800
+        confirmButtonColor: "#1e293b",
         allowOutsideClick: false,
         customClass: {
-          container: "swal-custom-blur", // Applies the 8px blur to the backdrop
+          container: "swal-custom-blur",
         },
         showClass: {
           popup: "animate__animated animate__zoomIn animate__faster",
@@ -322,29 +327,22 @@ const TestBuy = ({ data }) => {
         },
       }).then((result) => {
         if (result.isConfirmed) {
-          // 1. Manually hide the entire page content to prevent "flicker"
           const mainContent = document.querySelector(".min-h-screen");
           if (mainContent) mainContent.style.opacity = "0";
-
-          // 2. Navigate immediately
           navigate("/", { replace: true });
         }
       });
     } catch (error) {
-      // 1. Extract the specific message from the backend (if available)
+      console.error("Submission Error Response:", error.response?.data);
       const errorMessage =
-        error.response?.data?.message || "Order Submission Failed";
-
-      // 2. Display the specific error via toast
+        error.response?.data?.message ||
+        error.response?.data?.error ||
+        "Order Submission Failed";
       toast.error(errorMessage);
-
-      // Optional: Log it for your own debugging
-      // console.error("Submission Error:", error.response?.data);
     } finally {
       setIsSubmitting(false);
     }
   };
-
   return (
     <div className="min-h-screen w-full font-sans   text-white pb-20">
       <div className="w-full md:flex gap-4 ">
