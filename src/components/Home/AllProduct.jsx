@@ -32,16 +32,23 @@ export default function AllProduct() {
   }, [productData]);
 
   return (
-    <div className="max-w-[1400px] mx-auto mt-6 lg:px-4 px-2 ">
+    <div className="max-w-[1400px] mx-auto mt-5 lg:px-4 px-2 ">
       {/* Section Title */}
-      <div className="flex items-center justify-between bg-white shadow-sm border border-gray-100 md:p-4 px-4 py-2  mb-3">
-        <div className="flex items-center gap-3">
-          {/* <div className="p-2 -ml-4 md:ml-0">
-            <FiZap className="text-xl md:-ml-3 text-[#fe741d] animate-pulse" />
-          </div> */}
-          <h3 className=" md:text-xl -ml-3  md:-ml-1 font-bold text-gray-900">
-            All Product
-          </h3>
+      <div className="flex items-center justify-between   font-sans  md:p-3  py-2  mb-3">
+        {/* Header */}
+        <div className="relative z-10 flex items-center justify-between bg-white/10 backdrop-blur-md border-b border-white/10 ">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center">
+              <h1 className="md:text-5xl text-2xl font-bold tracking-tight">
+                <span className="text-slate-800">All</span>{" "}
+                <span className="bg-gradient-to-r from-brand via-amber-500 to-purple-600 bg-clip-text text-transparent">
+                  Product
+                </span>
+              </h1>
+            </div>
+          </div>
+
+       
         </div>
 
         {/* View All Button */}

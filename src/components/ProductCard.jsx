@@ -6,7 +6,7 @@ const ProductCard = ({ data }) => {
   const finalPrice = data.price.selling - (data.price.discount || 0);
 
   return (
-    <div className="flex flex-col md:h-[330px]  h-[280px] font-sans border border-slate-200 rounded overflow-hidden hover:shadow-xl group/card cursor-pointer">
+    <div className="flex flex-col md:h-[330px] mb-3  h-[280px] font-sans border border-slate-200 rounded overflow-hidden hover:shadow group/card cursor-pointer">
       {/* --- PRODUCT IMAGE SECTION --- */}
       <div className="relative h-56 bg-[#fcfcfc] md:p-4 p-2 flex items-center justify-center overflow-hidden">
         {/* SALE Badge */}
@@ -55,33 +55,6 @@ const ProductCard = ({ data }) => {
               </span>
             )}
           </div>
-
-          {/* <Link to="/checkout/cart">
-            <button className="w-full md:py-2 py-2 bg-slate-800 text-white md:text-[12px] text-[10px] font-black uppercase tracking-widest hover:bg-blue-600 transition-colors rounded shadow-lg shadow-slate-200">
-              Buy Now
-            </button>
-          </Link> */}
-          {/* <Link to="/checkout/cart">
-            <button className="flex items-center justify-center gap-2 w-full md:py-2 py-2 bg-slate-100 text-slate-800 hover:text-white hover:bg-slate-800 md:text-[12px] text-[10px] font-black  tracking-wide transition-colors rounded shadow-slate-200">
-          
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx="8" cy="21" r="1" />
-                <circle cx="19" cy="21" r="1" />
-                <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-              </svg>
-              <span className="ml-1 text-[15px]">Buy Now</span>
-            </button>
-          </Link> */}
         </div>
       </div>
     </div>

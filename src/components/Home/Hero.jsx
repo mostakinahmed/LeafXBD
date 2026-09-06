@@ -37,7 +37,7 @@ const BannerSection = () => {
           />
 
           {/* Indicator Dots Container */}
-          <div className="absolute bottom-2 md:bottom-4 left-1/2 -translate-x-1/2 flex md:gap-5 gap-2 ">
+          <div className="absolute bottom-2 md:bottom-8 left-1/2 -translate-x-1/2 flex md:gap-3 gap-2 ">
             {images.map((_, i) => (
               <button
                 key={i}
@@ -45,7 +45,7 @@ const BannerSection = () => {
                 className={`md:h-2 h-2 transition-all duration-300 rounded-full ${
                   index === i
                     ? "md:w-12 w-6 bg-[#f66107ff] rounded-sm" // Active dot: wider and white
-                    : "md:w-2.5 w-2 bg-white hover:bg-white/90" // Inactive: small and semi-transparent
+                    : " w-2 bg-white hover:bg-white/90" // Inactive: small and semi-transparent
                 }`}
                 aria-label={`Go to slide ${i + 1}`}
               />
@@ -58,7 +58,7 @@ const BannerSection = () => {
           <div className="flex w-full md:gap-1 gap-1.5 lg:block ">
             <div className="w-1/2 lg:w-full">
               <img
-                src="right-side-1.png"
+                src="https://www.applegadgetsbd.com/_next/image?url=https%3A%2F%2Fadminapi.applegadgetsbd.com%2Fstorage%2Fmedia%2Flarge%2FMackbook-neo-banner.jpg-6998.jpg&w=1920&q=75"
                 alt="Career Banner"
                 className="lg:w-full h-auto rounded-lg"
               />

@@ -118,7 +118,7 @@ export default function FlashSale() {
 
         {/* Right Side: Pill Shape "Shop More" Action Button */}
 
-        <Link to="/flash-sale" className="shrink-0 hidden md:block">
+        {/* <Link to="/flash-sale" className="shrink-0 hidden md:block">
           <div className="md:w-50 w-30 ">
             <img src="shop-more.png" alt="" />
           </div>
@@ -128,7 +128,7 @@ export default function FlashSale() {
               <FiChevronRight size={16} strokeWidth={3} />
             </div>
           </button>
-        </Link>
+        </Link> */}
       </div>
 
       {/* --- CAROUSEL / SLIDER (Cards Left Completely Untouched) --- */}

@@ -54,27 +54,42 @@ export default function NewArrivals() {
 
   return (
     <section
-      className="max-w-[1370px] mt-4 mb-6 lg:mx-auto pb-3 mx-2 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: `url("https://i.ibb.co.com/GQR2wBMJ/Gray-Green-Creative-Gradient-Online-Delivery-Service-Discount-Offer-Ads-Banner.png")` }}
+      className="max-w-[1390px] font-sans  mb-6 lg:mx-auto pb-3 mx-2 bg-cover bg-center bg-no-repeat"
+     
     >
-      {/* Header Section */}
-      <div className="flex items-center justify-between bg-white shadow-sm border border-gray-100 md:p-4 px-4 py-2 mb-8">
+      
+      {/* Header */}
+      <div className="relative z-10 flex items-center justify-between bg-white/10 backdrop-blur-md border-b border-white/10 md:p-4 px-2  mb-3">
         <div className="flex items-center gap-3">
-          {/* <div className="p-2 -ml-4 md:ml-0">
-            <FiZap className="text-xl md:-ml-3 text-[#fe741d] animate-pulse" />
-          </div> */}
-          <h3 className="text- md:text-xl -ml-3 md:-ml-1 font-bold text-gray-900">
-            New Arrival
-          </h3>
+          <div className="flex items-center">
+            <h1 className="md:text-5xl text-2xl font-bold tracking-tight">
+              <span className="text-slate-800">New</span>{" "}
+              <span className="bg-gradient-to-r from-brand via-amber-500 to-purple-600 bg-clip-text text-transparent">
+                Arrival
+              </span>
+            </h1>
+          </div>
         </div>
 
-        {/* View All Button */}
-        <Link
-          to="/new-arrival"
-          className="flex items-center gap-1 text-[9px] md:text-xs font-bold uppercase tracking-wider text-slate-900 hover:text-white border border-slate-900 hover:bg-slate-900 px-3 py-1.5 md:px-5 md:py-2 rounded-full transition-all duration-300"
-        >
-          View All
-        </Link>
+        <div className="flex items-center gap-3">
+          {/* Left Outline Button */}
+          <button
+            onClick={prevSlide}
+            className="md:w-8 md:h-8 w-7 h-7  rounded-full bg-black flex items-center justify-center text-white hover:bg-slate-800 transition-all cursor-pointer"
+            aria-label="Previous"
+          >
+            <FiChevronLeft size={20} />
+          </button>
+
+          {/* Right Solid Black Button */}
+          <button
+            onClick={nextSlide}
+            className="md:w-8 md:h-8 w-7 h-7  rounded-full bg-black flex items-center justify-center text-white hover:bg-slate-800 transition-all cursor-pointer"
+            aria-label="Next"
+          >
+            <FiChevronRight size={20} />
+          </button>
+        </div>
       </div>
 
       {/* Product Slider Container */}
@@ -113,23 +128,7 @@ export default function NewArrivals() {
           </div>
         </div>
 
-        {/* Navigation Buttons - Visible on Mobile too, but styled better */}
-        {newArrivalData.length > visibleItems && (
-          <>
-            <button
-              onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-slate-900 hover:text-white text-gray-800 p-1.5 md:p-2 rounded-r-xl shadow-lg transition-all"
-            >
-              <FiChevronLeft size={24} />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-slate-900 hover:text-white text-gray-800 p-1.5 md:p-2 rounded-l-xl shadow-lg transition-all"
-            >
-              <FiChevronRight size={24} />
-            </button>
-          </>
-        )}
+       
       </div>
     </section>
   );

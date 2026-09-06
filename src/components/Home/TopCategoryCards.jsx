@@ -7,46 +7,33 @@ const TopCategoryCards = () => {
   const { categoryData } = useContext(DataContext);
 
   return (
-    <div className="max-w-[1400px] font-sans mx-auto mb-7 mt-1">
+    <div className="max-w-[1400px] font-sans mx-auto mb-10 mt-5">
       {/* Header */}
-      <div className="mx-2 md:mx-3.5 mb-4">
+      <div className=" md:mx-3.5 mb-4">
         <div className="relative overflow-hidden rounded border border-[#1976d2]/15 bg-gradient-to-r from-white via-blue-50 to-white">
           {/* Glow background effect */}
           <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#1976d2]/20 blur-3xl rounded-full"></div>
           <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#1976d2]/10 blur-3xl rounded-full"></div>
 
-          <div className="relative px-5 md:py-3 py-1.5 flex items-center justify-between">
+          <div className="relative px-3 md:py-3 py-1.5 flex items-center justify-between">
             {/* Left side */}
             <div className="flex items-center gap-3">
-              {/* Icon badge */}
-              {/* <div className="w-10 h-10 rounded-lg bg-[#1976d2] flex items-center justify-center shadow-md">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5 text-white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 7h18M3 12h18M3 17h18"
-                  />
-                </svg>
-              </div> */}
-
-              {/* Title */}
+            
               <div>
-                <h2 className="text-lg md:text-2xl font-extrabold text-black tracking-tight">
-                  Top Categories
-                </h2>
-
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center">
+                    <h1 className="md:text-5xl text-2xl font-bold tracking-tight">
+                      <span className="text-slate-800">Top</span>{" "}
+                      <span className="bg-gradient-to-r from-brand via-amber-500 to-purple-600 bg-clip-text text-transparent">
+                        Category
+                      </span>
+                    </h1>
+                  </div>
+                </div>{" "}
+               
                 <div className="h-0.5 md:w-80 w-40 bg-gradient-to-r from-[#f66107ff] to-transparent rounded-full mt-1"></div>
               </div>
             </div>
-
-
           </div>
         </div>
       </div>
