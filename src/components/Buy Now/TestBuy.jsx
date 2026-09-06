@@ -286,7 +286,7 @@ const TestBuy = ({ data }) => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/order/create-order/client",
+        "https://api.victusbyte.com/api/order/create-order/client",
         orderPayload,
       );
       console.log("Order Success:", res.data);
