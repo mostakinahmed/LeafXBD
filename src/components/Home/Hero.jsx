@@ -54,20 +54,20 @@ const BannerSection = () => {
         </div>
 
         {/* Right Sideboxes */}
-        <div className="flex lg:flex-col gap rounded">
-          <div className="flex w-full md:gap-1 gap-1.5 lg:block ">
+        <div className="flex lg:flex-col mt-2 md:mt-0 rounded">
+          <div className="flex w-full md:gap-1 gap-2 lg:block ">
             <div className="w-1/2 lg:w-full">
               <img
                 src="https://www.applegadgetsbd.com/_next/image?url=https%3A%2F%2Fadminapi.applegadgetsbd.com%2Fstorage%2Fmedia%2Flarge%2FMackbook-neo-banner.jpg-6998.jpg&w=1920&q=75"
                 alt="Career Banner"
-                className="lg:w-full h-auto rounded-lg"
+                className="lg:w-full md:h-[230px] h-auto rounded-lg"
               />
             </div>
             <div className="w-1/2 lg:w-full">
               <img
-                src="right-side-2.png"
+                src="https://7vgva7cju0vcfvwf.public.blob.vercel-storage.com/White%20Modern%20Headphone%20Product%20Facebook%20Post.png"
                 alt="Career Banner"
-                className="lg:w-full h-auto rounded-lg lg:mt-4.5"
+                className="lg:w-full md:h-[232px] h-auto rounded-lg lg:mt-4.5"
               />
             </div>
           </div>
