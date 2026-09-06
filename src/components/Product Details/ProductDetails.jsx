@@ -227,7 +227,7 @@ const ProductDetail = () => {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold py-2 px-3 rounded-full transition-colors w-full md:w-auto"
+        className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold py-2.5 px-3 rounded-full transition-colors w-full md:w-auto"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -332,22 +332,7 @@ const ProductDetail = () => {
                   </div>
 
                   <hr className="border-slate-100 mb-4" />
-                  {/* 
-                  <div className="flex flex-col mb-4">
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-3xl font-black text-slate-900">
-                        ৳
-                        {(
-                          product.price.selling - product.price.discount
-                        ).toLocaleString()}
-                      </span>
-                      {product.price.discount > 0 && (
-                        <span className="text-base text-slate-400 line-through">
-                          ৳{product.price.selling.toLocaleString()}
-                        </span>
-                      )}
-                    </div>
-                  </div> */}
+                
 
                   {product?.category?.toLowerCase() === "mobile-phone" ? (
                     <div className="flex flex-col mb-4">

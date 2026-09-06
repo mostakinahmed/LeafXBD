@@ -346,7 +346,7 @@ const NavbarDark = () => {
           <div className="text-2xl cursor-pointer text-white/90" onClick={toggle}>
             <i
               className={
-                values ? "ri-close-line text-white/90" : "ri-menu-3-line"
+                values ? "ri-close-line text-white/90" : "ri-menu-2-line"
               }
             ></i>
           </div>

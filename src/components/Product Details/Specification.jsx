@@ -37,12 +37,12 @@ export default function ProductSpecTable({ data }) {
                     className="grid grid-cols-1 lg:grid-cols-3 gap-1 lg:gap-6 md:px-6 px-4 md:py-3 py-1.5 hover:bg-blue-50/40 transition-colors duration-200"
                   >
                     {/* Key */}
-                    <dt className="text-sm md:text-[15px] font-medium text-slate-600 lg:col-span-1">
+                    <dt className="text-sm md:text-[15px] font-medium text-slate-500 lg:col-span-1">
                       {item.key}
                     </dt>
 
                     {/* Value */}
-                    <dd className="text-sm md:text-[15px] font-semibold text-slate-900 lg:col-span-2">
+                    <dd className="text-sm md:text-[15px] font-semibold text-slate-800 lg:col-span-2">
                       {item.value}
                     </dd>
                   </div>
